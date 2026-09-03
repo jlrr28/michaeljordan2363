@@ -17,7 +17,7 @@ Restraunt fillRestrauntInfo() {
 	Restraunt temp;
 	cout << "enter name of restraunt: ";
 	getline(cin, temp.name);
-	cout << "enter address od restraunt: ";
+	cout << "enter address of restraunt: ";
 	getline(cin, temp.address);
 	cout << "enter type of food restraunt serves: ";
 	getline(cin, temp.foodType);
@@ -33,16 +33,22 @@ Restraunt fillRestrauntInfo() {
 void outputRestrauntInfo(const Restraunt& i) {
 
 	cout << i.name << " is located at " << i.address << " and is a " << i.foodType << " restraunt." << endl;
-	cout << "It has a " << i.starRating << " star rating on yelp and has been open for " << i.yearsOpen << " years." << endl;
+	cout << "It has a " << i.starRating << " star rating on yelp and has been open for " << i.yearsOpen << " years.\n \n";
 
 }
 
 int main(){
 
-	Restraunt info = fillRestrauntInfo();
-	outputRestrauntInfo(info);
+	Restraunt r1 = fillRestrauntInfo();
+	outputRestrauntInfo(r1);
 
+	Restraunt r2 = fillRestrauntInfo();
+	outputRestrauntInfo(r2);
 
+	Restraunt r3 = fillRestrauntInfo();
+	outputRestrauntInfo(r3);
 
+	Restraunt r4 = fillRestrauntInfo();
+	outputRestrauntInfo(r4);
 
 }
