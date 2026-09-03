@@ -15,8 +15,8 @@ struct Restraunt {
 
 Restraunt fillRestrauntInfo() {
 
-
 	Restraunt temp;
+	
 	cout << "enter name of restraunt: ";
 	getline(cin, temp.name);
 	cout << "enter address of restraunt: ";
@@ -32,12 +32,7 @@ Restraunt fillRestrauntInfo() {
 
 }
 
-void outputRestrauntInfo(const Restraunt& i) {
-
-	cout << "\n" << i.name << " is located at " << i.address << " and is a " << i.foodType << " restraunt." << endl;
-	cout << "It has a " << i.starRating << " star rating on yelp and has been open for " << i.yearsOpen << " years.\n \n";
-
-}
+void outputRestrauntInfo(const Restraunt& i);
 
 int main(){
 
@@ -52,5 +47,32 @@ int main(){
 
 	Restraunt r4 = fillRestrauntInfo();
 	outputRestrauntInfo(r4);
+
+}
+
+void outputRestrauntInfo(const Restraunt& i) {
+
+	cout << "\n" << i.name << " is located at " << i.address <<
+		" and is a " << i.foodType << " restraunt." << endl;
+	cout << "It has a " << i.starRating <<
+		" star rating on yelp and has been open for " << i.yearsOpen << " years.\n \n";
+}
+
+Restraunt fillRestrauntInfo() {
+
+	Restraunt temp;
+
+	cout << "enter name of restraunt: ";
+	getline(cin, temp.name);
+	cout << "enter address of restraunt: ";
+	getline(cin, temp.address);
+	cout << "enter type of food restraunt serves: ";
+	getline(cin, temp.foodType);
+	cout << "enter star rating out of 5: ";
+	cin >> temp.starRating;
+	cout << "enter how many years it has been open: ";
+	cin >> temp.yearsOpen;
+	cin.ignore();
+	return temp;
 
 }
