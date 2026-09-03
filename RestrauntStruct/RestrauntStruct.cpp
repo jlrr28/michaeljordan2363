@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 struct Restraunt {
@@ -13,6 +14,7 @@ struct Restraunt {
 };
 
 Restraunt fillRestrauntInfo() {
+
 
 	Restraunt temp;
 	cout << "enter name of restraunt: ";
@@ -42,8 +44,12 @@ int main(){
 	Restraunt r1 = fillRestrauntInfo();
 	outputRestrauntInfo(r1);
 
+	cout << r1.name;
+
 	Restraunt r2 = fillRestrauntInfo();
 	outputRestrauntInfo(r2);
+
+	cout << r2.name;
 
 	Restraunt r3 = fillRestrauntInfo();
 	outputRestrauntInfo(r3);
