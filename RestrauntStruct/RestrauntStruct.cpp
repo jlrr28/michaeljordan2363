@@ -15,15 +15,15 @@ struct Restraunt {
 Restraunt fillRestrauntInfo() {
 
 	Restraunt temp;
-	cout << "enter name:";
+	cout << "enter name of restraunt: ";
 	getline(cin, temp.name);
-	cout << "enter address:";
+	cout << "enter address od restraunt: ";
 	getline(cin, temp.address);
-	cout << "enter food stype:";
+	cout << "enter type of food restraunt serves: ";
 	getline(cin, temp.foodType);
-	cout << "enter star rating out of 5:";
+	cout << "enter star rating out of 5: ";
 	cin >> temp.starRating;
-	cout << "enter how many years it has been open:";
+	cout << "enter how many years it has been open: ";
 	cin >> temp.yearsOpen;
 
 	return temp;
