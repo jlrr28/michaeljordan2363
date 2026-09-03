@@ -27,14 +27,14 @@ Restraunt fillRestrauntInfo() {
 	cin >> temp.starRating;
 	cout << "enter how many years it has been open: ";
 	cin >> temp.yearsOpen;
-
+	cin.ignore();
 	return temp;
 
 }
 
 void outputRestrauntInfo(const Restraunt& i) {
 
-	cout << i.name << " is located at " << i.address << " and is a " << i.foodType << " restraunt." << endl;
+	cout << "\n" << i.name << " is located at " << i.address << " and is a " << i.foodType << " restraunt." << endl;
 	cout << "It has a " << i.starRating << " star rating on yelp and has been open for " << i.yearsOpen << " years.\n \n";
 
 }
@@ -44,12 +44,8 @@ int main(){
 	Restraunt r1 = fillRestrauntInfo();
 	outputRestrauntInfo(r1);
 
-	cout << r1.name;
-
 	Restraunt r2 = fillRestrauntInfo();
 	outputRestrauntInfo(r2);
-
-	cout << r2.name;
 
 	Restraunt r3 = fillRestrauntInfo();
 	outputRestrauntInfo(r3);
