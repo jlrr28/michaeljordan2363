@@ -13,25 +13,7 @@ struct Restraunt {
 	int yearsOpen;
 };
 
-Restraunt fillRestrauntInfo() {
-
-	Restraunt temp;
-	
-	cout << "enter name of restraunt: ";
-	getline(cin, temp.name);
-	cout << "enter address of restraunt: ";
-	getline(cin, temp.address);
-	cout << "enter type of food restraunt serves: ";
-	getline(cin, temp.foodType);
-	cout << "enter star rating out of 5: ";
-	cin >> temp.starRating;
-	cout << "enter how many years it has been open: ";
-	cin >> temp.yearsOpen;
-	cin.ignore();
-	return temp;
-
-}
-
+Restraunt fillRestrauntInfo();
 void outputRestrauntInfo(const Restraunt& i);
 
 int main(){
