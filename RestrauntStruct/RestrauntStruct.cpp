@@ -42,6 +42,9 @@ int main(){
 	Restraunt info = fillRestrauntInfo();
 	outputRestrauntInfo(info);
 
+	//push
 
+
+	//push
 
 }
