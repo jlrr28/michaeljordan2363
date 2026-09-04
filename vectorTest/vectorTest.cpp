@@ -5,11 +5,11 @@ int main() {
 	
 	vector<int> myVec(3);
 
-	myVec.at(0) = 7;
+	myVec[0] = 7;
 
-	myVec.at(1) = 66;
+	myVec[1] = 66;
 
-	myVec.at(2) = 9;
+	myVec[2] = 9;
 	
 	cout << "before delete \n";
 	for (int val : myVec) cout << val << " ";
