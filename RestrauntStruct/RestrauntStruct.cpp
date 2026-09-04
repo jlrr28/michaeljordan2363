@@ -38,6 +38,7 @@ void outputRestrauntInfo(const Restraunt& i) {
 		" and is a " << i.foodType << " restraunt." << endl;
 	cout << "It has a " << i.starRating <<
 		" star rating on yelp and has been open for " << i.yearsOpen << " years.\n \n";
+
 }
 
 Restraunt fillRestrauntInfo() {
