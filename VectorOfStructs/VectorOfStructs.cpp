@@ -12,11 +12,15 @@ struct Color {
 
 int main() {
 
-	Color c1;
-	c1.R = 10;
-	c1.G = 29;
-	c1.B = 235;
+	vector <Color> colorVector;
+	
+	Color temp;
+	temp.R = 10;
+	temp.G = 29;
+	temp.B = 235;
 
-	cout << c1.R << " " << c1.G << " " << c1.B;
+
+
+	cout << temp.R << " " << temp.G << " " << temp.B;
 
 }
