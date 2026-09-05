@@ -37,7 +37,7 @@ int main() {
 	cout << setfill('-') << setw(35) << "\n";
 	int x = 0;
 	for (auto& val : colorVector) {
-		x++;
+		x++; //I could only figure out how to display information from vector structs with RBFL, not sure if there is a better alternative using normal for loops or if this is good enough
 		if (x < 10)cout << " ";
 		cout << x << setfill(' ') << setw(10) << val.R << setw(10) << val.G <<
 		setw(10) << val.B << endl;
