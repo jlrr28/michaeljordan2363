@@ -11,6 +11,7 @@ struct Color {
 	int B;
 };
 
+
 int main() {
 
 	random_device rd;  
