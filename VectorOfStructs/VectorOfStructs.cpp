@@ -14,32 +14,32 @@ struct Color {
 
 int main() {
 
-	random_device rd;  
-	mt19937 gen(rd()); 
-	uniform_int_distribution<> dist(0, 255);
-
+	srand(time(0));
+	
 	vector <Color> colorVector;
 	
+	
+	
 	Color temp;
-	temp.R = dist(gen);
-	temp.G = dist(gen);
-	temp.B = dist(gen);
+	temp.R = rand() % 255;
+	temp.G = rand() % 255;
+	temp.B = rand() % 255;
 	
 	cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
 	
 	colorVector.push_back(temp);
 	
-	temp.R = dist(gen);
-	temp.G = dist(gen);
-	temp.B = dist(gen);
+	temp.R = rand() % 255;
+	temp.G = rand() % 255;
+	temp.B = rand() % 255;
 
 	cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
 
 	colorVector.push_back(temp);
-
-	temp.R = dist(gen);
-	temp.G = dist(gen);
-	temp.B = dist(gen);
+	
+	temp.R = rand() % 255;
+	temp.G = rand() % 255;
+	temp.B = rand() % 255;
 
 	cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
 
