@@ -31,11 +31,11 @@ int main() {
 		temp.R = randomRGB(gen);
 		temp.G = randomRGB(gen);
 		temp.B = randomRGB(gen);
-		//cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
 		colorVector.push_back(temp);
 	}
 	
-	for (auto& val : colorVector) cout << val.R << " " << val.G << " " << val.B << endl;;
+	cout << colorVector.size();
+	for (auto& val : colorVector) cout << val.R << " " << val.G << " " << val.B << endl;
 
 
 }
