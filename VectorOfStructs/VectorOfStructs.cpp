@@ -12,8 +12,6 @@ struct Color {
 	int B;
 };
 
-
-
 int main() {
 
 	random_device rd;  
@@ -35,7 +33,6 @@ int main() {
 		colorVector.push_back(temp);
 	}
 	
-
 	cout << "Color# " << " R Value " << " G Value " << " B Value " << endl;
 	cout << setfill('-') << setw(35) << "\n";
 	int x = 0;
