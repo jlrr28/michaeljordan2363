@@ -36,9 +36,13 @@ int main() {
 	}
 	
 
-	cout << "Color#" << "R Value" << "G Value" << "B Value" << endl;
-	int x = 1;
-	for (auto& val : colorVector) cout << x++ << setfill(' ') << setw(10) << val.R << setw(10) << val.G << setw(10) << val.B << endl;
-
+	cout << "Color# " << " R Value " << " G Value " << " B Value " << endl;
+	cout << setfill('-') << setw(60) << "\n";
+	int x = 0;
+	for (auto& val : colorVector) {
+		x++;
+		if (x < 10)cout << " ";
+		cout << x << setfill(' ') << setw(10) << val.R << setw(10) << val.G << setw(10) << val.B << endl;
+	}
 
 }
