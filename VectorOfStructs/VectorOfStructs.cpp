@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <iomanip>    
 using namespace std;
 
 struct Color {
@@ -34,8 +35,10 @@ int main() {
 		colorVector.push_back(temp);
 	}
 	
-	cout << colorVector.size();
-	for (auto& val : colorVector) cout << val.R << " " << val.G << " " << val.B << endl;
+
+	cout << "Color#" << "R Value" << "G Value" << "B Value" << endl;
+	int x = 1;
+	for (auto& val : colorVector) cout << x++ << setfill(' ') << setw(10) << val.R << setw(10) << val.G << setw(10) << val.B << endl;
 
 
 }
