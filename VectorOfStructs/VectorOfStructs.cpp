@@ -12,23 +12,26 @@ struct Color {
 };
 
 
+
 int main() {
 
-	srand(time(0));
-	
+	random_device rd;  
+	mt19937 gen(rd()); 
+	uniform_int_distribution<> randomRGB(0, 255);
+	uniform_int_distribution<> rColorsgenerated(25, 50);
+
 	vector <Color> colorVector;
 	
 	Color temp;
 	
-	int r = rand() % 50;
+	int r = rColorsgenerated(gen);
 	cout << "generate this many " << r << endl;
 	
 	for (int i = 0; i < r; i++){
-		temp.R = rand() % 255;
-		temp.G = rand() % 255;
-		temp.B = rand() % 255;
-		cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
-
+		temp.R = randomRGB(gen);
+		temp.G = randomRGB(gen);
+		temp.B = randomRGB(gen);
+		//cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
 		colorVector.push_back(temp);
 	}
 	
