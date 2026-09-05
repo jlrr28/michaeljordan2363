@@ -18,32 +18,19 @@ int main() {
 	
 	vector <Color> colorVector;
 	
-	
-	
 	Color temp;
-	temp.R = rand() % 255;
-	temp.G = rand() % 255;
-	temp.B = rand() % 255;
 	
-	cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
+	int r = rand() % 50;
+	cout << "generate this many " << r << endl;
 	
-	colorVector.push_back(temp);
-	
-	temp.R = rand() % 255;
-	temp.G = rand() % 255;
-	temp.B = rand() % 255;
+	for (int i = 0; i < r; i++){
+		temp.R = rand() % 255;
+		temp.G = rand() % 255;
+		temp.B = rand() % 255;
+		cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
 
-	cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
-
-	colorVector.push_back(temp);
-	
-	temp.R = rand() % 255;
-	temp.G = rand() % 255;
-	temp.B = rand() % 255;
-
-	cout << "Coluor" << temp.R << " " << temp.G << " " << temp.B << endl << endl;
-
-	colorVector.push_back(temp);
+		colorVector.push_back(temp);
+	}
 	
 	for (auto& val : colorVector) cout << val.R << " " << val.G << " " << val.B << endl;;
 
