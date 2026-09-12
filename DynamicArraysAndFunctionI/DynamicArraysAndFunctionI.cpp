@@ -12,21 +12,31 @@ double* enterArrayData(int s) {
 		cin >> arr[i];
 	}
 	//delete [] arr;
-	cout << s << endl;
+	//cout << s << endl;
 	return arr;
+
 }
 
 void outputArrayData(int s, double *dA) {
+	
 	cout << "Outputting array elements: ";
 	for (int i = 0; i < s; i++)
 		cout << dA[i] << " ";
 	cout << endl;
+
 }
 
-double sumArray(int s) {
+double sumArray(int s, double *dA) {
 	
-	cout << s << endl;
-	return 0;
+	double x = 0;
+
+	for (int i = 0; i < s; i++)
+	{
+		x = x + dA[i];
+	}
+
+
+	return x;
 }
 
 int main() {
@@ -40,6 +50,8 @@ int main() {
 		//cout << dArray[i];
 
 	outputArrayData(SIZE, dArray);
+
+	cout << "Sum of values: " << sumArray(SIZE, dArray);
 
 	delete [] dArray;
 
