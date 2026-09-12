@@ -6,11 +6,15 @@ using namespace std;
 double* enterArrayData(int s) {
 
 	double* arr = nullptr;
-	arr
-
+	arr = new double[s];
+	for (int i = 0; i < s; i++) {
+		cout << "Enter data:";
+			cin >> arr[i];
+	}
+	
 
 	cout << s << endl;
-	return 0;
+	return arr;
 }
 
 double outputArrayData(int s) {
