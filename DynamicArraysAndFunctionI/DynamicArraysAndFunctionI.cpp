@@ -9,9 +9,8 @@ double* enterArrayData(int s) {
 	arr = new double[s];
 	for (int i = 0; i < s; i++) {
 		cout << "Enter data:";
-			cin >> arr[i];
+		cin >> arr[i];
 	}
-	
 
 	cout << s << endl;
 	return arr;
@@ -36,6 +35,8 @@ int main() {
 	double* dArray = nullptr;
 	dArray = enterArrayData(SIZE);
 
+	for (int i = 0; i < SIZE; i++)
+		cout << dArray[i];
 
 
 	delete [] dArray;
