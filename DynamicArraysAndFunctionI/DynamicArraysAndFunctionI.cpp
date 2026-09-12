@@ -11,7 +11,7 @@ double* enterArrayData(int s) {
 		cout << "Enter data:";
 		cin >> arr[i];
 	}
-
+	//delete [] arr;
 	cout << s << endl;
 	return arr;
 }
