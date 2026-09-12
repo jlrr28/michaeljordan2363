@@ -9,8 +9,9 @@ double* enterArrayData(int s) {
 
 	double* arr = nullptr;
 	arr = new double[s];
+	int x = 1;
 	for (int i = 0; i < s; i++) {
-		cout << "> Element #" << i << ": ";
+		cout << "> Element #" << x << ": ";
 		cin >> arr[i];
 	}
 
