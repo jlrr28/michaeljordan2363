@@ -5,14 +5,16 @@ using namespace std;
 
 double* enterArrayData(int s) {
 
+	cout << "Data entry for the array: " << endl;
+
 	double* arr = nullptr;
 	arr = new double[s];
 	for (int i = 0; i < s; i++) {
-		cout << "Enter data:";
+		cout << "> Element #" << i << ": ";
 		cin >> arr[i];
 	}
-	//delete [] arr;
-	//cout << s << endl;
+
+	cout << "Data entry complete." << endl;
 	return arr;
 
 }
@@ -31,10 +33,7 @@ double sumArray(int s, double *dA) {
 	double x = 0;
 
 	for (int i = 0; i < s; i++)
-	{
-		x = x + dA[i];
-	}
-
+		x += dA[i];
 
 	return x;
 }
@@ -44,11 +43,8 @@ int main() {
 	const int SIZE = 5;
 
 	double* dArray = nullptr;
+	
 	dArray = enterArrayData(SIZE);
-
-	//for (int i = 0; i < SIZE; i++)
-		//cout << dArray[i];
-
 	outputArrayData(SIZE, dArray);
 
 	cout << "Sum of values: " << sumArray(SIZE, dArray);
