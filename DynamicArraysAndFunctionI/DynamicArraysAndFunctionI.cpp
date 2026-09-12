@@ -23,7 +23,11 @@ double sumArray() {
 
 int main() {
 
-	
+	const int SIZE = 5;
 
+	double* dArray = nullptr;
+	dArray = new double[SIZE];
+
+	delete[] dArray;
 
 }
