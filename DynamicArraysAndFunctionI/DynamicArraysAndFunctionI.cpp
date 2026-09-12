@@ -3,22 +3,26 @@
 #include <iostream>   
 using namespace std;
 
-double enterArrayData() {
+double* enterArrayData(int s) {
+
+	double* arr = nullptr;
+	arr
 
 
-
+	cout << s << endl;
+	return 0;
 }
 
-double outputArrayData() {
+double outputArrayData(int s) {
 
-
-
+	cout << s << endl;
+	return 0;
 }
 
-double sumArray() {
+double sumArray(int s) {
 	
-	
-
+	cout << s << endl;
+	return 0;
 }
 
 int main() {
@@ -26,8 +30,10 @@ int main() {
 	const int SIZE = 5;
 
 	double* dArray = nullptr;
-	dArray = new double[SIZE];
+	dArray = enterArrayData(SIZE);
 
-	delete[] dArray;
+
+
+	delete [] dArray;
 
 }
