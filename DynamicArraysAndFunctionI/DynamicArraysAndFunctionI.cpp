@@ -37,7 +37,9 @@ double* enterArrayData(int s) {
 	}
 
 	cout << "Data entry complete." << endl;
+	
 	return arr;
+	delete[] arr;
 
 }
 
