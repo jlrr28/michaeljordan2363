@@ -16,10 +16,11 @@ double* enterArrayData(int s) {
 	return arr;
 }
 
-double outputArrayData(int s) {
-
-	cout << s << endl;
-	return 0;
+void outputArrayData(int s, double *dA) {
+	cout << "Outputting array elements: ";
+	for (int i = 0; i < s; i++)
+		cout << dA[i] << " ";
+	cout << endl;
 }
 
 double sumArray(int s) {
@@ -35,9 +36,10 @@ int main() {
 	double* dArray = nullptr;
 	dArray = enterArrayData(SIZE);
 
-	for (int i = 0; i < SIZE; i++)
-		cout << dArray[i];
+	//for (int i = 0; i < SIZE; i++)
+		//cout << dArray[i];
 
+	outputArrayData(SIZE, dArray);
 
 	delete [] dArray;
 
