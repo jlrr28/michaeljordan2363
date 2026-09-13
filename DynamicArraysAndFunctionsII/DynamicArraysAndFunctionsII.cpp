@@ -3,27 +3,14 @@
 using namespace std;
 
 string* reverseArray(int s, string* dS) {
-
 	string* reverse= nullptr;
 	reverse = new string[s];
-	cout << "Reversing this string" << endl;
-	for (int i = 0; i < s; i++)
-		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
-	
-	for (int i = 0 ,x = s - 1; i < s; i++ , x--)
-	{
-		
+
+	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
 		reverse[x] = dS[i];
-
-		cout << reverse[x] << endl;
-		
-	}
-
-	//cout << "reverse result" << endl;
-	//for (int i = 0; i < s; i++)
-		//cout << i << " " << dS[i] << "  " << &dS[i] << endl;
-
+	
 	return reverse;
+	delete[]reverse;
 
 }
 
@@ -50,7 +37,7 @@ int main()
 
 	delete[] dStr;
 	
-	//for (int i = 0; i < SIZE; i++)
-		//cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
+	for (int i = 0; i < SIZE; i++)
+		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
 
 }
