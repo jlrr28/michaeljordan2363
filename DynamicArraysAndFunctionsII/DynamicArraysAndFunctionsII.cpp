@@ -4,9 +4,9 @@ using namespace std;
 
 string* reverseArray(int s, string* dS) {
 	string* reverse= nullptr;
-	reverse = dS;
+	reverse = new string[s];
 	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
-		dS[i] = reverse[x];
+		reverse[x] = dS[i];
 
 	cout << "dS[] inside reverseArray function" << endl;
 	for (int i = 0; i < s; i++)
@@ -22,7 +22,6 @@ string* reverseArray(int s, string* dS) {
 }
 
 void displayArray(int s, string* dS) {
-	cout << "Outputting string" << endl;
 	for (int i = 0; i < s; i++)
 		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
 }
