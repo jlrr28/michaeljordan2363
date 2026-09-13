@@ -2,29 +2,9 @@
 #include <iostream>
 using namespace std;
 
-string* reverseArray(int s, string* dS) {
-	string* reverse= nullptr;
-	reverse = new string[s];
-	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
-		reverse[x] = dS[i];
+string* reverseArray(int s, string* dS);
 
-	cout << "dS[] inside reverseArray function" << endl;
-	for (int i = 0; i < s; i++)
-		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
-
-	cout << "reverse[] inside reverseArray function" << endl;
-	for (int i = 0; i < s; i++)
-		cout << i << " " << reverse[i] << "  " << &dS[i] << endl;
-
-
-	return dS;
-	delete[]reverse;
-}
-
-void displayArray(int s, string* dS) {
-	for (int i = 0; i < s; i++)
-		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
-}
+void displayArray(int s, string* dS);
 
 int main()
 {
@@ -51,4 +31,31 @@ int main()
 
 	delete[] dStr;
 	
+}
+
+
+string* reverseArray(int s, string* dS) {
+	string* reverse = nullptr;
+	reverse = new string[s];
+	for (int i = 0, x = s - 1; i < s; i++, x--)
+		reverse[x] = dS[i];
+
+	/* Leaving this in for future reference for myself
+	cout << "dS[] inside reverseArray function" << endl;
+	for (int i = 0; i < s; i++)
+		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
+
+	cout << "reverse[] inside reverseArray function" << endl;
+	for (int i = 0; i < s; i++)
+		cout << i << " " << reverse[i] << "  " << &dS[i] << endl;
+	*/
+
+	return reverse;
+	delete[]reverse;
+	delete[]dS;// not sure if neccsary, leaving this to be safe, tried other configurations but they weren't quite right, will ask about it on discussion board or zoom
+}
+
+void displayArray(int s, string* dS) {
+	for (int i = 0; i < s; i++)
+		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
 }
