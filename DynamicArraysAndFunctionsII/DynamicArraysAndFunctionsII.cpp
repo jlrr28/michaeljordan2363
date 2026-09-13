@@ -13,6 +13,8 @@ void displayArray() {
 int main()
 {
 
+	string* dString = nullptr;
+
 
 
 }

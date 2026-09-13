@@ -21,10 +21,10 @@ int main() {
 	cout << "Sum of values: " << sumArray(SIZE, dArray);
 
 	delete [] dArray;
-	/* Check if dArray was deleted
+
 	bool w = 0;
 	while (w != 1) cin >> w;
-	outputArrayData(SIZE, dArray);*/
+	outputArrayData(SIZE, dArray);
 
 }
 
