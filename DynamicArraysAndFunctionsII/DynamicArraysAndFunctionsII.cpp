@@ -10,13 +10,12 @@ string* reverseArray(int s, string* dS) {
 	for (int i = 0; i < s; i++)
 		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
 	
-	for (int i = s; i > 0; i--)
+	for (int i = 0 ,x = s - 1; i < s; i++ , x--)
 	{
-		//cout << i;
-		int x = 0;
-		reverse[x] = dS[i-1];
+		
+		reverse[x] = dS[i];
+
 		cout << reverse[x] << endl;
-		x++;
 		
 	}
 
@@ -39,11 +38,7 @@ int main()
 	const int SIZE = 5;
 	string* dStr = nullptr;
 	dStr = new string[SIZE];
-	*dStr = "what", "when", "where", "how", "why";
-
-	for (int i = 0; i < SIZE; i++)
-		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
-	cout << endl;
+	dStr[0] = "what";
 	dStr[1] = "when";
 	dStr[2] = "where";
 	dStr[3] = "how";
