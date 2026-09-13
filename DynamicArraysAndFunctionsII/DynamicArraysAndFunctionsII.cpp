@@ -30,6 +30,11 @@ int main()
 	for (int i = 0; i < SIZE; i++)
 		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
 
+	dStr[2] = "how";
+	cout << endl;
+	for (int i = 0; i < SIZE; i++)
+		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
+
 	delete[] dStr;
 
 }
