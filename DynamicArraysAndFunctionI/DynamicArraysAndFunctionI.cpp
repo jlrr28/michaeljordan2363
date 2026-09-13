@@ -39,7 +39,7 @@ double* enterArrayData(int s) {
 	cout << "Data entry complete." << endl;
 	
 	return arr;
-	delete[] arr;
+	delete [] arr;
 
 }
 
@@ -47,7 +47,7 @@ void outputArrayData(int s, double* dA) {
 
 	cout << "Outputting array elements: ";
 	for (int i = 0; i < s; i++)
-		cout << dA[i] << " ";
+		cout << *dA[i] << " ";
 	cout << endl;
 
 }
