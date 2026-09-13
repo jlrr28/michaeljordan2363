@@ -2,18 +2,21 @@
 #include <iostream>
 using namespace std;
 
-string reverseArray() {
+string* reverseArray(int s, string* dS) {
 
-	return 0;
+	string* reverse= nullptr;
+	reverse = new string[s];
+	cout << "Reversing this string";
+	for (int i = 0; i < s; i++)
+		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
+
+	return reverse;
 
 }
 
 void displayArray(int s, string* dS) {
-
-
 	for (int i = 0; i < s; i++)
 		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
-
 }
 
 int main()
@@ -31,13 +34,12 @@ int main()
 	dStr[3] = "how";
 	dStr[4] = "why";
 
-	displayArray(SIZE, dStr);
-
-
-	for (int i = 0; i < SIZE; i++)
-		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
-
+	//displayArray(SIZE, dStr);
+	reverseArray(SIZE, dStr);
 
 	delete[] dStr;
+	
+	//for (int i = 0; i < SIZE; i++)
+		//cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
 
 }
