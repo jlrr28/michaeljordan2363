@@ -2,12 +2,12 @@
 #include <iostream>
 using namespace std;
 
-string* reverseArray(int s, string* dS) {
+void reverseArray(int s, string* dS) {
 	string* reverse= nullptr;
 	reverse = new string[s];
-	//string reverse[s] = {"","","","",""};
+	//string reverse[s];
 	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
-		reverse[x] = dS[i];
+		dS[i] = reverse[x];
 	
 	/* Leaving this here for future reference for myself, 
 	cout << "dS[] inside reverseArray function" << endl;
@@ -18,9 +18,9 @@ string* reverseArray(int s, string* dS) {
 	for (int i = 0; i < s; i++)
 		cout << i << " " << reverse[i] << "  " << &reverse[i] << endl;*/
 
-	return reverse;
+	//return reverse;
 	delete[]reverse;
-	delete[]dS; // Not sure if necessary, leaving it here to be safe
+	//delete[]dS; // Not sure if necessary, leaving it here to be safe
 }
 
 void displayArray(int s, string* dS) {
@@ -41,11 +41,7 @@ int main()
 	dStr[4] = "why";
 
 	displayArray(SIZE, dStr);
-	dStr = reverseArray(SIZE, dStr);
-	displayArray(SIZE, dStr);
-	dStr = reverseArray(SIZE, dStr);
-	displayArray(SIZE, dStr);
-	dStr = reverseArray(SIZE, dStr);
+	reverseArray(SIZE, dStr);
 	displayArray(SIZE, dStr);
 
 	delete[] dStr;
