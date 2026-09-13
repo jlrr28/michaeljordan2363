@@ -17,11 +17,13 @@ int main()
 	const int SIZE = 5;
 	string* dStr = nullptr;
 	dStr = new string[SIZE];
-	*dStr = ("e","r","t","3","2");
-	//cout << &dStr;	
-	//dStr = new string[5] = { "what", "when", "where", "how", "why" };
-	//*dStr = { "what", "when", "where", "how", "why" };
+	*dStr = ("what","when","where","how","why");
+	
+
+	for (int i = 0; i < SIZE; i++)
+		cout << dStr[i] << " s" << endl;
 
 
-	//["what", "when", "where", "how", "why"]
+	delete[] dStr;
+
 }
