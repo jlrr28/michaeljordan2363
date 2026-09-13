@@ -1,4 +1,4 @@
-
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -13,7 +13,8 @@ void displayArray() {
 int main()
 {
 
-	string* dString = nullptr;
+	string* dStr = nullptr;
+	dStr = new string { "what", "when", "where", "how", "why" };
 
 
 
