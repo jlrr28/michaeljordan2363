@@ -2,26 +2,23 @@
 #include <iostream>
 using namespace std;
 
-void reverseArray(int s, string* dS) {
+string* reverseArray(int s, string* dS) {
 	string* reverse= nullptr;
-	//reverse = new string[s];
 	reverse = dS;
-	//string reverse[s];
 	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
 		dS[i] = reverse[x];
-	
-	/* Leaving this here for future reference for myself, 
+
 	cout << "dS[] inside reverseArray function" << endl;
 	for (int i = 0; i < s; i++)
 		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
 
 	cout << "reverse[] inside reverseArray function" << endl;
 	for (int i = 0; i < s; i++)
-		cout << i << " " << reverse[i] << "  " << &reverse[i] << endl;*/
+		cout << i << " " << reverse[i] << "  " << &dS[i] << endl;
 
-	return;
+
+	return dS;
 	delete[]reverse;
-	//delete[]dS; // Not sure if necessary, leaving it here to be safe
 }
 
 void displayArray(int s, string* dS) {
@@ -41,11 +38,18 @@ int main()
 	dStr[3] = "how";
 	dStr[4] = "why";
 
+	cout << "initial" << endl;
 	displayArray(SIZE, dStr);
-	reverseArray(SIZE, dStr);
+	dStr = reverseArray(SIZE, dStr);
+	cout << "first reverse" << endl;
+	displayArray(SIZE, dStr);
+	dStr = reverseArray(SIZE, dStr);
+	cout << "second reverse" << endl;
+	displayArray(SIZE, dStr);
+	dStr = reverseArray(SIZE, dStr);
+	cout << "third reverse" << endl;
 	displayArray(SIZE, dStr);
 
 	delete[] dStr;
 	
-
 }
