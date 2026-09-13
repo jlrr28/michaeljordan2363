@@ -4,7 +4,8 @@ using namespace std;
 
 void reverseArray(int s, string* dS) {
 	string* reverse= nullptr;
-	reverse = new string[s];
+	//reverse = new string[s];
+	reverse = dS;
 	//string reverse[s];
 	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
 		dS[i] = reverse[x];
@@ -18,7 +19,7 @@ void reverseArray(int s, string* dS) {
 	for (int i = 0; i < s; i++)
 		cout << i << " " << reverse[i] << "  " << &reverse[i] << endl;*/
 
-	//return reverse;
+	return;
 	delete[]reverse;
 	//delete[]dS; // Not sure if necessary, leaving it here to be safe
 }
