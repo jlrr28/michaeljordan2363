@@ -6,9 +6,22 @@ string* reverseArray(int s, string* dS) {
 
 	string* reverse= nullptr;
 	reverse = new string[s];
-	cout << "Reversing this string";
+	cout << "Reversing this string" << endl;
 	for (int i = 0; i < s; i++)
 		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
+	
+	for (int i = s; i > 0; i--)
+	{
+		cout << i;
+		int x = 0;
+		reverse[x] = dS[i-1];
+		x++;
+		
+	}
+
+	//cout << "reverse result" << endl;
+	//for (int i = 0; i < s; i++)
+		//cout << i << " " << dS[i] << "  " << &dS[i] << endl;
 
 	return reverse;
 
@@ -35,7 +48,8 @@ int main()
 	dStr[4] = "why";
 
 	//displayArray(SIZE, dStr);
-	reverseArray(SIZE, dStr);
+	dStr = reverseArray(SIZE, dStr);
+	//displayArray(SIZE, dStr);
 
 	delete[] dStr;
 	
