@@ -4,6 +4,8 @@ using namespace std;
 
 string reverseArray() {
 
+	return 0;
+
 }
 
 void displayArray() {
@@ -13,9 +15,11 @@ void displayArray() {
 int main()
 {
 
-	string* dStr = nullptr;
-	dStr = new string { "what", "when", "where", "how", "why" };
+	char* dStr = nullptr;
+	cout << &dStr;	
+	dStr = new char[5] = {"er", "ee", "tt", "ff", "sss"};
 
 
 
+	//["what", "when", "where", "how", "why"]
 }
