@@ -9,9 +9,17 @@ string* reverseArray(int s, string* dS) {
 	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
 		reverse[x] = dS[i];
 	
+	cout << "dS[] inside reverseArray function" << endl;
+	for (int i = 0; i < s; i++)
+		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
+
+	cout << "reverse[] inside reverseArray function" << endl;
+	for (int i = 0; i < s; i++)
+		cout << i << " " << reverse[i] << "  " << &reverse[i] << endl;
+
 	return reverse;
 	delete[]reverse;
-
+	delete[]dS; // Not sure if necessary, leaving it here to be safe
 }
 
 void displayArray(int s, string* dS) {
@@ -37,7 +45,5 @@ int main()
 
 	delete[] dStr;
 	
-	for (int i = 0; i < SIZE; i++)
-		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
 
 }
