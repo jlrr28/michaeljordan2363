@@ -23,9 +23,9 @@ int main()
 		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
 	cout << endl;
 	dStr[1] = "when";
-	dStr[2] = "when";
-	dStr[3] = "when";
-	dStr[4] = "when";
+	dStr[2] = "where";
+	dStr[3] = "how";
+	dStr[4] = "why";
 
 	for (int i = 0; i < SIZE; i++)
 		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
