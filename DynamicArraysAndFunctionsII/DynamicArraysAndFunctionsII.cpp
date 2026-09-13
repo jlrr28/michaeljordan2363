@@ -5,17 +5,18 @@ using namespace std;
 string* reverseArray(int s, string* dS) {
 	string* reverse= nullptr;
 	reverse = new string[s];
-
+	//string reverse[s] = {"","","","",""};
 	for (int i = 0 ,x = s - 1; i < s; i++ , x--)	
 		reverse[x] = dS[i];
 	
+	/* Leaving this here for future reference for myself, 
 	cout << "dS[] inside reverseArray function" << endl;
 	for (int i = 0; i < s; i++)
 		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
 
 	cout << "reverse[] inside reverseArray function" << endl;
 	for (int i = 0; i < s; i++)
-		cout << i << " " << reverse[i] << "  " << &reverse[i] << endl;
+		cout << i << " " << reverse[i] << "  " << &reverse[i] << endl;*/
 
 	return reverse;
 	delete[]reverse;
@@ -39,6 +40,10 @@ int main()
 	dStr[3] = "how";
 	dStr[4] = "why";
 
+	displayArray(SIZE, dStr);
+	dStr = reverseArray(SIZE, dStr);
+	displayArray(SIZE, dStr);
+	dStr = reverseArray(SIZE, dStr);
 	displayArray(SIZE, dStr);
 	dStr = reverseArray(SIZE, dStr);
 	displayArray(SIZE, dStr);
