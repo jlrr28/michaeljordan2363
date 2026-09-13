@@ -8,7 +8,11 @@ string reverseArray() {
 
 }
 
-void displayArray() {
+void displayArray(int s, string* dS) {
+
+
+	for (int i = 0; i < s; i++)
+		cout << i << " " << dS[i] << "  " << &dS[i] << endl;
 
 }
 
@@ -27,13 +31,12 @@ int main()
 	dStr[3] = "how";
 	dStr[4] = "why";
 
+	displayArray(SIZE, dStr);
+
+
 	for (int i = 0; i < SIZE; i++)
 		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
 
-	dStr[2] = "how";
-	cout << endl;
-	for (int i = 0; i < SIZE; i++)
-		cout << i << " " << dStr[i] << "  " << &dStr[i] << endl;
 
 	delete[] dStr;
 
