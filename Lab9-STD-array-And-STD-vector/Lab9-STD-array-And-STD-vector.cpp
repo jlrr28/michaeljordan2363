@@ -20,13 +20,11 @@ int main() {
         cout << "good to go" << endl;
         int i = 0;
         while (fin >> temp){
-
             scoreArray[i] = temp;
             i++;
-        
         }
 
-        fin.close(); // close the file          
+        fin.close(); 
        
     }
     else
