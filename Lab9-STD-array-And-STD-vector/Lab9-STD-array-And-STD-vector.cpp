@@ -62,12 +62,12 @@ int main() {
     array<int, SIZE> sortedArray = scoreArray;
     sort(sortedArray.begin(), sortedArray.end());
     
-    for (int i = 0; i < scoreArray.size(); i++) {
-        target = sortedArray.at(i);
+    for (int i = scoreArray.size(); i >= 1; i--) {
+        target = sortedArray.at(i-1);
         
         it = find(scoreArray.begin(), scoreArray.end(), target);
-        if (sortedArray(i) == it(i))
-            it = find(scoreArray.end(), scoreArray.begin(), target);
+        //if ( == target)
+            //it = find(scoreArray.end(), scoreArray.begin(), target);
         cout << "Game:" << (it - scoreArray.begin()) + 1;
         cout << ((((it - scoreArray.begin()) + 1) < 10) ? "  ||| " : " ||| ");
         cout << target << " points" << endl;
