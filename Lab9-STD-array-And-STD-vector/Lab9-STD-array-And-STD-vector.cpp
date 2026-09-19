@@ -61,8 +61,11 @@ int main() {
     sort(sortedArray.begin(), sortedArray.end());
     
     for (int i = 0; i < scoreArray.size(); i++) {
-    
-        sortedArray[i] << endl;
+        //cout << "looking for " << sortedArray.at(i) << endl;
+        target = sortedArray.at(i);
+
+        it = find(scoreArray.begin(), scoreArray.end(), target);
+        cout << "Game:" << (it - scoreArray.begin()) + 1 << " ||| " << target << " points" << endl;
 
     }
     
