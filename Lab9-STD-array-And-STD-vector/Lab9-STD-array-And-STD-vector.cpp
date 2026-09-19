@@ -64,8 +64,10 @@ int main() {
     
     for (int i = 0; i < scoreArray.size(); i++) {
         target = sortedArray.at(i);
-
+        
         it = find(scoreArray.begin(), scoreArray.end(), target);
+        if (sortedArray(i) == it(i))
+            it = find(scoreArray.end(), scoreArray.begin(), target);
         cout << "Game:" << (it - scoreArray.begin()) + 1;
         cout << ((((it - scoreArray.begin()) + 1) < 10) ? "  ||| " : " ||| ");
         cout << target << " points" << endl;
