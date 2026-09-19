@@ -12,8 +12,38 @@ struct Team {
 	string* roster;
 };
 
+void inputTeamData(string tData) {
+
+    ifstream fin;
+    fin.open(tData);
+    if (fin.good()) {
+        int i = 0;
+        cout << "opening " << tData << endl;
+        //while (fin >> temp) {
+            //scoreArray[i] = temp;
+            //i++;
+        //}
+
+        fin.close();
+    }
+    else
+        cout << "File not found.\n";
+
+
+}
+
 int main()
 {
+	vector<string> teamData = { "sasData.txt", "okcData.txt" };
+
+
+	for (int i = 0; i < teamData.size(); i++) {
+	
+		inputTeamData(teamData.at(i));
+	
+	}
+
+
 
 }
 
