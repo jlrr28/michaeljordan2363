@@ -36,6 +36,6 @@ int main() {
     cout << scoreArray.data() << endl;
 
     cout << "The point total is " << accumulate(scoreArray.begin(), scoreArray.end(), 0) << " points over " << scoreArray.size() << " games played." << endl;;
-    cout << "The average score of the " << scoreArray.size() << " games played is " << static_cast<double>(accumulate(scoreArray.begin(), scoreArray.end(), 0)) / scoreArray.size() << " points.";
+    cout << "The average score of the " << scoreArray.size() << " games played is " << static_cast<double>(accumulate(scoreArray.begin(), scoreArray.end(), 0)) / scoreArray.size() << " points";
 
 }
