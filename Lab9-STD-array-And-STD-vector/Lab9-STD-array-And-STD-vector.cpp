@@ -58,7 +58,7 @@ int main() {
     << " with " << target << " points being scored. " << endl << endl;
     
     // Display sorted score list with game played
-    cout << "Score list top to bottom" << endl << setfill('#') << setw(30) << endl;
+    cout << "Score list top to bottom" << setfill('#') << setw(30); cout << endl << "\n";
     array<int, SIZE> sortedArray = scoreArray;
     sort(sortedArray.begin(), sortedArray.end());
     
