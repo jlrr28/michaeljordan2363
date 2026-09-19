@@ -29,26 +29,30 @@ int main() {
     else
         cout << "File not found.\n";
 
-    cout << scoreArray[0] << endl;
-    cout << scoreArray[20] << endl;
-    cout << scoreArray[29] << endl;
-    cout << scoreArray.data() << endl;
+    //cout << scoreArray[0] << endl;
+    //cout << scoreArray[20] << endl;
+    //cout << scoreArray[29] << endl;
+    //cout << scoreArray.data() << endl;
 
-    cout << "The point total is " << accumulate(scoreArray.begin(), scoreArray.end(), 0) << " points over " << scoreArray.size() << " games played." << endl;;
-    cout << "The average score of the " << scoreArray.size() << " games played is " << static_cast<double>(accumulate(scoreArray.begin(), scoreArray.end(), 0)) / scoreArray.size() << " points" << endl;
+    cout << "The point total is " << accumulate(scoreArray.begin(), scoreArray.end(), 0)
+    << " points over " << scoreArray.size() << " games played." << endl;;
+    cout << "The average score of the " << scoreArray.size() << " games played is "
+    << static_cast<double>(accumulate(scoreArray.begin(), scoreArray.end(), 0)) / scoreArray.size()
+    << " points" << endl;
 
-    //cout << *min_element(scoreArray.begin(), scoreArray.end()) << endl;
-
+    //Find lowest score game
     int target = *min_element(scoreArray.begin(), scoreArray.end());
-    cout << "looking for score " << target << endl;
     array<int, SIZE>::iterator it;
     it = find(scoreArray.begin(), scoreArray.end(), target);
-    cout << "11. Value " << target;
-    if (it != scoreArray.end())
-        cout << " found in position " << it - scoreArray.begin() << endl;
-    else
-        cout << " was not found.\n";
-    cout << "    Value: " << *it << endl;
+        cout << "The lowest score was on game " << (it - scoreArray.begin()) + 1 <<
+    " with " << target << " points being scored. " << endl;
+    
+    //Find highest score game
+    target = *max_element(scoreArray.begin(), scoreArray.end());
+    it = find(scoreArray.begin(), scoreArray.end(), target);
+        cout << "The highest score was on game " << (it - scoreArray.begin()) + 1
+    << " with " << target << " points being scored. " << endl;
+
 
 
 }
