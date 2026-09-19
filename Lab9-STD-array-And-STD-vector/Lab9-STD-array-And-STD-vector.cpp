@@ -24,8 +24,7 @@ int main() {
             i++;
         }
 
-        fin.close(); 
-       
+        fin.close();    
     }
     else
         cout << "File not found.\n";
@@ -36,6 +35,20 @@ int main() {
     cout << scoreArray.data() << endl;
 
     cout << "The point total is " << accumulate(scoreArray.begin(), scoreArray.end(), 0) << " points over " << scoreArray.size() << " games played." << endl;;
-    cout << "The average score of the " << scoreArray.size() << " games played is " << static_cast<double>(accumulate(scoreArray.begin(), scoreArray.end(), 0)) / scoreArray.size() << " points";
+    cout << "The average score of the " << scoreArray.size() << " games played is " << static_cast<double>(accumulate(scoreArray.begin(), scoreArray.end(), 0)) / scoreArray.size() << " points" << endl;
+
+    //cout << *min_element(scoreArray.begin(), scoreArray.end()) << endl;
+
+    int target = *min_element(scoreArray.begin(), scoreArray.end());
+    cout << "looking for score " << target << endl;
+    array<int, SIZE>::iterator it;
+    it = find(scoreArray.begin(), scoreArray.end(), target);
+    cout << "11. Value " << target;
+    if (it != scoreArray.end())
+        cout << " found in position " << it - scoreArray.begin() << endl;
+    else
+        cout << " was not found.\n";
+    cout << "    Value: " << *it << endl;
+
 
 }
