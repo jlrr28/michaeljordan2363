@@ -10,15 +10,26 @@ struct Team {
 	string name;
 	int gamesWon;
 	string* roster;
+    ~Team() {
+        if (roster)
+            delete[]roster;
+        roster = nullptr;
+    }
+
 };
 
-void inputTeamData(string tData) {
+void inputTeamData(string tData, Team *tPtr) {
+    string tempN;
+    int tempGamesWon;
+
 
     ifstream fin;
     fin.open(tData);
     if (fin.good()) {
-        int i = 0;
+        //int i = 0;
         cout << "opening " << tData << endl;
+        getline(fin, *tPtr  -> name)
+        
         //while (fin >> temp) {
             //scoreArray[i] = temp;
             //i++;
@@ -36,10 +47,13 @@ int main()
 {
 	vector<string> teamData = { "sasData.txt", "okcData.txt" };
 
+    Team bbTeam;
+    Team* bbtPtr = &bbTeam;
+
 
 	for (int i = 0; i < teamData.size(); i++) {
 	
-		inputTeamData(teamData.at(i));
+		inputTeamData(teamData.at(i), bbtPtr);
 	
 	}
 
