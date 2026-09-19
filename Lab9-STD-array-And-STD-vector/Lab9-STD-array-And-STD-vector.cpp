@@ -5,6 +5,7 @@
 #include <numeric>
 #include <array>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 int main() {
@@ -54,18 +55,20 @@ int main() {
     target = *max_element(scoreArray.begin(), scoreArray.end());
     it = find(scoreArray.begin(), scoreArray.end(), target);
         cout << "The highest score was on game " << (it - scoreArray.begin()) + 1
-    << " with " << target << " points being scored. " << endl;
+    << " with " << target << " points being scored. " << endl << endl;
     
     // Display sorted score list with game played
+    cout << "Score list top to bottom" << endl << setfill('#') << setw(30) << endl;
     array<int, SIZE> sortedArray = scoreArray;
     sort(sortedArray.begin(), sortedArray.end());
     
     for (int i = 0; i < scoreArray.size(); i++) {
-        //cout << "looking for " << sortedArray.at(i) << endl;
         target = sortedArray.at(i);
 
         it = find(scoreArray.begin(), scoreArray.end(), target);
-        cout << "Game:" << (it - scoreArray.begin()) + 1 << " ||| " << target << " points" << endl;
+        cout << "Game:" << (it - scoreArray.begin()) + 1;
+        cout << ((((it - scoreArray.begin()) + 1) < 10) ? "  ||| " : " ||| ");
+        cout << target << " points" << endl;
 
     }
     
