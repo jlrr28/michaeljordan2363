@@ -68,6 +68,8 @@ int main() {
 
     }
     
+    //Didn't get enough time to implement duplicate checker
+
     cout << endl << " ------------- same code but with vector ------------- " << endl << endl;
 
     vector<int> scoreVector;
@@ -122,5 +124,7 @@ int main() {
         cout << ((target <= 100) ? "  points" : " points") << endl;
 
     }
+    
+    //Didn't get enough time to implement duplicate checker
 
 }
