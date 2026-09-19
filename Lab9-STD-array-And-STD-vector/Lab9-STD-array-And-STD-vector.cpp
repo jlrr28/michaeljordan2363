@@ -68,7 +68,7 @@ int main() {
 
     }
     
-    cout << " ------------- same code but with vector ------------- " << endl;
+    cout << endl << " ------------- same code but with vector ------------- " << endl << endl;
 
     vector<int> scoreVector;
     
@@ -108,19 +108,18 @@ int main() {
 
     // Display sorted score list with game played
     cout << "Score list top to bottom" << setfill('#') << setw(25); cout << endl << "\n";
-    array<int, SIZE> sortedArray = scoreArray;
-    sort(sortedArray.begin(), sortedArray.end());
+    vector<int> sortedVector = scoreVector;
+    sort(sortedVector.begin(), sortedVector.end());
 
-    for (int i = scoreArray.size(); i >= 1; i--) {
+    for (int i = scoreVector.size(); i >= 1; i--) {
 
-        target = sortedArray.at(i - 1);
-        it = find(scoreArray.begin(), scoreArray.end(), target);
+        target = sortedVector.at(i - 1);
+        itV = find(scoreVector.begin(), scoreVector.end(), target);
 
-        cout << "Game:" << (it - scoreArray.begin()) + 1;
-        cout << ((((it - scoreArray.begin()) + 1) < 10) ? "   |||  " : "  |||  ");
+        cout << "Game:" << (itV - scoreVector.begin()) + 1;
+        cout << ((((itV - scoreVector.begin()) + 1) < 10) ? "   |||  " : "  |||  ");
         cout << target;
         cout << ((target <= 100) ? "  points" : " points") << endl;
-        // " points" << endl;
 
     }
 
