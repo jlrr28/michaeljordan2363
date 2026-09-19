@@ -10,11 +10,11 @@ struct Team {
 	string name;
 	int gamesWon;
 	string* roster;
-    ~Team() {
-        if (roster)
-            delete[]roster;
-        roster = nullptr;
-    }
+    //~Team() {
+    //    if (roster)
+    //        delete[]roster;
+    //    roster = nullptr;
+    //}
 
 };
 
@@ -28,7 +28,7 @@ void inputTeamData(string tData, Team *tPtr) {
     if (fin.good()) {
         //int i = 0;
         cout << "opening " << tData << endl;
-        getline(fin, *tPtr  -> name)
+        getline(fin, tPtr -> name);
         
         //while (fin >> temp) {
             //scoreArray[i] = temp;
@@ -57,7 +57,7 @@ int main()
 	
 	}
 
-
+    cout << bbtPtr->name;
 
 }
 
