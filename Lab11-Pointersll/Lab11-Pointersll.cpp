@@ -29,7 +29,10 @@ void inputTeamData(string tData, Team *tPtr) {
         //int i = 0;
         cout << "opening " << tData << endl;
         getline(fin, tPtr -> name);
-        
+        fin.ignore();
+
+        fin >> tPtr -> gamesWon;
+
         //while (fin >> temp) {
             //scoreArray[i] = temp;
             //i++;
@@ -58,6 +61,7 @@ int main()
 	}
 
     cout << bbtPtr->name;
+    cout << bbtPtr->gamesWon;
 
 }
 
