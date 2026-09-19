@@ -11,7 +11,7 @@ int main() {
 
 	const int SIZE = 30;
 
-	array<int, 30>scoreArray;
+	array<int, SIZE> scoreArray;
     int temp = 0;
 
     ifstream fin;
@@ -34,6 +34,9 @@ int main() {
     //cout << scoreArray[29] << endl;
     //cout << scoreArray.data() << endl;
 
+
+
+    //point summary
     cout << "The point total is " << accumulate(scoreArray.begin(), scoreArray.end(), 0)
     << " points over " << scoreArray.size() << " games played." << endl;;
     cout << "The average score of the " << scoreArray.size() << " games played is "
@@ -52,7 +55,20 @@ int main() {
     it = find(scoreArray.begin(), scoreArray.end(), target);
         cout << "The highest score was on game " << (it - scoreArray.begin()) + 1
     << " with " << target << " points being scored. " << endl;
+    
+    // Display sorted score list with game played
+    array<int, SIZE> sortedArray = scoreArray;
+    sort(sortedArray.begin(), sortedArray.end());
+    
+    for (int i = 0; i < scoreArray.size(); i++) {
+    
+        sortedArray[i] << endl;
 
+    }
+    
+
+    
+    //for (int val : sortedArray) cout << val << " " << endl;
 
 
 }
