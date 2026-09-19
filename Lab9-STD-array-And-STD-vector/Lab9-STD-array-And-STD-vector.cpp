@@ -74,6 +74,7 @@ int main() {
 
     }
     
+    cout << " ------------- same code but with vector ------------- " << endl;
 
     
     //for (int val : sortedArray) cout << val << " " << endl;
