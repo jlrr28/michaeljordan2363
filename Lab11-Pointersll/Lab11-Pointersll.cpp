@@ -31,20 +31,24 @@ void inputTeamData(string tData, Team *tPtr) {
     if (fin.good()) {
         //int i = 0;
         cout << "opening " << tData << endl;
+        fin.ignore();
         getline(fin, tPtr -> name);
+        cout << "Got name " << tPtr->name << endl;
         fin >> tPtr -> gamesWon;
-        
+        cout << "Got games won  " << tPtr->gamesWon << endl;
+
         fin.ignore();
         tPtr->roster = new string[TEAM_SIZE];
         for (int i = 0; i < TEAM_SIZE; i++) {
             
             getline(fin, tPtr->roster[i]);
             cout << tPtr->roster[i] << endl;
-        
+
+            
         }
             
 
-
+        //fin.ignore();
         fin.close();
     }
     else
