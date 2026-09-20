@@ -42,7 +42,7 @@ void inputTeamData(string tData, Team *tPtr) {
         tPtr->roster = new string[TEAM_SIZE];
         for (int i = 0; i < TEAM_SIZE; i++) {
             
-            if (fin == " ") cout << "player not found";
+            if (fin.fail()) cout << "player not found";
             else getline(fin, tPtr->roster[i]);
             cout << tPtr->roster[i] << endl;
             
