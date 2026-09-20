@@ -31,7 +31,8 @@ void inputTeamData(string tData, Team *tPtr) {
     if (fin.good()) {
         //int i = 0;
         cout << "opening " << tData << endl;
-        fin.ignore();
+        //fin.ignore();
+        
         getline(fin, tPtr -> name);
         cout << "Got name " << tPtr->name << endl;
         fin >> tPtr -> gamesWon;
@@ -43,12 +44,11 @@ void inputTeamData(string tData, Team *tPtr) {
             
             getline(fin, tPtr->roster[i]);
             cout << tPtr->roster[i] << endl;
-
             
         }
             
 
-        //fin.ignore();
+        fin.ignore();
         fin.close();
     }
     else
@@ -68,7 +68,8 @@ int main()
 	for (int i = 0; i < teamData.size(); i++) {
 	
         inputTeamData(teamData.at(i), &bbtPtr[i]);
-	
+        //cout << "Got name " << bbtPtr->name << endl;
+
 	}
 
     cout << bbtPtr->name;
