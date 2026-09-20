@@ -22,21 +22,17 @@ struct Team {
 };
 
 void inputTeamData(string tData, Team *tPtr) {
-    string tempN;
-    int tempGamesWon;
-
 
     ifstream fin;
     fin.open(tData);
     if (fin.good()) {
-        //int i = 0;
-        cout << "opening " << tData << endl;
+        //cout << "opening " << tData << endl;
         //fin.ignore();
         
         getline(fin, tPtr -> name);
-        cout << "Got name " << tPtr->name << endl;
+        //cout << "Got name " << tPtr->name << endl;
         fin >> tPtr -> gamesWon;
-        cout << "Got games won  " << tPtr->gamesWon << endl;
+        //cout << "Got games won  " << tPtr->gamesWon << endl;
 
         fin.ignore();
         tPtr->roster = new string[TEAM_SIZE];
@@ -44,10 +40,11 @@ void inputTeamData(string tData, Team *tPtr) {
             
 
             getline(fin, tPtr->roster[i]);
-            if (tPtr->roster[i] == " ")
-                cout << "empty at " << i << endl;
+            if (tPtr->roster[i] == "\0")
+                tPtr->roster[i] = "Player not found"; //Since array is fixed, filling in slots with no player names with this instead
+                //cout << "empty at " << i << endl;
 
-            cout << tPtr->roster[i] << endl;
+            //cout << tPtr->roster[i] << endl;
             
         }
             
@@ -75,6 +72,11 @@ int main()
         //cout << "Got name " << bbtPtr->name << endl;
 
 	}
+
+    cout << "2026 Western Conference Finals" << endl;
+    //cout << &bbTeam[0].gamesWon + &bbTeam[1].gamesWon << " gamesd";
+
+
 
     cout << bbTeam->name;
     cout << bbTeam->gamesWon;
