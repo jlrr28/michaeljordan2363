@@ -42,7 +42,8 @@ void inputTeamData(string tData, Team *tPtr) {
         tPtr->roster = new string[TEAM_SIZE];
         for (int i = 0; i < TEAM_SIZE; i++) {
             
-            getline(fin, tPtr->roster[i]);
+            if (fin == " ") cout << "player not found";
+            else getline(fin, tPtr->roster[i]);
             cout << tPtr->roster[i] << endl;
             
         }
@@ -61,19 +62,19 @@ int main()
 {
 	vector<string> teamData = { "sasData.txt", "okcData.txt" };
 
-    Team bbTeam;
-    Team* bbtPtr = &bbTeam;
+    //Team bbTeam;
+    Team* bbTeam = new Team[TEAM_SIZE];
 
 
 	for (int i = 0; i < teamData.size(); i++) {
 	
-        inputTeamData(teamData.at(i), &bbtPtr[i]);
+        inputTeamData(teamData.at(i), &bbTeam[i]);
         //cout << "Got name " << bbtPtr->name << endl;
 
 	}
 
-    cout << bbtPtr->name;
-    cout << bbtPtr->gamesWon;
+    cout << bbTeam->name;
+    cout << bbTeam->gamesWon;
 
 }
 
