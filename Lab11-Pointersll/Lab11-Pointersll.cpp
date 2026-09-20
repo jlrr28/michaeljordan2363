@@ -10,7 +10,8 @@ const int TEAM_SIZE = 15;
 
 struct Team {
 	string name;
-	int gamesWon;
+    string abreviation;
+    int gamesWon;
 	string * roster;
   
     ~Team() {
@@ -29,6 +30,8 @@ void inputTeamData(string tData, Team *tPtr) {
         //cout << "opening " << tData << endl;
         //fin.ignore();
         
+        getline(fin, tPtr->abreviation);
+        //fin.ignore();
         getline(fin, tPtr -> name);
         //cout << "Got name " << tPtr->name << endl;
         fin >> tPtr -> gamesWon;
@@ -58,6 +61,27 @@ void inputTeamData(string tData, Team *tPtr) {
 
 }
 
+void displayTeamData(string tData, Team* tPtr) {
+
+    cout << tPtr->name << " roster for the 2026 Western Conference Finals" << endl;
+    cout << "They won " << tPtr->gamesWon << " games in this series" << endl;
+    for (int i = 0; i < TEAM_SIZE; i++) {
+        cout << "Player " << i + 1 << ": " << tPtr->roster[i] << endl;
+
+    }
+
+}
+
+int getGamesWon(Team*tPtr){
+    int x = tPtr->gamesWon;
+    return x;
+}
+
+string getAbreviation(Team* tPtr) {
+    string x = tPtr->abreviation;
+    return x;
+}
+
 int main()
 {
 	vector<string> teamData = { "sasData.txt", "okcData.txt" };
@@ -73,13 +97,15 @@ int main()
 
 	}
 
+    int seriesLength = getGamesWon(&bbTeam[0]) + getGamesWon(&bbTeam[1]);
+
     cout << "2026 Western Conference Finals" << endl;
-    //cout << &bbTeam[0].gamesWon + &bbTeam[1].gamesWon << " gamesd";
+    cout << seriesLength << " games were played" << endl;
+    cout << getAbreviation(&bbTeam[0]) << " || " << getGamesWon(&bbTeam[0]) << " || " << getGamesWon(&bbTeam[1]) << " || "
 
-
-
-    cout << bbTeam->name;
-    cout << bbTeam->gamesWon;
+    for (int i = 0; i < teamData.size(); i++) {
+        displayTeamData(teamData.at(i), &bbTeam[i]);
+    }
 
 }
 
