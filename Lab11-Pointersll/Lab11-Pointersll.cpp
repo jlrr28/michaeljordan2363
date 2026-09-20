@@ -6,15 +6,18 @@
 #include <fstream>
 using namespace std;
 
+const int TEAM_SIZE = 15;
+
 struct Team {
 	string name;
 	int gamesWon;
 	string* roster;
+  
     ~Team() {
-    //    if (roster)
-    //        delete[]roster;
-    //    roster = nullptr;
-    //}
+        if (roster)
+            delete[]roster;
+        roster = nullptr;
+    }
 
 };
 
@@ -32,10 +35,9 @@ void inputTeamData(string tData, Team *tPtr) {
         fin >> tPtr -> gamesWon;
         
         fin.ignore();
-        //while (fin >> temp) {
-            //scoreArray[i] = temp;
-            //i++;
-        //}
+        tPtr->roster = new string[TEAM_SIZE];
+        //for ();
+
 
         fin.close();
     }
