@@ -11,7 +11,7 @@ const int TEAM_SIZE = 15;
 struct Team {
 	string name;
 	int gamesWon;
-	string* roster;
+	string * roster;
   
     ~Team() {
         if (roster)
@@ -36,7 +36,13 @@ void inputTeamData(string tData, Team *tPtr) {
         
         fin.ignore();
         tPtr->roster = new string[TEAM_SIZE];
-        //for ();
+        for (int i = 0; i < TEAM_SIZE; i++) {
+            
+            getline(fin, tPtr->roster[i]);
+            cout << tPtr->roster[i] << endl;
+        
+        }
+            
 
 
         fin.close();
@@ -57,7 +63,7 @@ int main()
 
 	for (int i = 0; i < teamData.size(); i++) {
 	
-		inputTeamData(teamData.at(i), bbtPtr);
+        inputTeamData(teamData.at(i), &bbtPtr[i]);
 	
 	}
 
