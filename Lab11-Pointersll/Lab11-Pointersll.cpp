@@ -27,11 +27,9 @@ void inputTeamData(string tData, Team *tPtr) {
     ifstream fin;
     fin.open(tData);
     if (fin.good()) {
-        //cout << "opening " << tData << endl;
-        //fin.ignore();
         
         getline(fin, tPtr->abreviation);
-        //fin.ignore();
+        //cout << "Got abreviation" << tPrt->abreviation <, endl;
         getline(fin, tPtr -> name);
         //cout << "Got name " << tPtr->name << endl;
         fin >> tPtr -> gamesWon;
@@ -40,24 +38,16 @@ void inputTeamData(string tData, Team *tPtr) {
         fin.ignore();
         tPtr->roster = new string[TEAM_SIZE];
         for (int i = 0; i < TEAM_SIZE; i++) {
-            
-
             getline(fin, tPtr->roster[i]);
             if (tPtr->roster[i] == "\0")
                 tPtr->roster[i] = "Player not found"; //Since array is fixed, filling in slots with no player names with this instead
-                //cout << "empty at " << i << endl;
-
-            //cout << tPtr->roster[i] << endl;
-            
         }
             
-
         fin.ignore();
         fin.close();
     }
     else
         cout << "File not found.\n";
-
 
 }
 
@@ -67,7 +57,6 @@ void displayTeamData(string tData, Team* tPtr) {
     cout << "They won " << tPtr->gamesWon << " games in this series" << endl;
     for (int i = 0; i < TEAM_SIZE; i++) {
         cout << "Player " << i + 1 << ": " << tPtr->roster[i] << endl;
-
     }
 
 }
@@ -82,29 +71,25 @@ string getAbreviation(Team* tPtr) {
     return x;
 }
 
-int main()
-{
-	vector<string> teamData = { "sasData.txt", "okcData.txt" };
+int main(){
 
-    //Team bbTeam;
+    vector<string> teamData = { "sasData.txt", "okcData.txt" };
     Team* bbTeam = new Team[TEAM_SIZE];
 
-
 	for (int i = 0; i < teamData.size(); i++) {
-	
         inputTeamData(teamData.at(i), &bbTeam[i]);
-        //cout << "Got name " << bbtPtr->name << endl;
-
 	}
 
     int seriesLength = getGamesWon(&bbTeam[0]) + getGamesWon(&bbTeam[1]);
 
     cout << "2026 Western Conference Finals" << endl;
     cout << seriesLength << " games were played" << endl;
-    cout << getAbreviation(&bbTeam[0]) << " || " << getGamesWon(&bbTeam[0]) << " || " << getGamesWon(&bbTeam[1]) << " || "
+    cout << getAbreviation(&bbTeam[0]) << " || " << getGamesWon(&bbTeam[0]) << " || " << getGamesWon(&bbTeam[1]) << " || " << getAbreviation(&bbTeam[1]) << endl << endl;
+    //Arrived at the point where a class would be useful
 
     for (int i = 0; i < teamData.size(); i++) {
         displayTeamData(teamData.at(i), &bbTeam[i]);
+        cout << endl;
     }
 
 }
