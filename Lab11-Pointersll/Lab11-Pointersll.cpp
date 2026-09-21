@@ -56,9 +56,10 @@ void displayTeamData(string tData, Team* tPtr) {
     cout << tPtr->name << " roster for the 2026 Western Conference Finals" << endl;
     cout << "They won " << tPtr->gamesWon << " games in this series" << endl;
     for (int i = 0; i < TEAM_SIZE; i++) {
-        cout << "Player " << i + 1 << ": " << tPtr->roster[i] << endl;
+        cout << "Player " << i + 1;
+        cout << ((i + 1 < 10) ? ":  " : ": ");
+        cout << tPtr->roster[i] << endl;
     }
-
 }
 
 int getGamesWon(Team*tPtr){
