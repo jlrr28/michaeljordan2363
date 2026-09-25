@@ -15,19 +15,19 @@ struct sData {
 
 int getFileLines(string f) {
 
-
+    int i = 0;
+    string lines = "";
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
-
-
-
-
-
+        cout << f << " opened" << endl;
+        while(getline(fin,lines))
+        i++;
         fin.close();
     }
     else
         cout << "File not found.\n";
+    return i;
 
 }
 
@@ -35,8 +35,8 @@ int getFileLines(string f) {
 int main() {
 
     string file = "shortgrades.txt";
-	int numberOfStudents = getFileLines();
+	int numberOfStudents = getFileLines(file);
 	array<sData, 2>studentData;
-
+    cout << numberOfStudents;
 
 }
