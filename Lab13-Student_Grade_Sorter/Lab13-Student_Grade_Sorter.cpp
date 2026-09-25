@@ -31,17 +31,17 @@ int getFileLines(string f) {
 }
 
 
-sData sortStudentData(string f, sData s) {
+sData sortStudentData(string f, vector<sData> s) {
 
-    vector<sData>studentData(s.size());
+    vector<sData>sortedData(s.size());
 
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
         cout << f << " opened" << endl;
-        while (getline(fin, lines))
-            i++;
-        fin.close();
+        //while (getline(fin, lines))
+        //    i++;
+        //fin.close();
     }
     else
         cout << "File not found.\n";
@@ -53,11 +53,12 @@ int main() {
 
     string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
-	vector<sData>studentData(numberOfStudents);
+
+    vector<sData>studentData(numberOfStudents);
  
     cout << numberOfStudents;
     cout << studentData.size();
-
+    sortStudentData(file, studentData);
 
 
 }
