@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <array>
+#include <vector>
 using namespace std;
 
 
@@ -16,7 +16,7 @@ struct sData {
 int getFileLines(string f) {
 
     int i = 0;
-    string lines = "";
+    string lines;
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
@@ -36,7 +36,7 @@ int main() {
 
     string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
-	array<sData, 2>studentData;
+	vector<sData>studentData;
     cout << numberOfStudents;
 
 }
