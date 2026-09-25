@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <vector>
 using namespace std;
 
 
@@ -36,7 +35,9 @@ int main() {
 
     string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
-	vector<sData>studentData;
+	vector<sData>studentData(numberOfStudents);
+ 
     cout << numberOfStudents;
+    cout << studentData.size();
 
 }
