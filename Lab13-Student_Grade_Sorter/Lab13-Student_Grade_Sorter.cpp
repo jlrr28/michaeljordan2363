@@ -34,28 +34,26 @@ vector<sData> sortStudentData(string f, vector<sData> s) {
 
     vector<sData>sortedData = s;
     cout << sortedData.size() << " students are due to be sorted" << endl;
-    ifstream fin;
-    fin.open(f);
-    if (fin.good()) {
-        cout << f << " opened" << endl;
 
-
-
-
-
-
-    }
-    else
-        cout << "File not found.\n";
     return sortedData;
 
 }
 
-vector<sData> inputStudentData(string f) {
+void inputStudentData(string f, vector<sData>* s) {
     vector<sData>inputData;
+    ifstream fin;
+    fin.open(f);
+    if (fin.good()) {
+        cout << f << " opened" << endl;
+ 
 
 
-    return inputData;
+        fin.close();
+    }
+    else
+        cout << "File not found.\n";
+
+
 }
     
 
@@ -65,7 +63,7 @@ int main() {
 	int numberOfStudents = getFileLines(file);
 
     vector<sData>studentData(numberOfStudents);
-    studentData = inputStudentData;
+    inputStudentData(file, studentData);
 
 
     //cout << numberOfStudents;
