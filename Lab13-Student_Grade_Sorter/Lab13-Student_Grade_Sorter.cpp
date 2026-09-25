@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 
@@ -30,7 +31,7 @@ int getFileLines(string f) {
 }
 
 
-vector<sData> sortStudentData(string f, vector<sData> s) {
+vector<sData> sortStudentData(string f, vector<sData*> s) {
 
     vector<sData>sortedData;
     cout << sortedData.size() << " students are due to be sorted" << endl;
@@ -39,7 +40,7 @@ vector<sData> sortStudentData(string f, vector<sData> s) {
 
 }
 
-void inputStudentData(string f, vector<sData> s) {
+void inputStudentData(string f, vector<sData*> s) {
     
     sData temp;
     cout << s.size() << " students are being input to studentData" << endl;
@@ -51,8 +52,11 @@ void inputStudentData(string f, vector<sData> s) {
         
        for (int i = 0; i < s.size(); i++) {
            fin >> temp.ID;
-           cout << temp.ID << endl;
-           fin >> s.at(i)->Grade;
+           cout << temp.ID << "  ";
+           fin >> temp.Grade;
+           cout << temp.Grade << endl;
+           //fin >> s.at(i)->Grade;
+           s->ID
 
 
        }
@@ -75,7 +79,7 @@ int main() {
     string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
 
-    vector<sData> studentData(numberOfStudents);
+    vector<sData*> studentData(numberOfStudents);
     
     
     inputStudentData(file, studentData);
