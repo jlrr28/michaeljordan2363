@@ -44,6 +44,8 @@ void inputStudentData(string f, vector<sData*> s) {
     
     double tempGrade;
     int tempID;
+    sData
+
     cout << s.size() << " students are being input to studentData" << endl;
     
     ifstream fin;
@@ -57,9 +59,9 @@ void inputStudentData(string f, vector<sData*> s) {
            fin >> temp.Grade;
            //cout << temp.Grade << endl;
           
-           s.at(i) -> Grade;
+           s.at(i) = temp;
            cout << s.at(i);
-           s.at(i)->ID;
+           //s.at(i)->ID;
 
 
 
