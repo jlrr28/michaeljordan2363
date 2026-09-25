@@ -31,19 +31,18 @@ int getFileLines(string f) {
 }
 
 
-vector<sData> sortStudentData(string f, vector<sData> s) {
+void sortStudentData(vector<sData> s) {
 
-    vector<sData>sortedData;
-    cout << sortedData.size() << " students are due to be sorted" << endl;
+    vector<sData>sortD;
+    cout << sortD.size() << " students are due to be sorted" << endl;
 
-    return sortedData;
+    
 
 }
 
 void inputStudentData(string f, vector<sData> &s) {
     
-    double tempGrade;
-    int tempID;
+
     sData temp;
 
     cout << s.size() << " students are being input to studentData" << endl;
@@ -87,9 +86,17 @@ int main() {
 
     for (auto& val : studentData) 
         cout << val.Grade << "  " << val.ID << endl;
+    cout << studentData.size();
+    
+    vector<sData> sortedData = studentData;
+
+    for (auto& val : sortedData)
+        cout << val.Grade << "  " << val.ID << endl;
+    cout << sortedData.size();
+
     //cout << numberOfStudents;
     //cout << studentData.size();
-    //sortStudentData(file, studentData);
+
 
 
 }
