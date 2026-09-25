@@ -32,11 +32,13 @@ int getFileLines(string f) {
 
 
 void sortStudentData(vector<sData> &s) {
-
+    sData temp;
     vector<sData>sortD;
     cout << s.size() << " students are due to be sorted by ID" << endl;
-
     
+    int i = 5;
+    temp = s.at(i);
+    cout << "s.at " << i << " is " << temp.Grade << ", " << temp.ID;
 
 }
 
@@ -61,22 +63,16 @@ void inputStudentData(string f, vector<sData> &s) {
 
        }
        
-       
-
-
-
         fin.close();
     }
     else
         cout << "File not found.\n";
-
-
 }
     
 
 int main() {
 
-    string file = "shortgrades.txt";
+    string file = "simple.txt";
 	int numberOfStudents = getFileLines(file);
 
     vector<sData> studentData(numberOfStudents);
@@ -85,7 +81,7 @@ int main() {
 
     for (auto& val : studentData) 
         cout << val.Grade << "  " << val.ID << endl;
-    cout << studentData.size();
+    cout << studentData.size() << endl;
     
     vector<sData> sortedData = studentData;
 
