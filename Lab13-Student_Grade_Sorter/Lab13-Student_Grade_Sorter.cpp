@@ -36,9 +36,15 @@ void sortStudentData(vector<sData> &s) {
     vector<sData>sortD;
     cout << s.size() << " students are due to be sorted by ID" << endl;
     
-    int i = 5;
-    temp = s.at(i);
-    cout << "s.at " << i << " is " << temp.Grade << ", " << temp.ID;
+    //int i = 5;
+    //temp = s.at(i);
+    //cout << "s.at " << i << " is " << temp.Grade << ", " << temp.ID;
+
+    for (int i = 0; i < s.size() - 1; i++) {
+        int  indexSmallest = i;
+        for (int j = i + 1; j < s.size() : j++)
+            if ((temp.ID = s.at(j)) < (temp.ID = s.at(indexSmallest)))
+    }
 
 }
 
