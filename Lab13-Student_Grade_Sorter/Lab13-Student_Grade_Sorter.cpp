@@ -20,8 +20,7 @@ int getFileLines(string f) {
     fin.open(f);
     if (fin.good()) {
         cout << f << " opened" << endl;
-        while(getline(fin,lines))
-        i++;
+        while(getline(fin,lines)) i++;
         fin.close();
     }
     else
@@ -31,17 +30,20 @@ int getFileLines(string f) {
 }
 
 
-sData sortStudentData(string f, vector<sData> s) {
+vector<sData> sortStudentData(string f, vector<sData> s) {
 
-    vector<sData>sortedData(s.size());
-
+    vector<sData>sortedData = s;
+    cout << sortedData.size() << " students are due to be sorted" << endl;
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
         cout << f << " opened" << endl;
-        //while (getline(fin, lines))
-        //    i++;
-        //fin.close();
+
+
+
+
+
+
     }
     else
         cout << "File not found.\n";
@@ -49,15 +51,25 @@ sData sortStudentData(string f, vector<sData> s) {
 
 }
 
+vector<sData> inputStudentData(string f) {
+    vector<sData>inputData;
+
+
+    return inputData;
+}
+    
+
 int main() {
 
     string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
 
     vector<sData>studentData(numberOfStudents);
- 
-    cout << numberOfStudents;
-    cout << studentData.size();
+    studentData = inputStudentData;
+
+
+    //cout << numberOfStudents;
+    //cout << studentData.size();
     sortStudentData(file, studentData);
 
 
