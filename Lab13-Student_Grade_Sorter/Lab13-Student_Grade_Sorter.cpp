@@ -32,20 +32,32 @@ int getFileLines(string f) {
 
 vector<sData> sortStudentData(string f, vector<sData> s) {
 
-    vector<sData>sortedData = s;
+    vector<sData>sortedData;
     cout << sortedData.size() << " students are due to be sorted" << endl;
 
     return sortedData;
 
 }
 
-void inputStudentData(string f, vector<sData>* s) {
+void inputStudentData(string f, vector<sData> s) {
     vector<sData>inputData;
+    cout << s.size() << " students are being input to studentData" << endl;
+    
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
         cout << f << " opened" << endl;
- 
+        
+       for (int i = 0; i < s.size(); i++) {
+           fin >> s.ID.at(i);
+           cout << s.at(i) << endl;
+           fin >> s.at(i)->Grade;
+
+
+       }
+       
+       
+
 
 
         fin.close();
@@ -62,7 +74,7 @@ int main() {
     string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
 
-    vector<sData>studentData(numberOfStudents);
+    vector<sData> studentData(numberOfStudents);
     inputStudentData(file, studentData);
 
 
