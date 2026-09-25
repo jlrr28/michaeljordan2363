@@ -40,7 +40,7 @@ vector<sData> sortStudentData(string f, vector<sData*> s) {
 
 }
 
-void inputStudentData(string f, vector<sData*> s) {
+void inputStudentData(string f, vector<sData>* s) {
     
     sData temp;
     cout << s.size() << " students are being input to studentData" << endl;
@@ -51,14 +51,16 @@ void inputStudentData(string f, vector<sData*> s) {
         cout << f << " opened" << endl;
         
        for (int i = 0; i < s.size(); i++) {
-           fin >> temp.ID;
-           cout << temp.ID << "  ";
-           fin >> temp.Grade;
-           cout << temp.Grade << endl;
+           //fin >> temp.ID;
+           //cout << temp.ID << "  ";
+           //fin >> temp.Grade;
+           //cout << temp.Grade << endl;
            //fin >> s.at(i)->Grade;
-           s->ID
-
-
+           fin >> s.at(i)->ID;
+           cout << s.at(i)->ID << "  ";
+           
+           fin >> s.at(i)->Grade;
+           cout << s.at(i)->Grade << endl;
        }
        
        
@@ -79,10 +81,10 @@ int main() {
     string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
 
-    vector<sData*> studentData(numberOfStudents);
+    vector<sData> studentData(numberOfStudents);
+    vector<sData>* vectorPtr = &studentData;
     
-    
-    inputStudentData(file, studentData);
+    inputStudentData(file, vectorPtr);
 
 
     //cout << numberOfStudents;
