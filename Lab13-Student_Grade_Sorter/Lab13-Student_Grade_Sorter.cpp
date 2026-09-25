@@ -39,8 +39,9 @@ vector<sData> sortStudentData(string f, vector<sData> s) {
 
 }
 
-vector<sData> inputStudentData(string f, vector<sData> s) {
-    vector<sData>inputData;
+void inputStudentData(string f, vector<sData> s) {
+    
+    sData temp;
     cout << s.size() << " students are being input to studentData" << endl;
     
     ifstream fin;
@@ -49,8 +50,8 @@ vector<sData> inputStudentData(string f, vector<sData> s) {
         cout << f << " opened" << endl;
         
        for (int i = 0; i < s.size(); i++) {
-           fin >> inputData.ID;
-           cout << s.at(i) << endl;
+           fin >> temp.ID;
+           cout << temp.ID << endl;
            fin >> s.at(i)->Grade;
 
 
@@ -65,7 +66,6 @@ vector<sData> inputStudentData(string f, vector<sData> s) {
     else
         cout << "File not found.\n";
 
-    return inputData;
 
 }
     
@@ -77,7 +77,6 @@ int main() {
 
     vector<sData> studentData(numberOfStudents);
     
-    sData stuData = inputStudentData;
     
     inputStudentData(file, studentData);
 
