@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <iomanip>
+#include <cmath>
 using namespace std;
 
 
@@ -156,6 +157,17 @@ double findMean(vector<sData> s) {
 
 double findStandardDeviation(vector<sData> s, double m) {
     double sD = 0;
+    double sum = 0;
+    sData temp;
+    for (int i = 0; i < s.size(); i++) {
+        temp = s.at(i);
+        temp.Grade - m;
+        temp.Grade = pow(temp.Grade, 2);
+        sum += temp.Grade;
+    }
+    
+    sD = sum/m;
+    sD = sqrt(sD);
 
     return sD;
 }
