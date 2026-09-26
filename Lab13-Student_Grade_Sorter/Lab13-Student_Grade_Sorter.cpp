@@ -229,6 +229,7 @@ int main() {
     temp = sortedDataGrades.at(sortedDataGrades.size() / 2);
     cout << "Median Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
 
+    //Not sure what standard deviation is but tried my best
     cout << "Standard Deviation: " << findStandardDeviation(sortedDataGrades, meanScore) << endl;
 
 
