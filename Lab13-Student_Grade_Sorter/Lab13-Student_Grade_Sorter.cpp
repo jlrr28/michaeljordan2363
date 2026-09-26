@@ -169,7 +169,6 @@ double findMean(vector<sData> s) {
         temp = s.at(i);
         x += temp.Grade;
     }
-
     double mean = x / s.size();
 
     return mean;
