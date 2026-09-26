@@ -1,4 +1,4 @@
-// COMSC - 210 || Lab 11 || Jose Luis Ramos
+// COMSC - 210 || Lab 13 || Jose Luis Ramos
 
 #include <string>
 #include <iostream>
@@ -21,7 +21,7 @@ int getFileLines(string f) {
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
-        cout << f << " opened" << endl;
+        //cout << f << " opened" << endl;
         while(getline(fin,lines)) i++;
         fin.close();
     }
@@ -35,12 +35,12 @@ void inputStudentData(string f, vector<sData>& s) {
 
     sData temp;
 
-    cout << s.size() << " students are being input to studentData" << endl;
+    //cout << s.size() << " students are being input to studentData" << endl;
 
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
-        cout << f << " opened" << endl;
+        //cout << f << " opened" << endl;
 
         for (int i = 0; i < s.size(); i++) {
             fin >> temp.ID;
@@ -56,6 +56,27 @@ void inputStudentData(string f, vector<sData>& s) {
     }
     else
         cout << "File not found.\n";
+}
+
+void outputStudentDataFile(vector<sData> s) {
+    sData temp;
+    
+    ifstream fout;
+    fout.open("dataoutput");
+    if (fout.good()) {
+
+        for (int i = 0; i < s.size(); i++) {
+
+            s.at(i) = temp;
+
+
+        }
+
+        fin.close();
+    }
+    else
+        cout << "File not found.\n";
+
 }
 
 void sortByID(vector<sData> &s) {
@@ -179,7 +200,6 @@ int main() {
 	int numberOfStudents = getFileLines(file);
 
     vector<sData> studentData(numberOfStudents);
-    sData temp;
 
     inputStudentData(file, studentData);
 
@@ -187,9 +207,13 @@ int main() {
     sortByID(sortedDataID);
     //printData(sortedDataID);
 
+    outputStudentDataFile(sortedDataID);
+
     vector<sData> sortedDataGrades = studentData;
     sortByGrades(sortedDataGrades);
     //printData(sortedDataGrades);
+
+    sData temp;
 
     cout << " -- - Summary Statistics - -- " << endl;
 
