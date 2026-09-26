@@ -31,13 +31,32 @@ int main()
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<> randomRGB(0, 255);
+	Color temp;
 
 	Color color1;
 	color1.setR(randomRGB(gen));
 	color1.setG(randomRGB(gen));
 	color1.setB(randomRGB(gen));
-
 	color1.print();
+
+	vector<Color> colorVector;
+
+	for (int i = 0, int x = 1; i < 10; i++, x++) {
+		
+		temp.setR(randomRGB(gen));
+		temp.setG(randomRGB(gen));
+		temp.setB(randomRGB(gen));
+		cout << "color " << x << ": ";
+		temp.print(); cout << endl;
+		
+		//colorVector.at(i) = colorVector.setR
+
+
+
+	}
+
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
