@@ -43,23 +43,30 @@ void sortStudentData(vector<sData> &s) {
     //cout << "s.at " << i << " is " << temp.Grade << ", " << temp.ID;
 
     for (int i = 0; i < s.size() - 1; i++) {
+        
         int  indexSmallest = i;
+       
         for (int j = i + 1; j < s.size(); j++) {
+            
             temp1 = s.at(j);
             cout << temp1.ID << " compared to ";
             temp2 = s.at(indexSmallest);
             cout << temp2.ID << endl;
 
+
             if (temp1.ID < temp2.ID) {
                 indexSmallest = j;
             }
+        
         }
         
         temp3 = s.at(i);
+        temp2 = s.at(indexSmallest);
         sData swap = temp3;
         cout << temp2.ID << " and " << temp2.Grade << " written to at index " << i << endl;
-        s.at(i) = temp2;
-        temp2 = swap;
+        temp3 = temp2;
+        s.at(i) = temp3;
+        s.at(indexSmallest) = swap;
 
 
     }
