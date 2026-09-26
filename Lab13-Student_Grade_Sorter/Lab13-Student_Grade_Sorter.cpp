@@ -46,9 +46,9 @@ void sortStudentData(vector<sData> &s) {
         int  indexSmallest = i;
         for (int j = i + 1; j < s.size(); j++) {
             temp1 = s.at(j);
-            //cout << temp1.ID << " compared to ";
+            cout << temp1.ID << " compared to ";
             temp2 = s.at(indexSmallest);
-            //cout << temp2.ID << endl;
+            cout << temp2.ID << endl;
 
             if (temp1.ID < temp2.ID) {
                 indexSmallest = j;
@@ -57,6 +57,7 @@ void sortStudentData(vector<sData> &s) {
         
         temp3 = s.at(i);
         sData swap = temp3;
+        cout << temp2.ID << " and " << temp2.Grade << " written to at index " << i << endl;
         s.at(i) = temp2;
         temp2 = swap;
 
@@ -102,14 +103,12 @@ int main() {
     
     inputStudentData(file, studentData);
 
-    for (auto& val : studentData) 
-        cout << val.Grade << "  " << val.ID << endl;
-    cout << studentData.size() << endl;
+
     
     vector<sData> sortedData = studentData;
 
-    for (auto& val : sortedData)
-        cout << val.Grade << "  " << val.ID << endl;
+    //for (auto& val : sortedData)
+      //  cout << val.Grade << "  " << val.ID << endl;
 
     sortStudentData(sortedData);
 
