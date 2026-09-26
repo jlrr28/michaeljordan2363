@@ -182,15 +182,15 @@ double findStandardDeviation(vector<sData> s, double m) {
         temp = s.at(i);
         temp.Grade -= m;
         //cout << temp.Grade << endl;
-        temp.Grade = pow(temp.Grade, 2);
+        temp.Grade *= temp.Grade;
         //cout << temp.Grade << endl;
         sum += temp.Grade;
     }
-    cout << sum << " " << m << endl;
-    sD = sum/m;
-    cout << sD << endl;
+    //cout << sum << " / " << m << endl;
+    sD = sum/s.size();
+    //cout << sD << endl;
     sD = sqrt(sD);
-    cout << sD;
+
     return sD;
 }
 
