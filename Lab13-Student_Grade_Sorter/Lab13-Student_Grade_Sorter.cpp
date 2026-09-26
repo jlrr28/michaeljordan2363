@@ -61,18 +61,17 @@ void inputStudentData(string f, vector<sData>& s) {
 void outputStudentDataFile(vector<sData> s) {
     sData temp;
     
-    ifstream fout;
-    fout.open("dataoutput");
+    ofstream fout;
+    fout.open("student-data-sorted.txt");
     if (fout.good()) {
 
         for (int i = 0; i < s.size(); i++) {
-
-            s.at(i) = temp;
-
+            temp = s.at(i);
+            fout << temp.ID << " " << temp.Grade << '\n';
 
         }
-
-        fin.close();
+        cout << "Sorted results written to student-data-sorted.txt" << endl;
+        fout.close();
     }
     else
         cout << "File not found.\n";
@@ -200,7 +199,7 @@ int main() {
 	int numberOfStudents = getFileLines(file);
 
     vector<sData> studentData(numberOfStudents);
-
+    cout << "Read " << studentData.size() << "records" << endl;
     inputStudentData(file, studentData);
 
     vector<sData> sortedDataID = studentData;
