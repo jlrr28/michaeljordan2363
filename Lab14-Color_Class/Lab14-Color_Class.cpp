@@ -19,15 +19,25 @@ public:
 	int getB()			{ return B; }
 	void setB(int b)	{ B = b; }
 
+	void print() {
+		cout << R << " " << G << " " << B << endl;
+	}
 
 };
 
 
 int main()
 {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomRGB(0, 255);
 
+	Color color1;
+	color1.setR(randomRGB(gen));
+	color1.setG(randomRGB(gen));
+	color1.setB(randomRGB(gen));
 
-
+	color1.print();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
