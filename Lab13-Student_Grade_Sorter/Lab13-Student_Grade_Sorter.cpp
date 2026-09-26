@@ -49,9 +49,9 @@ void sortStudentData(vector<sData> &s) {
         for (int j = i + 1; j < s.size(); j++) {
             
             temp1 = s.at(j);
-            cout << temp1.ID << " compared to ";
+            //cout << temp1.ID << " compared to ";
             temp2 = s.at(indexSmallest);
-            cout << temp2.ID << endl;
+            //cout << temp2.ID << endl;
 
 
             if (temp1.ID < temp2.ID) {
@@ -61,9 +61,8 @@ void sortStudentData(vector<sData> &s) {
         }
         
         temp3 = s.at(i);
-        temp2 = s.at(indexSmallest);
         sData swap = temp3;
-        cout << temp2.ID << " and " << temp2.Grade << " written to at index " << i << endl;
+        //cout << temp2.ID << " and " << temp2.Grade << " written to at index " << i << endl;
         temp3 = temp2;
         s.at(i) = temp3;
         s.at(indexSmallest) = swap;
@@ -100,10 +99,16 @@ void inputStudentData(string f, vector<sData> &s) {
         cout << "File not found.\n";
 }
     
+void printData(vector<sData> s) {
+    int i = 1;
+    for (auto& val : s)
+        cout << "student number " << i++ << " grade: " << val.Grade << " ID: " << val.ID << endl;
+
+}
 
 int main() {
 
-    string file = "simple.txt";
+    string file = "grades.txt";
 	int numberOfStudents = getFileLines(file);
 
     vector<sData> studentData(numberOfStudents);
@@ -119,8 +124,7 @@ int main() {
 
     sortStudentData(sortedData);
 
-    for (auto& val : sortedData)
-        cout << val.Grade << "  " << val.ID << endl;
+    printData(sortedData);
 
     //cout << numberOfStudents;
     //cout << studentData.size();
