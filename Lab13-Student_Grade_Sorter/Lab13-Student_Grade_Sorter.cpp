@@ -62,7 +62,7 @@ void sortByID(vector<sData> &s) {
     sData temp2;
     sData temp3;
     vector<sData>sortD;
-    cout << s.size() << " students are due to be sorted by ID" << endl;
+    //cout << s.size() << " students are due to be sorted by ID" << endl;
 
     for (int i = 0; i < s.size() - 1; i++) {
         
@@ -99,7 +99,7 @@ void sortByGrades(vector<sData>& s) {
     sData temp2;
     sData temp3;
     vector<sData>sortD;
-    cout << s.size() << " students are due to be sorted by Grades" << endl;
+    //cout << s.size() << " students are due to be sorted by Grades" << endl;
 
     for (int i = 0; i < s.size() - 1; i++) {
 
@@ -139,13 +139,25 @@ void printData(vector<sData> s) {
 }
 
 double findMean(vector<sData> s) {
-    double mean = 0;
+
     double x = 0;
     double y = 0;
+    sData temp;
 
+    for (int i = 0; i < s.size(); i++) {
+        temp = s.at(i);
+        x += temp.Grade;
+    }
 
+    double mean = x / s.size();
 
     return mean;
+}
+
+double findStandardDeviation(vector<sData> s, double m) {
+    double sD = 0;
+
+    return sD;
 }
 
 
@@ -161,11 +173,11 @@ int main() {
 
     vector<sData> sortedDataID = studentData;
     sortByID(sortedDataID);
-    printData(sortedDataID);
+    //printData(sortedDataID);
 
     vector<sData> sortedDataGrades = studentData;
     sortByGrades(sortedDataGrades);
-    printData(sortedDataGrades);
+    //printData(sortedDataGrades);
 
     cout << " -- - Summary Statistics - -- " << endl;
 
@@ -175,14 +187,13 @@ int main() {
     temp = sortedDataGrades.front();
     cout << "Maximum Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
     
+    double meanScore = findMean(sortedDataGrades);
+    cout << "Mean Score: " << meanScore << endl;
+
     temp = sortedDataGrades.at(sortedDataGrades.size() / 2);
     cout << "Median Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
 
-    cout << "Mean Score: " << findMean(sortedDataGrades) << endl;
-
-    //cout << numberOfStudents;
-    //cout << studentData.size();
-
+    cout << "Standard Deviation: " << findStandardDeviation(sortedDataGrades, meanScore) << endl;
 
 
 }
