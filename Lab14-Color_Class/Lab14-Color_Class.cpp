@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <iomanip>
 #include <random>
 using namespace std;
 
@@ -37,22 +36,17 @@ int main()
 	color1.setR(randomRGB(gen));
 	color1.setG(randomRGB(gen));
 	color1.setB(randomRGB(gen));
-	color1.print();
+	//color1.print();
 
 	vector<Color> colorVector;
-
-	for (int i = 0, int x = 1; i < 10; i++, x++) {
-		
+	cout << "          R   G  B  " << endl;
+	for (int i = 0, x = 1; i < 10; ++i, ++x) {
 		temp.setR(randomRGB(gen));
 		temp.setG(randomRGB(gen));
 		temp.setB(randomRGB(gen));
-		cout << "color " << x << ": ";
-		temp.print(); cout << endl;
-		
-		//colorVector.at(i) = colorVector.setR
-
-
-
+		cout << "color #" << x << ": ";
+		temp.print(); cout << endl;		
+		colorVector.push_back(temp);
 	}
 
 
