@@ -181,14 +181,16 @@ double findStandardDeviation(vector<sData> s, double m) {
     for (int i = 0; i < s.size(); i++) {
         temp = s.at(i);
         temp.Grade -= m;
+        //cout << temp.Grade << endl;
         temp.Grade = pow(temp.Grade, 2);
+        //cout << temp.Grade << endl;
         sum += temp.Grade;
     }
     cout << sum << " " << m << endl;
     sD = sum/m;
     cout << sD << endl;
     sD = sqrt(sD);
-
+    cout << sD;
     return sD;
 }
 
@@ -229,7 +231,7 @@ int main() {
     cout << "Median Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
 
     //Not sure what standard deviation is but tried my best
-    cout << "Standard Deviation: " << findStandardDeviation(sortedDataGrades, meanScore) << endl;
+    cout << "Standard Deviation: " << findStandardDeviation(studentData, meanScore) << endl;
 
 
 }
