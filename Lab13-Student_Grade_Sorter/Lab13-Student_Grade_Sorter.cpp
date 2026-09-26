@@ -130,14 +130,24 @@ void sortByGrades(vector<sData>& s) {
     }
 
 }
-
-    
+   
 void printData(vector<sData> s) {
     int i = 1;
     for (auto& val : s)
         cout << "student number " << i++ << " grade: " << val.Grade << " ID: " << val.ID << endl;
 
 }
+
+double findMean(vector<sData> s) {
+    double mean = 0;
+    double x = 0;
+    double y = 0;
+
+
+
+    return mean;
+}
+
 
 int main() {
 
@@ -165,11 +175,11 @@ int main() {
     temp = sortedDataGrades.front();
     cout << "Maximum Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
     
-
     temp = sortedDataGrades.at(sortedDataGrades.size() / 2);
     cout << "Median Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
 
-    
+    cout << "Mean Score: " << findMean(sortedDataGrades) << endl;
+
     //cout << numberOfStudents;
     //cout << studentData.size();
 
