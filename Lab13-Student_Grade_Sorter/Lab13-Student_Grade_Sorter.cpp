@@ -30,6 +30,32 @@ int getFileLines(string f) {
 
 }
 
+void inputStudentData(string f, vector<sData>& s) {
+
+    sData temp;
+
+    cout << s.size() << " students are being input to studentData" << endl;
+
+    ifstream fin;
+    fin.open(f);
+    if (fin.good()) {
+        cout << f << " opened" << endl;
+
+        for (int i = 0; i < s.size(); i++) {
+            fin >> temp.ID;
+            //cout << temp.ID << "  ";
+            fin >> temp.Grade;
+            //cout << temp.Grade << endl;
+
+            s.at(i) = temp;
+
+        }
+
+        fin.close();
+    }
+    else
+        cout << "File not found.\n";
+}
 
 void sortByID(vector<sData> &s) {
     sData temp1;
@@ -105,32 +131,6 @@ void sortByGrades(vector<sData>& s) {
 
 }
 
-void inputStudentData(string f, vector<sData> &s) {
-    
-    sData temp;
-
-    cout << s.size() << " students are being input to studentData" << endl;
-    
-    ifstream fin;
-    fin.open(f);
-    if (fin.good()) {
-        cout << f << " opened" << endl;
-        
-       for (int i = 0; i < s.size(); i++) {
-           fin >> temp.ID;
-           //cout << temp.ID << "  ";
-           fin >> temp.Grade; 
-           //cout << temp.Grade << endl;
-          
-           s.at(i) = temp;
-
-       }
-       
-        fin.close();
-    }
-    else
-        cout << "File not found.\n";
-}
     
 void printData(vector<sData> s) {
     int i = 1;
@@ -157,11 +157,19 @@ int main() {
     sortByGrades(sortedDataGrades);
     printData(sortedDataGrades);
 
+    cout << " -- - Summary Statistics - -- " << endl;
+
+    temp = sortedDataGrades.back();
+    cout << "Minimum Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
+
+    temp = sortedDataGrades.front();
+    cout << "Maximum Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
+    
+
     temp = sortedDataGrades.at(sortedDataGrades.size() / 2);
     cout << "Median Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
 
-    temp = sortedDataGrades.begin();
-
+    
     //cout << numberOfStudents;
     //cout << studentData.size();
 
