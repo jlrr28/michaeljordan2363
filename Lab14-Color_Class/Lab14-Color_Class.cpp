@@ -2,14 +2,32 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <fstream>
 #include <iomanip>
-#include <cmath>
+#include <random>
 using namespace std;
+
+class Color {
+private:
+	int R;
+	int G;
+	int B;
+public:
+	int getR()			{ return R; }
+	void setR(int r)	{ R = r;}
+	int getG()			{ return G; }
+	void setG(int g)	{ G = g; }
+	int getB()			{ return B; }
+	void setB(int b)	{ B = b; }
+
+
+};
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
