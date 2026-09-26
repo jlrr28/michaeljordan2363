@@ -187,6 +187,7 @@ double findStandardDeviation(vector<sData> s, double m) {
     }
     cout << sum << " " << m << endl;
     sD = sum/m;
+    cout << sD << endl;
     sD = sqrt(sD);
 
     return sD;
