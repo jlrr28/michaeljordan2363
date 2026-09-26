@@ -181,11 +181,11 @@ double findStandardDeviation(vector<sData> s, double m) {
     sData temp;
     for (int i = 0; i < s.size(); i++) {
         temp = s.at(i);
-        temp.Grade - m;
+        temp.Grade -= m;
         temp.Grade = pow(temp.Grade, 2);
         sum += temp.Grade;
     }
-    
+    cout << sum << " " << m << endl;
     sD = sum/m;
     sD = sqrt(sD);
 
@@ -195,11 +195,11 @@ double findStandardDeviation(vector<sData> s, double m) {
 
 int main() {
 
-    string file = "shortgrades.txt";
+    string file = "grades.txt";
 	int numberOfStudents = getFileLines(file);
 
     vector<sData> studentData(numberOfStudents);
-    cout << "Read " << studentData.size() << "records" << endl;
+    cout << "Read " << studentData.size() << " student records" << endl;
     inputStudentData(file, studentData);
 
     vector<sData> sortedDataID = studentData;
@@ -213,7 +213,7 @@ int main() {
     //printData(sortedDataGrades);
 
     sData temp;
-
+    cout << setprecision(4);
     cout << " -- - Summary Statistics - -- " << endl;
 
     temp = sortedDataGrades.back();
