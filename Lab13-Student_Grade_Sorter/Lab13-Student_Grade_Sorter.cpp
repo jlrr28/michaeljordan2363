@@ -31,16 +31,12 @@ int getFileLines(string f) {
 }
 
 
-void sortStudentData(vector<sData> &s) {
+void sortByID(vector<sData> &s) {
     sData temp1;
     sData temp2;
     sData temp3;
     vector<sData>sortD;
     cout << s.size() << " students are due to be sorted by ID" << endl;
-    
-    //int i = 5;
-    //temp = s.at(i);
-    //cout << "s.at " << i << " is " << temp.Grade << ", " << temp.ID;
 
     for (int i = 0; i < s.size() - 1; i++) {
         
@@ -60,6 +56,43 @@ void sortStudentData(vector<sData> &s) {
         
         }
         
+        temp3 = s.at(i);
+        sData swap = temp3;
+        //cout << temp2.ID << " and " << temp2.Grade << " written to at index " << i << endl;
+        temp3 = temp2;
+        s.at(i) = temp3;
+        s.at(indexSmallest) = swap;
+
+
+    }
+
+}
+
+void sortByGrades(vector<sData>& s) {
+    sData temp1;
+    sData temp2;
+    sData temp3;
+    vector<sData>sortD;
+    cout << s.size() << " students are due to be sorted by Grades" << endl;
+
+    for (int i = 0; i < s.size() - 1; i++) {
+
+        int  indexSmallest = i;
+
+        for (int j = i + 1; j < s.size(); j++) {
+
+            temp1 = s.at(j);
+            //cout << temp1.ID << " compared to ";
+            temp2 = s.at(indexSmallest);
+            //cout << temp2.ID << endl;
+
+
+            if (temp1.Grade > temp2.Grade) {
+                indexSmallest = j;
+            }
+
+        }
+
         temp3 = s.at(i);
         sData swap = temp3;
         //cout << temp2.ID << " and " << temp2.Grade << " written to at index " << i << endl;
@@ -108,23 +141,21 @@ void printData(vector<sData> s) {
 
 int main() {
 
-    string file = "grades.txt";
+    string file = "simple.txt";
 	int numberOfStudents = getFileLines(file);
 
     vector<sData> studentData(numberOfStudents);
     
     inputStudentData(file, studentData);
 
+    vector<sData> sortedDataID = studentData;
+    sortByID(sortedDataID);
+    printData(sortedDataID);
 
-    
-    vector<sData> sortedData = studentData;
+    vector<sData> sortedDataGrades = studentData;
+    sortByGrades(sortedDataGrades);
+    printData(sortedDataGrades);
 
-    //for (auto& val : sortedData)
-      //  cout << val.Grade << "  " << val.ID << endl;
-
-    sortStudentData(sortedData);
-
-    printData(sortedData);
 
     //cout << numberOfStudents;
     //cout << studentData.size();
