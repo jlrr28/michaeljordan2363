@@ -141,11 +141,12 @@ void printData(vector<sData> s) {
 
 int main() {
 
-    string file = "simple.txt";
+    string file = "shortgrades.txt";
 	int numberOfStudents = getFileLines(file);
 
     vector<sData> studentData(numberOfStudents);
-    
+    sData temp;
+
     inputStudentData(file, studentData);
 
     vector<sData> sortedDataID = studentData;
@@ -156,6 +157,10 @@ int main() {
     sortByGrades(sortedDataGrades);
     printData(sortedDataGrades);
 
+    temp = sortedDataGrades.at(sortedDataGrades.size() / 2);
+    cout << "Median Score: " << temp.Grade << "(Student ID: " << temp.ID << ")" << endl;
+
+    temp = sortedDataGrades.begin();
 
     //cout << numberOfStudents;
     //cout << studentData.size();
