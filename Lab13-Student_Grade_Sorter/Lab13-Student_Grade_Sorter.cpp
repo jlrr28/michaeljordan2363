@@ -86,7 +86,7 @@ void inputStudentData(string f, vector<sData> &s) {
        for (int i = 0; i < s.size(); i++) {
            fin >> temp.ID;
            //cout << temp.ID << "  ";
-           fin >> temp.Grade;
+           fin >> temp.Grade; 
            //cout << temp.Grade << endl;
           
            s.at(i) = temp;
