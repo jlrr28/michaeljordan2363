@@ -34,6 +34,7 @@ int getFileLines(string f) {
 void sortStudentData(vector<sData> &s) {
     sData temp1;
     sData temp2;
+    sData temp3;
     vector<sData>sortD;
     cout << s.size() << " students are due to be sorted by ID" << endl;
     
@@ -45,18 +46,22 @@ void sortStudentData(vector<sData> &s) {
         int  indexSmallest = i;
         for (int j = i + 1; j < s.size(); j++) {
             temp1 = s.at(j);
-            cout << temp1.ID << endl;
+            //cout << temp1.ID << " compared to ";
             temp2 = s.at(indexSmallest);
-            cout << temp2.ID << endl;
+            //cout << temp2.ID << endl;
 
             if (temp1.ID < temp2.ID) {
                 indexSmallest = j;
             }
-        
-        
         }
         
-        }
+        temp3 = s.at(i);
+        sData swap = temp3;
+        s.at(i) = temp2;
+        temp2 = swap;
+
+
+    }
 
 }
 
@@ -107,6 +112,9 @@ int main() {
         cout << val.Grade << "  " << val.ID << endl;
 
     sortStudentData(sortedData);
+
+    for (auto& val : sortedData)
+        cout << val.Grade << "  " << val.ID << endl;
 
     //cout << numberOfStudents;
     //cout << studentData.size();
