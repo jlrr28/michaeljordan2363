@@ -27,7 +27,9 @@ public:
 
 void inputMovieData(string f, vector<Movie>& s) {
 
-    Movie temp;
+    Movie mTemp;
+    string sTemp;
+    int iTemp = 0;
 
     ifstream fin;
     fin.open(f);
@@ -36,10 +38,13 @@ void inputMovieData(string f, vector<Movie>& s) {
 
         for (int i = 0; i < s.size(); i++) {
             
+            getline(fin, sTemp);
+            mTemp.setTitle(sTemp);
+            fin >> iTemp;
             
             
             
-            s.push_back(temp);
+            //s.push_back(temp);
         }
 
         fin.close();
