@@ -2,15 +2,25 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include <random>
 using namespace std;
-
-#include <iostream>
 
 class Movie {
 private:
+    string title;
+    int year;
+    string writerName;
+public:
+    string getTitle()           { return title; }
+    int getYear()               { return year; }
+    string getWriterName()      { return writerName; }
 
+    void setTitle(string t)     { title = t; }
+    void setYear(int y)         { year = y; }
+    void setWriterName(string w) {writerName = w;}
 
+    void print() {
+        cout << title << " written by " << writerName << ", released in " << year << endl;
+    }
 
 };
 
