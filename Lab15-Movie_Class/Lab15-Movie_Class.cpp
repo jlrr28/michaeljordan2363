@@ -36,9 +36,7 @@ void inputMovieData(string f, vector<Movie>& s) {
 
         for (int i = 0; i < s.size(); i++) {
             
-            //cout << temp.ID << "  ";
             
-            //cout << temp.Grade << endl;
             
             
             s.push_back(temp);
@@ -50,13 +48,30 @@ void inputMovieData(string f, vector<Movie>& s) {
         cout << "File not found.\n";
 }
 
-    
+int getFileLines(string f) {
+
+    int i = 0;
+    string lines;
+    ifstream fin;
+    fin.open(f);
+    if (fin.good()) {
+        //cout << f << " opened" << endl;
+        while (getline(fin, lines)) i++;
+        fin.close();
+    }
+    else
+        cout << "File not found.\n";
+    i /= 3;
+    return i;
+}
 
 int main()
 {
     string file = "input.txt";
-    vector<Movie> movieVector;
+    
 
+    vector<Movie> movieVector(getFileLines(file));
+    cout << movieVector.size() << endl;
 
 
 
