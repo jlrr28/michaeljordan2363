@@ -29,6 +29,7 @@ void inputMovieData(string f, vector<Movie>& s) {
 
     Movie mTemp;
     string sTemp;
+    int size = s.size();
     int iTemp = 0;
 
     ifstream fin;
@@ -36,7 +37,7 @@ void inputMovieData(string f, vector<Movie>& s) {
     if (fin.good()) {
         cout << f << " opened" << endl;
 
-        for (int i = 0; i < s.size(); i++) {
+        for (int i = 0; i < size; ++i) {
             
             getline(fin, sTemp);
             cout << sTemp << endl;
@@ -48,7 +49,7 @@ void inputMovieData(string f, vector<Movie>& s) {
             mTemp.setYear(iTemp);
             cout << mTemp.getYear() << endl;
 
-            fin.ignore();
+            //fin.ignore();
 
             getline(fin, sTemp);
             cout << sTemp << endl;
