@@ -40,23 +40,23 @@ void inputMovieData(string f, vector<Movie>& s) {
         for (int i = 0; i < size; ++i) {
             
             getline(fin, sTemp);
-            cout << sTemp << endl;
+            //cout << sTemp << endl;
             mTemp.setTitle(sTemp);
             cout << mTemp.getTitle() << endl;
             
             fin >> iTemp;
-            cout << iTemp << endl;
+            //cout << iTemp << endl;
             mTemp.setYear(iTemp);
             cout << mTemp.getYear() << endl;
 
-            //fin.ignore();
+            fin.ignore();
 
             getline(fin, sTemp);
-            cout << sTemp << endl;
+            //cout << sTemp << endl;
             mTemp.setWriterName(sTemp);
             cout << mTemp.getWriterName() << endl;
             
-            fin.ignore();
+            //fin.ignore();
             
             
             s.push_back(mTemp);
