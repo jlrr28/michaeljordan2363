@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 class Movie {
@@ -24,9 +25,42 @@ public:
 
 };
 
+void inputMovieData(string f, vector<Movie>& s) {
+
+    Movie temp;
+
+    ifstream fin;
+    fin.open(f);
+    if (fin.good()) {
+        //cout << f << " opened" << endl;
+
+        for (int i = 0; i < s.size(); i++) {
+            
+            //cout << temp.ID << "  ";
+            
+            //cout << temp.Grade << endl;
+            
+            
+            s.push_back(temp);
+        }
+
+        fin.close();
+    }
+    else
+        cout << "File not found.\n";
+}
+
+    
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    string file = "input.txt";
+    vector<Movie> movieVector;
+
+
+
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
