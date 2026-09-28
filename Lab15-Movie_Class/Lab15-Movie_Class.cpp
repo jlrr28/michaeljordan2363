@@ -59,7 +59,8 @@ void inputMovieData(string f, vector<Movie>& s) {
             //fin.ignore();
             
             
-            s.push_back(mTemp);
+            s.at(i) = mTemp;
+            cout << s.size() << endl;
         }
 
         fin.close();
@@ -71,15 +72,13 @@ void inputMovieData(string f, vector<Movie>& s) {
 void printMovieData(vector<Movie> s) {
 
     Movie mTemp;
-    string sTemp;
     int size = s.size();
-    int iTemp = 0;
-
+    cout << s.size();
     for (int i = 0; i < size; ++i) {
         mTemp = s.at(i);
         cout << "Movie:" << mTemp.getWriterName() << endl;
-        cout << "Year released:" << mTemp.getYear() << endl;
-        cout << "Screen writer: " << mTemp.getTitle() << endl;
+        cout << "    Year released:" << mTemp.getYear() << endl;
+        cout << "    Screen writer: " << mTemp.getTitle() << endl;
     }
 
 }
