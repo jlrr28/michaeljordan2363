@@ -35,26 +35,26 @@ void inputMovieData(string f, vector<Movie>& s) {
     ifstream fin;
     fin.open(f);
     if (fin.good()) {
-        cout << f << " opened" << endl;
+        //cout << f << " opened" << endl;
 
         for (int i = 0; i < size; ++i) {
             
             getline(fin, sTemp);
             //cout << sTemp << endl;
             mTemp.setTitle(sTemp);
-            cout << mTemp.getTitle() << endl;
+            //cout << mTemp.getTitle() << endl;
             
             fin >> iTemp;
             //cout << iTemp << endl;
             mTemp.setYear(iTemp);
-            cout << mTemp.getYear() << endl;
+            //cout << mTemp.getYear() << endl;
 
             fin.ignore();
 
             getline(fin, sTemp);
             //cout << sTemp << endl;
             mTemp.setWriterName(sTemp);
-            cout << mTemp.getWriterName() << endl;
+            //cout << mTemp.getWriterName() << endl;
             
             //fin.ignore();
             
@@ -66,6 +66,21 @@ void inputMovieData(string f, vector<Movie>& s) {
     }
     else
         cout << "File not found.\n";
+}
+
+void printMovieData(vector<Movie> s) {
+
+    Movie mTemp;
+    string sTemp;
+    int size = s.size();
+    int iTemp = 0;
+
+    for (int i = 0; i < size; ++i) {
+    
+        
+    
+    }
+
 }
 
 int getFileLines(string f) {
@@ -94,7 +109,7 @@ int main()
     cout << movieVector.size() << endl;
 
     inputMovieData(file, movieVector);
-
+    printMovieData(movieVector);
 
 }
 
