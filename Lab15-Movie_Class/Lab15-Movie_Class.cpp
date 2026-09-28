@@ -76,9 +76,10 @@ void printMovieData(vector<Movie> s) {
     int iTemp = 0;
 
     for (int i = 0; i < size; ++i) {
-    
-        
-    
+        mTemp = s.at(i);
+        cout << "Movie:" << mTemp.getWriterName() << endl;
+        cout << "Year released:" << mTemp.getYear() << endl;
+        cout << "Screen writer: " << mTemp.getTitle() << endl;
     }
 
 }
