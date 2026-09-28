@@ -25,6 +25,23 @@ public:
 
 };
 
+void inputMovieData(string f, vector<Movie>& s);
+
+void printMovieData(vector<Movie> s);
+
+int getFileLines(string f);
+
+int main()
+{
+    string file = "input.txt";
+    
+    vector<Movie> movieVector(getFileLines(file));
+
+    inputMovieData(file, movieVector);
+    printMovieData(movieVector);
+
+}
+
 void inputMovieData(string f, vector<Movie>& s) {
 
     Movie mTemp;
@@ -38,12 +55,12 @@ void inputMovieData(string f, vector<Movie>& s) {
         //cout << f << " opened" << endl;
 
         for (int i = 0; i < size; ++i) {
-            
+
             getline(fin, sTemp);
             //cout << sTemp << endl;
             mTemp.setTitle(sTemp);
             //cout << mTemp.getTitle() << endl;
-            
+
             fin >> iTemp;
             //cout << iTemp << endl;
             mTemp.setYear(iTemp);
@@ -55,12 +72,9 @@ void inputMovieData(string f, vector<Movie>& s) {
             //cout << sTemp << endl;
             mTemp.setWriterName(sTemp);
             //cout << mTemp.getWriterName() << endl;
-            
-            //fin.ignore();
-            
-            
+
             s.at(i) = mTemp;
-            cout << s.size() << endl;
+
         }
 
         fin.close();
@@ -73,7 +87,6 @@ void printMovieData(vector<Movie> s) {
 
     Movie mTemp;
     int size = s.size();
-    cout << s.size();
     for (int i = 0; i < size; ++i) {
         mTemp = s.at(i);
         cout << "Movie:" << mTemp.getWriterName() << endl;
@@ -98,18 +111,5 @@ int getFileLines(string f) {
         cout << "File not found.\n";
     i /= 3;
     return i;
-}
-
-int main()
-{
-    string file = "input.txt";
-    
-
-    vector<Movie> movieVector(getFileLines(file));
-    cout << movieVector.size() << endl;
-
-    inputMovieData(file, movieVector);
-    printMovieData(movieVector);
-
 }
 
