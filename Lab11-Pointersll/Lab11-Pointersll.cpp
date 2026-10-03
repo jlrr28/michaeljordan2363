@@ -33,7 +33,7 @@ string getAbreviation(Team* tPtr);
 int main(){
 
     vector<string> teamData = { "sasData.txt", "okcData.txt" };
-    Team* bbTeam = new Team[TEAM_SIZE];
+    Team* bbTeam = new Team[20];
 
 	for (int i = 0; i < teamData.size(); i++) {
         inputTeamData(teamData.at(i), &bbTeam[i]);
