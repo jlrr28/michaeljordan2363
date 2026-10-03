@@ -29,10 +29,42 @@ void addNodeFront(Node *& n){
 	//output(n);
 }
 
+void deleteNode(Node*& n) {
+	// deleting a node
+	cout << "Which node to delete? " << endl;
+	output(n);
+	int entry;
+	cout << "Choice --> ";
+	cin >> entry;
+	// traverse that many times and delete that node
+	Node* current = n;
+	Node* prev = nullptr; // start prev as nullptr to detect head deletion
+	for (int i = 0; i < (entry - 1); i++) {
+		prev = current;
+		current = current->next;
+	}
+	// at this point, delete current and reroute pointers
+	if (current) {
+		if (prev == nullptr) {
+			// deleting the head node
+			n = current->next;
+		}
+		else {
+			prev->next = current->next;
+		}
+		delete current;
+		current = nullptr;
+	}
+
+
+
+
+}
 
 int main() {
 	
 	Node* head = nullptr;
+	Node* current = head;
 	
 	int count = 0;
 	/* create a linked list of size SIZE with random numbers 0 - 99
@@ -52,14 +84,14 @@ int main() {
 		}
 	}
 	*/
+	
+	
 	addNodeFront(head);
-
-
 	output(head);
 	
 	
 	
-	// deleting a node
+	/* deleting a node
 	cout << "Which node to delete? " << endl;
 	output(head);
 	int entry;
@@ -84,11 +116,12 @@ int main() {
 		delete current;
 		current = nullptr;
 	}
+	*/
 	
-	
-	
+	deleteNode(head);
 	output(head);
-	// insert a node
+	
+	/* insert a node
 	cout << "After which node to insert 10000? " << endl;
 	count = 1;
 	current = head;
@@ -115,6 +148,8 @@ int main() {
 	else {
 		prev->next = newnode;
 	}
+	*/
+	
 	output(head);
 	// deleting the linked list
 	current = head;
