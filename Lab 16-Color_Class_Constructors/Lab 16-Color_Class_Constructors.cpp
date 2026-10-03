@@ -10,8 +10,6 @@ private:
 	int R;
 	int G;
 	int B;
-
-//using constructors
 public:
 	//constuctors
 	Color() { R = 0; G = 0; B = 0; }
