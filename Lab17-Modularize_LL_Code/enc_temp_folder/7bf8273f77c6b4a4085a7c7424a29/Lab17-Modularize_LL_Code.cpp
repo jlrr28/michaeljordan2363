@@ -46,7 +46,7 @@ void addNodeBack(Node* &n, Node* &c) {
 	
 	//Node* lastNode = c->next;
 	//lastNode = c;
-	cout << "Last node is:" << &c->value << "  " &c->next << endl;
+	cout << "Last node is:" << &c;
 		
 	Node* newVal = new Node;
 		// adds node at head
