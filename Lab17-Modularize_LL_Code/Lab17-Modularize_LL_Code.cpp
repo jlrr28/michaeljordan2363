@@ -36,7 +36,8 @@ void addNodeBack(Node* &n, Node* &c) {
 	Node* lastNode = nullptr;
 	c = n;
 	while (c) {
-		cout << c->value << endl;
+		lastNode = c;
+		//cout << c->value << c->value << endl;
 		c = c->next;
 		//lastNode = c;
 		//lastNode->value = c->value;
@@ -46,7 +47,7 @@ void addNodeBack(Node* &n, Node* &c) {
 	
 	//Node* lastNode = c->next;
 	//lastNode = c;
-	cout << "Last node is:" << &c->value << "  " &c->next << endl;
+	//cout << "Last node is:" << &c->value << "  " &c->next << endl;
 		
 	Node* newVal = new Node;
 		// adds node at head
@@ -56,7 +57,7 @@ void addNodeBack(Node* &n, Node* &c) {
 			newVal->value = tmp;
 		}
 		else {
-			c->next = newVal;
+			lastNode->next = newVal;
 			newVal->next = nullptr;
 			newVal->value = tmp;
 			//n = newVal;
