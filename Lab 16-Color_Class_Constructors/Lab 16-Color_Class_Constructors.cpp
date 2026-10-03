@@ -53,12 +53,12 @@ int main()
 	cout << "Parameter taking from function return constructor: "; paraTakingFunctionsConstructor.print();
 
 	vector<Color> colorVector;
-	//Color temp(0,0,0);
+	Color temp;
 	cout << "constructors into vector" << endl;
 	cout << "          R   G  B  " << endl;
 	for (int i = 0, x = 1; i < 10; ++i, ++x) {
 		
-		Color temp(getRNG(), getRNG(), getRNG());
+		temp.Color(getRNG(), getRNG(), getRNG());
 		//temp.setG(randomRGB(gen));
 		//temp.setB(randomRGB(gen));
 		cout << "color #" << x << ": ";
