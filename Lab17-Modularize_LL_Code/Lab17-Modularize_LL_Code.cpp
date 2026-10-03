@@ -62,6 +62,40 @@ void deleteNode(Node* &n) {
 	//return n;
 }
 
+void insertNode(Node*& n) {
+
+	cout << "After which node to insert 10000? " << endl;
+	int count = 1;
+	Node* current = n;
+	Node* prev = nullptr;
+	while (current) {
+		cout << "[" << count++ << "] " << current->value << endl;
+		current = current->next;
+	}
+	cout << "Choice --> ";
+	int entry;
+	cin >> entry;
+	current = n;
+	prev = nullptr; // reset prev to nullptr for same reason
+	for (int i = 0; i < entry; i++) {
+		prev = current;
+		current = current->next;
+	}
+	// at this point, insert a node between prev and current
+	Node* newnode = new Node;
+	newnode->value = 10000;
+	newnode->next = current;
+	if (prev == nullptr) {
+		// inserting before the head
+		n = newnode;
+	}
+	else {
+		prev->next = newnode;
+	}
+
+
+}
+
 int main() {
 	
 	Node* head = nullptr;
@@ -151,7 +185,9 @@ int main() {
 	}
 	*/
 	
+	insertNode(head);
 	output(head);
+	
 	// deleting the linked list
 	//current = head;
 	//while (current) {
