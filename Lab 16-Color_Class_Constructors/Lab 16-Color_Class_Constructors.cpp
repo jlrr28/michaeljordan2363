@@ -5,6 +5,25 @@
 #include <random>
 using namespace std;
 
+
+
+class Dcolor {
+private:
+	int R;
+	int G;
+	int B;
+
+	//using constructors
+public:
+	Dcolor() { R = 0; G = 0; B = 0; }
+	int getR() { return R; }
+	int getG() { return G; }
+	int getB() { return B; }
+
+};
+
+
+
 class Color {
 private:
 	int R;
@@ -13,9 +32,11 @@ private:
 
 //using constructors
 public:
-	Color() { R = 0; G = 0; B = 0;}
-	
-//Normal function	
+	Color(int r, int g, int b) { R = 0; G = 0; B = 0;}
+	int getR() { return R; }
+	int getG() { return G; }
+	int getB() { return B; }
+	//Normal function	
 /*
 	int getR() { return R; }
 	void setR(int r) { R = r; }
@@ -33,17 +54,18 @@ public:
 };
 
 
+
 int main()
 {
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<> randomRGB(0, 255);
-	Color temp;
+	//Color temp;
 
 
-	Color dConstructor;
+	Dcolor dConstructor;
 	cout << dConstructor.getR() << dConstructor.getG() << dConstructor.getB() << endl;
-	dConstructor.print();
+	//dConstructor.print();
 
 
 	/*
