@@ -5,7 +5,7 @@
 #include <random>
 using namespace std;
 
-
+int getRNG();
 
 class Dcolor {
 private:
@@ -15,7 +15,7 @@ private:
 
 	//using constructors
 public:
-	Dcolor() { R = 0; G = 0; B = 0; }
+	Dcolor() { R = getRNG(); G = getRNG(); B = getRNG(); }
 	int getR() { return R; }
 	int getG() { return G; }
 	int getB() { return B; }
@@ -32,12 +32,15 @@ private:
 
 //using constructors
 public:
-	Color(int r, int g, int b) { R = 0; G = 0; B = 0;}
+	//constuctors
+	Color() { R = 0; G = 0; B = 0; }
+	Color(int G) { R = getRNG(); G = 68; B = getRNG();  }
+	Color(int r, int g, int b); //{ R = 0; G = 0; B = 0;}
+	
 	int getR() { return R; }
 	int getG() { return G; }
 	int getB() { return B; }
-	//Normal function	
-/*
+
 	int getR() { return R; }
 	void setR(int r) { R = r; }
 	int getG() { return G; }
@@ -48,11 +51,8 @@ public:
 	void print() {
 		cout << R << " " << G << " " << B << endl;
 	}
-*/
-
 
 };
-
 
 
 int main()
@@ -63,10 +63,11 @@ int main()
 	//Color temp;
 
 
-	Dcolor dConstructor;
-	cout << dConstructor.getR() << dConstructor.getG() << dConstructor.getB() << endl;
-	//dConstructor.print();
+	Color dConstructor;
+	cout << dConstructor.getR() << " " << dConstructor.getG() << " " << dConstructor.getB() << endl;
 
+	Color paraConstructor (3, 45, 234);
+	paraConstructor.print();
 
 	/*
 	vector<Color> colorVector;
@@ -82,4 +83,13 @@ int main()
 */
 
 
+}
+
+
+int getRNG() {
+	random_device rd; //probably not effiecient, but just playing around with things right now
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomRGB(0, 255);
+	int x = (randomRGB(gen));
+	return x;
 }
