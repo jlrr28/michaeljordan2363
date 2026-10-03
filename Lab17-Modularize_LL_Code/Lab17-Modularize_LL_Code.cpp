@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
-const int SIZE = 7;
+const int SIZE = 8;
+
 struct Node {
 	float value;
 	Node* next;
@@ -27,6 +28,30 @@ void addNodeFront(Node *& n){
 	}
 
 	//output(n);
+}
+
+void addNodeBack(Node*& n) {
+	int tmp = 4536;
+
+	for (int i = 0; i < SIZE; i++) {
+		int tmp_val = rand() % 100;
+
+		Node* newVal = new Node;
+		// adds node at head
+		if (!n) {
+			n = newVal;
+			newVal->next = nullptr;
+			newVal->value = tmp_val;
+		}
+		else {
+			newVal->next = n;
+			newVal->value = tmp_val;
+			n = newVal;
+		}
+	}
+
+
+
 }
 
 void deleteNode(Node* &n, Node* &c) {
@@ -135,35 +160,12 @@ int main() {
 	addNodeFront(head);
 	output(head);
 	
-	
-	
-	/* deleting a node
-	cout << "Which node to delete? " << endl;
+	deleteNode(head, current);
 	output(head);
-	int entry;
-	cout << "Choice --> ";
-	cin >> entry;
-	// traverse that many times and delete that node
-	Node* current = head;
-	Node* prev = nullptr; // start prev as nullptr to detect head deletion
-	for (int i = 0; i < (entry - 1); i++) {
-		prev = current;
-		current = current->next;
-	}
-	// at this point, delete current and reroute pointers
-	if (current) {
-		if (prev == nullptr) {
-			// deleting the head node
-			head = current->next;
-		}
-		else {
-			prev->next = current->next;
-		}
-		delete current;
-		current = nullptr;
-	}
-	*/
-	
+
+	addNodeBack(head);
+	output(head);
+
 	deleteNode(head, current);
 	output(head);
 	
