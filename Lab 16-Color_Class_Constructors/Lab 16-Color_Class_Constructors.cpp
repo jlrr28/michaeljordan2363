@@ -34,18 +34,15 @@ private:
 public:
 	//constuctors
 	Color() { R = 0; G = 0; B = 0; }
-	Color(int G) { R = getRNG(); G = 68; B = getRNG();  }
-	Color(int r, int g, int b); //{ R = 0; G = 0; B = 0;}
+	Color(int g) { R = 0; G = g; B = 0;}
+	Color(int r, int g, int b) { R = r; G = g; B = b;}
 	
 	int getR() { return R; }
 	int getG() { return G; }
 	int getB() { return B; }
 
-	int getR() { return R; }
 	void setR(int r) { R = r; }
-	int getG() { return G; }
 	void setG(int g) { G = g; }
-	int getB() { return B; }
 	void setB(int b) { B = b; }
 
 	void print() {
@@ -64,10 +61,10 @@ int main()
 
 
 	Color dConstructor;
-	cout << dConstructor.getR() << " " << dConstructor.getG() << " " << dConstructor.getB() << endl;
+	cout << "Default Constructor: " << dConstructor.getR() << " " << dConstructor.getG() << " " << dConstructor.getB() << endl;
 
-	Color paraConstructor (3, 45, 234);
-	paraConstructor.print();
+	Color paraConstructor (45);
+	cout << "Partial constructor: "; paraConstructor.print(); cout << endl;
 
 	/*
 	vector<Color> colorVector;
