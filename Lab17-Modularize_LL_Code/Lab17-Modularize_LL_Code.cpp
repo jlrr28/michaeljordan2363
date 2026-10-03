@@ -35,20 +35,7 @@ void addNodeBack(Node* &n, Node* &c) {
 	int tmp = 4536;
 	Node* lastNode = nullptr;
 	c = n;
-	while (c) {
-		lastNode = c;
-		//cout << c->value << c->value << endl;
-		c = c->next;
-		//lastNode = c;
-		//lastNode->value = c->value;
-		
-		//	lastNode->next = c;
-	}
-	
-	//Node* lastNode = c->next;
-	//lastNode = c;
-	//cout << "Last node is:" << &c->value << "  " &c->next << endl;
-		
+	cout << "adding" << tmp << "to list." << endl;
 	Node* newVal = new Node;
 		// adds node at head
 		if (!n) {
@@ -57,6 +44,11 @@ void addNodeBack(Node* &n, Node* &c) {
 			newVal->value = tmp;
 		}
 		else {
+			while (c) {
+				lastNode = c;
+				c = c->next;
+			}
+			
 			lastNode->next = newVal;
 			newVal->next = nullptr;
 			newVal->value = tmp;
@@ -142,7 +134,7 @@ void deleteList(Node*& n, Node*& c) {
 	delete c;
 	c = n;
 }
-
+	c = nullptr;
 	n = nullptr;
 }
 
@@ -162,37 +154,6 @@ int main() {
 	addNodeBack(head, current);
 	output(head);
 
-	deleteNode(head, current);
-	output(head);
-	
-	/* insert a node
-	cout << "After which node to insert 10000? " << endl;
-	count = 1;
-	current = head;
-	while (current) {
-		cout << "[" << count++ << "] " << current->value << endl;
-		current = current->next;
-	}
-	cout << "Choice --> ";
-	cin >> entry;
-	current = head;
-	prev = nullptr; // reset prev to nullptr for same reason
-	for (int i = 0; i < entry; i++) {
-		prev = current;
-		current = current->next;
-	}
-	// at this point, insert a node between prev and current
-	Node* newnode = new Node;
-	newnode->value = 10000;
-	newnode->next = current;
-	if (prev == nullptr) {
-		// inserting before the head
-		head = newnode;
-	}
-	else {
-		prev->next = newnode;
-	}
-	*/
 	
 	insertNode(head, current);
 	output(head);
@@ -205,8 +166,16 @@ int main() {
 	//	current = head;
 	//}
 	
-	head = nullptr;
+	//head = nullptr;
+	deleteList(head, current);
 	output(head);
+	
+	addNodeBack(head, current);
+	addNodeBack(head, current);
+	addNodeBack(head, current);
+	
+	output(head);
+	
 	return 0;
 }
 
