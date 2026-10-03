@@ -38,6 +38,12 @@ int main()
 	color1.setB(randomRGB(gen));
 	//color1.print();
 
+	Color dConstructor;
+	cout << dConstructor.getR() << dConstructor.getG() << dConstructor.getB() << endl;
+
+
+
+/*
 	vector<Color> colorVector;
 	cout << "          R   G  B  " << endl;
 	for (int i = 0, x = 1; i < 10; ++i, ++x) {
@@ -48,7 +54,7 @@ int main()
 		temp.print(); cout << endl;		
 		colorVector.push_back(temp);
 	}
-
+*/
 
 
 }
