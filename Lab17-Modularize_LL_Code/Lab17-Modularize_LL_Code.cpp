@@ -102,7 +102,7 @@ void output(Node* hd) {
 	int count = 1;
 	Node* current = hd;
 	while (current) {
-		cout << "[" << count++ << "] " << current->value << endl;
+		cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
 		current = current->next;
 	}
 	cout << endl;
