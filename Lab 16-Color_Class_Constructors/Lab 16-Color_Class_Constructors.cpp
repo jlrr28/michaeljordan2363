@@ -37,9 +37,6 @@ int getRNG();
 int main()
 {
 
-	//Color temp;
-
-
 	Color dConstructor;
 	cout << "Default Constructor: " << dConstructor.getR() << " " << dConstructor.getG() << " " << dConstructor.getB() << endl;
 
@@ -53,20 +50,15 @@ int main()
 	cout << "Parameter taking from function return constructor: "; paraTakingFunctionsConstructor.print();
 
 	vector<Color> colorVector;
-	Color temp;
-	cout << "constructors into vector" << endl;
+	cout << "Constructors into vector:" << endl;
 	cout << "          R   G  B  " << endl;
 	for (int i = 0, x = 1; i < 10; ++i, ++x) {
 		
-		temp.Color(getRNG(), getRNG(), getRNG());
-		//temp.setG(randomRGB(gen));
-		//temp.setB(randomRGB(gen));
-		cout << "color #" << x << ": ";
+		Color temp(getRNG(), getRNG(), getRNG()); //not sure if re-initializing every loop iteration is correct or efficient,
+		cout << "color #" << x << ": ";           //but this is the only way it worked after trying a couple of configurations.
 		temp.print(); cout << endl;
 		colorVector.push_back(temp);
 	}
-
-
 
 }
 
