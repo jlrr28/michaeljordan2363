@@ -5,25 +5,6 @@
 #include <random>
 using namespace std;
 
-int getRNG();
-
-class Dcolor {
-private:
-	int R;
-	int G;
-	int B;
-
-	//using constructors
-public:
-	Dcolor() { R = getRNG(); G = getRNG(); B = getRNG(); }
-	int getR() { return R; }
-	int getG() { return G; }
-	int getB() { return B; }
-
-};
-
-
-
 class Color {
 private:
 	int R;
@@ -51,20 +32,25 @@ public:
 
 };
 
+int getRNG();
 
 int main()
 {
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<> randomRGB(0, 255);
+
 	//Color temp;
 
 
 	Color dConstructor;
 	cout << "Default Constructor: " << dConstructor.getR() << " " << dConstructor.getG() << " " << dConstructor.getB() << endl;
 
-	Color paraConstructor (45);
-	cout << "Partial constructor: "; paraConstructor.print(); cout << endl;
+	Color partConstructor (45);
+	cout << "Partial constructor: "; partConstructor.print();
+
+	Color paraConstructor(67, 99, 22);
+	cout << "Parameter constructor: "; paraConstructor.print();
+
+	Color paraTakingFunctionsConstructor(67, 230, 22);
+	cout << "Parameter constructor: "; paraTakingFunctionsConstructor.print();
 
 	/*
 	vector<Color> colorVector;
