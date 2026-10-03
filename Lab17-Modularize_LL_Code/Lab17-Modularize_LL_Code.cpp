@@ -29,7 +29,7 @@ void addNodeFront(Node *& n){
 	//output(n);
 }
 
-void deleteNode(Node* &n, Node* &c) {
+void deleteNode(Node* &n) {
 	// deleting a node
 	cout << "Which node to delete? " << endl;
 	output(n);
@@ -119,7 +119,7 @@ int main() {
 	}
 	*/
 	
-	deleteNode(head,current);
+	deleteNode(head);
 	output(head);
 	
 	/* insert a node
