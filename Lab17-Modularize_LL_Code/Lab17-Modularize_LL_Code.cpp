@@ -29,7 +29,7 @@ void addNodeFront(Node *& n){
 	//output(n);
 }
 
-Node* deleteNode(Node* n) {
+void deleteNode(Node* &n) {
 	// deleting a node
 	cout << "Which node to delete? " << endl;
 	output(n);
@@ -58,13 +58,13 @@ Node* deleteNode(Node* n) {
 
 	output(n);
 
-	return n;
+	//return n;
 }
 
 int main() {
 	
 	Node* head = nullptr;
-	Node* current = head;
+	//Node* current = head;
 	
 	int count = 0;
 	/* create a linked list of size SIZE with random numbers 0 - 99
@@ -152,13 +152,14 @@ int main() {
 	
 	output(head);
 	// deleting the linked list
-	current = head;
-	while (current) {
-		head = current->next;
-		delete current;
-		current = head;
-	}
-	head = nullptr;
+	//current = head;
+	//while (current) {
+	//	head = current->next;
+	//	delete current;
+	//	current = head;
+	//}
+	
+	//head = nullptr;
 	output(head);
 	return 0;
 }
