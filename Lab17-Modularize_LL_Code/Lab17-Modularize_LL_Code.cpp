@@ -14,7 +14,8 @@ void addNodeFront(Node *& n){
 		int tmp_val = rand() % 100;
 		
 		Node* newVal = new Node;
-		// adds node at head
+
+		// adds node at back
 		if (!n) {
 			n = newVal;
 			newVal->next = nullptr;
@@ -32,9 +33,9 @@ void addNodeFront(Node *& n){
 
 void addNodeBack(Node*& n) {
 	int tmp = 4536;
-
+	Node* lastNode = nullptr;
 	for (int i = 0; i < SIZE; i++) {
-		int tmp_val = rand() % 100;
+
 
 		Node* newVal = new Node;
 		// adds node at head
@@ -45,7 +46,7 @@ void addNodeBack(Node*& n) {
 		}
 		else {
 			newVal->next = n;
-			newVal->value = tmp_val;
+			newVal->value = tmp;
 			n = newVal;
 		}
 	}
