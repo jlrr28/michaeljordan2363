@@ -10,7 +10,13 @@ private:
 	int R;
 	int G;
 	int B;
+
+//using constructors
 public:
+	Color() { R = 0; G = 0; B = 0;}
+	
+//Normal function	
+/*
 	int getR() { return R; }
 	void setR(int r) { R = r; }
 	int getG() { return G; }
@@ -21,6 +27,8 @@ public:
 	void print() {
 		cout << R << " " << G << " " << B << endl;
 	}
+*/
+
 
 };
 
@@ -32,11 +40,11 @@ int main()
 	uniform_int_distribution<> randomRGB(0, 255);
 	Color temp;
 
-	Color color1;
-	color1.setR(randomRGB(gen));
-	color1.setG(randomRGB(gen));
-	color1.setB(randomRGB(gen));
-	//color1.print();
+
+	Color dConstructor;
+	cout << dConstructor.getR() << dConstructor.getG() << dConstructor.getB() << endl;
+	dConstructor.print();
+
 
 	/*
 	vector<Color> colorVector;
