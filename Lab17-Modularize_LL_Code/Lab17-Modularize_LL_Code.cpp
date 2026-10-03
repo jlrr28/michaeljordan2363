@@ -31,17 +31,19 @@ void addNodeFront(Node *& n){
 	//output(n);
 }
 
-void addNodeBack(Node*& n, Node* &c) {
+void addNodeBack(Node* &n, Node* &c) {
 	int tmp = 4536;
 	Node* lastNode = nullptr;
 	c = n;
 	while (c) {
-
+		cout << c->value << endl;
 		c = c->next;
-		lastNode->next = c;
+	//	lastNode->next = c;
 	}
+	lastNode->next = c;
 	cout << "Last node is:" << lastNode->value;
-		Node* newVal = new Node;
+		
+	Node* newVal = new Node;
 		// adds node at head
 		if (!n) {
 			n = newVal;
@@ -49,9 +51,10 @@ void addNodeBack(Node*& n, Node* &c) {
 			newVal->value = tmp;
 		}
 		else {
-			newVal->next = n;
+			lastNode->next = newVal;
+			newVal->next = nullptr;
 			newVal->value = tmp;
-			n = newVal;
+			//n = newVal;
 		}
 
 
@@ -200,6 +203,7 @@ int main() {
 	output(head);
 	return 0;
 }
+
 void output(Node* hd) {
 	if (!hd) {
 		cout << "Empty list.\n";
