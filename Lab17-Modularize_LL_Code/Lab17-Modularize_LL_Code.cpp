@@ -29,7 +29,7 @@ void addNodeFront(Node *& n){
 	//output(n);
 }
 
-void deleteNode(Node* &n) {
+void deleteNode(Node* &n, Node* &c) {
 	// deleting a node
 	cout << "Which node to delete? " << endl;
 	output(n);
@@ -37,24 +37,24 @@ void deleteNode(Node* &n) {
 	cout << "Choice --> ";
 	cin >> entry;
 	// traverse that many times and delete that node
-	Node* current = n;
+	c = n;
 	Node* prev = nullptr; // start prev as nullptr to detect head deletion
 	for (int i = 0; i < (entry - 1); i++) {
-		prev = current;
-		current = current->next;
+		prev = c;
+		c = c->next;
 	}
 	// at this point, delete current and reroute pointers
-	if (current) {
+	if (c) {
 		if (prev == nullptr) {
 			// deleting the head node
-			n = current->next;
+			n = c->next;
 		}
 		else {
-			prev->next = current->next;
+			prev->next = c->next;
 		} 
-		cout << "deleting" << current->next << endl;
-		delete current;
-		current = nullptr;
+		cout << "deleting" << c->next << endl;
+		delete c;
+		c = nullptr;
 	}
 
 	output(n);
@@ -62,29 +62,29 @@ void deleteNode(Node* &n) {
 	//return n;
 }
 
-void insertNode(Node*& n) {
+void insertNode(Node*& n, Node*& c) {
 
 	cout << "After which node to insert 10000? " << endl;
 	int count = 1;
-	Node* current = n;
+	c = n;
 	Node* prev = nullptr;
-	while (current) {
-		cout << "[" << count++ << "] " << current->value << endl;
-		current = current->next;
+	while (c) {
+		cout << "[" << count++ << "] " << c->value << endl;
+		c = c->next;
 	}
 	cout << "Choice --> ";
 	int entry;
 	cin >> entry;
-	current = n;
+	c = n;
 	prev = nullptr; // reset prev to nullptr for same reason
 	for (int i = 0; i < entry; i++) {
-		prev = current;
-		current = current->next;
+		prev = c;
+		c = c->next;
 	}
 	// at this point, insert a node between prev and current
 	Node* newnode = new Node;
 	newnode->value = 10000;
-	newnode->next = current;
+	newnode->next = c;
 	if (prev == nullptr) {
 		// inserting before the head
 		n = newnode;
@@ -93,13 +93,24 @@ void insertNode(Node*& n) {
 		prev->next = newnode;
 	}
 
+}
 
+void deleteList(Node*& n, Node*& c) {
+	cout << "deleting the linked list" << endl;
+	c = n;
+	while (c) {
+	n = c->next;
+	delete c;
+	c = n;
+}
+
+	n = nullptr;
 }
 
 int main() {
 	
 	Node* head = nullptr;
-	Node* current = head;
+	Node* current = nullptr;
 	
 	int count = 0;
 	/* create a linked list of size SIZE with random numbers 0 - 99
@@ -153,7 +164,7 @@ int main() {
 	}
 	*/
 	
-	deleteNode(head);
+	deleteNode(head, current);
 	output(head);
 	
 	/* insert a node
@@ -185,7 +196,7 @@ int main() {
 	}
 	*/
 	
-	insertNode(head);
+	insertNode(head, current);
 	output(head);
 	
 	// deleting the linked list
@@ -196,7 +207,7 @@ int main() {
 	//	current = head;
 	//}
 	
-	//head = nullptr;
+	head = nullptr;
 	output(head);
 	return 0;
 }
