@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-const int SIZE = 7;
+const int SIZE = 8;
 
 struct Node {
 	float value;
