@@ -6,11 +6,36 @@ struct Node {
 	Node* next;
 };
 void output(Node*);
+
+void addNodeFront(Node *& n){
+
+	for (int i = 0; i < SIZE; i++) {
+		int tmp_val = rand() % 100;
+		
+		Node* newVal = new Node;
+		// adds node at head
+		if (!n) {
+			n = newVal;
+			newVal->next = nullptr;
+			newVal->value = tmp_val;
+		}
+		else {
+			newVal->next = n;
+			newVal->value = tmp_val;
+			n = newVal;
+		}
+	}
+
+	//output(n);
+}
+
+
 int main() {
 	
 	Node* head = nullptr;
+	
 	int count = 0;
-	// create a linked list of size SIZE with random numbers 0-99
+	/* create a linked list of size SIZE with random numbers 0 - 99
 	for (int i = 0; i < SIZE; i++) {
 		int tmp_val = rand() % 100;
 		Node* newVal = new Node;
@@ -26,9 +51,14 @@ int main() {
 			head = newVal;
 		}
 	}
-	
-	
+	*/
+	addNodeFront(head);
+
+
 	output(head);
+	
+	
+	
 	// deleting a node
 	cout << "Which node to delete? " << endl;
 	output(head);
@@ -54,6 +84,9 @@ int main() {
 		delete current;
 		current = nullptr;
 	}
+	
+	
+	
 	output(head);
 	// insert a node
 	cout << "After which node to insert 10000? " << endl;
