@@ -49,21 +49,22 @@ int main()
 	Color paraConstructor(67, 99, 22);
 	cout << "Parameter constructor: "; paraConstructor.print();
 
-	Color paraTakingFunctionsConstructor(67, 230, 22);
-	cout << "Parameter constructor: "; paraTakingFunctionsConstructor.print();
+	Color paraTakingFunctionsConstructor(getRNG(), getRNG(), getRNG());
+	cout << "Parameter taking from function return constructor: "; paraTakingFunctionsConstructor.print();
 
-	/*
 	vector<Color> colorVector;
+	Color temp(0,0,0);
 	cout << "          R   G  B  " << endl;
 	for (int i = 0, x = 1; i < 10; ++i, ++x) {
-		temp.setR(randomRGB(gen));
-		temp.setG(randomRGB(gen));
-		temp.setB(randomRGB(gen));
+		
+		Color temp(getRNG(), getRNG(), getRNG());
+		//temp.setG(randomRGB(gen));
+		//temp.setB(randomRGB(gen));
 		cout << "color #" << x << ": ";
 		temp.print(); cout << endl;
 		colorVector.push_back(temp);
 	}
-*/
+
 
 
 }
