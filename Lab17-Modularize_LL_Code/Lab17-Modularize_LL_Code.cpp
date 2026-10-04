@@ -142,11 +142,18 @@ int main() {
 	
 	Node* head = nullptr;
 	Node* current = nullptr;
-	
-	int count = 0;
+
+	char input = ' ';
+	while (input != 'q') {
+		cout << "Pick an option:\n" << "Add node to front: f\n" << "Add node to back: b\n"
+			<< "Delete node: d\n" << "Insert node: i\n" << "Print list: p\n"
+			<< "Delete the list: x\n" << "Quit: q" << endl;
+		switch(input)
 
 
 
+
+	}
 
 
 
