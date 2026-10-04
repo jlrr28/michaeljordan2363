@@ -81,7 +81,7 @@ void deleteNode(Node* &n, Node* &c) {
 		else {
 			prev->next = c->next;
 		} 
-		cout << "deleting" << c->next << endl;
+		cout << "deleting node with value, " << c->value << endl;
 		delete c;
 		c = nullptr;
 	}
@@ -127,7 +127,7 @@ void insertNode(Node*& n, Node*& c) {
 }
 
 void deleteList(Node*& n, Node*& c) {
-	cout << "deleting the linked list" << endl;
+	cout << "***** deleting the linked list *****" << endl;
 	c = n;
 	while (c) {
 	n = c->next;
