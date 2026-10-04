@@ -147,8 +147,28 @@ int main() {
 	while (input != 'q') {
 		cout << "Pick an option:\n" << "Add node to front: f\n" << "Add node to back: b\n"
 			<< "Delete node: d\n" << "Insert node: i\n" << "Print list: p\n"
-			<< "Delete the list: x\n" << "Quit: q" << endl;
-		switch(input)
+			<< "Delete the list: D\n" << "Quit: q" << endl;
+		switch (input) {
+		case 'f':
+			addNodeFront(head);
+			break;
+		case 'b':
+			addNodeBack(head,current);
+			break;
+		case 'd':
+			deleteNode(head, current);
+			break;
+		case 'i':
+			insertNode(head, current);
+			break;
+		case 'p':
+			output(head);
+			break;
+		case 'D':
+			deleteList(head, current);
+		default: break;
+
+		}
 
 
 
