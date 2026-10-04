@@ -9,35 +9,37 @@ struct Node {
 void output(Node*);
 
 void addNodeFront(Node *& n){
+	int tmp = 0;
+	cout << "Enter data to be added to front of the list: ";
+	cin >> tmp; cout << endl;
+	cout << "adding" << tmp << " to front of list." << endl;
+	Node* newVal = new Node;
 
-	for (int i = 0; i < SIZE; i++) {
-		int tmp_val = rand() % 100;
-		
-		Node* newVal = new Node;
-
-		// adds node at back
-		if (!n) {
-			n = newVal;
-			newVal->next = nullptr;
-			newVal->value = tmp_val;
-		}
-		else {
-			newVal->next = n;
-			newVal->value = tmp_val;
-			n = newVal;
-		}
+	// adds node at head
+	if (!n) {
+		n = newVal;
+		newVal->next = nullptr;
+		newVal->value = tmp;
 	}
-
-	//output(n);
+	else {
+		newVal->next = n;
+		newVal->value = tmp;
+		n = newVal;
+		}
+	
 }
 
 void addNodeBack(Node* &n, Node* &c) {
-	int tmp = 4536;
+	int tmp = 0;
 	Node* lastNode = nullptr;
+	
+	cout << "Enter data to be added to back of the list :" ;
+	cin >> tmp; cout << endl;
+	cout << "adding " << tmp << " to  back of list." << endl;
+	
 	c = n;
-	cout << "adding" << tmp << "to list." << endl;
 	Node* newVal = new Node;
-		// adds node at head
+		// adds node at back
 		if (!n) {
 			n = newVal;
 			newVal->next = nullptr;
@@ -47,16 +49,12 @@ void addNodeBack(Node* &n, Node* &c) {
 			while (c) {
 				lastNode = c;
 				c = c->next;
-			}
-			
+			}			
 			lastNode->next = newVal;
 			newVal->next = nullptr;
 			newVal->value = tmp;
-			//n = newVal;
+
 		}
-
-
-
 
 }
 
@@ -145,9 +143,13 @@ int main() {
 
 	char input = ' ';
 	while (input != 'q') {
+		cout << "--------------------------------------------------------------" << endl;
 		cout << "Pick an option:\n" << "Add node to front: f\n" << "Add node to back: b\n"
 			<< "Delete node: d\n" << "Insert node: i\n" << "Print list: p\n"
 			<< "Delete the list: D\n" << "Quit: q" << endl;
+		
+		cin >> input;
+		
 		switch (input) {
 		case 'f':
 			addNodeFront(head);
@@ -176,7 +178,7 @@ int main() {
 	}
 
 
-
+	/*
 	addNodeFront(head);
 	output(head);
 	
@@ -198,7 +200,9 @@ int main() {
 	addNodeBack(head, current);
 	
 	output(head);
-	
+	*/
+
+
 	return 0;
 }
 
