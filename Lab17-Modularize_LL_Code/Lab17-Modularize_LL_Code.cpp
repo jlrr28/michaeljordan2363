@@ -15,8 +15,12 @@ void addNodeFront(Node *& n){
 	cin >> tmp; cout << endl;
 	cout << "adding " << tmp << " to front of list." << endl;
 	Node* newVal = new Node;
-
-	if (isdigit(tmp)) {
+	bool b = isdigit(tmp);
+	cout << b << endl;
+	if (b = 1) {
+		cout << "invalid input" << endl;
+	}
+	else {
 		// adds node at head
 		if (!n) {
 			n = newVal;
@@ -28,9 +32,8 @@ void addNodeFront(Node *& n){
 			newVal->value = tmp;
 			n = newVal;
 		}
-	}
-	else cout << "invalid input" << endl;
 
+	}
 
 }
 
