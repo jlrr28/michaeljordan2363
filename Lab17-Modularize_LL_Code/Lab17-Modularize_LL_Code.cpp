@@ -7,6 +7,7 @@ struct Node {
 	float value;
 	Node* next;
 };
+
 void output(Node*);
 
 void addNodeFront(Node *& n){
@@ -91,7 +92,7 @@ void deleteNode(Node* &n, Node* &c) {
 	//return n;
 }
 
-void insertNode(Node*& n, Node*& c) {
+void insertNode(Node* &n, Node* &c) {
 	float tmp = 0;
 	cout << "What data will be inserted?: ";
 	cin >> tmp;
@@ -126,7 +127,7 @@ void insertNode(Node*& n, Node*& c) {
 
 }
 
-void deleteList(Node*& n, Node*& c) {
+void deleteList(Node* &n, Node* &c) {
 	cout << "***** deleting the linked list *****" << endl;
 	c = n;
 	while (c) {
@@ -178,7 +179,6 @@ int main() {
 
 
 	}
-
 
 	cout << "final list:" << endl; output(head);
 
