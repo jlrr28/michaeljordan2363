@@ -1,6 +1,5 @@
 // COMSC - 210 || Lab 11 || Jose Luis Ramos
 #include <iostream>
-#include <cctype>
 using namespace std;
 const int SIZE = 7;
 
