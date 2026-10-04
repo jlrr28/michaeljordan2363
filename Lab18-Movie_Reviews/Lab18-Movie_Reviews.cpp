@@ -7,7 +7,7 @@
 using namespace std;
 const int NUM_OF_MOVIE = 4;
 
-void addNodeFront(Rnode* &h, string f);
+//void addNodeFront(Rnode* &h, string f);
 int getRNG();
 
 
@@ -23,10 +23,38 @@ private:
 	string name;
 	Rnode* reviews;
 public:
-	Movie() { name = "none"; reviews = nullptr;}
-	Movie(string n) { name = n; }
-		
+	Movie() { name = "none"; reviews = nullptr; }
+	Movie(string n) { name = n; reviews = nullptr; }
+
+
 	string getName() { return name; }
+
+	void setReviews(string s) {
+
+		reviews = nullptr;
+
+		double rate = getRNG();
+
+		Rnode* newVal = new Rnode;
+		// adds node at head
+		if (!reviews) {
+			reviews = newVal;
+			newVal->next = nullptr;
+			newVal->comment = s;
+			cout << newVal->comment << " added to list" << endl;
+			newVal->rating = rate;
+			cout << newVal->rating << " added to list" << endl;
+		}
+		else {
+			newVal->next = reviews;
+			newVal->comment = s;
+			cout << newVal->comment << " added to list" << endl;
+			newVal->rating = rate;
+			cout << newVal->rating << " added to list" << endl;
+			reviews = newVal;
+		}
+
+	}
 
 
 
@@ -46,7 +74,17 @@ int main()
 	if (fin.good()) {
 		getline(fin, tempString);
 		Movie tempMovie(tempString);
-		cout << "Input" << tempMovie.getName() << endl;
+		cout << "Input " << tempMovie.getName() << endl;
+		
+		fin.ignore();
+
+		getline(fin, tempString);
+		tempMovie.setReviews(tempString);
+		
+		
+		
+		
+		
 		//addNodeFront(reviews, f);
 
 	}
