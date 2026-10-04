@@ -32,23 +32,23 @@ public:
 	void setReviews(string s) {
 		reviews = nullptr;
 		double rate = getRNG();
-
+		cout << &reviews << endl;
 		Rnode* newVal = new Rnode;
 		// adds node at head
 		if (!reviews) {
 			reviews = newVal;
 			newVal->next = nullptr;
 			newVal->comment = s;
-			cout << newVal->comment << " added to list" << endl;
+			cout << newVal->comment << " added to list || " << "Address " << &newVal->comment << endl;
 			newVal->rating = rate;
-			cout << newVal->rating << " added to list" << endl;
+			cout << newVal->rating << " added to list || " << "Address " << &newVal->rating << endl;
 		}
 		else {
 			newVal->next = reviews;
 			newVal->comment = s;
-			cout << newVal->comment << " added to list" << endl;
+			cout << newVal->comment << " added to list || " << "Address " << &newVal->comment << endl;
 			newVal->rating = rate;
-			cout << newVal->rating << " added to list" << endl;
+			cout << newVal->rating << " added to list || " << "Address " << &newVal->rating << endl;
 			reviews = newVal;
 		}
 
