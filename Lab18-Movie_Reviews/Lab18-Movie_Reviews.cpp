@@ -15,14 +15,26 @@ struct rNode {
 class Movie {
 private:
 	string name;
-	rNode reviews;
+	rNode* reviews;
 public:
+	
+	Movie() { name = "none"; reviews = nullptr;};
 	Movie(string f) {
-		
+		ifstream fin;
+		fin.open(f);
+		cout << f << " opened" << endl;
+		reviews = nullptr;
+		if (fin.good()) {
+			getline(fin, name);
+			cout << "input name:" << name << endl;
 
 
-
+		}
+		fin.close();
 	}
+
+
+
 
 };
 
@@ -36,8 +48,8 @@ int main()
 	vector<Movie> movieVector;
 
 	for (int i = 0; i < numOfMovie; i++) {
-
-
+		
+		Movie movie(file);
 
 
 
