@@ -10,134 +10,15 @@ struct Node {
 
 void output(Node*);
 
-void addNodeFront(Node *& n){
-	float tmp = 0;
-	cout << "Enter data to be added to front of the list: ";
-	cin >> tmp; cout << endl;
-	cout << "adding " << tmp << " to front of list." << endl;
-	Node* newVal = new Node;
-	// adds node at head
-		if (!n) {
-			n = newVal;
-			newVal->next = nullptr;
-			newVal->value = tmp;
-		}
-		else {
-			newVal->next = n;
-			newVal->value = tmp;
-			n = newVal;
-		}
+void addNodeFront(Node*& n); //Used pass by reference, because on Lab 11 I tried to return pointers but the memory addresses kept changaing and I wasn't sure why.
+							 //Using the same few pointers and passing them up by reference also feels more consistent
+void addNodeBack(Node*& n, Node*& c);
 
-}
+void deleteNode(Node*& n, Node*& c);
 
-void addNodeBack(Node* &n, Node* &c) {
-	float tmp = 0;
-	Node* lastNode = nullptr;
-	
-	cout << "Enter data to be added to back of the list :" ;
-	cin >> tmp; cout << endl;
-	cout << "adding " << tmp << " to  back of list." << endl;
-	
-	c = n;
-	Node* newVal = new Node;
-		// adds node at back
-		if (!n) {
-			n = newVal;
-			newVal->next = nullptr;
-			newVal->value = tmp;
-		}
-		else {
-			while (c) {
-				lastNode = c;
-				c = c->next;
-			}			
-			lastNode->next = newVal;
-			newVal->next = nullptr;
-			newVal->value = tmp;
+void insertNode(Node* &n, Node* &c);
 
-		}
-
-}
-
-void deleteNode(Node* &n, Node* &c) {
-	// deleting a node
-	cout << "Which node to delete? " << endl;
-	output(n);
-	int entry;
-	cout << "Choice --> ";
-	cin >> entry;
-	// traverse that many times and delete that node
-	c = n;
-	Node* prev = nullptr; // start prev as nullptr to detect head deletion
-	for (int i = 0; i < (entry - 1); i++) {
-		prev = c;
-		c = c->next;
-	}
-	// at this point, delete current and reroute pointers
-	if (c) {
-		if (prev == nullptr) {
-			// deleting the head node
-			n = c->next;
-		}
-		else {
-			prev->next = c->next;
-		} 
-		cout << "deleting node with value, " << c->value << endl;
-		delete c;
-		c = nullptr;
-	}
-
-	output(n);
-
-	//return n;
-}
-
-void insertNode(Node* &n, Node* &c) {
-	float tmp = 0;
-	cout << "What data will be inserted?: ";
-	cin >> tmp;
-	cout << "After which node to insert " << tmp << "?: " << endl;
-	int count = 1;
-	c = n;
-	Node* prev = nullptr;
-	while (c) {
-		cout << "[" << count++ << "] " << c->value << endl;
-		c = c->next;
-	}
-	cout << "Choice --> ";
-	int entry;
-	cin >> entry;
-	c = n;
-	prev = nullptr; // reset prev to nullptr for same reason
-	for (int i = 0; i < entry; i++) {
-		prev = c;
-		c = c->next;
-	}
-	// at this point, insert a node between prev and current
-	Node* newnode = new Node;
-	newnode->value = tmp;
-	newnode->next = c;
-	if (prev == nullptr) {
-		// inserting before the head
-		n = newnode;
-	}
-	else {
-		prev->next = newnode;
-	}
-
-}
-
-void deleteList(Node* &n, Node* &c) {
-	cout << "***** deleting the linked list *****" << endl;
-	c = n;
-	while (c) {
-	n = c->next;
-	delete c;
-	c = n;
-}
-	c = nullptr;
-	n = nullptr;
-}
+void deleteList(Node* &n, Node* &c);
 
 int main() {
 	
@@ -198,4 +79,132 @@ void output(Node* hd) {
 		current = current->next;
 	}
 	cout << endl;
+}
+
+void addNodeFront(Node*& n) {
+	float tmp = 0;
+	cout << "Enter data to be added to front of the list: ";
+	cin >> tmp; cout << endl;
+	cout << "adding " << tmp << " to front of list." << endl;
+	Node* newVal = new Node;
+	// adds node at head
+	if (!n) {
+		n = newVal;
+		newVal->next = nullptr;
+		newVal->value = tmp;
+	}
+	else {
+		newVal->next = n;
+		newVal->value = tmp;
+		n = newVal;
+	}
+
+}
+
+void addNodeBack(Node*& n, Node*& c) {
+	float tmp = 0;
+	Node* lastNode = nullptr;
+
+	cout << "Enter data to be added to back of the list :";
+	cin >> tmp; cout << endl;
+	cout << "adding " << tmp << " to  back of list." << endl;
+
+	c = n;
+	Node* newVal = new Node;
+	// adds node at back
+	if (!n) {
+		n = newVal;
+		newVal->next = nullptr;
+		newVal->value = tmp;
+	}
+	else {
+		while (c) {
+			lastNode = c;
+			c = c->next;
+		}
+		lastNode->next = newVal;
+		newVal->next = nullptr;
+		newVal->value = tmp;
+
+	}
+
+}
+
+void deleteNode(Node*& n, Node*& c) {
+	// deleting a node
+	cout << "Which node to delete? " << endl;
+	output(n);
+	int entry;
+	cout << "Choice --> ";
+	cin >> entry;
+	// traverse that many times and delete that node
+	c = n;
+	Node* prev = nullptr; // start prev as nullptr to detect head deletion
+	for (int i = 0; i < (entry - 1); i++) {
+		prev = c;
+		c = c->next;
+	}
+	// at this point, delete current and reroute pointers
+	if (c) {
+		if (prev == nullptr) {
+			// deleting the head node
+			n = c->next;
+		}
+		else {
+			prev->next = c->next;
+		}
+		cout << "deleting node with value, " << c->value << endl;
+		delete c;
+		c = nullptr;
+	}
+
+	output(n);
+
+}
+
+void insertNode(Node*& n, Node*& c) {
+	float tmp = 0;
+	cout << "What data will be inserted?: ";
+	cin >> tmp;
+	cout << "After which node to insert " << tmp << "?: " << endl;
+	int count = 1;
+	c = n;
+	Node* prev = nullptr;
+	while (c) {
+		cout << "[" << count++ << "] " << c->value << endl;
+		c = c->next;
+	}
+	cout << "Choice --> ";
+	int entry;
+	cin >> entry;
+	c = n;
+	prev = nullptr; // reset prev to nullptr for same reason
+	for (int i = 0; i < entry; i++) {
+		prev = c;
+		c = c->next;
+	}
+	// at this point, insert a node between prev and current
+	Node* newnode = new Node;
+	newnode->value = tmp;
+	newnode->next = c;
+	if (prev == nullptr) {
+		// inserting before the head
+		n = newnode;
+	}
+	else {
+		prev->next = newnode;
+	}
+
+}
+
+void deleteList(Node*& n, Node*& c) {
+	cout << "***** deleting the linked list *****" << endl;
+	c = n;
+	while (c) {
+		n = c->next;
+		delete c;
+		c = n;
+	}
+	c = nullptr;
+	n = nullptr;
 }
