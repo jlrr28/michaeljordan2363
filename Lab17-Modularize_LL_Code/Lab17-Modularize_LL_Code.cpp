@@ -12,11 +12,13 @@ void output(Node*);
 void addNodeFront(Node *& n){
 	float tmp = 0;
 	cout << "Enter data to be added to front of the list: ";
-	cin >> tmp; cout << endl;
+	while (tmp) {
+		cin >> tmp; cout << endl;
+	}
+	
 	cout << "adding " << tmp << " to front of list." << endl;
 	Node* newVal = new Node;
-	if( isalpha(tmp) = true)
-		// adds node at head
+	// adds node at head
 		if (!n) {
 			n = newVal;
 			newVal->next = nullptr;
