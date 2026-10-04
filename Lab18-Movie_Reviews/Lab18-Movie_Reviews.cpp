@@ -30,9 +30,7 @@ public:
 	string getName() { return name; }
 
 	void setReviews(string s) {
-
 		reviews = nullptr;
-
 		double rate = getRNG();
 
 		Rnode* newVal = new Rnode;
@@ -72,20 +70,26 @@ int main()
 	fin.open(file);
 	cout << file << " opened" << endl;
 	if (fin.good()) {
-		getline(fin, tempString);
-		Movie tempMovie(tempString);
-		cout << "Input " << tempMovie.getName() << endl;
 		
-		fin.ignore();
+		for (int i = 0; i < NUM_OF_MOVIE; i++) {
+			getline(fin, tempString);
+			Movie tempMovie(tempString);
+			cout << "Input " << tempMovie.getName() << endl;
 
-		getline(fin, tempString);
-		tempMovie.setReviews(tempString);
-		
-		
-		
-		
-		
-		//addNodeFront(reviews, f);
+			//fin.ignore();
+
+			getline(fin, tempString);
+			tempMovie.setReviews(tempString);
+			getline(fin, tempString);
+			tempMovie.setReviews(tempString);
+			getline(fin, tempString);
+			tempMovie.setReviews(tempString);
+
+			//fin.ignore();
+			cout << endl;
+			movieVector.push_back(tempMovie);
+			//addNodeFront(reviews, f);
+		}
 
 	}
 	fin.close();
@@ -96,7 +100,7 @@ int main()
 
 
 
-void addNodeFront(Rnode*& h, string f) {
+/*void addNodeFront(Rnode*& h, string f) {
 	string tmp = "n/a";
 	double rate = 0;
 
@@ -122,15 +126,14 @@ void addNodeFront(Rnode*& h, string f) {
 			newVal->rating = rate;
 			h = newVal;
 		}
-
 	}
 	fin.close();
-}
+}*/
 
 int getRNG() {
 	random_device rd; //probably not effiecient, but just playing around with things right now
 	mt19937 gen(rd());
-	uniform_int_distribution<> randomRGB(0, 5.0);
+	uniform_int_distribution<> randomRGB(0.0, 5.0);
 	double x = (randomRGB(gen));
 	return x;
 }
