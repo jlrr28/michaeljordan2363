@@ -3,8 +3,13 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <random>
 using namespace std;
 const int NUM_OF_MOVIE = 4;
+
+void addNodeFront(rNode* &h, string f);
+int getRNG();
+
 
 struct rNode {
 	string comment;
@@ -27,6 +32,7 @@ public:
 		if (fin.good()) {
 			getline(fin, name);
 			cout << "input name:" << name << endl;
+			
 			addNodeFront(reviews, f);
 
 		}
@@ -37,9 +43,6 @@ public:
 
 
 };
-
-void addNodeFront(rNode*& h, string f);
-
 
 int main()
 {
@@ -68,7 +71,7 @@ void addNodeFront(rNode*& h, string f) {
 	h = nullptr;
 	if (fin.good()) {
 		getline(fin, tmp);
-		rate = 
+		rate = getRNG();
 
 		rNode* newVal = new rNode;
 		// adds node at head
@@ -76,16 +79,23 @@ void addNodeFront(rNode*& h, string f) {
 			h = newVal;
 			newVal->next = nullptr;
 			newVal->comment = tmp;
+			newVal->rating = rate;
 		}
 		else {
-			newVal->next = n;
-			newVal->value = tmp;
-			n = newVal;
+			newVal->next = h;
+			newVal->comment = tmp;
+			newVal->rating = rate;
+			h = newVal;
 		}
 
 	}
 	fin.close();
 }
 
-
+int getRNG() {
+	random_device rd; //probably not effiecient, but just playing around with things right now
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomRGB(0, 5.0);
+	double x = (randomRGB(gen));
+	return x;
 }
