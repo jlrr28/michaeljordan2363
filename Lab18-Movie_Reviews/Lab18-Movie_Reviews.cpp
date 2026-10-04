@@ -7,38 +7,26 @@
 using namespace std;
 const int NUM_OF_MOVIE = 4;
 
-void addNodeFront(rNode* &h, string f);
+void addNodeFront(Rnode* &h, string f);
 int getRNG();
 
 
-struct rNode {
+struct Rnode {
 	string comment;
 	double rating;
-	rNode* next;
+	Rnode* next;
 };
 
 
 class Movie {
 private:
 	string name;
-	rNode* reviews;
+	Rnode* reviews;
 public:
-	Movie() { name = "none"; reviews = nullptr;};
-	Movie(string f) {
-		ifstream fin;
-		fin.open(f);
-		cout << f << " opened" << endl;
-		reviews = nullptr;
-		if (fin.good()) {
-			getline(fin, name);
-			cout << "input name:" << name << endl;
-			 
-			addNodeFront(reviews, f);
-
-		}
-		fin.close();
-	}
-
+	Movie() { name = "none"; reviews = nullptr;}
+	Movie(string n) { name = n; }
+		
+	string getName() { return name; }
 
 
 
@@ -48,20 +36,29 @@ int main()
 {
 	string file = "input.txt";
 	vector<Movie> movieVector;
+	string tempString = "n/a";
+	double tempDouble = 0;
+	Movie tempMovie;
 
-	for (int i = 0; i < NUM_OF_MOVIE; i++) {
-		
-		Movie movie(file);
-
-
+	ifstream fin;
+	fin.open(file);
+	cout << file << " opened" << endl;
+	if (fin.good()) {
+		getline(fin, tempString);
+		Movie tempMovie(tempString);
+		cout << "Input" << tempMovie.getName() << endl;
+		//addNodeFront(reviews, f);
 
 	}
+	fin.close();
 
 
 }
 
 
-void addNodeFront(rNode*& h, string f) {
+
+
+void addNodeFront(Rnode*& h, string f) {
 	string tmp = "n/a";
 	double rate = 0;
 
@@ -73,7 +70,7 @@ void addNodeFront(rNode*& h, string f) {
 		getline(fin, tmp);
 		rate = getRNG();
 
-		rNode* newVal = new rNode;
+		Rnode* newVal = new Rnode;
 		// adds node at head
 		if (!h) {
 			h = newVal;
