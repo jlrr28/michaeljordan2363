@@ -1,20 +1,47 @@
-// Lab18-Movie_Reviews.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+// COMSC - 210 || Lab 18 || Jose Luis Ramos
+#include <string>
 #include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+struct rNode {
+	string comment;
+	double rating;
+	rNode* next;
+};
+
+
+class Movie {
+private:
+	string name;
+	rNode reviews;
+public:
+	Movie(string f) {
+		
+
+
+
+	}
+
+};
+
+
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	string file = "input.txt";
+	const int numOfMovie = 4;
+	vector<Movie> movieVector;
+
+	for (int i = 0; i < numOfMovie; i++) {
+
+
+
+
+
+	}
+
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
