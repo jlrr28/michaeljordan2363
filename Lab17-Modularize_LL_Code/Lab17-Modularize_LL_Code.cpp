@@ -145,6 +145,11 @@ int main() {
 	
 	int count = 0;
 
+
+
+
+
+
 	addNodeFront(head);
 	output(head);
 	
@@ -158,15 +163,6 @@ int main() {
 	insertNode(head, current);
 	output(head);
 	
-	// deleting the linked list
-	//current = head;
-	//while (current) {
-	//	head = current->next;
-	//	delete current;
-	//	current = head;
-	//}
-	
-	//head = nullptr;
 	deleteList(head, current);
 	output(head);
 	
