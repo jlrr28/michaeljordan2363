@@ -9,10 +9,10 @@ struct Node {
 void output(Node*);
 
 void addNodeFront(Node *& n){
-	int tmp = 0;
+	float tmp = 0;
 	cout << "Enter data to be added to front of the list: ";
 	cin >> tmp; cout << endl;
-	cout << "adding" << tmp << " to front of list." << endl;
+	cout << "adding " << tmp << " to front of list." << endl;
 	Node* newVal = new Node;
 
 	// adds node at head
@@ -30,7 +30,7 @@ void addNodeFront(Node *& n){
 }
 
 void addNodeBack(Node* &n, Node* &c) {
-	int tmp = 0;
+	float tmp = 0;
 	Node* lastNode = nullptr;
 	
 	cout << "Enter data to be added to back of the list :" ;
@@ -92,8 +92,10 @@ void deleteNode(Node* &n, Node* &c) {
 }
 
 void insertNode(Node*& n, Node*& c) {
-
-	cout << "After which node to insert 10000? " << endl;
+	float tmp = 0;
+	cout << "What data will be inserted?: ";
+	cin >> tmp;
+	cout << "After which node to insert " << tmp << "?: " << endl;
 	int count = 1;
 	c = n;
 	Node* prev = nullptr;
@@ -112,7 +114,7 @@ void insertNode(Node*& n, Node*& c) {
 	}
 	// at this point, insert a node between prev and current
 	Node* newnode = new Node;
-	newnode->value = 10000;
+	newnode->value = tmp;
 	newnode->next = c;
 	if (prev == nullptr) {
 		// inserting before the head
