@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 using namespace std;
+const int NUM_OF_MOVIE = 4;
 
 struct rNode {
 	string comment;
@@ -17,7 +18,6 @@ private:
 	string name;
 	rNode* reviews;
 public:
-	
 	Movie() { name = "none"; reviews = nullptr;};
 	Movie(string f) {
 		ifstream fin;
@@ -27,7 +27,7 @@ public:
 		if (fin.good()) {
 			getline(fin, name);
 			cout << "input name:" << name << endl;
-
+			addNodeFront(reviews, f);
 
 		}
 		fin.close();
@@ -38,22 +38,54 @@ public:
 
 };
 
-
+void addNodeFront(rNode*& h, string f);
 
 
 int main()
 {
 	string file = "input.txt";
-	const int numOfMovie = 4;
 	vector<Movie> movieVector;
 
-	for (int i = 0; i < numOfMovie; i++) {
+	for (int i = 0; i < NUM_OF_MOVIE; i++) {
 		
 		Movie movie(file);
 
 
 
 	}
+
+
+}
+
+
+void addNodeFront(rNode*& h, string f) {
+	string tmp = "n/a";
+	double rate = 0;
+
+	ifstream fin;
+	fin.open(f);
+	cout << f << " opened" << endl;
+	h = nullptr;
+	if (fin.good()) {
+		getline(fin, tmp);
+		rate = 
+
+		rNode* newVal = new rNode;
+		// adds node at head
+		if (!h) {
+			h = newVal;
+			newVal->next = nullptr;
+			newVal->comment = tmp;
+		}
+		else {
+			newVal->next = n;
+			newVal->value = tmp;
+			n = newVal;
+		}
+
+	}
+	fin.close();
+}
 
 
 }
