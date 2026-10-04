@@ -15,9 +15,8 @@ void addNodeFront(Node *& n){
 	cin >> tmp; cout << endl;
 	cout << "adding " << tmp << " to front of list." << endl;
 	Node* newVal = new Node;
-	bool b = isdigit(tmp);
-	cout << b << endl;
-	if (b = 1) {
+
+	if (isalpha(tmp)) {
 		cout << "invalid input" << endl;
 	}
 	else {
