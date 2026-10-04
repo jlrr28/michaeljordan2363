@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 using namespace std;
 const int SIZE = 7;
 
@@ -15,18 +16,22 @@ void addNodeFront(Node *& n){
 	cout << "adding " << tmp << " to front of list." << endl;
 	Node* newVal = new Node;
 
-	// adds node at head
-	if (!n) {
-		n = newVal;
-		newVal->next = nullptr;
-		newVal->value = tmp;
-	}
-	else {
-		newVal->next = n;
-		newVal->value = tmp;
-		n = newVal;
+	if (isdigit(tmp)) {
+		// adds node at head
+		if (!n) {
+			n = newVal;
+			newVal->next = nullptr;
+			newVal->value = tmp;
 		}
-	
+		else {
+			newVal->next = n;
+			newVal->value = tmp;
+			n = newVal;
+		}
+	}
+	else cout << "invalid input" << endl;
+
+
 }
 
 void addNodeBack(Node* &n, Node* &c) {
@@ -180,30 +185,7 @@ int main() {
 	}
 
 
-	/*
-	addNodeFront(head);
-	output(head);
-	
-	deleteNode(head, current);
-	output(head);
-
-	addNodeBack(head, current);
-	output(head);
-
-	
-	insertNode(head, current);
-	output(head);
-	
-	deleteList(head, current);
-	output(head);
-	
-	addNodeBack(head, current);
-	addNodeBack(head, current);
-	addNodeBack(head, current);
-	
-	output(head);
-	*/
-
+	cout << "final list:" << endl; output(head);
 
 	return 0;
 }
@@ -216,7 +198,8 @@ void output(Node* hd) {
 	int count = 1;
 	Node* current = hd;
 	while (current) {
-		cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
+		//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
+		cout << "[" << count++ << "] " << current->value << endl;
 		current = current->next;
 	}
 	cout << endl;
