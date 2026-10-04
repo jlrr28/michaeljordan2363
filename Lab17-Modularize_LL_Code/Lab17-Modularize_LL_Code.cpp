@@ -12,10 +12,7 @@ void output(Node*);
 void addNodeFront(Node *& n){
 	float tmp = 0;
 	cout << "Enter data to be added to front of the list: ";
-	while (tmp) {
-		cin >> tmp; cout << endl;
-	}
-	
+	cin >> tmp; cout << endl;
 	cout << "adding " << tmp << " to front of list." << endl;
 	Node* newVal = new Node;
 	// adds node at head
