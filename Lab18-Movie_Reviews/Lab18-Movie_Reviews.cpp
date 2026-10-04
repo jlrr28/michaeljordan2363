@@ -32,7 +32,7 @@ public:
 		if (fin.good()) {
 			getline(fin, name);
 			cout << "input name:" << name << endl;
-			
+			 
 			addNodeFront(reviews, f);
 
 		}
