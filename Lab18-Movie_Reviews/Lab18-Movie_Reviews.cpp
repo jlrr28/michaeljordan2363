@@ -25,6 +25,12 @@ public:
 	Movie() { name = "none"; reviews = nullptr; }
 	Movie(string n) { name = n; reviews = nullptr; }
 
+	//Copy Constuctors
+	Movie(const Movie &m) {
+		name = m.name;
+		reviews = m.reviews;
+	}
+
 	//Destructors
 	~Movie() {
 		//cout << "destructor running" << endl;
@@ -82,7 +88,6 @@ public:
 		cout << endl;
 	}
 
-
 };
 
 int main()
@@ -95,13 +100,12 @@ int main()
 
 	ifstream fin;
 	fin.open(file);
-	cout << file << " opened" << endl;
+	//cout << file << " opened" << endl;
 	if (fin.good()) {
 		
 		for (int i = 0; i < NUM_OF_MOVIE; i++) {
 			getline(fin, tempString);
 			Movie tempMovie(tempString);
-			//fin.ignore();
 
 			getline(fin, tempString);
 			tempMovie.setReviews(tempString);
@@ -110,10 +114,7 @@ int main()
 			getline(fin, tempString);
 			tempMovie.setReviews(tempString);
 
-			//fin.ignore();
-			cout << endl;
 			movieVector.push_back(tempMovie);
-			//addNodeFront(reviews, f);
 		}
 
 	}
