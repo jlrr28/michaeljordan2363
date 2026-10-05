@@ -39,20 +39,43 @@ public:
 			reviews = newVal;
 			newVal->next = nullptr;
 			newVal->comment = s;
-			cout << newVal->comment << " added to list || " << "Address " << &newVal->comment << endl;
+			//cout << newVal->comment << " added to list || " << "Address " << &newVal->comment << endl;
 			newVal->rating = rate;
-			cout << newVal->rating << " added to list || " << "Address " << &newVal->rating << endl;
+			//cout << newVal->rating << " added to list || " << "Address " << &newVal->rating << endl;
 		}
 		else {
 			newVal->next = reviews;
 			newVal->comment = s;
-			cout << newVal->comment << " added to list || " << "Address " << &newVal->comment << endl;
+			//cout << newVal->comment << " added to list || " << "Address " << &newVal->comment << endl;
 			newVal->rating = rate;
-			cout << newVal->rating << " added to list || " << "Address " << &newVal->rating << endl;
+			//cout << newVal->rating << " added to list || " << "Address " << &newVal->rating << endl;
 			reviews = newVal;
 		}
 
 	}
+
+	void outputReviewList() {
+
+		if (!reviews) {
+			cout << "Empty list.\n";
+			return;
+		}
+		int count = 1;
+		double sum = 0;
+		Rnode* current = reviews;
+		while (current) {
+			//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
+			cout << "> Review #" << count++ << ": " << current->rating <<
+			":" << current->comment << endl;
+			
+			sum += current->rating;
+			
+			current = current->next;
+		}
+		cout << "> Average:" << sum / count << endl;
+		cout << endl;
+	}
+
 
 
 
@@ -84,7 +107,7 @@ int main()
 			tempMovie.setReviews(tempString);
 			getline(fin, tempString);
 			tempMovie.setReviews(tempString);
-
+			tempMovie.outputReviewList();
 			//fin.ignore();
 			cout << endl;
 			movieVector.push_back(tempMovie);
