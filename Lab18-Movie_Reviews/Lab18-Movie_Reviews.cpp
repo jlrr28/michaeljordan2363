@@ -4,11 +4,12 @@
 #include <vector>
 #include <fstream>
 #include <random>
+#include <iomanip>
 using namespace std;
 const int NUM_OF_MOVIE = 4;
 
 //void addNodeFront(Rnode* &h, string f);
-int getRNG();
+double getRNG();
 
 struct Rnode {
 	string comment;
@@ -63,8 +64,8 @@ public:
 		cout << "Movie Tile:" << name << endl;
 		while (current) {
 			//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
-			cout << "> Review #" << count++ << ": " << &current->rating <<
-			": " << &current->comment << endl;
+			cout << "> Review #" << count++ << ": " << current->rating <<
+			": " << current->comment << endl;
 			
 			sum += current->rating;
 			
@@ -74,12 +75,12 @@ public:
 		cout << endl;
 	}
 
-	~Movie() {
-		cout << "destructor running" << endl;
-		if (reviews)
-			delete[]reviews;
-		reviews = nullptr;
-	}
+	//~Movie() {
+	//	cout << "destructor running" << endl;
+	//	if (reviews)
+	//		delete[]reviews;
+	//	reviews = nullptr;
+	//}
 
 
 };
@@ -127,9 +128,12 @@ int main()
 		tempMovie.outputReviewList();
 		cout << endl;
 	}*/
-	
+	cout << setprecision(4);
+	Movie t = movieVector.at(2);
+	t.outputReviewList();
+
 	//tempMovie.outputReviewList();
-	for (Movie x : movieVector) { x.outputReviewList(); };
+	//for (Movie x : movieVector) { x.outputReviewList(); };
 
 }
 
@@ -166,10 +170,14 @@ int main()
 	fin.close();
 }*/
 
-int getRNG() {
-	random_device rd; //probably not effiecient, but just playing around with things right now
+double getRNG() {
+	double min = 0;
+	double max = 5.0;
+	random_device rd;
 	mt19937 gen(rd());
-	uniform_int_distribution<> randomRGB(0.0, 5.0);
-	double x = (randomRGB(gen));
+	uniform_int_distribution<> random(0.0, 5.0);
+	double x = (random(gen));
+	cout << setprecision(4);
+	cout << x << endl;
 	return x;
 }
