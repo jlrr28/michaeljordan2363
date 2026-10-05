@@ -21,9 +21,16 @@ private:
 	string name;
 	Rnode* reviews;
 public:
+	//Constructors
 	Movie() { name = "none"; reviews = nullptr; }
 	Movie(string n) { name = n; reviews = nullptr; }
 
+	//Destructors
+	~Movie() {
+		//cout << "destructor running" << endl;
+	}
+
+	//Methods
 	string getName() { return name; }
 
 	void setReviews(string s) {
@@ -52,7 +59,7 @@ public:
 	}
 
 	void outputReviewList() {
-		cout << "address of *review is " << &reviews << endl;
+		
 		if (!reviews) {
 			cout << "Empty list.\n";
 			return;
@@ -60,8 +67,8 @@ public:
 		int count = 1;
 		double sum = 0;
 		Rnode* current = reviews;
-		cout << "Movie Tile:" << name << endl;
-		cout << setprecision(3);
+		cout << "Movie Tile: " << name << endl;
+		cout << setprecision(2);
 		while (current) {
 			//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
 			cout << "> Review #" << count++ << ": " << current->rating <<
@@ -74,13 +81,6 @@ public:
 		cout << "> Average: " << sum / count << endl;
 		cout << endl;
 	}
-
-	//~Movie() {
-	//	cout << "destructor running" << endl;
-	//	if (reviews)
-	//		delete[]reviews;
-	//	reviews = nullptr;
-	//}
 
 
 };
@@ -101,8 +101,6 @@ int main()
 		for (int i = 0; i < NUM_OF_MOVIE; i++) {
 			getline(fin, tempString);
 			Movie tempMovie(tempString);
-			cout << "Input " << tempMovie.getName() << endl;
-
 			//fin.ignore();
 
 			getline(fin, tempString);
@@ -117,13 +115,10 @@ int main()
 			movieVector.push_back(tempMovie);
 			//addNodeFront(reviews, f);
 		}
-	//	tempMovie.outputReviewList();
+
 	}
 	fin.close();
 
-
-
-	//tempMovie.outputReviewList();
 	for (Movie x : movieVector) { x.outputReviewList(); };
 
 }
