@@ -10,13 +10,11 @@ const int NUM_OF_MOVIE = 4;
 //void addNodeFront(Rnode* &h, string f);
 int getRNG();
 
-
 struct Rnode {
 	string comment;
 	double rating;
 	Rnode* next;
 };
-
 
 class Movie {
 private:
@@ -54,7 +52,7 @@ public:
 	}
 
 	void outputReviewList() {
-
+		cout << "address of *review is " << &reviews << endl;
 		if (!reviews) {
 			cout << "Empty list.\n";
 			return;
@@ -76,11 +74,12 @@ public:
 		cout << endl;
 	}
 
-	/*~Movie() {
+	~Movie() {
+		cout << "destructor running" << endl;
 		if (reviews)
 			delete[]reviews;
 		reviews = nullptr;
-	}*/
+	}
 
 
 };
@@ -122,14 +121,24 @@ int main()
 	fin.close();
 
 
-
+	/*
 	for (int i = 0; i < movieVector.size(); i++) {
 		tempMovie = movieVector.at(i);
 		tempMovie.outputReviewList();
 		cout << endl;
-	}
+	}*/
 
+	tempMovie = movieVector.at(0);
+	tempMovie.outputReviewList();
 
+	tempMovie = movieVector.at(1);
+	tempMovie.outputReviewList();
+
+	tempMovie = movieVector.at(2);
+	tempMovie.outputReviewList();
+
+	tempMovie = movieVector.at(3);
+	tempMovie.outputReviewList();
 
 
 }
