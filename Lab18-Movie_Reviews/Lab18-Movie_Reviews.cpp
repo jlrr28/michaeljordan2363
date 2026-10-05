@@ -26,7 +26,6 @@ public:
 	Movie() { name = "none"; reviews = nullptr; }
 	Movie(string n) { name = n; reviews = nullptr; }
 
-
 	string getName() { return name; }
 
 	void setReviews(string s) {
@@ -63,6 +62,7 @@ public:
 		int count = 1;
 		double sum = 0;
 		Rnode* current = reviews;
+		cout << "Movie Tile:" << name << endl;
 		while (current) {
 			//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
 			cout << "> Review #" << count++ << ": " << current->rating <<
@@ -76,7 +76,11 @@ public:
 		cout << endl;
 	}
 
-
+	/*~Movie() {
+		if (reviews)
+			delete[]reviews;
+		reviews = nullptr;
+	}*/
 
 
 };
@@ -113,9 +117,19 @@ int main()
 			movieVector.push_back(tempMovie);
 			//addNodeFront(reviews, f);
 		}
-		tempMovie.outputReviewList();
+	//	tempMovie.outputReviewList();
 	}
 	fin.close();
+
+
+
+	for (int i = 0; i < movieVector.size(); i++) {
+		tempMovie = movieVector.at(i);
+		tempMovie.outputReviewList();
+		cout << endl;
+	}
+
+
 
 
 }
