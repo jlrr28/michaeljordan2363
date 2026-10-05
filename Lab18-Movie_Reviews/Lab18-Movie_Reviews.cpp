@@ -74,12 +74,12 @@ public:
 		cout << endl;
 	}
 
-	~Movie() {
-		cout << "destructor running" << endl;
-		if (reviews)
-			delete[]reviews;
-		reviews = nullptr;
-	}
+	//~Movie() {
+	//	cout << "destructor running" << endl;
+	//	if (reviews)
+	//		delete[]reviews;
+	//	reviews = nullptr;
+	//}
 
 
 };
@@ -127,18 +127,18 @@ int main()
 		tempMovie.outputReviewList();
 		cout << endl;
 	}*/
+	Movie t;
+	t = movieVector.at(0);
+	t.outputReviewList();
 
-	tempMovie = movieVector.at(0);
-	tempMovie.outputReviewList();
+	t = movieVector.at(1);
+	t.outputReviewList();
 
-	tempMovie = movieVector.at(1);
-	tempMovie.outputReviewList();
+	t = movieVector.at(2);
+	t.outputReviewList();
 
-	tempMovie = movieVector.at(2);
-	tempMovie.outputReviewList();
-
-	tempMovie = movieVector.at(3);
-	tempMovie.outputReviewList();
+	t = movieVector.at(3);
+	t.outputReviewList();
 
 
 }
