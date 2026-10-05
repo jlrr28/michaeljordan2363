@@ -137,45 +137,14 @@ int main()
 
 }
 
-
-
-
-/*void addNodeFront(Rnode*& h, string f) {
-	string tmp = "n/a";
-	double rate = 0;
-
-	ifstream fin;
-	fin.open(f);
-	cout << f << " opened" << endl;
-	h = nullptr;
-	if (fin.good()) {
-		getline(fin, tmp);
-		rate = getRNG();
-
-		Rnode* newVal = new Rnode;
-		// adds node at head
-		if (!h) {
-			h = newVal;
-			newVal->next = nullptr;
-			newVal->comment = tmp;
-			newVal->rating = rate;
-		}
-		else {
-			newVal->next = h;
-			newVal->comment = tmp;
-			newVal->rating = rate;
-			h = newVal;
-		}
-	}
-	fin.close();
-}*/
-
 double getRNG() {
-	double min = 0;
-	double max = 5.0;
+
 	random_device rd;
 	mt19937 gen(rd());
-	uniform_int_distribution<> random(0.0, 5.0);
+
+	double min = 0.0;
+	double max = 5.0;
+	uniform_int_distribution<> random(min, max);
 	double x = (random(gen));
 	cout << setprecision(4);
 	cout << x << endl;
