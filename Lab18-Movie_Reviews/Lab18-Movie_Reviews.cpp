@@ -8,7 +8,6 @@
 using namespace std;
 const int NUM_OF_MOVIE = 4;
 
-//void addNodeFront(Rnode* &h, string f);
 double getRNG();
 
 struct Rnode {
@@ -30,7 +29,7 @@ public:
 	void setReviews(string s) {
 		//reviews = nullptr;
 		double rate = getRNG();
-		cout << &reviews << endl;
+		//cout << &reviews << endl;
 		Rnode* newVal = new Rnode;
 		// adds node at head
 		if (!reviews) {
@@ -62,6 +61,7 @@ public:
 		double sum = 0;
 		Rnode* current = reviews;
 		cout << "Movie Tile:" << name << endl;
+		cout << setprecision(3);
 		while (current) {
 			//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
 			cout << "> Review #" << count++ << ": " << current->rating <<
@@ -122,31 +122,17 @@ int main()
 	fin.close();
 
 
-	/*
-	for (int i = 0; i < movieVector.size(); i++) {
-		tempMovie = movieVector.at(i);
-		tempMovie.outputReviewList();
-		cout << endl;
-	}*/
-	cout << setprecision(4);
-	Movie t = movieVector.at(2);
-	t.outputReviewList();
 
 	//tempMovie.outputReviewList();
-	//for (Movie x : movieVector) { x.outputReviewList(); };
+	for (Movie x : movieVector) { x.outputReviewList(); };
 
 }
 
 double getRNG() {
-
 	random_device rd;
 	mt19937 gen(rd());
+	uniform_real_distribution<double> randomN(0.0, 5.0);
+	double x = (randomN(gen));
 
-	double min = 0.0;
-	double max = 5.0;
-	uniform_int_distribution<> random(min, max);
-	double x = (random(gen));
-	cout << setprecision(4);
-	cout << x << endl;
 	return x;
 }
