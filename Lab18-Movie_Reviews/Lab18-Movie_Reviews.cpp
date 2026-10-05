@@ -30,7 +30,7 @@ public:
 	string getName() { return name; }
 
 	void setReviews(string s) {
-		reviews = nullptr;
+		//reviews = nullptr;
 		double rate = getRNG();
 		cout << &reviews << endl;
 		Rnode* newVal = new Rnode;
@@ -66,13 +66,13 @@ public:
 		while (current) {
 			//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
 			cout << "> Review #" << count++ << ": " << current->rating <<
-			":" << current->comment << endl;
+			": " << current->comment << endl;
 			
 			sum += current->rating;
 			
 			current = current->next;
 		}
-		cout << "> Average:" << sum / count << endl;
+		cout << "> Average: " << sum / count << endl;
 		cout << endl;
 	}
 
@@ -107,13 +107,13 @@ int main()
 			tempMovie.setReviews(tempString);
 			getline(fin, tempString);
 			tempMovie.setReviews(tempString);
-			tempMovie.outputReviewList();
+
 			//fin.ignore();
 			cout << endl;
 			movieVector.push_back(tempMovie);
 			//addNodeFront(reviews, f);
 		}
-
+		tempMovie.outputReviewList();
 	}
 	fin.close();
 
