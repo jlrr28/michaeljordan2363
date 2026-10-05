@@ -63,8 +63,8 @@ public:
 		cout << "Movie Tile:" << name << endl;
 		while (current) {
 			//cout << "[" << count++ << "] " << current->value << "  data address: " << &current ->value << " pointer address: " << &current << endl;
-			cout << "> Review #" << count++ << ": " << current->rating <<
-			": " << current->comment << endl;
+			cout << "> Review #" << count++ << ": " << &current->rating <<
+			": " << &current->comment << endl;
 			
 			sum += current->rating;
 			
@@ -74,12 +74,12 @@ public:
 		cout << endl;
 	}
 
-	//~Movie() {
-	//	cout << "destructor running" << endl;
-	//	if (reviews)
-	//		delete[]reviews;
-	//	reviews = nullptr;
-	//}
+	~Movie() {
+		cout << "destructor running" << endl;
+		if (reviews)
+			delete[]reviews;
+		reviews = nullptr;
+	}
 
 
 };
@@ -127,19 +127,9 @@ int main()
 		tempMovie.outputReviewList();
 		cout << endl;
 	}*/
-	Movie t;
-	t = movieVector.at(0);
-	t.outputReviewList();
-
-	t = movieVector.at(1);
-	t.outputReviewList();
-
-	t = movieVector.at(2);
-	t.outputReviewList();
-
-	t = movieVector.at(3);
-	t.outputReviewList();
-
+	
+	//tempMovie.outputReviewList();
+	for (Movie x : movieVector) { x.outputReviewList(); };
 
 }
 
