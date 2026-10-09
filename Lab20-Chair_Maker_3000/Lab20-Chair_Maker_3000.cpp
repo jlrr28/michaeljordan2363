@@ -72,8 +72,9 @@ int main() {
 	// amend this such that the default constructors
 	// are used to populate these objects.
 	Chair* collection = new Chair[SIZE];
+	
 	collection[0].setLegs(4);
-	collection[0] = collection();
+	collection[0].setPrices(Chair());
 	collection[1].setLegs(4);
 	collection[1].setPrices(484.84, 959.59, 868.68);
 	collection[2].setLegs(4);
