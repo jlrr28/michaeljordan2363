@@ -60,7 +60,7 @@ int main() {
 	double randomPriceArray[SIZE] = { getRNG(), getRNG(), getRNG() };
 
 	cout << "2 default constuctors" << endl;
-	Chair chair1();
+	Chair* chair1();
 	chair1.print();
 
 	cout << "constuctor taking an array" << endl;
