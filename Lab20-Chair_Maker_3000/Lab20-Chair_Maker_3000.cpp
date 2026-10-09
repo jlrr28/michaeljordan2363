@@ -31,6 +31,7 @@ public:
 	// setters and getters
 	void setLegs(int l) { legs = l; }
 	int getLegs() { return legs; }
+	
 	void setPrices(double p1, double p2, double p3) {
 		prices[0] = p1; prices[1] = p2; prices[2] = p3;
 	}
@@ -55,18 +56,27 @@ public:
 
 int main() {
 	cout << fixed << setprecision(2);
+	
+	
+	
+	
+	
 	//creating pointer to first chair object
-	Chair* chairPtr = new Chair;
-	chairPtr->setLegs(4);
-	chairPtr->setPrices(121.21, 232.32, 414.14);
-	chairPtr->print();
-	//creating dynamic chair object with constructor
+	//Chair* chairPtr = new Chair;
+	//chairPtr->setLegs();
+	//chairPtr->setPrices();
+	//chairPtr->print();
+	
+	
+	
+	/*creating dynamic chair object with constructor
 	Chair* livingChair = new Chair(3);
 	livingChair->setPrices(525.25, 434.34, 252.52);
 	livingChair->print();
 	delete livingChair;
 	livingChair = nullptr;
-	
+	*/
+
 	//creating dynamic array of chair objects
 	//In the third code block (starting at line 67), 
 	// amend this such that the default constructors
