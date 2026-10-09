@@ -1,9 +1,11 @@
 // COMSC - 210 || Lab 20 || Jose Luis Ramos
 #include <iostream>
 #include <iomanip>
+#include <random>
 using namespace std;
 const int SIZE = 3;
 
+double getRNG();
 
 class Chair {
 private:
@@ -16,7 +18,7 @@ public:
 		prices = new double[SIZE];
 		legs = 0;
 		for (int i = 0; i < SIZE; i++)
-			prices[i] = 0;
+			prices[i] = getRNG();
 	}
 	Chair(int l) {
 		prices = new double[SIZE];
@@ -63,7 +65,11 @@ int main() {
 	livingChair->print();
 	delete livingChair;
 	livingChair = nullptr;
+	
 	//creating dynamic array of chair objects
+	//In the third code block (starting at line 67), 
+	// amend this such that the default constructors
+	// are used to populate these objects.
 	Chair* collection = new Chair[SIZE];
 	collection[0].setLegs(4);
 	collection[0].setPrices(441.41, 552.52, 663.63);
@@ -74,4 +80,13 @@ int main() {
 	for (int i = 0; i < SIZE; i++)
 		collection[i].print();
 	return 0;
+}
+
+double getRNG() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_real_distribution<double> randomN(100.0, 999.99);
+	double x = (randomN(gen));
+
+	return x;
 }
