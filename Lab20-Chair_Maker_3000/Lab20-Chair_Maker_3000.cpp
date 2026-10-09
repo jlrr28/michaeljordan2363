@@ -21,11 +21,11 @@ public:
 		for (int i = 0; i < SIZE; i++)
 			prices[i] = getRNG();
 	}
-	Chair(int l, new double[] p) {
-		prices = new double p;
+	Chair(int l, double p[]) {
+		prices = new double(SIZE);
 		legs = l;
 		for (int i = 0; i < SIZE; i++)
-			prices[i] = 0;
+			prices[i] = p[i];
 	}
 	
 	// setters and getters
