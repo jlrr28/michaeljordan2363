@@ -71,14 +71,13 @@ int main() {
 	//In the third code block (starting at line 67), 
 	// amend this such that the default constructors
 	// are used to populate these objects.
-	Chair* collection = new Chair[SIZE];
+	cout << "third block of code, with only leg number being populated by setters." << endl;
 	
+	Chair* collection = new Chair[SIZE];
+
 	collection[0].setLegs(4);
-	collection[0].setPrices(Chair());
-	collection[1].setLegs(4);
-	collection[1].setPrices(484.84, 959.59, 868.68);
-	collection[2].setLegs(4);
-	collection[2].setPrices(626.26, 515.15, 757.57);
+	collection[1].setLegs(5);
+	collection[2].setLegs(36);
 	for (int i = 0; i < SIZE; i++)
 		collection[i].print();
 	return 0;
