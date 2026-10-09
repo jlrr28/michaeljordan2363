@@ -57,15 +57,17 @@ public:
 int main() {
 	cout << fixed << setprecision(2);
 	
-	
-	
-	
+	cout << "constuctor taking an array" << endl;
+	double priceArray1[SIZE] = { 12.00, 20.56, 20.34 };
+	Chair test(4, priceArray1);
+	test.print();
 	
 	//creating pointer to first chair object
-	//Chair* chairPtr = new Chair;
-	//chairPtr->setLegs();
+	cout << "pointer array using constructor taking array " << endl;
+	Chair* chairPtr = new Chair(9, priceArray1);
+	//chairPtr->(4 , priceArray1);
 	//chairPtr->setPrices();
-	//chairPtr->print();
+	chairPtr->print();
 	
 	
 	
