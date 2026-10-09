@@ -6,6 +6,7 @@ using namespace std;
 const int SIZE = 3;
 
 double getRNG();
+int getLegsRNG();
 
 class Chair {
 private:
@@ -16,7 +17,7 @@ public:
 	// constructors
 	Chair() {
 		prices = new double[SIZE];
-		legs = 0;
+		legs = getLegsRNG();
 		for (int i = 0; i < SIZE; i++)
 			prices[i] = getRNG();
 	}
@@ -86,6 +87,15 @@ double getRNG() {
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_real_distribution<double> randomN(100.0, 999.99);
+	double x = (randomN(gen));
+
+	return x;
+}
+
+int getLegsRNG() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(3,4);
 	double x = (randomN(gen));
 
 	return x;
