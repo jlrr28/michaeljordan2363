@@ -21,8 +21,8 @@ public:
 		for (int i = 0; i < SIZE; i++)
 			prices[i] = getRNG();
 	}
-	Chair(int l) {
-		prices = new double[SIZE];
+	Chair(int l, new double[] p) {
+		prices = new double p;
 		legs = l;
 		for (int i = 0; i < SIZE; i++)
 			prices[i] = 0;
