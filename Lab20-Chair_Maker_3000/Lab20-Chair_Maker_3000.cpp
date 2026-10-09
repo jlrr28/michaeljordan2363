@@ -56,9 +56,14 @@ public:
 
 int main() {
 	cout << fixed << setprecision(2);
-	
-	cout << "constuctor taking an array" << endl;
 	double priceArray1[SIZE] = { 12.00, 20.56, 20.34 };
+	double randomPriceArray[SIZE] = { getRNG(), getRNG(), getRNG() };
+
+	cout << "2 default constuctors" << endl;
+	Chair chair1();
+	chair1.print();
+
+	cout << "constuctor taking an array" << endl;
 	Chair test(4, priceArray1);
 	test.print();
 	
@@ -69,16 +74,14 @@ int main() {
 	//chairPtr->setPrices();
 	chairPtr->print();
 	
-	
-	
-	/*creating dynamic chair object with constructor
-	Chair* livingChair = new Chair(3);
-	livingChair->setPrices(525.25, 434.34, 252.52);
+	//creating dynamic chair object with constructor
+	cout << "Dynamic chair object taking array with RNG prices" << endl;
+	Chair* livingChair = new Chair(7, randomPriceArray);
+	//livingChair->setPrices(525.25, 434.34, 252.52);
 	livingChair->print();
 	delete livingChair;
 	livingChair = nullptr;
-	*/
-
+	
 	//creating dynamic array of chair objects
 	//In the third code block (starting at line 67), 
 	// amend this such that the default constructors
