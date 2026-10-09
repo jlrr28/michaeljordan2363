@@ -61,7 +61,7 @@ int main() {
 	chairPtr->print();
 	//creating dynamic chair object with constructor
 	Chair* livingChair = new Chair(3);
-	livingChair->Chair();
+	livingChair->setPrices(525.25, 434.34, 252.52);
 	livingChair->print();
 	delete livingChair;
 	livingChair = nullptr;
@@ -72,7 +72,7 @@ int main() {
 	// are used to populate these objects.
 	Chair* collection = new Chair[SIZE];
 	collection[0].setLegs(4);
-	collection[0].setPrices(441.41, 552.52, 663.63);
+	collection[0] = collection();
 	collection[1].setLegs(4);
 	collection[1].setPrices(484.84, 959.59, 868.68);
 	collection[2].setLegs(4);
