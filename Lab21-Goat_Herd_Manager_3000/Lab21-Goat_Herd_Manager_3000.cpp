@@ -1,7 +1,7 @@
 #include <iostream>
 #include <random>
 using namespace std;
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, SIZE = 15;
 int rngAGE();
 int rng1to15();
 
@@ -120,19 +120,20 @@ private:
 	int age;
 	string name;
 	string color;
-	string names[15] = { "Fi","Fy","Fo","Fum","Eenie" ,"Meenie","Minie","Mo","La","Di" ,"Da","Dum","Doo","Dip","Day" };
-	string colors[15] = { "Grey", "Greyer", "Greyest", "Black", "White", "Brown", "Burgundy", "Pink", "Cream", "Dark Brown", "Yellowish", "Stripes", "Polka Dots", "Rainbow", "Neon"};
+	string nameArray[15] = { "Fi","Fy","Fo","Fum","Eenie" ,"Meenie","Minie","Mo","La","Di" ,"Da","Dum","Doo","Tasty","Day" };
+	string colorArray[15] = { "Grey", "Greyer", "Greyest", "Black", "White", "Brown", "Burgundy", "Pink", "Cream", "Dark Brown", "Yellowish", "Stripes", "Polka Dots", "Rainbow", "Neon"};
 public:
 	//Constuctors
 	Goat() {
 		age = rngAGE();
-		name = names[rng1to15()];
-		color = color[rng1to15()];
-
+		name = nameArray[rng1to15()];
+		color = colorArray[rng1to15()];
 	}
+	Goat(int a, string n) { age = a; name = n; }
+
 
 	void print(){
-		cout << "The goat, " << name << "is " << age << "years old and is " << color << " colored." << endl;
+		cout << "The goat, " << name << ", is " << age << " years old and is " << color << " colored." << endl;
 	}
 };
 
