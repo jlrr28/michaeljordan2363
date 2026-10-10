@@ -22,7 +22,10 @@ public:
 	Goat(int a, string n) { age = a; name = n; }
 
 	//Setters
-	string getName
+	int getAge()		{ return age; }
+	string getName()	{ return name; }
+	string getColor()	{ return color; }
+
 
 	void print() {
 		cout << "The goat, " << name << ", is " << age << " years old and is " << color << " colored." << endl;
@@ -122,7 +125,7 @@ public:
 		Node* current = head;
 		if (!current) return;
 		while (current) {
-			cout << current->data << " ";
+			cout << current->data.getAge() << " ";
 			current = current->next;
 		}
 		cout << endl;
@@ -131,7 +134,7 @@ public:
 		Node* current = tail;
 		if (!current) return;
 		while (current) {
-			cout << current->data << " ";
+			cout << current->data.getAge() << " ";
 			current = current->prev;
 		}
 		cout << endl;
@@ -160,6 +163,9 @@ int main() {
 	Goat goat2;
 	goat2.print();
 
+	list.push_front(goat1);
+	list.push_front(goat2);
+	list.print();
 	
 	/*
 	int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
