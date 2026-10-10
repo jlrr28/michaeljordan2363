@@ -1,3 +1,4 @@
+// COMSC - 210 || Lab 21 || Jose Luis Ramos
 #include <iostream>
 #include <random>
 using namespace std;
@@ -26,7 +27,7 @@ public:
 	string getName()	{ return name; }
 	string getColor()	{ return color; }
 
-
+	//Methods
 	void print() {
 		cout << "The goat, " << name << ", is " << age << " years old and is " << color << " colored." << endl;
 	}
@@ -152,10 +153,8 @@ int main() {
 	int x = randomN(gen);
 	cout << "Generating " << x << " goats, pushing into list from the front." << endl;
 	for (int i = 0; i < x; i++) {
-
 		Goat goat1;
 		list.push_back(goat1);
-
 	}
 
 	list.print();
