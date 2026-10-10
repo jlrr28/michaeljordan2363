@@ -156,7 +156,7 @@ public:
 // Driver program
 int main() {
 	DoublyLinkedList list;
-	
+
 	Goat goat1;
 	goat1.print();
 
