@@ -5,10 +5,32 @@ const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, SIZE = 15;
 int rngAGE();
 int rng1to15();
 
+class Goat {
+private:
+	int age;
+	string name;
+	string color;
+	string nameArray[15] = { "Fi","Fy","Fo","Fum","Eenie" ,"Meenie","Minie","Mo","La","Di" ,"Da","Dum","Doo","Tasty","Day" };
+	string colorArray[15] = { "Grey", "Greyer", "Greyest", "Black", "White", "Brown", "Burgundy", "Pink", "Cream", "Dark Brown", "Yellowish", "Stripes", "Polka Dots", "Rainbow", "Neon" };
+public:
+	//Constuctors
+	Goat() {
+		age = rngAGE();
+		name = nameArray[rng1to15()];
+		color = colorArray[rng1to15()];
+	}
+	Goat(int a, string n) { age = a; name = n; }
+
+	void print() {
+		cout << "The goat, " << name << ", is " << age << " years old and is " << color << " colored." << endl;
+	}
+};
+
+
 class DoublyLinkedList {
 private:
 	struct Node {
-		int data;
+		Goat data;
 		Node* prev;
 		Node* next;
 		Node(int val, Node* p = nullptr, Node* n = nullptr) {
@@ -68,6 +90,8 @@ public:
 			tail = newNode; // Inserting at the end
 		temp->next = newNode;
 	}
+	
+	/*
 	void delete_node(int value) {
 		if (!head) return; // Empty list
 		Node* temp = head;
@@ -88,6 +112,8 @@ public:
 		}
 		delete temp;
 	}
+	*/
+	
 	void print() {
 		Node* current = head;
 		if (!current) return;
@@ -115,27 +141,6 @@ public:
 	}
 };
 
-class Goat {
-private:
-	int age;
-	string name;
-	string color;
-	string nameArray[15] = { "Fi","Fy","Fo","Fum","Eenie" ,"Meenie","Minie","Mo","La","Di" ,"Da","Dum","Doo","Tasty","Day" };
-	string colorArray[15] = { "Grey", "Greyer", "Greyest", "Black", "White", "Brown", "Burgundy", "Pink", "Cream", "Dark Brown", "Yellowish", "Stripes", "Polka Dots", "Rainbow", "Neon"};
-public:
-	//Constuctors
-	Goat() {
-		age = rngAGE();
-		name = nameArray[rng1to15()];
-		color = colorArray[rng1to15()];
-	}
-	Goat(int a, string n) { age = a; name = n; }
-
-
-	void print(){
-		cout << "The goat, " << name << ", is " << age << " years old and is " << color << " colored." << endl;
-	}
-};
 
 
 // Driver program
