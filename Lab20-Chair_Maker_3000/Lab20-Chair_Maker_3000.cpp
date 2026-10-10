@@ -86,9 +86,6 @@ int main() {
 	livingChair = nullptr;
 	
 	//creating dynamic array of chair objects
-	//In the third code block (starting at line 67), 
-	// amend this such that the default constructors
-	// are used to populate these objects.
 	cout << "third block of code, with only leg number being populated by setters." << endl;
 	
 	Chair* collection = new Chair[SIZE];
@@ -98,6 +95,7 @@ int main() {
 	collection[2].setLegs(36);
 	for (int i = 0; i < SIZE; i++)
 		collection[i].print();
+
 	return 0;
 }
 
