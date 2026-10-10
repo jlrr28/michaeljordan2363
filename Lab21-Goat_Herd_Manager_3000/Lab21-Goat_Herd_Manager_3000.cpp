@@ -111,6 +111,18 @@ public:
 	}
 };
 
+class Goat {
+private:
+	int age;
+	string name;
+	string color;
+	string names[15] = { "Fi","Fy","Fo","Fum","Eenie" ,"Meenie","Minie","Mo","La","Di" ,"Da","Dum","Doo","Dip","Day" };
+	string colors[15] = {"Grey", "Greyer", "Greyest", "Black", "White", "Brown", "Burgundy", "Pink", "Cream", "Dark Brown", "Yellowish", "Stripes", "Polka Dots", ""}
+public:
+	//Constuctors
+
+};
+
 
 // Driver program
 int main() {
