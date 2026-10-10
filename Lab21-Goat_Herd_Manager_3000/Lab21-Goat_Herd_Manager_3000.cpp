@@ -1,6 +1,10 @@
 #include <iostream>
+#include <random>
 using namespace std;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+int rngAGE();
+int rng1to15();
+
 class DoublyLinkedList {
 private:
 	struct Node {
@@ -117,16 +121,34 @@ private:
 	string name;
 	string color;
 	string names[15] = { "Fi","Fy","Fo","Fum","Eenie" ,"Meenie","Minie","Mo","La","Di" ,"Da","Dum","Doo","Dip","Day" };
-	string colors[15] = {"Grey", "Greyer", "Greyest", "Black", "White", "Brown", "Burgundy", "Pink", "Cream", "Dark Brown", "Yellowish", "Stripes", "Polka Dots", ""}
+	string colors[15] = { "Grey", "Greyer", "Greyest", "Black", "White", "Brown", "Burgundy", "Pink", "Cream", "Dark Brown", "Yellowish", "Stripes", "Polka Dots", "Rainbow", "Neon"};
 public:
 	//Constuctors
+	Goat() {
+		age = rngAGE();
+		name = names[rng1to15()];
+		color = color[rng1to15()];
 
+	}
+
+	void print(){
+		cout << "The goat, " << name << "is " << age << "years old and is " << color << " colored." << endl;
+	}
 };
 
 
 // Driver program
 int main() {
 	DoublyLinkedList list;
+	
+	Goat goat1;
+	goat1.print();
+
+	Goat goat2;
+	goat2.print();
+
+	
+	/*
 	int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
 	for (int i = 0; i < size; ++i)
 		list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
@@ -138,5 +160,25 @@ int main() {
 	list.~DoublyLinkedList();
 	cout << "List forward: ";
 	list.print();
+	*/
+	
 	return 0;
+}
+
+int rngAGE() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(1, 20);
+	double x = (randomN(gen));
+
+	return x;
+}
+
+int rng1to15() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(0, 14);
+	double x = (randomN(gen));
+
+	return x;
 }
