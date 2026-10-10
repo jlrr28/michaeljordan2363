@@ -122,15 +122,19 @@ public:
 	
 	
 	void print() {
+		cout << "Forward: " << endl;
 		Node* current = head;
 		if (!current) return;
 		while (current) {
-			cout << current->data.getAge() << " ";
+			cout << current->data.getName()
+			<< " (" << current->data.getColor()
+			<< ", " << current->data.getAge() << ")" << endl;
 			current = current->next;
 		}
 		cout << endl;
 	}
 	void print_reverse() {
+		cout << "Backward: " << endl;
 		Node* current = tail;
 		if (!current) return;
 		while (current) {
@@ -156,7 +160,20 @@ public:
 // Driver program
 int main() {
 	DoublyLinkedList list;
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(5, 20);
+	int x = randomN(gen);
+	cout << "Generating " << x << " goats, pushing into list from the front." << endl;
+	for (int i = 0; i < x; i++) {
 
+		Goat goat1;
+		list.push_back(goat1);
+
+	}
+
+	list.print();
+	/*
 	Goat goat1;
 	goat1.print();
 
@@ -167,7 +184,6 @@ int main() {
 	list.push_front(goat2);
 	list.print();
 	
-	/*
 	int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
 	for (int i = 0; i < size; ++i)
 		list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
