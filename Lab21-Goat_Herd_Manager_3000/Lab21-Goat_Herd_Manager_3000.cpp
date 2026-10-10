@@ -97,36 +97,15 @@ public:
 		temp->next = newNode;
 	}
 	
-	/*
-	void delete_node(int value) {
-		if (!head) return; // Empty list
-		Node* temp = head;
-		while (temp && temp->data != value)
-			temp = temp->next;
-		if (!temp) return; // Value not found
-		if (temp->prev) {
-			temp->prev->next = temp->next;
-		}
-		else {
-			head = temp->next; // Deleting the head
-		}
-		if (temp->next) {
-			temp->next->prev = temp->prev;
-		}
-		else {
-			tail = temp->prev; // Deleting the tail
-		}
-		delete temp;
-	}
-	*/
-	
-	
 	void print() {
 		cout << "Forward: " << endl;
 		Node* current = head;
-		if (!current) return;
-		while (current) {
-			cout << current->data.getName()
+		if (!current) {
+			cout << "List empty!" << endl;
+			return;
+		}
+			while (current) {
+			cout << "    " << current->data.getName()
 			<< " (" << current->data.getColor()
 			<< ", " << current->data.getAge() << ")" << endl;
 			current = current->next;
@@ -136,15 +115,18 @@ public:
 	void print_reverse() {
 		cout << "Backward: " << endl;
 		Node* current = tail;
-		if (!current) return;
+		if (!current) {
+			cout << "List empty!" << endl;
+			return;
+		}
 		while (current) {
-			cout << current->data.getAge() << " ";
+			cout << "    " << current->data.getName()
+			<< " (" << current->data.getColor()
+			<< ", " << current->data.getAge() << ")" << endl;
 			current = current->prev;
 		}
 		cout << endl;
 	}
-	
-	
 	
 	~DoublyLinkedList() {
 		while (head) {
@@ -163,6 +145,10 @@ int main() {
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<> randomN(5, 20);
+	
+	list.print();
+	list.print_reverse();
+	
 	int x = randomN(gen);
 	cout << "Generating " << x << " goats, pushing into list from the front." << endl;
 	for (int i = 0; i < x; i++) {
@@ -173,29 +159,7 @@ int main() {
 	}
 
 	list.print();
-	/*
-	Goat goat1;
-	goat1.print();
-
-	Goat goat2;
-	goat2.print();
-
-	list.push_front(goat1);
-	list.push_front(goat2);
-	list.print();
-	
-	int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
-	for (int i = 0; i < size; ++i)
-		list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
-	cout << "List forward: ";
-	list.print();
-	cout << "List backward: ";
 	list.print_reverse();
-	cout << "Deleting list, then trying to print.\n";
-	list.~DoublyLinkedList();
-	cout << "List forward: ";
-	list.print();
-	*/
 	
 	return 0;
 }
