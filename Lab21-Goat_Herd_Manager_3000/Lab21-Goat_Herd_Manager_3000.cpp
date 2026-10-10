@@ -21,6 +21,9 @@ public:
 	}
 	Goat(int a, string n) { age = a; name = n; }
 
+	//Setters
+	string getName
+
 	void print() {
 		cout << "The goat, " << name << ", is " << age << " years old and is " << color << " colored." << endl;
 	}
@@ -33,7 +36,7 @@ private:
 		Goat data;
 		Node* prev;
 		Node* next;
-		Node(int val, Node* p = nullptr, Node* n = nullptr) {
+		Node(Goat val, Node* p = nullptr, Node* n = nullptr) {
 			data = val;
 			prev = p;
 			next = n;
@@ -44,7 +47,7 @@ private:
 public:
 	// constructor
 	DoublyLinkedList() { head = nullptr; tail = nullptr; }
-	void push_back(int value) {
+	void push_back(Goat value) {
 		Node* newNode = new Node(value);
 		if (!tail) // if there's no tail, the list is empty
 			head = tail = newNode;
@@ -54,7 +57,7 @@ public:
 			tail = newNode;
 		}
 	}
-	void push_front(int value) {
+	void push_front(Goat value) {
 		Node* newNode = new Node(value);
 		if (!head) // if there's no head, the list is empty
 			head = tail = newNode;
@@ -64,7 +67,7 @@ public:
 			head = newNode;
 		}
 	}
-	void insert_after(int value, int position) {
+	void insert_after(Goat value, int position) {
 		if (position < 0) {
 			cout << "Position must be >= 0." << endl;
 			return;
@@ -114,6 +117,7 @@ public:
 	}
 	*/
 	
+	
 	void print() {
 		Node* current = head;
 		if (!current) return;
@@ -132,6 +136,9 @@ public:
 		}
 		cout << endl;
 	}
+	
+	
+	
 	~DoublyLinkedList() {
 		while (head) {
 			Node* temp = head;
