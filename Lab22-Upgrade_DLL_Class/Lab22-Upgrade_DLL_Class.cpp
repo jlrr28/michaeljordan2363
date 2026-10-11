@@ -95,7 +95,7 @@ public:
 		Node* current = head;
 		if (!current) return;
 		while (current) {
-			cout << current->data << "     adress: " << current->next << endl;
+			cout << current->data << "     prev adress: " << current->prev << "  |||||  next address: " << current->next << endl;
 			current = current->next;
 		}
 		cout << endl;
@@ -124,18 +124,20 @@ public:
 
 
 		int x = 1;
-		if (pos == 0) { head = temp->next; }
-		else {
+		//if (pos == 0) { 
+			//temp->prev->next = temp->next;
+		//	head = temp->next; }
+		//else {
 			while (temp) {
 				if (x == pos) {
-					cout << "deleting data " << temp->data << " at pos: " << x << endl;
+					cout << "deleting data " << temp->data << " at pos: " << x << "     prev adress: " << current->prev << "  |||||  next address: " << temp->next  << endl;
 					temp->prev->next = temp->next;
 				}
 				x++;
 				temp = temp->next;
 			}
-		}
-		
+		//}
+			--listSize;
 		delete temp;
 	}
 
@@ -164,9 +166,9 @@ int main() {
 	//cout << "Deleting list, then trying to print.\n";
 	//list.~DoublyLinkedList();
 	//cout << "List forward: ";
-	list.delete_pos(0);
+	list.delete_pos(10);
 
-	
+
 	list.print();
 	cout << list.getListsize();
 	return 0;
