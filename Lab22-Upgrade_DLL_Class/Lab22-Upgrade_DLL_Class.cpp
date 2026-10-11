@@ -68,6 +68,7 @@ public:
 			tail = newNode; // Inserting at the end
 		temp->next = newNode;
 	}
+	
 	void delete_node(int value) {
 		if (!head) return; // Empty list
 		Node* temp = head;
@@ -89,6 +90,7 @@ public:
 		delete temp;
 		listSize--;
 	}
+	
 	void print() {
 		Node* current = head;
 		if (!current) return;
@@ -114,18 +116,23 @@ public:
 	void delete_pos(int pos) {
 		cout << "deleting node at pos : " << pos << endl;
 
-		Node* current = head;
-		if (!current) return;
+		//Node* current = head;
+		if (!head) return;
+		Node* temp = head;
 		int x = 1;
-		while (current) {
-			cout << current->data << " at pos:" << x ;
-			if (x = pos) {
+		while (!temp) {
+			cout << temp->data << " at pos:" << x ;
+			if (x == pos) {
 				cout << "deleting data at " << x << endl;
-				delete current;
+				
+				temp->prev->next = temp->next;
+				
+				//delete temp;
 			}
-			current = current->next;
+			
+			//current = current->next;
 		}
-
+		delete temp;
 	}
 
 	
@@ -149,11 +156,11 @@ int main() {
 	cout << "List backward: ";
 	list.print_reverse();
 	list.print();
-	cout << list.getListsize();
-	cout << "Deleting list, then trying to print.\n";
+	cout << list.getListsize() << endl;
+	//cout << "Deleting list, then trying to print.\n";
 	//list.~DoublyLinkedList();
 	//cout << "List forward: ";
-	
+	list.delete_pos(5);
 
 	
 	list.print();
