@@ -133,7 +133,7 @@ public:
 			while (temp) {
 				if (x == pos) {
 					cout << "deleting data " << temp->data << " at pos: " << x << "     prev adress: " << temp->prev << "  |||||  next address: " << temp->next << "  |||  Data address: " << &temp->data << endl;
-					temp->prev->next = temp->next;
+					temp->prev->next = temp->next;					//Issue: node after the delete still points to memory address of deleted node
 				}
 				x++;
 				temp = temp->next;
