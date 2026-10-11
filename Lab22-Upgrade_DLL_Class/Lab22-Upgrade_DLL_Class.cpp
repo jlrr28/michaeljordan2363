@@ -120,19 +120,18 @@ public:
 		if (!head) return;
 		Node* temp = head;
 		int x = 1;
-		while (!temp) {
-			cout << temp->data << " at pos:" << x ;
+		
+		while (temp) {
+			cout << temp->data << " at pos: " << x ;
 			if (x == pos) {
-				cout << "deleting data at " << x << endl;
-				
+				cout << "deleting data at " << x << endl;			
 				temp->prev->next = temp->next;
-				
-				//delete temp;
+				delete temp;
 			}
-			
+			x++;
 			//current = current->next;
 		}
-		delete temp;
+		//delete temp;
 	}
 
 	
@@ -151,10 +150,10 @@ int main() {
 	int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
 	for (int i = 0; i < size; ++i)
 		list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
-	cout << "List forward: ";
-	list.print();
-	cout << "List backward: ";
-	list.print_reverse();
+	//cout << "List forward: ";
+	//list.print();
+	//cout << "List backward: ";
+	//list.print_reverse();
 	list.print();
 	cout << list.getListsize() << endl;
 	//cout << "Deleting list, then trying to print.\n";
