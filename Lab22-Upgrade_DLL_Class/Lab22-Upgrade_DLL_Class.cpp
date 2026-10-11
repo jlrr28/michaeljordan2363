@@ -94,9 +94,11 @@ public:
 	void print() {
 		Node* current = head;
 		if (!current) return;
+		int x = 1;
 		while (current) {
-			cout << current->data << "     prev adress: " << current->prev << "  |||||  next address: " << current->next << endl;
+			cout << x << " || " << current->data << "     prev adress: " << current->prev << "  |||||  next address: " << current->next << "  |||  Data address: " << &current->data << endl;
 			current = current->next;
+			x++;
 		}
 		cout << endl;
 	}
@@ -130,7 +132,7 @@ public:
 		//else {
 			while (temp) {
 				if (x == pos) {
-					cout << "deleting data " << temp->data << " at pos: " << x << "     prev adress: " << current->prev << "  |||||  next address: " << temp->next  << endl;
+					cout << "deleting data " << temp->data << " at pos: " << x << "     prev adress: " << temp->prev << "  |||||  next address: " << temp->next << "  |||  Data address: " << &temp->data << endl;
 					temp->prev->next = temp->next;
 				}
 				x++;
@@ -139,6 +141,7 @@ public:
 		//}
 			--listSize;
 		delete temp;
+	
 	}
 
 	
