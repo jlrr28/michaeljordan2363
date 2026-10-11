@@ -108,14 +108,32 @@ public:
 		cout << endl;
 	}
 	
+	//Lab 22 methods
+	int getListsize() { return listSize; }
 	
-	int getListsize(return )
-	
+	void delete_pos(int pos) {
+		cout << "deleting node at pos : " << pos << endl;
+
+		Node* current = head;
+		if (!current) return;
+		int x = 1;
+		while (current) {
+			cout << current->data << " at pos:" << x ;
+			if (x = pos) {
+				cout << "deleting data at " << x << endl;
+				delete current;
+			}
+			current = current->next;
+		}
+
+	}
+
 	
 	~DoublyLinkedList() {
 		while (head) {
 			Node* temp = head;
 			head = head->next;
+			listSize--;
 			delete temp;
 		}
 	}
@@ -130,9 +148,15 @@ int main() {
 	list.print();
 	cout << "List backward: ";
 	list.print_reverse();
-	cout << "Deleting list, then trying to print.\n";
-	list.~DoublyLinkedList();
-	cout << "List forward: ";
 	list.print();
+	cout << list.getListsize();
+	cout << "Deleting list, then trying to print.\n";
+	//list.~DoublyLinkedList();
+	//cout << "List forward: ";
+	
+
+	
+	list.print();
+	cout << list.getListsize();
 	return 0;
 }
