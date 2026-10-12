@@ -96,7 +96,7 @@ public:
 		if (!current) return;
 		int x = 1;
 		while (current) {
-			cout << x << " || " << current->data << "     prev adress: " << current->prev << "  |||||  next address: " << current->next << "  |||  Data address: " << &current->data << endl;
+			cout << x << " || " << current->data << "     prev adress: " << current->prev << "  |||||  next address: " << current->next << "  |||  Data address: " << &current->data << endl; 
 			current = current->next;
 			x++;
 		}
