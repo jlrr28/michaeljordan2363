@@ -92,17 +92,6 @@ public:
 		listSize--;
 	}
 	
-	void pop_front() {
-		
-		if (!head) return; // Empty list
-		Node* temp = head;
-		head = temp->next; // Deleting the head
-		delete temp;
-		listSize--;
-
-	}
-
-
 	void print() {
 		Node* current = head;
 		if (!current) return;
@@ -159,6 +148,19 @@ public:
 	
 	}
 
+	void pop_front() {
+
+		if (!head) return; // Empty list
+		Node* temp = head;
+
+		//temp->prev->next = temp->next;
+
+		head = temp->next; // Deleting the head
+		//temp->prev->next = temp->next;
+		delete temp;
+		listSize--;
+
+	}
 	
 	~DoublyLinkedList() {
 		while (head) {
@@ -179,21 +181,23 @@ int main() {
 	list.print();
 	//cout << list.getListsize() << endl;
 
-	cout << "Deleting by postion, head node" << end
+	cout << "Deleting by postion, head node" << endl;
 	list.delete_pos(1);
 	list.print();
 
+	cout << " Deleting by postion, middle of list" << endl;
 	list.delete_pos(5);
 	list.delete_pos(5);
 	list.print();
 
-
-	list.pop_front();
-	list.print();
-
+	cout << " Deleting by postion, tail node " << endl;
 	list.delete_pos(list.getListsize());
 	list.print();
+
+	cout << "using pop_front() " << endl;
+	list.pop_front();
+	list.print();
 	
-	cout << list.getListsize();
+	cout << "Final size of list: " << list.getListsize() << endl;
 	return 0;
 }
