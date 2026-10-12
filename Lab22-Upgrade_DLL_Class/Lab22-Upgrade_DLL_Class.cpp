@@ -70,6 +70,7 @@ public:
 	}
 	
 	void delete_node(int value) {
+		
 		if (!head) return; // Empty list
 		Node* temp = head;
 		while (temp && temp->data != value)
@@ -91,12 +92,23 @@ public:
 		listSize--;
 	}
 	
+	void pop_front() {
+		
+		if (!head) return; // Empty list
+		Node* temp = head;
+		head = temp->next; // Deleting the head
+		delete temp;
+		listSize--;
+
+	}
+
+
 	void print() {
 		Node* current = head;
 		if (!current) return;
 		int x = 1;
 		while (current) {
-			cout << x << " || " << current->data << endl;// "     prev adress: " << current->prev << "  |||||  next address: " << current->next << "  |||  Data address: " << &current->data << endl; 
+			cout << x << " || " << current->data << "     prev adress: " << current->prev << "  |||||  next address: " << current->next << "  |||  Data address: " << &current->data << endl; 
 			current = current->next;
 			x++;
 		}
@@ -127,7 +139,7 @@ public:
 		temp = temp->next;
 		x++;		
 		}			
-		cout << "deleting data " << temp->data << " at pos:" << endl;
+		cout << "deleting data " << temp->data << " at pos:" << pos << endl;
 		if (!temp) return; // Value not found
 		if (temp->prev) {
 			temp->prev->next = temp->next;
@@ -142,11 +154,8 @@ public:
 			tail = temp->prev; // Deleting the tail
 		}
 
-			delete temp;
-			
-			//}
-			--listSize;
-	//	delete temp;
+		delete temp;
+		--listSize;
 	
 	}
 
@@ -166,23 +175,25 @@ int main() {
 	int size = rand() % (MAX_LS - MIN_LS + 1) + MIN_LS;
 	for (int i = 0; i < size; ++i)
 		list.push_back(rand() % (MAX_NR - MIN_NR + 1) + MIN_NR);
-	//cout << "List forward: ";
-	//list.print();
-	//cout << "List backward: ";
-	//list.print_reverse();
-	list.print();
-	cout << list.getListsize() << endl;
-	//cout << "Deleting list, then trying to print.\n";
-	//list.~DoublyLinkedList();
-	//cout << "List forward: ";
-	list.delete_pos(10);
-
 
 	list.print();
-	list.delete_pos(10);
+	//cout << list.getListsize() << endl;
 
-
+	cout << "Deleting by postion, head node" << end
+	list.delete_pos(1);
 	list.print();
+
+	list.delete_pos(5);
+	list.delete_pos(5);
+	list.print();
+
+
+	list.pop_front();
+	list.print();
+
+	list.delete_pos(list.getListsize());
+	list.print();
+	
 	cout << list.getListsize();
 	return 0;
 }
