@@ -69,7 +69,7 @@ public:
 		temp->next = newNode;
 	}
 	
-	void delete_node(int value) {
+	void delete_val(int value) {
 		
 		if (!head) return; // Empty list
 		Node* temp = head;
@@ -117,10 +117,9 @@ public:
 	int getListsize() { return listSize; }
 	
 	void delete_pos(int pos) {
-		cout << "deleting node at pos : " << pos << endl;
 
-		//Node* current = head;
-		if (!head) return;
+		if (!head) { cout << "list empty " << endl; return; }; // Empty list
+		cout << "deleting node at pos : " << pos << endl;
 		Node* temp = head;
 
 		int x = 1;
@@ -154,11 +153,9 @@ public:
 		cout << "Head pointing at data " << head->data << " to be deleted." << endl;
 		Node* temp = head;
 		
-			head = temp->next; // Deleting the head
+		head = temp->next; // Deleting the head
+		temp->next->prev = temp->prev;
 
-			temp->next->prev = temp->prev;
-
-		
 		delete temp;
 		listSize--;
 
@@ -169,23 +166,10 @@ public:
 		if (!head) { cout << "list empty " << endl; return; }; // Empty list
 		cout << "Tail pointing at data " << tail->data << " to be deleted." << endl;
 		Node* temp = tail;
-
+		
 		if (temp->prev) {
 			temp->prev->next = temp->next;
-			cout << "1" << endl;
 		}
-		/*
-		else {
-			head = temp->next; // Deleting the head
-			cout << "2" << endl;
-
-		}
-		if (temp->next) {
-			temp->next->prev = temp->prev;
-			cout << "3" << endl;
-
-		}*/
-
 		delete temp;
 		listSize--;
 
@@ -214,7 +198,7 @@ int main() {
 	list.delete_pos(1);
 	list.print();
 
-	cout << " Deleting by postion, middle of list" << endl;
+	cout << "Deleting by postion, in the middle of list twice" << endl;
 	list.delete_pos(5);
 	list.delete_pos(5);
 	list.print();
@@ -233,11 +217,11 @@ int main() {
 
 	cout << "Final size of list: " << list.getListsize() << endl;
 	
+	cout << "Deleting list, then empty list checks with the new functions" << endl;
 	list.~DoublyLinkedList();
-	
-	DoublyLinkedList list;
 	list.pop_front();
 	list.pop_back();
+	list.delete_pos(6);
 
 	return 0;
 }
