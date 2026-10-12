@@ -150,18 +150,43 @@ public:
 
 	void pop_front() {
 
+		cout << "Head pointing at data " << head->data << " to be deleted." << endl;
+
 		if (!head) return; // Empty list
 		Node* temp = head;
-
-			//temp->prev->next = temp->next;
-
-		head = temp->next; // Deleting the head
-		temp->prev->next = temp->next;
+		
+		if (temp->prev) {
+			temp->prev->next = temp->next;
+		}
+		else {
+			head = temp->next; // Deleting the head
+		}
+		if (temp->next) {
+			temp->next->prev = temp->prev;
+		}
+		
 		delete temp;
 		listSize--;
 
 	}
 	
+	void pop_back() {
+
+		cout << "Tail pointing at data " << tail->data  << " to be deleted." << endl;
+
+		if (!head) return; // Empty list
+		Node* temp = tail;
+
+
+
+		delete temp;
+		listSize--;
+
+	}
+
+
+
+
 	~DoublyLinkedList() {
 		while (head) {
 			Node* temp = head;
@@ -198,6 +223,10 @@ int main() {
 	list.pop_front();
 	list.print();
 	
+	cout << "using pop_back() " << endl;
+	list.pop_back();
+	list.print();
+
 	cout << "Final size of list: " << list.getListsize() << endl;
 	return 0;
 }
