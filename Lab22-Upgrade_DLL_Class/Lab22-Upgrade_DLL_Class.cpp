@@ -96,7 +96,7 @@ public:
 		if (!current) return;
 		int x = 1;
 		while (current) {
-			cout << x << " || " << current->data << "     prev adress: " << current->prev << "  |||||  next address: " << current->next << "  |||  Data address: " << &current->data << endl; 
+			cout << x << " || " << current->data << endl;// "     prev adress: " << current->prev << "  |||||  next address: " << current->next << "  |||  Data address: " << &current->data << endl; 
 			current = current->next;
 			x++;
 		}
@@ -122,25 +122,31 @@ public:
 		if (!head) return;
 		Node* temp = head;
 
-
-
-
 		int x = 1;
-		//if (pos == 0) { 
-			//temp->prev->next = temp->next;
-		//	head = temp->next; }
-		//else {
-			while (temp) {
-				if (x == pos) {
-					cout << "deleting data " << temp->data << " at pos: " << x << "     prev adress: " << temp->prev << "  |||||  next address: " << temp->next << "  |||  Data address: " << &temp->data << endl;
-					temp->prev->next = temp->next;					//Issue: node after the delete still points to memory address of deleted node
-				}
-				x++;
-				temp = temp->next;
-			}
-		//}
+		while (x != pos) {
+		temp = temp->next;
+		x++;		
+		}			
+		cout << "deleting data " << temp->data << " at pos:" << endl;
+		if (!temp) return; // Value not found
+		if (temp->prev) {
+			temp->prev->next = temp->next;
+		}
+		else {
+			head = temp->next; // Deleting the head
+		}
+		if (temp->next) {
+			temp->next->prev = temp->prev;
+		}
+		else {
+			tail = temp->prev; // Deleting the tail
+		}
+
+			delete temp;
+			
+			//}
 			--listSize;
-		delete temp;
+	//	delete temp;
 	
 	}
 
@@ -169,6 +175,10 @@ int main() {
 	//cout << "Deleting list, then trying to print.\n";
 	//list.~DoublyLinkedList();
 	//cout << "List forward: ";
+	list.delete_pos(10);
+
+
+	list.print();
 	list.delete_pos(10);
 
 
