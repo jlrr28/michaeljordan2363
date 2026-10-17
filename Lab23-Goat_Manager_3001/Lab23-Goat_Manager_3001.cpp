@@ -9,6 +9,20 @@ const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
 int select_goat(list<Goat> trip);
 
+void display_trip(list<Goat> trip) {
+
+    //Goat temp = trip;
+    int x = 1;
+    cout << "There are " << trip.size() << " goats in the Trip list:" << endl;
+    for (Goat value : trip) {
+        cout << "[" << x << "]" << value.get_name() << "(" << value.get_age() <<
+            ", " << value.get_color() << ")" << endl;
+        x++;
+    }
+    cout << endl;
+
+}
+
 void delete_goat(list<Goat>& trip) {
 
     display_trip(trip);
@@ -16,13 +30,10 @@ void delete_goat(list<Goat>& trip) {
     cout << "Select which goat you want to delete" << endl;
     int position = 0;
     cin >> position;
-    if (position < 0) {
-        cout << "ERROR: Does not exist." << endl;
-        return;
+    //auto it = nullptr;
+    for (auto it = trip.begin(); i < position; ++i, ++it) {
+        //cout << *it << " ";
     }
-
-
-    delete current;
 
     trip.erase( it );
 
@@ -40,19 +51,6 @@ void add_goat(list<Goat>& trip, string n[], string c[]) {
 
 }
 
-void display_trip(list<Goat> trip) {
-
-    //Goat temp = trip;
-    int x = 1;
-    cout << "There are " << trip.size() << " goats in the Trip list:" << endl;
-    for (Goat value : trip) {
-        cout << "[" << x << "]" << value.get_name() << "(" << value.get_age() <<
-        ", " << value.get_color() << ")" << endl;
-        x++;
-    }
-    cout << endl;
-
-}
 
 int main_menu() {
     int in = 0;
