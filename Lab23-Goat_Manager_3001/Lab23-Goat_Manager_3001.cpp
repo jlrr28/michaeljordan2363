@@ -11,35 +11,46 @@ int select_goat(list<Goat> trip);
 
 void display_trip(list<Goat> trip) {
 
-    //Goat temp = trip;
+    cout << endl;
+
     int x = 1;
     cout << "There are " << trip.size() << " goats in the Trip list:" << endl;
     for (Goat value : trip) {
-        cout << "[" << x << "]" << value.get_name() << "(" << value.get_age() <<
-            ", " << value.get_color() << ")" << endl;
+        cout << "[" << x << "] " << value.get_name() << " ( " << value.get_age() <<
+            ", " << value.get_color() << " )" << endl;
         x++;
     }
+    
     cout << endl;
 
 }
 
 void delete_goat(list<Goat>& trip) {
-
-    display_trip(trip);
-
-    cout << "Select which goat you want to delete" << endl;
-    int position = 0;
-    cin >> position;
     
-    auto it = trip.begin();
-    advance(it, position);
-    trip.erase(it);
+    if (trip.empty()) 
+        cout << "List is empty, no goats to delete." << endl;
+    else{
+        
+        display_trip(trip);
+        cout << "Select which goat you want to delete" << endl;
+        int position;
+        cin >> position;
+        
+        cout << "Deleting goat at position [" << position << "]" << endl;
+
+        auto it = trip.begin();
+        advance(it, position - 1);
+
+        trip.erase(it);
+
+
+    }
 
 
 }
 
 void add_goat(list<Goat>& trip, string n[], string c[]) {
-    
+
     int age = rand() % 20;
     
     Goat temp(n[rand() % SZ_NAMES], age , c[rand()% SZ_COLORS]);
@@ -60,11 +71,8 @@ int main_menu() {
     while (in < 1 || in > 4) {
         cout << "choice -->";
         cin >> in;
-        //cout << endl;
-        if (in < 1 || in>4) 
+        if (in < 1 || in > 4 ) 
             cout << "Invalid input\n" << endl;
-        else
-            cout << "Chose " << in << endl;
     }
 
     return in;
@@ -109,7 +117,7 @@ int main() {
         }
     }
 
-    cout << "Thanks for using Goat Manager 3001" << endl;
+    cout << endl << "Thanks for using Goat Manager 3001." << endl;
 
 
     return 0;
