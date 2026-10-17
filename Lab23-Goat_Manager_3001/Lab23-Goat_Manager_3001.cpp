@@ -12,16 +12,27 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat>& trip);
 
 void add_goat(list<Goat>& trip, string n[], string c[]) {
+    
     int age = rand() % 20;
-    Goat temp(n[rand() % SZ_NAMES], age , );
+    
+    Goat temp(n[rand() % SZ_NAMES], age , c[rand()% SZ_COLORS]);
+
+    cout << temp.get_age() << temp.get_color() << temp.get_name();
 
     trip.push_back(temp);
 
+}
+
+void display_trip(list<Goat> trip) {
+
+    //Goat temp = trip;
+    int x = 1;
+    for (Goat value : trip) {
+        cout << "[" << x << "]" << value.get_name() << "(" << value.get_age() << ", " << value.get_color << ")";
+    }
 
 
 }
-
-void display_trip(list<Goat> trip);
 
 int main_menu() {
     int in = 0;
@@ -66,19 +77,19 @@ int main() {
         input = main_menu();
 
         switch (input) {
-        case '1':
+        case 1:
             add_goat(gTrip, names, colors);
             break;
-        case '2':
+        case 2:
             //
             break;
-        case '3':
-            //
+        case 3:
+            display_trip(gTrip);
             break;
-        case '4':
+        case 4:
             break;
         default: break;
-
+        }
     }
 
     cout << "Thanks for using Goat Manager 3001" << endl;
