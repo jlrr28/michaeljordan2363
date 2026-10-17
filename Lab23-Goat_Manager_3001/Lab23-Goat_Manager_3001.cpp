@@ -36,7 +36,8 @@ void delete_goat(list<Goat>& trip) {
         int position;
         cin >> position;
         
-        while (position < 1 && position < trip.size()) {
+        while (position < 1 && position >= trip.size()) {
+            //cout << trip.size();
             int position;
             cin >> position;
             if (position < 1 || position > trip.size())
@@ -69,6 +70,7 @@ void add_goat(list<Goat>& trip, string n[], string c[]) {
 
 int main_menu() {
     int in = 0;
+    cout << endl;
     cout << "*** GOAT MANAGER 3001 ***" << endl;
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
     cout << "[3] List goats" << endl << "[4] Quit" << endl;
