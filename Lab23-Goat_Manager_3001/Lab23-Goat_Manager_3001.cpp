@@ -30,12 +30,11 @@ void delete_goat(list<Goat>& trip) {
     cout << "Select which goat you want to delete" << endl;
     int position = 0;
     cin >> position;
-    //auto it = nullptr;
-    for (auto it = trip.begin(); i < position; ++i, ++it) {
-        //cout << *it << " ";
-    }
+    
+    auto it = trip.begin();
+    advance(it, position);
+    trip.erase(it);
 
-    trip.erase( it );
 
 }
 
@@ -61,9 +60,9 @@ int main_menu() {
     while (in < 1 || in > 4) {
         cout << "choice -->";
         cin >> in;
-        cout << endl;
+        //cout << endl;
         if (in < 1 || in>4) 
-            cout << "Invalid input" << endl;
+            cout << "Invalid input\n" << endl;
         else
             cout << "Chose " << in << endl;
     }
