@@ -8,9 +8,19 @@ using namespace std;
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
 int select_goat(list<Goat> trip);
+
 void delete_goat(list<Goat>& trip);
-void add_goat(list<Goat>& trip, string[], string[]);
+
+void add_goat(list<Goat>& trip, string[], string[]) {
+
+    trip.push_back();
+
+
+
+}
+
 void display_trip(list<Goat> trip);
+
 int main_menu() {
     int in = 0;
     cout << "*** GOAT MANAGER 3001 ***" << endl;
@@ -46,12 +56,26 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
+    list<Goat> gTrip;
+
     int input = 0;
     while (input != 4) {
         
         input = main_menu();
 
-
+        switch (input) {
+        case '1':
+            add_goat(gTrip, names, colors);
+            break;
+        case '2':
+            //
+            break;
+        case '3':
+            //
+            break;
+        case '4':
+            break;
+        default: break;
 
     }
 
