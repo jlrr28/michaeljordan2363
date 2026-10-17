@@ -11,11 +11,21 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat>& trip);
 void add_goat(list<Goat>& trip, string[], string[]);
 void display_trip(list<Goat> trip);
-int main_menu(int i) {
-    int in = i;
+int main_menu() {
+    int in = 0;
     cout << "*** GOAT MANAGER 3001 ***" << endl;
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
-    cout << "[3] List goats" << endl << "[3] List goats" << endl;
+    cout << "[3] List goats" << endl << "[4] Quit" << endl;
+
+    while (in < 1 || in > 4) {
+        cout << "choice -->";
+        cin >> in;
+        cout << endl;
+        if (in < 1 || in>4) 
+            cout << "Invalid input" << endl;
+        else
+            cout << "Chose " << in << endl;
+    }
 
     return in;
 };
@@ -38,15 +48,14 @@ int main() {
 
     int input = 0;
     while (input != 4) {
-
-
-        cin >> input;
+        
+        input = main_menu();
 
 
 
     }
 
-
+    cout << "Thanks for using Goat Manager 3001" << endl;
 
 
     return 0;
