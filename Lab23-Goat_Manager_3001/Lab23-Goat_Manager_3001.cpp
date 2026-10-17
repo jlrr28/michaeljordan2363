@@ -9,7 +9,17 @@ const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
 int select_goat(list<Goat> trip);
 
-void delete_goat(list<Goat>& trip);
+void delete_goat(list<Goat>& trip) {
+
+    display_trip(trip);
+
+    cout << "Select which goat you want to delete" << endl;
+    int in;
+    cin >> in;
+
+    trip.erase(in);
+
+}
 
 void add_goat(list<Goat>& trip, string n[], string c[]) {
     
@@ -17,7 +27,7 @@ void add_goat(list<Goat>& trip, string n[], string c[]) {
     
     Goat temp(n[rand() % SZ_NAMES], age , c[rand()% SZ_COLORS]);
 
-    cout << temp.get_age() << temp.get_color() << temp.get_name();
+    //cout << temp.get_age() << temp.get_color() << temp.get_name();
 
     trip.push_back(temp);
 
@@ -27,10 +37,13 @@ void display_trip(list<Goat> trip) {
 
     //Goat temp = trip;
     int x = 1;
+    cout << "There are " << trip.size() << " goats in the Trip list:" << endl;
     for (Goat value : trip) {
-        cout << "[" << x << "]" << value.get_name() << "(" << value.get_age() << ", " << value.get_color << ")";
+        cout << "[" << x << "]" << value.get_name() << "(" << value.get_age() <<
+        ", " << value.get_color() << ")" << endl;
+        x++;
     }
-
+    cout << endl;
 
 }
 
@@ -81,7 +94,7 @@ int main() {
             add_goat(gTrip, names, colors);
             break;
         case 2:
-            //
+            delete_goat(gTrip);
             break;
         case 3:
             display_trip(gTrip);
