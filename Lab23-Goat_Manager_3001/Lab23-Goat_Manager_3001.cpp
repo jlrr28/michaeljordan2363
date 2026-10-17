@@ -36,29 +36,21 @@ void delete_goat(list<Goat>& trip) {
         int position;
         cin >> position;
         
-
-
-
-        while (!(position < 1 || position > trip.size())) {
+        while (position < 1 && position < trip.size()) {
             int position;
             cin >> position;
             if (position < 1 || position > trip.size())
                 cout << "Position input not on list" << endl;
-            else {
-
-                cout << "Deleting goat at position [" << position << "]" << endl;
-
-                auto it = trip.begin();
-                advance(it, position - 1);
-
-                trip.erase(it);
-
-            }
         
         }
 
-    }
+        cout << "Deleting goat at position [" << position << "]" << endl;
+        auto it = trip.begin();
+        advance(it, position - 1);
 
+        trip.erase(it);
+
+    }
 
 }
 
