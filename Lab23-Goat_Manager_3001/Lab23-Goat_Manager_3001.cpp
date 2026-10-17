@@ -11,9 +11,11 @@ int select_goat(list<Goat> trip);
 
 void delete_goat(list<Goat>& trip);
 
-void add_goat(list<Goat>& trip, string[], string[]) {
+void add_goat(list<Goat>& trip, string n[], string c[]) {
+    int age = rand() % 20;
+    Goat temp(n[rand() % SZ_NAMES], age , );
 
-    trip.push_back();
+    trip.push_back(temp);
 
 
 
