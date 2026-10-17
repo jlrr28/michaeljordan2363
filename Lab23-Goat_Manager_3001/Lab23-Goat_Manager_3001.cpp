@@ -14,10 +14,10 @@ void delete_goat(list<Goat>& trip) {
     display_trip(trip);
 
     cout << "Select which goat you want to delete" << endl;
-    int in;
+    int in = 0;
     cin >> in;
 
-    trip.erase(in);
+    trip.erase();
 
 }
 
