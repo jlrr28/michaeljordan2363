@@ -14,10 +14,17 @@ void delete_goat(list<Goat>& trip) {
     display_trip(trip);
 
     cout << "Select which goat you want to delete" << endl;
-    int in = 0;
-    cin >> in;
+    int position = 0;
+    cin >> position;
+    if (position < 0) {
+        cout << "ERROR: Does not exist." << endl;
+        return;
+    }
 
-    trip.erase();
+
+    delete current;
+
+    trip.erase( it );
 
 }
 
