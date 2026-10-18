@@ -10,26 +10,35 @@ using namespace std::chrono;
 void sortVec(vector<string> &v) {
 
     for (int i = 0; i < v.size() - 1; i++) {
+        
         int iLeast = i;
 
         for (int j = i + 1; j < v.size(); j++) {
-            if (v.at(i) < v.at(iLeast)) {
+            
+            if (v.at(j) < v.at(iLeast)) {
                 iLeast = j;
-                cout << "!!!!!!";
             }
+        
         }
         string temp = v.at(i);
         v.at(i) = v.at(iLeast);
         v.at(iLeast) = temp;
 
     }
-    for (int i = 0; i < v.size(); i++)
-        cout << v.at(i) << endl;
+
+}
+
+void insertMidVec(vector<string>& v , string ins) {
+
+    int mid = v.size() / 2;
+    v.insert(mid, ins);
+
 }
 
 
 int main() {
     string file = "codesShort.txt";
+    string insertT = "TESTCODE";
 
     vector<string> vec;
     list<string> list;
@@ -86,8 +95,8 @@ int main() {
     duration = duration_cast<nanoseconds>(end - start);
     cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
 
-    for (int i = 0; i < vec.size(); i++)
-        cout << vec.at(i) << endl;
+    //for (int i = 0; i < vec.size(); i++)
+    //    cout << vec.at(i) << endl;
 
     //List
     start = high_resolution_clock::now();
@@ -97,12 +106,22 @@ int main() {
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     cout << "List Sort: " << list.size() << " nanoseconds:" << duration.count() << endl;
-    for (string value : list) cout << value << endl;
+    //for (string value : list) cout << value << endl;
     
     //set
     
-    cout << "Set sorted:" << endl;
-    for (string value : set) cout << value << endl;
+    cout << "Set sorted: -1" << endl;
+    //for (string value : set) cout << value << endl;
+
+    //////////////////////SORTING
+
+    //Vector
+
+
+
+
+
+
 
     return 0;
 }
