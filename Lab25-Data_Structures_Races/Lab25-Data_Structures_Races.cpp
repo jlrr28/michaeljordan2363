@@ -13,10 +13,11 @@ void sortVec(vector<string>& v) {
         int iLeast = i;
 
         for (int j = i + 1; j < v.size(); j++) {
-            if (v.at(i) < v.at(i))
+            if (v.at(i) < v.at(iLeast)) {
                 iLeast = j;
-        }
 
+            }
+        }
         string temp = v.at(i);
         v.at(i) = v.at(iLeast);
         v.at(iLeast) = temp;
@@ -27,7 +28,7 @@ void sortVec(vector<string>& v) {
 
 
 int main() {
-    string file = "codesShort.txt";
+    string file = "alphabet.txt";
 
     vector<string> vec;
     list<string> list;
