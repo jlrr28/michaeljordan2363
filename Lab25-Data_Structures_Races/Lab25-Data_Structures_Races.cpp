@@ -13,19 +13,17 @@ void sortVec(vector<string>& v) {
         int iLeast = i;
 
         for (int j = i + 1; j < v.size(); j++) {
-            //v.at(i);
             if (v.at(i) < v.at(i))
                 iLeast = j;
-
         }
 
-
-
+        string temp = v.at(i);
+        v.at(i) = v.at(iLeast);
+        v.at(iLeast) = temp;
 
 
 
     }
-
 
 }
 
@@ -77,16 +75,17 @@ int main() {
     cout << "Set:    " << set.size() << " nanoseconds:" << duration.count() << endl;
 
     //////////////////////SORTING
-    auto start = high_resolution_clock::now();
+    start = high_resolution_clock::now();
 
     sortVec(vec);
 
     fin.close();
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
-    cout << "Vector: " << vec.size() << " nanoseconds:" << duration.count() << endl;
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
 
-
+    for (int i = 0; i < vec.size(); i++)
+        cout << vec.at(i) << endl;
 
 
     return 0;
