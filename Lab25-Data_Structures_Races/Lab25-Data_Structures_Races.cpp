@@ -98,7 +98,7 @@ int main() {
     duration = duration_cast<nanoseconds>(end - start);
     cout << "List Sort: " << list.size() << " nanoseconds:" << duration.count() << endl;
     for (string value : list) cout << value << endl;
-
+     
     return 0;
 }
 
