@@ -7,7 +7,7 @@
 using namespace std;
 using namespace std::chrono;
 
-void sortVec(vector<string>& v) {
+void sortVec(vector<string> &v) {
 
     for (int i = 0; i < v.size() - 1; i++) {
         int iLeast = i;
@@ -15,7 +15,7 @@ void sortVec(vector<string>& v) {
         for (int j = i + 1; j < v.size(); j++) {
             if (v.at(i) < v.at(iLeast)) {
                 iLeast = j;
-
+                cout << "!!!!!!";
             }
         }
         string temp = v.at(i);
@@ -23,12 +23,13 @@ void sortVec(vector<string>& v) {
         v.at(iLeast) = temp;
 
     }
-
+    for (int i = 0; i < v.size(); i++)
+        cout << v.at(i) << endl;
 }
 
 
 int main() {
-    string file = "alphabet.txt";
+    string file = "codesShort.txt";
 
     vector<string> vec;
     list<string> list;
