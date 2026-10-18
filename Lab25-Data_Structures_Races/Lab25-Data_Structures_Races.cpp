@@ -28,13 +28,35 @@ void sortVec(vector<string> &v) {
 
 }
 
-void insertMidVec(vector<string>& v , string ins) {
+void insertMid(vector<string>& v , string ins) {
 
     int mid = v.size() / 2;
-    v.insert(mid, ins);
+    auto it = v.begin();
+    advance(it, mid - 1);
+    
+    v.insert(it, ins);
 
 }
 
+void insertMid(list<string>& v, string ins) {
+
+    int mid = v.size() / 2;
+    auto it = v.begin();
+    advance(it, mid - 1);
+
+    v.insert(it, ins);
+
+}
+
+void insertMid(set<string>& v, string ins) {
+
+    int mid = v.size() / 2;
+    auto it = v.begin();
+    advance(it, mid - 1);
+
+    v.insert(it, ins);
+
+}
 
 int main() {
     string file = "codesShort.txt";
@@ -46,7 +68,7 @@ int main() {
     string temp;
     ifstream fin;
     
-    //////////////////////Inserting
+    //////////////////////Reading
     //Vector
     auto start = high_resolution_clock::now();
     fin.open(file);
@@ -83,6 +105,7 @@ int main() {
     duration = duration_cast<nanoseconds>(end - start);
     cout << "Set:    " << set.size() << " nanoseconds:" << duration.count() << endl;
 
+
     //////////////////////SORTING
     
     //Vector
@@ -113,15 +136,28 @@ int main() {
     cout << "Set sorted: -1" << endl;
     //for (string value : set) cout << value << endl;
 
+
     //////////////////////SORTING
 
     //Vector
+    
+    start = high_resolution_clock::now();
+    insertMid(vec, insertT);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    
+    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
+    for (int i = 0; i < vec.size(); i++)
+        cout << vec.at(i) << endl;
 
+    //List
 
+    start = high_resolution_clock::now();
+    insertMid(list, insertT);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
 
-
-
-
+    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
 
     return 0;
 }
