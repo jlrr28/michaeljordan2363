@@ -14,9 +14,9 @@ int main() {
     list<string> list;
     set<string> set;
     string temp;
-
     ifstream fin;
     
+    //////////////////////Inserting
     //Vector
     auto start = high_resolution_clock::now();
     fin.open(file);
@@ -30,16 +30,16 @@ int main() {
     cout << "Vector: " << vec.size() << " nanoseconds:" << duration.count() << endl;
 
     //List
-     start = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     fin.open(file);
     while (fin.good()) {
         fin >> temp;
         list.push_back(temp);
     }
     fin.close();
-     end = high_resolution_clock::now();
-     duration = duration_cast<nanoseconds>(end - start);
-    cout << "List: " << list.size() << " nanoseconds:" << duration.count() << endl;
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    cout << "List:   " << list.size() << " nanoseconds:" << duration.count() << endl;
 
     //Set
     start = high_resolution_clock::now();
@@ -51,7 +51,20 @@ int main() {
     fin.close();
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-    cout << "Set: " << set.size() << " nanoseconds:" << duration.count() << endl;
+    cout << "Set:    " << set.size() << " nanoseconds:" << duration.count() << endl;
+
+    //////////////////////SORTING
+    auto start = high_resolution_clock::now();
+    fin.open(file);
+    while (fin.good()) {
+        fin >> temp;
+        vec.push_back(temp);
+    }
+    fin.close();
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    cout << "Vector: " << vec.size() << " nanoseconds:" << duration.count() << endl;
+
 
 
 
