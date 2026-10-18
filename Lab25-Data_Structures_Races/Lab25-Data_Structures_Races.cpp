@@ -5,6 +5,7 @@
 #include <list>
 #include <set>
 using namespace std;
+using namespace std::chrono;
 
 int main() {
     string file = "codesShort.txt";
@@ -15,13 +16,42 @@ int main() {
     string temp;
 
     ifstream fin;
+    
+    //Vector
+    auto start = high_resolution_clock::now();
     fin.open(file);
     while (fin.good()){
         fin >> temp;
-       vec.push_back(temp);
+        vec.push_back(temp);
     }
-    fin.close
-    cout << vec.size() << endl;
+    fin.close();
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(end - start);
+    cout << "Vector: " << vec.size() << " nanoseconds:" << duration.count() << endl;
+
+    //List
+     start = high_resolution_clock::now();
+    fin.open(file);
+    while (fin.good()) {
+        fin >> temp;
+        list.push_back(temp);
+    }
+    fin.close();
+     end = high_resolution_clock::now();
+     duration = duration_cast<nanoseconds>(end - start);
+    cout << "List: " << list.size() << " nanoseconds:" << duration.count() << endl;
+
+    //Set
+    start = high_resolution_clock::now();
+    fin.open(file);
+    while (fin.good()) {
+        fin >> temp;
+        set.insert(temp);
+    }
+    fin.close();
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    cout << "Set: " << set.size() << " nanoseconds:" << duration.count() << endl;
 
 
 
