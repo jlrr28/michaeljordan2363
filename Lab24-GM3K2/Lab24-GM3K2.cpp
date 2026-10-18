@@ -7,13 +7,13 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
-int select_goat(list<Goat> trip);
+int select_goat(set<Goat> trip);
 
-void display_trip(list<Goat> trip);
+void display_trip(set<Goat> trip);
 
-void delete_goat(list<Goat>& trip);
+void delete_goat(set<Goat>& trip);
 
-void add_goat(list<Goat>& trip, string n[], string c[]);
+void add_goat(set<Goat>& trip, string n[], string c[]);
 
 int main_menu();
 
@@ -33,7 +33,7 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    list<Goat> gTrip;
+    set<Goat> gTrip;
 
     int input = 0;
     while (input != 4) {
@@ -67,7 +67,7 @@ int main_menu() {
     cout << endl;
     cout << "*** GOAT MANAGER 3001 ***" << endl;
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
-    cout << "[3] List goats" << endl << "[4] Quit" << endl;
+    cout << "[3] Set of goats" << endl << "[4] Quit" << endl;
 
     while (in < 1 || in > 4) {
         cout << "choice -->";
@@ -79,12 +79,12 @@ int main_menu() {
     return in;
 };
 
-void display_trip(list<Goat> trip) {
+void display_trip(set<Goat> trip) {
 
     cout << endl;
 
     int x = 1;
-    cout << "There are " << trip.size() << " goats in the Trip list:" << endl;
+    cout << "There are " << trip.size() << " goats in the Trip set:" << endl;
     for (Goat value : trip) {
         cout << "[" << x << "] " << value.get_name() << " ( " << value.get_age() <<
             ", " << value.get_color() << " )" << endl;
@@ -95,10 +95,10 @@ void display_trip(list<Goat> trip) {
 
 }
 
-void delete_goat(list<Goat>& trip) {
+void delete_goat(set<Goat>& trip) {
 
     if (trip.empty())
-        cout << "List is empty, no goats to delete." << endl;
+        cout << "Set is empty, no goats to delete." << endl;
     else {
 
         display_trip(trip);
@@ -109,7 +109,7 @@ void delete_goat(list<Goat>& trip) {
             //cout << trip.size();
             cin >> position;
             if ((position < 1) || (position > trip.size()))
-                cout << "Position input not on list" << endl;
+                cout << "Position input not in set" << endl;
 
         }
 
@@ -123,7 +123,7 @@ void delete_goat(list<Goat>& trip) {
 
 }
 
-void add_goat(list<Goat>& trip, string n[], string c[]) {
+void add_goat(set<Goat>& trip, string n[], string c[]) {
 
     int age = rand() % 20;
 
@@ -131,8 +131,8 @@ void add_goat(list<Goat>& trip, string n[], string c[]) {
 
     //cout << temp.get_age() << temp.get_color() << temp.get_name();
 
-    cout << "Goat: " << temp.get_name() << " added to trip list." << endl;
+    cout << "Goat: " << temp.get_name() << " added to trip set." << endl;
 
-    trip.push_back(temp);
+    trip.insert(temp);
 
 }
