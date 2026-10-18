@@ -75,6 +75,8 @@ int main() {
     cout << "Set:    " << set.size() << " nanoseconds:" << duration.count() << endl;
 
     //////////////////////SORTING
+    
+    //Vector
     start = high_resolution_clock::now();
 
     sortVec(vec);
@@ -87,6 +89,15 @@ int main() {
     for (int i = 0; i < vec.size(); i++)
         cout << vec.at(i) << endl;
 
+    //List
+    start = high_resolution_clock::now();
+    
+    list.sort();
+
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+    cout << "List Sort: " << list.size() << " nanoseconds:" << duration.count() << endl;
+    for (string value : list) cout << value << endl;
 
     return 0;
 }
