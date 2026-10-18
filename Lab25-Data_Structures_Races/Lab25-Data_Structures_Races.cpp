@@ -7,6 +7,29 @@
 using namespace std;
 using namespace std::chrono;
 
+void sortVec(vector<string>& v) {
+
+    for (int i = 0; i < v.size() - 1; i++) {
+        int iLeast = i;
+
+        for (int j = i + 1; j < v.size(); j++) {
+            //v.at(i);
+            if (v.at(i) < v.at(i))
+                iLeast = j;
+
+        }
+
+
+
+
+
+
+    }
+
+
+}
+
+
 int main() {
     string file = "codesShort.txt";
 
@@ -55,11 +78,9 @@ int main() {
 
     //////////////////////SORTING
     auto start = high_resolution_clock::now();
-    fin.open(file);
-    while (fin.good()) {
-        fin >> temp;
-        vec.push_back(temp);
-    }
+
+    sortVec(vec);
+
     fin.close();
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
