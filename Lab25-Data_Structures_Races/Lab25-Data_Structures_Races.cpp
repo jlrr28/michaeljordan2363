@@ -32,7 +32,7 @@ void insertMid(vector<string>& v , string ins) {
 
     int mid = v.size() / 2;
     auto it = v.begin();
-    advance(it, mid - 1);
+    advance(it, mid);
     
     v.insert(it, ins);
 
@@ -42,7 +42,7 @@ void insertMid(list<string>& v, string ins) {
 
     int mid = v.size() / 2;
     auto it = v.begin();
-    advance(it, mid - 1);
+    advance(it, mid);
 
     v.insert(it, ins);
 
@@ -52,9 +52,9 @@ void insertMid(set<string>& v, string ins) {
 
     int mid = v.size() / 2;
     auto it = v.begin();
-    advance(it, mid - 1);
+    advance(it, mid);
 
-    v.insert(it, ins);
+    v.insert(mid, ins);
 
 }
 
@@ -157,7 +157,17 @@ int main() {
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
 
-    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
+    cout << "List Insert: " << list.size() << " nanoseconds:" << duration.count() << endl;
+    for (string value : list) cout << value << endl;
+
+    //Set
+    start = high_resolution_clock::now();
+    insertMid(set, insertT);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+   
+    cout << "List Insert: " << set.size() << " nanoseconds:" << duration.count() << endl;
+    for (string value : set) cout << value << endl;
 
     return 0;
 }
