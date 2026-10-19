@@ -41,6 +41,7 @@ void insertMid(vector<string>& v , string ins) {
 void insertMid(list<string>& v, string ins) {
 
     int mid = v.size() / 2;
+   
     auto it = v.begin();
     advance(it, mid);
 
@@ -51,10 +52,11 @@ void insertMid(list<string>& v, string ins) {
 void insertMid(set<string>& v, string ins) {
 
     int mid = v.size() / 2;
+  
     auto it = v.begin();
-    advance(it, mid); 
-
-    v.insert(mid, ins);
+    advance(it, mid);
+    cout << "it at " << *it << endl;
+    v.insert(it, ins);
 
 }
 
