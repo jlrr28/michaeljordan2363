@@ -49,19 +49,25 @@ void insertMid(list<string>& v, string ins) {
 
 }
 
-void insertMid(set<string>& v, string ins) {
+void deleteMid(vector<string>& v) {
 
     int mid = v.size() / 2;
-  
-    auto it = v.begin();
-    advance(it, mid);
-    cout << "it at " << *it << endl;
-    v.insert(it, ins);
+    
+    v.erase(v.begin()+mid);
 
 }
 
+void deleteMid(list<string>& v) {
+
+    int mid = v.size() / 2;
+
+    v.erase(v.begin() + mid);
+
+}
+
+
 int main() {
-    string file = "codesShort.txt";
+    string file = "alphabet.txt";
     string insertT = "TESTCODE";
 
     vector<string> vec;
@@ -164,12 +170,24 @@ int main() {
 
     //Set
     start = high_resolution_clock::now();
-    insertMid(set, insertT);
+    set.insert(insertT);
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
    
-    cout << "List Insert: " << set.size() << " nanoseconds:" << duration.count() << endl;
+    cout << "Set Insert: " << set.size() << " nanoseconds:" << duration.count() << endl;
     for (string value : set) cout << value << endl;
+
+    //////////////////////DELETING
+
+    start = high_resolution_clock::now();
+    deleteMid(vec);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+
+    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
+    for (int i = 0; i < vec.size(); i++)
+        cout << vec.at(i) << endl;
+
 
     return 0;
 }
