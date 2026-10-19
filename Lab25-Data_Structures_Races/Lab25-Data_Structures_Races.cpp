@@ -116,8 +116,8 @@ int main() {
     int vTime = 0;
     int lTime = 0;
     int sTime = 0;
-    Cout << "DATA STRUCTURE RACING" << 
-
+    cout << "DATA STRUCTURE RACING" << endl;
+    cout << "        VECTOR    ----    LIST  ----    SET" << endl;
     //////////////////////Reading
     //Vector
     auto start = high_resolution_clock::now();
@@ -126,23 +126,27 @@ int main() {
 
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
-    cout << "Vector: " << vec.size() << " nanoseconds:" << duration.count() << endl;
+    vTime = duration.count();
 
     //List
     start = high_resolution_clock::now();
+    
     readData(list, file);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-   
-    cout << "List:   " << list.size() << " nanoseconds:" << duration.count() << endl;
+    lTime = duration.count();
 
     //Set
     start = high_resolution_clock::now();
+    
     readData(set, file);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-    cout << "Set:    " << set.size() << " nanoseconds:" << duration.count() << endl;
+    sTime = duration.count();
 
+    cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
     //////////////////////SORTING
     
@@ -153,10 +157,7 @@ int main() {
 
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
-
-    //for (int i = 0; i < vec.size(); i++)
-    //    cout << vec.at(i) << endl;
+    vTime = duration.count();
 
     //List
     start = high_resolution_clock::now();
@@ -165,79 +166,79 @@ int main() {
 
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-    cout << "List Sort: " << list.size() << " nanoseconds:" << duration.count() << endl;
+    lTime = duration.count();
     
     //set
-    
-    cout << "Set sorted: -1" << endl;
 
+    sTime = -1;
 
-    //////////////////////SORTING
+    cout << "SORTING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
+
+    //////////////////////INSERTING
 
     //Vector
     
     start = high_resolution_clock::now();
+    
     insertMid(vec, insertT);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
+    vTime = duration.count();
     
-    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
-    
-    //for (int i = 0; i < vec.size(); i++)
-    //    cout << vec.at(i) << endl;
-
     //List
 
     start = high_resolution_clock::now();
+    
     insertMid(list, insertT);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-
-    cout << "List Insert: " << list.size() << " nanoseconds:" << duration.count() << endl;
-    for (string value : list) cout << value << endl;
+    lTime = duration.count();
 
     //Set
     start = high_resolution_clock::now();
+    
     set.insert(insertT);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-   
-    cout << "Set Insert: " << set.size() << " nanoseconds:" << duration.count() << endl;
-    for (string value : set) cout << value << endl;
+    sTime = duration.count();
 
+    cout << "Inserting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
     //////////////////////DELETING
 
     //Vector
     
     start = high_resolution_clock::now();
+    
     deleteMid(vec);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
 
-    cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
-    for (int i = 0; i < vec.size(); i++)
-        cout << vec.at(i) << endl;
+    vTime = duration.count();
 
-
-    
     //List
     start = high_resolution_clock::now();
+    
     deleteMid(list);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
-
-    cout << "List Insert: " << list.size() << " nanoseconds:" << duration.count() << endl;
-    for (string value : list) cout << value << endl;
+    lTime = duration.count();
 
     //Set
     start = high_resolution_clock::now();
+    
     deleteMid(set);
+    
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
+    sTime = duration.count();
 
-    cout << "List Insert: " << set.size() << " nanoseconds:" << duration.count() << endl;
-    for (string value : set) cout << value << endl;
+    cout << "Deleting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
     return 0;
 }
