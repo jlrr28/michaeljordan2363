@@ -52,7 +52,7 @@ void insertMid(set<string>& v, string ins) {
 
     int mid = v.size() / 2;
     auto it = v.begin();
-    advance(it, mid);
+    advance(it, mid); 
 
     v.insert(mid, ins);
 
