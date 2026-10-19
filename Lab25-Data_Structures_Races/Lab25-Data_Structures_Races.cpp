@@ -7,6 +7,36 @@
 using namespace std;
 using namespace std::chrono;
 
+void readData(vector<string>& v, string f) {
+    ifstream fin;
+    string temp;
+    fin.open(f);
+    while (fin.good()) {
+        fin >> temp;
+        v.push_back(temp);
+    }
+}
+
+void readData(list<string>& v, string f) {
+    ifstream fin;
+    string temp;
+    fin.open(f);
+    while (fin.good()) {
+        fin >> temp;
+        v.push_back(temp);
+    }
+}
+
+void readData(set<string>& v, string f) {
+    ifstream fin;
+    string temp;
+    fin.open(f);
+    while (fin.good()) {
+        fin >> temp;
+        v.insert(temp);
+    }
+}
+
 void sortVec(vector<string> &v) {
 
     for (int i = 0; i < v.size() - 1; i++) {
@@ -60,11 +90,20 @@ void deleteMid(vector<string>& v) {
 void deleteMid(list<string>& v) {
 
     int mid = v.size() / 2;
-
-    v.erase(v.begin() + mid);
+    auto it = v.begin();
+    advance(it, mid);
+    v.erase(it);
 
 }
 
+void deleteMid(set<string>& v) {
+
+    int mid = v.size() / 2;
+    auto it = v.begin();
+    advance(it, mid);
+    v.erase(it);
+
+}
 
 int main() {
     string file = "alphabet.txt";
@@ -73,42 +112,33 @@ int main() {
     vector<string> vec;
     list<string> list;
     set<string> set;
-    string temp;
-    ifstream fin;
     
+    int vTime = 0;
+    int lTime = 0;
+    int sTime = 0;
+    Cout << "DATA STRUCTURE RACING" << 
+
     //////////////////////Reading
     //Vector
     auto start = high_resolution_clock::now();
-    fin.open(file);
-    while (fin.good()){
-        fin >> temp;
-        vec.push_back(temp);
-    }
-    fin.close();
+
+    readData(vec, file);
+
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(end - start);
     cout << "Vector: " << vec.size() << " nanoseconds:" << duration.count() << endl;
 
     //List
     start = high_resolution_clock::now();
-    fin.open(file);
-    while (fin.good()) {
-        fin >> temp;
-        list.push_back(temp);
-    }
-    fin.close();
+    readData(list, file);
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
+   
     cout << "List:   " << list.size() << " nanoseconds:" << duration.count() << endl;
 
     //Set
     start = high_resolution_clock::now();
-    fin.open(file);
-    while (fin.good()) {
-        fin >> temp;
-        set.insert(temp);
-    }
-    fin.close();
+    readData(set, file);
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     cout << "Set:    " << set.size() << " nanoseconds:" << duration.count() << endl;
@@ -121,7 +151,6 @@ int main() {
 
     sortVec(vec);
 
-    fin.close();
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
@@ -137,12 +166,10 @@ int main() {
     end = high_resolution_clock::now();
     duration = duration_cast<nanoseconds>(end - start);
     cout << "List Sort: " << list.size() << " nanoseconds:" << duration.count() << endl;
-    //for (string value : list) cout << value << endl;
     
     //set
     
     cout << "Set sorted: -1" << endl;
-    //for (string value : set) cout << value << endl;
 
 
     //////////////////////SORTING
@@ -155,8 +182,9 @@ int main() {
     duration = duration_cast<nanoseconds>(end - start);
     
     cout << "Vector Sort: " << vec.size() << " nanoseconds:" << duration.count() << endl;
-    for (int i = 0; i < vec.size(); i++)
-        cout << vec.at(i) << endl;
+    
+    //for (int i = 0; i < vec.size(); i++)
+    //    cout << vec.at(i) << endl;
 
     //List
 
@@ -177,8 +205,11 @@ int main() {
     cout << "Set Insert: " << set.size() << " nanoseconds:" << duration.count() << endl;
     for (string value : set) cout << value << endl;
 
+
     //////////////////////DELETING
 
+    //Vector
+    
     start = high_resolution_clock::now();
     deleteMid(vec);
     end = high_resolution_clock::now();
@@ -188,6 +219,25 @@ int main() {
     for (int i = 0; i < vec.size(); i++)
         cout << vec.at(i) << endl;
 
+
+    
+    //List
+    start = high_resolution_clock::now();
+    deleteMid(list);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+
+    cout << "List Insert: " << list.size() << " nanoseconds:" << duration.count() << endl;
+    for (string value : list) cout << value << endl;
+
+    //Set
+    start = high_resolution_clock::now();
+    deleteMid(set);
+    end = high_resolution_clock::now();
+    duration = duration_cast<nanoseconds>(end - start);
+
+    cout << "List Insert: " << set.size() << " nanoseconds:" << duration.count() << endl;
+    for (string value : set) cout << value << endl;
 
     return 0;
 }
