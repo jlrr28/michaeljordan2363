@@ -1,112 +1,36 @@
 #include <iostream>
 #include <chrono>
 #include <fstream>
+#include <algorithm>
 #include <vector>
 #include <list>
 #include <set>
 using namespace std;
 using namespace std::chrono;
 
-void readData(vector<string>& v, string f) {
-    ifstream fin;
-    string temp;
-    fin.open(f);
-    while (fin.good()) {
-        fin >> temp;
-        v.push_back(temp);
-    }
-}
+void readData(vector<string>& v, string f);
 
-void readData(list<string>& v, string f) {
-    ifstream fin;
-    string temp;
-    fin.open(f);
-    while (fin.good()) {
-        fin >> temp;
-        v.push_back(temp);
-    }
-}
+void readData(list<string>& v, string f);
 
-void readData(set<string>& v, string f) {
-    ifstream fin;
-    string temp;
-    fin.open(f);
-    while (fin.good()) {
-        fin >> temp;
-        v.insert(temp);
-    }
-}
+void readData(set<string>& v, string f);
 
-void sortVec(vector<string> &v) {
 
-    for (int i = 0; i < v.size() - 1; i++) {
-        
-        int iLeast = i;
+void sortVec(vector<string>& v);
 
-        for (int j = i + 1; j < v.size(); j++) {
-            
-            if (v.at(j) < v.at(iLeast)) {
-                iLeast = j;
-            }
-        
-        }
-        string temp = v.at(i);
-        v.at(i) = v.at(iLeast);
-        v.at(iLeast) = temp;
 
-    }
+void insertMid(vector<string>& v, string ins);
 
-}
+void insertMid(list<string>& v, string ins);
 
-void insertMid(vector<string>& v , string ins) {
 
-    int mid = v.size() / 2;
-    auto it = v.begin();
-    advance(it, mid);
-    
-    v.insert(it, ins);
+void deleteMid(vector<string>& v);
 
-}
+void deleteMid(list<string>& v);
 
-void insertMid(list<string>& v, string ins) {
-
-    int mid = v.size() / 2;
-   
-    auto it = v.begin();
-    advance(it, mid);
-
-    v.insert(it, ins);
-
-}
-
-void deleteMid(vector<string>& v) {
-
-    int mid = v.size() / 2;
-    
-    v.erase(v.begin()+mid);
-
-}
-
-void deleteMid(list<string>& v) {
-
-    int mid = v.size() / 2;
-    auto it = v.begin();
-    advance(it, mid);
-    v.erase(it);
-
-}
-
-void deleteMid(set<string>& v) {
-
-    int mid = v.size() / 2;
-    auto it = v.begin();
-    advance(it, mid);
-    v.erase(it);
-
-}
+void deleteMid(set<string>& v);
 
 int main() {
-    string file = "alphabet.txt";
+    string file = "codes.txt";
     string insertT = "TESTCODE";
 
     vector<string> vec;
@@ -243,9 +167,88 @@ int main() {
     return 0;
 }
 
-/* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/
+void readData(vector<string>& v, string f) {
+    ifstream fin;
+    string temp;
+    fin.open(f);
+    while (fin.good()) {
+        fin >> temp;
+        v.push_back(temp);
+    }
+}
+
+void readData(list<string>& v, string f) {
+    ifstream fin;
+    string temp;
+    fin.open(f);
+    while (fin.good()) {
+        fin >> temp;
+        v.push_back(temp);
+    }
+}
+
+void readData(set<string>& v, string f) {
+    ifstream fin;
+    string temp;
+    fin.open(f);
+    while (fin.good()) {
+        fin >> temp;
+        v.insert(temp);
+    }
+}
+
+
+void sortVec(vector<string>& v) {
+
+    sort(v.begin(), v.end());
+
+}
+
+
+void insertMid(vector<string>& v, string ins) {
+
+    int mid = v.size() / 2;
+    auto it = v.begin();
+    advance(it, mid);
+
+    v.insert(it, ins);
+
+}
+
+void insertMid(list<string>& v, string ins) {
+
+    int mid = v.size() / 2;
+
+    auto it = v.begin();
+    advance(it, mid);
+
+    v.insert(it, ins);
+
+}
+
+
+void deleteMid(vector<string>& v) {
+
+    int mid = v.size() / 2;
+
+    v.erase(v.begin() + mid);
+
+}
+
+void deleteMid(list<string>& v) {
+
+    int mid = v.size() / 2;
+    auto it = v.begin();
+    advance(it, mid);
+    v.erase(it);
+
+}
+
+void deleteMid(set<string>& v) {
+
+    int mid = v.size() / 2;
+    auto it = v.begin();
+    advance(it, mid);
+    v.erase(it);
+
+}
