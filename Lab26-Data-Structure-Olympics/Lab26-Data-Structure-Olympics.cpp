@@ -38,7 +38,7 @@ int main() {
     vector<string> vec;
     list<string> list;
     set<string> set;
-
+    //[Test][Structure][Time]
     int oArray[COL][ROWS][DAYS];
 
     int vTime = 0;
@@ -62,7 +62,7 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<nanoseconds>(end - start);
                 oArray[0][i][j] = duration.count();
-                cout << "vec day " << j << " " << oArray[0][i][j] << endl;
+                //cout << "vec day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
             case 1: {
@@ -80,7 +80,7 @@ int main() {
                 auto duration = duration_cast<nanoseconds>(end - start);
                 //sTime = duration.count();
                 oArray[0][i][j] = duration.count();
-                cout << "set day " << j << " " << oArray[0][i][j] << endl;
+                //cout << "set day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
             }
@@ -88,6 +88,9 @@ int main() {
 
 
     }
+    cout << oArray[0][2][4] << endl;
+    cout << oArray[0][2][5] << endl;
+    cout << oArray[0][2][6] << endl;
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
 
