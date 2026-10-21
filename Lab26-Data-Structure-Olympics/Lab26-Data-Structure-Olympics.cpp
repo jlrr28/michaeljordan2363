@@ -29,6 +29,8 @@ void deleteMid(list<string>& v);
 
 void deleteMid(set<string>& v);
 
+const int STRUCTURES = 3;
+
 int main() {
     string file = "codes.txt";
     string insertT = "TESTCODE";
@@ -37,6 +39,8 @@ int main() {
     list<string> list;
     set<string> set;
 
+    int array[3][4][15];
+
     int vTime = 0;
     int lTime = 0;
     int sTime = 0;
@@ -44,35 +48,43 @@ int main() {
     cout << "        VECTOR    ----    LIST  ----    SET" << endl;
     //////////////////////Reading
     //Vector
-    auto start = high_resolution_clock::now();
-
-    readData(vec, file);
-
-    auto end = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(end - start);
-    vTime = duration.count();
-
-    //List
-    start = high_resolution_clock::now();
-
-    readData(list, file);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    lTime = duration.count();
-
-    //Set
-    start = high_resolution_clock::now();
-
-    readData(set, file);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    sTime = duration.count();
+    
+    for (int i = 0; i < STRUCTURES; i++) {
+        auto start = chrono::high_resolution_clock::now();
+        
+        switch (i) {
+            case 0: {
+                readData(vec, file);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<nanoseconds>(end - start);
+                vTime = duration.count();
+                break;
+            }
+            case 1: {
+                readData(list, file);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<nanoseconds>(end - start);
+                lTime = duration.count();
+                break;
+            }
+            case 2: {
+                readData(set, file);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<nanoseconds>(end - start);
+                sTime = duration.count();
+                break;
+            }
+        
+        
+        
+        
+        
+        }
+    // readData(vec, file);
 
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
-
-    //////////////////////SORTING
+    /*
+    /////////////////////*SORTING
 
     //Vector
     start = high_resolution_clock::now();
@@ -163,6 +175,7 @@ int main() {
     sTime = duration.count();
 
     cout << "Deleting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
+    */
 
     return 0;
 }
