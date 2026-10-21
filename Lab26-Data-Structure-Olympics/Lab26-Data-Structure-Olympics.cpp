@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <set>
+#include <array>
 using namespace std;
 using namespace std::chrono;
 
@@ -29,6 +30,46 @@ void deleteMid(list<string>& v);
 
 void deleteMid(set<string>& v);
 
+void readDataRace(vector<string>& v, list<string>& l, set<string>& s, string f, int j, &int oArray[i][j][k]) {
+
+
+    for (int i = 0; i < STRUCTURES; i++) {
+        auto start = chrono::high_resolution_clock::now();
+
+        switch (i) {
+        case 0: {
+            readData(v, f);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            oArray[0][i][j] = duration.count();
+            break;
+        }
+        case 1: {
+            readData(l, f);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            //lTime = duration.count();
+            break;
+        }
+        case 2: {
+            readData(s, f);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            //sTime = duration.count();
+            break;
+        }
+        }
+    }
+
+
+
+}
+
+
+
+
+
+const int COL = 3, ROWS = 4, DAYS = 15;
 const int STRUCTURES = 3;
 
 int main() {
@@ -39,7 +80,7 @@ int main() {
     list<string> list;
     set<string> set;
 
-    int array[3][4][15];
+    int dataOlympicsArray[3][4][15];
 
     int vTime = 0;
     int lTime = 0;
@@ -49,35 +90,13 @@ int main() {
     //////////////////////Reading
     //Vector
     
-    for (int i = 0; i < STRUCTURES; i++) {
-        auto start = chrono::high_resolution_clock::now();
-
-        switch (i) {
-        case 0: {
-            readData(vec, file);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            vTime = duration.count();
-            break;
-        }
-        case 1: {
-            readData(list, file);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            lTime = duration.count();
-            break;
-        }
-        case 2: {
-            readData(set, file);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            sTime = duration.count();
-            break;
-        }
-        }
-    }
+    //for()
+    
+    readDataRace(vec, list, set, file, dataOlympicsArray[STRUCTURES][i][j]);
 
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
+
+
 
     /////////////////////*SORTING
 
