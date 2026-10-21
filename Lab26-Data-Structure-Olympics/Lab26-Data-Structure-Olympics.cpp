@@ -30,9 +30,9 @@ void deleteMid(list<string>& v);
 
 void deleteMid(set<string>& v);
 
-void readDataRace(vector<string>& v, list<string>& l, set<string>& s, string f, int j, &int oArray[i][j][k]) {
+array<int, STRUCTURES> readDataRace(vector<string>& v, list<string>& l, set<string>& s, string f ) {
 
-
+    int results
     for (int i = 0; i < STRUCTURES; i++) {
         auto start = chrono::high_resolution_clock::now();
 
@@ -41,7 +41,7 @@ void readDataRace(vector<string>& v, list<string>& l, set<string>& s, string f, 
             readData(v, f);
             auto end = high_resolution_clock::now();
             auto duration = duration_cast<nanoseconds>(end - start);
-            oArray[0][i][j] = duration.count();
+            //oArray[0][i][j] = duration.count();
             break;
         }
         case 1: {
@@ -91,9 +91,12 @@ int main() {
     //Vector
     
     //for()
+    int j = 0;
+    for(int i = 0; i < DAYS; i++) {
+        readDataRace(vec, list, set, file);
     
-    readDataRace(vec, list, set, file, dataOlympicsArray[STRUCTURES][i][j]);
-
+    
+    }
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
 
