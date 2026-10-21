@@ -150,21 +150,21 @@ int main() {
 
         switch (i) {
         case 0: {
-            insertMid(vec, insertT);
+            deleteMid(vec);
             auto end = high_resolution_clock::now();
             auto duration = duration_cast<nanoseconds>(end - start);
             vTime = duration.count();
             break;
         }
         case 1: {
-            insertMid(list, insertT);
+            deleteMid(list);
             auto end = high_resolution_clock::now();
             auto duration = duration_cast<nanoseconds>(end - start);
             lTime = duration.count();
             break;
         }
         case 2: {
-            set.insert(insertT);
+            deleteMid(set);
             auto end = high_resolution_clock::now();
             auto duration = duration_cast<nanoseconds>(end - start);
             sTime = duration.count();
@@ -243,7 +243,8 @@ void deleteMid(list<string>& v) {
     int mid = v.size() / 2;
     auto it = v.begin();
     advance(it, mid);
-    v.erase(it);
+    string target = *it;
+    v.remove(target);
 
 }
 
@@ -252,6 +253,7 @@ void deleteMid(set<string>& v) {
     int mid = v.size() / 2;
     auto it = v.begin();
     advance(it, mid);
-    v.erase(it);
+    string target = *it;
+    v.erase(target);;
 
 }
