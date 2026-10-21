@@ -74,40 +74,38 @@ int main() {
             sTime = duration.count();
             break;
         }
-
-
-
-
-
         }
     }
-    // readData(vec, file);
 
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
-    /*
+
     /////////////////////*SORTING
 
-    //Vector
-    start = high_resolution_clock::now();
+    for (int i = 0; i < STRUCTURES; i++) {
+        auto start = chrono::high_resolution_clock::now();
 
-    sortVec(vec);
+        switch (i) {
+        case 0: {
+            sort(vec.begin(), vec.end());
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            vTime = duration.count();
+            break;
+        }
+        case 1: {
+            list.sort();
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            lTime = duration.count();
+            break;
+        }
+        case 2: {
 
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    vTime = duration.count();
-
-    //List
-    start = high_resolution_clock::now();
-
-    list.sort();
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    lTime = duration.count();
-
-    //set
-
-    sTime = -1;
+            sTime = -1;
+            break;
+        }
+        }
+    }
 
     cout << "SORTING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
@@ -115,109 +113,100 @@ int main() {
 
     //Vector
 
-    start = high_resolution_clock::now();
+    for (int i = 0; i < STRUCTURES; i++) {
+        auto start = chrono::high_resolution_clock::now();
 
-    insertMid(vec, insertT);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    vTime = duration.count();
-
-    //List
-
-    start = high_resolution_clock::now();
-
-    insertMid(list, insertT);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    lTime = duration.count();
-
-    //Set
-    start = high_resolution_clock::now();
-
-    set.insert(insertT);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    sTime = duration.count();
+        switch (i) {
+        case 0: {
+            insertMid(vec, insertT);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            vTime = duration.count();
+            break;
+        }
+        case 1: {
+            insertMid(list, insertT);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            lTime = duration.count();
+            break;
+        }
+        case 2: {
+            set.insert(insertT);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            sTime = duration.count();
+            break;
+        }
+        }
+    }
 
     cout << "Inserting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
     //////////////////////DELETING
 
-    //Vector
+    for (int i = 0; i < STRUCTURES; i++) {
+        auto start = chrono::high_resolution_clock::now();
 
-    start = high_resolution_clock::now();
-
-    deleteMid(vec);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-
-    vTime = duration.count();
-
-    //List
-    start = high_resolution_clock::now();
-
-    deleteMid(list);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    lTime = duration.count();
-
-    //Set
-    start = high_resolution_clock::now();
-
-    deleteMid(set);
-
-    end = high_resolution_clock::now();
-    duration = duration_cast<nanoseconds>(end - start);
-    sTime = duration.count();
+        switch (i) {
+        case 0: {
+            insertMid(vec, insertT);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            vTime = duration.count();
+            break;
+        }
+        case 1: {
+            insertMid(list, insertT);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            lTime = duration.count();
+            break;
+        }
+        case 2: {
+            set.insert(insertT);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            sTime = duration.count();
+            break;
+        }
+        }
+    }
 
     cout << "Deleting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
-    */
 
     return 0;
 }
 
 void readData(vector<string>& v, string f) {
     ifstream fin;
-    string temp;
+    string in;
     fin.open(f);
-    while (fin.good()) {
-        fin >> temp;
-        v.push_back(temp);
+    while (fin >> in) {
+        v.push_back(in);
     }
+    fin.close();
 }
 
 void readData(list<string>& v, string f) {
     ifstream fin;
-    string temp;
+    string in;
     fin.open(f);
-    while (fin.good()) {
-        fin >> temp;
-        v.push_back(temp);
+    while (fin >> in) {
+        v.push_back(in);
     }
+    fin.close();
 }
 
 void readData(set<string>& v, string f) {
     ifstream fin;
-    string temp;
+    string in;
     fin.open(f);
-    while (fin.good()) {
-        fin >> temp;
-        v.insert(temp);
+    while (fin >> in) {
+        v.insert(in);
     }
+    fin.close();
 }
-
-
-void sortVec(vector<string>& v) {
-
-    sort(v.begin(), v.end());
-
-}
-
 
 void insertMid(vector<string>& v, string ins) {
 
