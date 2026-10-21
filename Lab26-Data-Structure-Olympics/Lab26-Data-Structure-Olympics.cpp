@@ -15,10 +15,6 @@ void readData(list<string>& v, string f);
 
 void readData(set<string>& v, string f);
 
-
-void sortVec(vector<string>& v);
-
-
 void insertMid(vector<string>& v, string ins);
 
 void insertMid(list<string>& v, string ins);
@@ -29,42 +25,6 @@ void deleteMid(vector<string>& v);
 void deleteMid(list<string>& v);
 
 void deleteMid(set<string>& v);
-
-int readDataRace(vector<string>& v, list<string>& l, set<string>& s, string f) {
-
-    int results;
-    for (int i = 0; i < STRUCTURES; i++) {
-        auto start = chrono::high_resolution_clock::now();
-
-        switch (i) {
-        case 0: {
-            readData(v, f);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            //oArray[0][i][j] = duration.count();
-            break;
-        }
-        case 1: {
-            readData(l, f);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            //lTime = duration.count();
-            break;
-        }
-        case 2: {
-            readData(s, f);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            //sTime = duration.count();
-            break;
-        }
-        }
-    }
-
-}
-
-
-
 
 
 
@@ -79,7 +39,7 @@ int main() {
     list<string> list;
     set<string> set;
 
-    int dataOlympicsArray[3][4][15];
+    int oArray[COL][ROWS][DAYS];
 
     int vTime = 0;
     int lTime = 0;
@@ -89,12 +49,44 @@ int main() {
     //////////////////////Reading
     //Vector
     
-    //for()
-    int j = 0;
-    for(int i = 0; i < DAYS; i++) {
-        //readDataRace(vec, list, set, file);
-        dataOlympicsArray[0][0][i] = readDataRace(vec, list, set, file);
-    
+
+    for (int j = 0; j < DAYS; j++) {
+
+
+        for (int i = 0; i < STRUCTURES; i++) {
+            auto start = chrono::high_resolution_clock::now();
+
+            switch (i) {
+            case 0: {
+                readData(vec, file);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<nanoseconds>(end - start);
+                oArray[0][i][j] = duration.count();
+                cout << "vec" << oArray[0][i][j] << endl;
+                break;
+            }
+            case 1: {
+                readData(list, file);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<nanoseconds>(end - start);
+                //lTime = duration.count();
+                oArray[0][i][j] = duration.count();
+                cout << "list" << oArray[0][i][j] << endl;
+                break;
+            }
+            case 2: {
+                readData(set, file);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<nanoseconds>(end - start);
+                //sTime = duration.count();
+                oArray[0][i][j] = duration.count();
+                cout << "set" << oArray[0][i][j] << endl;
+                break;
+            }
+            }
+        }
+
+
     }
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
