@@ -62,7 +62,7 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<nanoseconds>(end - start);
                 oArray[0][i][j] = duration.count();
-                cout << "vec" << oArray[0][i][j] << endl;
+                cout << "vec day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
             case 1: {
@@ -71,7 +71,7 @@ int main() {
                 auto duration = duration_cast<nanoseconds>(end - start);
                 //lTime = duration.count();
                 oArray[0][i][j] = duration.count();
-                cout << "list" << oArray[0][i][j] << endl;
+                cout << "list day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
             case 2: {
@@ -80,7 +80,7 @@ int main() {
                 auto duration = duration_cast<nanoseconds>(end - start);
                 //sTime = duration.count();
                 oArray[0][i][j] = duration.count();
-                cout << "set" << oArray[0][i][j] << endl;
+                cout << "set day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
             }
