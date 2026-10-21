@@ -51,35 +51,36 @@ int main() {
     
     for (int i = 0; i < STRUCTURES; i++) {
         auto start = chrono::high_resolution_clock::now();
-        
+
         switch (i) {
-            case 0: {
-                readData(vec, file);
-                auto end = high_resolution_clock::now();
-                auto duration = duration_cast<nanoseconds>(end - start);
-                vTime = duration.count();
-                break;
-            }
-            case 1: {
-                readData(list, file);
-                auto end = high_resolution_clock::now();
-                auto duration = duration_cast<nanoseconds>(end - start);
-                lTime = duration.count();
-                break;
-            }
-            case 2: {
-                readData(set, file);
-                auto end = high_resolution_clock::now();
-                auto duration = duration_cast<nanoseconds>(end - start);
-                sTime = duration.count();
-                break;
-            }
-        
-        
-        
-        
-        
+        case 0: {
+            readData(vec, file);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            vTime = duration.count();
+            break;
         }
+        case 1: {
+            readData(list, file);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            lTime = duration.count();
+            break;
+        }
+        case 2: {
+            readData(set, file);
+            auto end = high_resolution_clock::now();
+            auto duration = duration_cast<nanoseconds>(end - start);
+            sTime = duration.count();
+            break;
+        }
+
+
+
+
+
+        }
+    }
     // readData(vec, file);
 
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
