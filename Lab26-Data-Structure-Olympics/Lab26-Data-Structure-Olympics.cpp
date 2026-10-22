@@ -39,7 +39,7 @@ int main() {
     list<string> list;
     set<string> set;
     //[Test][Structure][Time]
-    int oArray[COL][ROWS][DAYS];
+    array<array<array<int,DAYS>,ROWS >,STRUCTURES >oArray;// [COL] [ROWS] [DAYS] ;
 
     int vTime = 0;
     int lTime = 0;
@@ -91,6 +91,8 @@ int main() {
     cout << oArray[0][2][4] << endl;
     cout << oArray[0][2][5] << endl;
     cout << oArray[0][2][6] << endl;
+    
+    //int averageTime = accumulate(oArray[0][2][], oArray.end(), 0);
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
 
