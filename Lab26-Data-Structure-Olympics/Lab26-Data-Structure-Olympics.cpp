@@ -6,6 +6,7 @@
 #include <list>
 #include <set>
 #include <array>
+
 using namespace std;
 using namespace std::chrono;
 
@@ -14,6 +15,7 @@ void readData(vector<string>& v, string f);
 void readData(list<string>& v, string f);
 
 void readData(set<string>& v, string f);
+
 
 void insertMid(vector<string>& v, string ins);
 
@@ -60,9 +62,11 @@ int main() {
             case 0: {
                 readData(vec, file);
                 auto end = high_resolution_clock::now();
-                auto duration = duration_cast<nanoseconds>(end - start);
+                auto duration = duration_cast<microseconds>(end - start);
                 oArray[0][i][j] = duration.count();
-                //cout << "vec day " << j << " " << oArray[0][i][j] << endl;
+                oArray[0][i][j] = oArray[0][i][j] + oArray[0][i][j];
+               
+                cout << "vec day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
             case 1: {
@@ -71,7 +75,7 @@ int main() {
                 auto duration = duration_cast<nanoseconds>(end - start);
                 //lTime = duration.count();
                 oArray[0][i][j] = duration.count();
-                cout << "list day " << j << " " << oArray[0][i][j] << endl;
+                //cout << "list day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
             case 2: {
@@ -88,11 +92,14 @@ int main() {
 
 
     }
-    cout << oArray[0][2][4] << endl;
+    cout << oArray[0][0][14] << endl;
+    
+    
     cout << oArray[0][2][5] << endl;
     cout << oArray[0][2][6] << endl;
     
-    //int averageTime = accumulate(oArray[0][2][], oArray.end(), 0);
+    //for (int i)
+    
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
 
