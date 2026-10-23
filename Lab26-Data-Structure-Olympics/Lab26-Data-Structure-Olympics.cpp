@@ -30,7 +30,7 @@ void deleteMid(set<string>& v);
 
 
 
-const int COL = 3, TESTS = 4, RUNS = 15;
+const int COL = 3, TESTS = 4, RUNS = 4;
 const int STRUCTURES = 3;
 
 int main() {
@@ -55,6 +55,7 @@ int main() {
     int vSum = 0;
     int lSum = 0;
     int sSum = 0;
+    int test = 0;
 
     for (int j = 0; j < RUNS; j++) {
 
@@ -68,9 +69,9 @@ int main() {
                 auto duration = duration_cast<microseconds>(end - start);
 
                 oArray[0][i][0] = duration.count();
-                oArray[0][i][1] = vSum;
-                vSum += oArray[0][i][0];
 
+                vSum += oArray[0][i][0];
+                oArray[0][i][1] = vSum;
                 cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
                 break;
             }
@@ -165,7 +166,7 @@ int main() {
                 oArray[2][i][0] = duration.count();
                 oArray[2][i][1] = vSum;
                 vSum += oArray[2][i][0];
-                //cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << j << " " << oArray[1][i][1] << " " << endl;
+                cout << " vec day times: " << oArray[2][i][0] << " vec day sum: " << j << " " << oArray[2][i][1] << " " << endl;
 
                 break;
             }
@@ -184,16 +185,16 @@ int main() {
                 set.insert(insertT);
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
-                
+
                 oArray[2][i][0] = duration.count();
                 oArray[2][i][1] = lSum;
                 lSum += oArray[2][i][0];
-            
-            
+
+
+            }
             }
         }
     }
-
     cout << "Inserting|| " << oArray[2][0][1] / RUNS << " nanosec || " << oArray[2][1][1] / RUNS << " nanosec || " << oArray[2][2][1] / RUNS << " nano sec " << endl;
 
     //////////////////////DELETING
