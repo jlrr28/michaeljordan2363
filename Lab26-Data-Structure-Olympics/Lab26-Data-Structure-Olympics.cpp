@@ -287,7 +287,7 @@ void insertMid(vector<string>& v, string ins) {
     advance(it, mid);
 
     v.insert(it, ins);
-
+    
 }
 
 void insertMid(list<string>& v, string ins) {
