@@ -30,7 +30,7 @@ void deleteMid(set<string>& v);
 
 
 
-const int COL = 3, TESTS = 4, RUNS = 8;
+const int COL = 3, TESTS = 4, RUNS = 15;
 const int STRUCTURES = 3;
 
 int main() {
@@ -105,7 +105,7 @@ int main() {
     }
     
 
-    cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
+    //cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
 
     /////////////////////SORTING
     vSum = 0; lSum = 0; sSum = 0; test++;
@@ -146,11 +146,6 @@ int main() {
             }
         }
     }
-
-    cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || "
-     << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
-
-    //cout << "Vector 0 " << oArray[1][0][0] << " Vector 1 " << oArray[1][0][1] << " expected average " << oArray[1][0][1] / RUNS << endl;
 
     //////////////////////INSERTING
 
@@ -197,7 +192,7 @@ int main() {
             }
         }
     }
-    cout << "Inserting|| " << oArray[2][0][1] / RUNS << " microsec || " << oArray[2][1][1] / RUNS << " microsec || " << oArray[2][2][1] / RUNS << " microsec " << endl;
+    //cout << "Inserting|| " << oArray[2][0][1] / RUNS << " microsec || " << oArray[2][1][1] / RUNS << " microsec || " << oArray[2][2][1] / RUNS << " microsec " << endl;
 
     //////////////////////DELETING
     vSum = 0; lSum = 0; sSum = 0; test++; 
@@ -237,11 +232,18 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 sSum += oArray[test][i][0];
                 oArray[test][i][1] = sSum;
+                cout << "structure [" << i << "] test index [" << test << "] time: " << oArray[test][i][0] << " times sum: " << oArray[test][i][1] << endl;
+
                 break;
             }
             }
         }
     }
+    cout << "  READING|| " << oArray[0][0][1] / RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
+
+    cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || " << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
+
+    cout << "Inserting|| " << oArray[2][0][1] / RUNS << " microsec || " << oArray[2][1][1] / RUNS << " microsec || " << oArray[2][2][1] / RUNS << " microsec " << endl;
 
     cout << "Deleting|| " << oArray[3][0][1] / RUNS << " microsec || " << oArray[3][1][1] / RUNS << " microsec || " << oArray[3][2][1] / RUNS << " microsec " << endl;
 
@@ -324,6 +326,6 @@ void deleteMid(set<string>& v) {
     auto it = v.begin();
     advance(it, mid);
     string target = *it;
-    v.erase(target);;
+    v.erase(target);
 
 }
