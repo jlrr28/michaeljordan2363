@@ -30,7 +30,7 @@ void deleteMid(set<string>& v);
 
 
 
-const int COL = 3, ROWS = 4, RUNS = 15;
+const int COL = 3, TESTS = 4, RUNS = 15;
 const int STRUCTURES = 3;
 
 int main() {
@@ -41,9 +41,7 @@ int main() {
     list<string> list;
     set<string> set;
     //[Test][Structure][2 sets of tests and structures, [0] keeping the times from runs, [1] keeping the sum of times from the runs]
-    //array<array<array<int,2>,ROWS >,STRUCTURES >oArray;// [COL] [ROWS] [SET] ;
-    int oArray[ROWS][STRUCTURES][2];
-
+    int oArray[TESTS][STRUCTURES][2];
 
     int vTime = 0;
     int lTime = 0;
@@ -53,7 +51,7 @@ int main() {
     cout << "        VECTOR    ----    LIST  ----    SET" << endl;
     //////////////////////Reading
     //Vector
-    
+
     int vSum = 0;
     int lSum = 0;
     int sSum = 0;
@@ -68,12 +66,12 @@ int main() {
                 readData(vec, file);
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
-                
+
                 oArray[0][i][0] = duration.count();
                 oArray[0][i][1] = vSum;
                 vSum += oArray[0][i][0];
-                
-                cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl; 
+
+                cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
                 break;
             }
             case 1: {
@@ -91,22 +89,22 @@ int main() {
                 readData(set, file);
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
-                
+
                 oArray[0][i][0] = duration.count();
                 oArray[0][i][1] = sSum;
                 sSum += oArray[0][i][0];
-                
+
                 break;
             }
             }
         }
     }
-
+    
 
     cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
 
     /////////////////////*SORTING
-    vSum, lSum, sSum = 0;
+    vSum = 0; lSum = 0; sSum = 0;
     for (int j = 0; j < RUNS; j++) {
 
         for (int i = 0; i < STRUCTURES; i++) {
@@ -121,8 +119,7 @@ int main() {
                 oArray[1][i][0] = duration.count();
                 oArray[1][i][1] = vSum;
                 vSum += oArray[1][i][0];
-                cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << j << " " << oArray[1][i][1] << " " << endl;
-
+                //cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << j << " " << oArray[1][i][1] << " " << endl;
 
                 break;
             }
@@ -133,7 +130,7 @@ int main() {
 
                 oArray[1][i][0] = duration.count();
                 oArray[1][i][1] = lSum;
-                lSum += oArray[0][i][0];
+                lSum += oArray[1][i][0];
 
                 break;
             }
@@ -146,43 +143,58 @@ int main() {
         }
     }
 
-    cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || " << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
+    cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || "
+     << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
 
     cout << "Vector 0 " << oArray[1][0][0] << " Vector 1 " << oArray[1][0][1] << " expected average " << oArray[1][0][1] / RUNS << endl;
 
     //////////////////////INSERTING
 
-    //Vector
+    vSum = 0; lSum = 0; sSum = 0;
+    for (int j = 0; j < RUNS; j++) {
 
-    for (int i = 0; i < STRUCTURES; i++) {
-        auto start = chrono::high_resolution_clock::now();
+        for (int i = 0; i < STRUCTURES; i++) {
+            auto start = chrono::high_resolution_clock::now();
 
-        switch (i) {
-        case 0: {
-            insertMid(vec, insertT);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            vTime = duration.count();
-            break;
-        }
-        case 1: {
-            insertMid(list, insertT);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            lTime = duration.count();
-            break;
-        }
-        case 2: {
-            set.insert(insertT);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            sTime = duration.count();
-            break;
-        }
+            switch (i) {
+            case 0: {
+                insertMid(vec, insertT);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
+
+                oArray[2][i][0] = duration.count();
+                oArray[2][i][1] = vSum;
+                vSum += oArray[2][i][0];
+                //cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << j << " " << oArray[1][i][1] << " " << endl;
+
+                break;
+            }
+            case 1: {
+                insertMid(list, insertT);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
+
+                oArray[2][i][0] = duration.count();
+                oArray[2][i][1] = lSum;
+                lSum += oArray[2][i][0];
+
+                break;
+            }
+            case 2: {
+                set.insert(insertT);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
+                
+                oArray[2][i][0] = duration.count();
+                oArray[2][i][1] = lSum;
+                lSum += oArray[2][i][0];
+            
+            
+            }
         }
     }
 
-    cout << "Inserting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
+    cout << "Inserting|| " << oArray[2][0][1] / RUNS << " nanosec || " << oArray[2][1][1] / RUNS << " nanosec || " << oArray[2][2][1] / RUNS << " nano sec " << endl;
 
     //////////////////////DELETING
 
