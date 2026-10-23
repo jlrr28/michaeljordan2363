@@ -73,7 +73,7 @@ int main() {
                 oArray[0][i][1] = vSum;
                 vSum += oArray[0][i][0];
                 
-                //cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl; 
+                cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl; 
                 break;
             }
             case 1: {
@@ -120,8 +120,8 @@ int main() {
 
                 oArray[1][i][0] = duration.count();
                 oArray[1][i][1] = vSum;
-                vSum += oArray[0][i][0];
-                cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << vSum << " " << endl;
+                vSum += oArray[1][i][0];
+                cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << j << " " << oArray[1][i][1] << " " << endl;
 
 
                 break;
@@ -147,6 +147,8 @@ int main() {
     }
 
     cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || " << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
+
+    cout << "Vector 0 " << oArray[1][0][0] << " Vector 1 " << oArray[1][0][1] << " expected average " << oArray[1][0][1] / RUNS << endl;
 
     //////////////////////INSERTING
 
@@ -213,8 +215,6 @@ int main() {
     }
 
     cout << "Deleting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
-
-    cout << "List 0" << oArray[0][1][0] << "List 1" << oArray[0][1][1] << "" << endl;
 
     return 0;
 }
