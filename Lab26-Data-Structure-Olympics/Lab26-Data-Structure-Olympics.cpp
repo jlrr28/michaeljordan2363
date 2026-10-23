@@ -40,7 +40,7 @@ int main() {
     vector<string> vec;
     list<string> list;
     set<string> set;
-    //[Test][Structure][Time]
+    //[Test][Structure][2 sets of tests and structures, [0] keeping the times from runs, [1] keeping the sum of times from the runs]
     array<array<array<int,2>,ROWS >,STRUCTURES >oArray;// [COL] [ROWS] [DAYS] ;
 
     int vTime = 0;
@@ -51,7 +51,10 @@ int main() {
     //////////////////////Reading
     //Vector
     
-    int add = 0;
+    int vSum = 0;
+    int lSum = 0;
+    int sSum = 0;
+
     for (int j = 0; j < RUNS; j++) {
 
 
@@ -64,32 +67,33 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
                 
-                
-                
                 oArray[0][i][0] = duration.count();
-
-                oArray[0][i][1] = oArray[0][i][0] + add;
-
+                oArray[0][i][1] = vSum;
+                vSum += oArray[0][i][0];
                 
-                cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
+                //cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
                 break;
             }
             case 1: {
                 readData(list, file);
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<nanoseconds>(end - start);
-                //lTime = duration.count();
+
                 oArray[0][i][0] = duration.count();
-                //cout << "list day " << j << " " << oArray[0][i][j] << endl;
+                oArray[0][i][1] = lSum;
+                lSum += oArray[0][i][0];
+
                 break;
             }
             case 2: {
                 readData(set, file);
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<nanoseconds>(end - start);
-                //sTime = duration.count();
+                
                 oArray[0][i][0] = duration.count();
-                //cout << "set day " << j << " " << oArray[0][i][j] << endl;
+                oArray[0][i][1] = sSum;
+                sSum += oArray[0][i][0];
+                
                 break;
             }
             }
@@ -104,6 +108,8 @@ int main() {
     
     //for (int i)
     
+    cout << "Average: " << oArray[0][0][1] / RUNS << endl;
+
     cout << "READING|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
 
 
