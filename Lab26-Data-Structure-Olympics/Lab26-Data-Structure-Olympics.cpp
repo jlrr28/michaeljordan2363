@@ -43,16 +43,18 @@ int main() {
     //[Test]: [0] = Reading, [1] = Sorting, [2] = Inserting , [3] = Deleting
     //[Structures]: [0] = Vector, [1] = List, [2] = Set 
     //[2]: [0] keeping the time from run, [1] keeping the sum of times from the runs]
+    
     int oArray[TESTS][STRUCTURES][2];
-
+    
     int vTime = 0;
     int lTime = 0;
     int sTime = 0;
+    
     cout << RUNS << " runs will be done" << endl;
     cout << "DATA STRUCTURE RACING" << endl;
     cout << "        VECTOR    ----    LIST  ----    SET" << endl;
+    
     //////////////////////Reading
-    //Vector
 
     int vSum = 0;
     int lSum = 0;
@@ -73,8 +75,7 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 vSum += oArray[test][i][0];
                 oArray[test][i][1] = vSum;
-                
-                cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
+               
                 break;
             }
             case 1: {
@@ -106,7 +107,7 @@ int main() {
 
     cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
 
-    /////////////////////*SORTING
+    /////////////////////SORTING
     vSum = 0; lSum = 0; sSum = 0; test++;
     for (int j = 0; j < RUNS; j++) {
 
@@ -122,7 +123,6 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 vSum += oArray[test][i][0];
                 oArray[test][i][1] = vSum;
-                //cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << j << " " << oArray[1][i][1] << " " << endl;
 
                 break;
             }
@@ -141,6 +141,7 @@ int main() {
 
                 oArray[test][i][1] = -1;
                 break;
+            
             }
             }
         }
@@ -149,12 +150,11 @@ int main() {
     cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || "
      << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
 
-    cout << "Vector 0 " << oArray[1][0][0] << " Vector 1 " << oArray[1][0][1] << " expected average " << oArray[1][0][1] / RUNS << endl;
+    //cout << "Vector 0 " << oArray[1][0][0] << " Vector 1 " << oArray[1][0][1] << " expected average " << oArray[1][0][1] / RUNS << endl;
 
     //////////////////////INSERTING
 
     vSum = 0; lSum = 0; sSum = 0; test++;
-    cout << "test #" << test << " running" << endl;
     for (int j = 0; j < RUNS; j++) {
 
         for (int i = 0; i < STRUCTURES; i++) {
@@ -169,7 +169,6 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 vSum += oArray[test][i][0];
                 oArray[test][i][1] = vSum;
-                //cout << " vec day times: " << oArray[2][i][0] << " vec day sum: " << j << " " << oArray[2][i][1] << " " << endl;
 
                 break;
             }
@@ -192,13 +191,13 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 sSum += oArray[test][i][0];
                 oArray[test][i][1] = sSum;
-                cout << " vec day times: " << oArray[test][i][0] << " vec day sum: " << j << " " << oArray[test][i][1] << " " << endl;
+
                 break;
             }
             }
         }
     }
-    cout << "Inserting|| " << oArray[2][0][1] / RUNS << " nanosec || " << oArray[2][1][1] / RUNS << " nanosec || " << oArray[2][2][1] / RUNS << " nano sec " << endl;
+    cout << "Inserting|| " << oArray[2][0][1] / RUNS << " microsec || " << oArray[2][1][1] / RUNS << " microsec || " << oArray[2][2][1] / RUNS << " microsec " << endl;
 
     //////////////////////DELETING
     vSum = 0; lSum = 0; sSum = 0; test++;
@@ -216,7 +215,6 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 vSum += oArray[test][i][0];
                 oArray[test][i][1] = vSum;
-                //cout << " vec day times: " << oArray[2][i][0] << " vec day sum: " << j << " " << oArray[2][i][1] << " " << endl;
 
                 break;
             }
@@ -245,7 +243,7 @@ int main() {
         }
     }
 
-    cout << "Deleting|| " << oArray[3][0][1] / RUNS << " nanosec || " << oArray[3][1][1] / RUNS << " nanosec || " << oArray[3][2][1] / RUNS << " nano sec " << endl;
+    cout << "Deleting|| " << oArray[3][0][1] / RUNS << " microsec || " << oArray[3][1][1] / RUNS << " microsec || " << oArray[3][2][1] / RUNS << " microsec " << endl;
 
     return 0;
 }
