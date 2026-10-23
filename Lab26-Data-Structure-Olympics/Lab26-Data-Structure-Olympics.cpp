@@ -200,7 +200,7 @@ int main() {
     cout << "Inserting|| " << oArray[2][0][1] / RUNS << " microsec || " << oArray[2][1][1] / RUNS << " microsec || " << oArray[2][2][1] / RUNS << " microsec " << endl;
 
     //////////////////////DELETING
-    vSum = 0; lSum = 0; sSum = 0; test++;
+    vSum = 0; lSum = 0; sSum = 0; test++; 
     for (int j = 0; j < RUNS; j++) {
 
         for (int i = 0; i < STRUCTURES; i++) {
