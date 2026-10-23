@@ -94,7 +94,7 @@ int main() {
     }
     cout << oArray[0][0][14] << endl;
     
-    
+     
     cout << oArray[0][2][5] << endl;
     cout << oArray[0][2][6] << endl;
     
