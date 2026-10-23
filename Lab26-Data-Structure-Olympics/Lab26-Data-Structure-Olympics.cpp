@@ -41,7 +41,9 @@ int main() {
     list<string> list;
     set<string> set;
     //[Test][Structure][2 sets of tests and structures, [0] keeping the times from runs, [1] keeping the sum of times from the runs]
-    array<array<array<int,2>,ROWS >,STRUCTURES >oArray;// [COL] [ROWS] [SET] ;
+    //array<array<array<int,2>,ROWS >,STRUCTURES >oArray;// [COL] [ROWS] [SET] ;
+    int oArray[ROWS][STRUCTURES][2];
+
 
     int vTime = 0;
     int lTime = 0;
@@ -100,12 +102,11 @@ int main() {
         }
     }
 
+
     cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
 
     /////////////////////*SORTING
-    vSum = 0;
-    lSum = 0;
-    sSum = 0;
+    vSum, lSum, sSum = 0;
     for (int j = 0; j < RUNS; j++) {
 
         for (int i = 0; i < STRUCTURES; i++) {
@@ -212,6 +213,8 @@ int main() {
     }
 
     cout << "Deleting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
+
+    cout << "List 0" << oArray[0][1][0] << "List 1" << oArray[0][1][1] << "" << endl;
 
     return 0;
 }
