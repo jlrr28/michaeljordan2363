@@ -71,7 +71,7 @@ int main() {
                 oArray[0][i][1] = vSum;
                 vSum += oArray[0][i][0];
                 
-                //cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
+                //cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl; 
                 break;
             }
             case 1: {
