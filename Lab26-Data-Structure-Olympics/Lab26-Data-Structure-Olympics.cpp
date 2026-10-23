@@ -65,7 +65,7 @@ int main() {
                 auto duration = duration_cast<microseconds>(end - start);
                 
                 add = oArray[0][i][0];
-                
+                 
                 oArray[0][i][0] = duration.count();
 
                 oArray[0][i][1] = oArray[0][i][0] + add;
