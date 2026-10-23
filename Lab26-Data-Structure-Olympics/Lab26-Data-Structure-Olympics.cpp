@@ -30,7 +30,7 @@ void deleteMid(set<string>& v);
 
 
 
-const int COL = 3, ROWS = 4, DAYS = 15;
+const int COL = 3, ROWS = 4, RUNS = 15;
 const int STRUCTURES = 3;
 
 int main() {
@@ -41,7 +41,7 @@ int main() {
     list<string> list;
     set<string> set;
     //[Test][Structure][Time]
-    array<array<array<int,DAYS>,ROWS >,STRUCTURES >oArray;// [COL] [ROWS] [DAYS] ;
+    array<array<array<int,2>,ROWS >,STRUCTURES >oArray;// [COL] [ROWS] [DAYS] ;
 
     int vTime = 0;
     int lTime = 0;
@@ -51,8 +51,8 @@ int main() {
     //////////////////////Reading
     //Vector
     
-
-    for (int j = 0; j < DAYS; j++) {
+    int add = 0;
+    for (int j = 0; j < RUNS; j++) {
 
 
         for (int i = 0; i < STRUCTURES; i++) {
@@ -63,10 +63,14 @@ int main() {
                 readData(vec, file);
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
-                oArray[0][i][j] = duration.count();
-                oArray[0][i][j] = oArray[0][i][j] + oArray[0][i][j];
-               
-                cout << "vec day " << j << " " << oArray[0][i][j] << endl;
+                
+                add = oArray[0][i][0];
+                
+                oArray[0][i][0] = duration.count();
+
+                oArray[0][i][1] = oArray[0][i][0] + add;
+
+                cout << "vec day " << j << " " << add << endl;
                 break;
             }
             case 1: {
@@ -92,11 +96,10 @@ int main() {
 
 
     }
-    cout << oArray[0][0][14] << endl;
-    
-     
-    cout << oArray[0][2][5] << endl;
-    cout << oArray[0][2][6] << endl;
+    //cout << oArray[0][0][14] << endl;
+
+    //cout << oArray[0][2][5] << endl;
+    //cout << oArray[0][2][6] << endl;
     
     //for (int i)
     
