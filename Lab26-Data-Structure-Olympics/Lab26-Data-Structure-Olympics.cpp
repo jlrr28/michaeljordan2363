@@ -40,7 +40,9 @@ int main() {
     vector<string> vec;
     list<string> list;
     set<string> set;
-    //[Test][Structure][2 sets of tests and structures, [0] keeping the times from runs, [1] keeping the sum of times from the runs]
+    //[Test]: [0] = Reading, [1] = Sorting, [2] = Inserting , [3] = Deleting
+    //[Structures]: [0] = Vector, [1] = List, [2] = Set 
+    //[2]: [0] keeping the time from run, [1] keeping the sum of times from the runs]
     int oArray[TESTS][STRUCTURES][2];
 
     int vTime = 0;
@@ -81,8 +83,8 @@ int main() {
                 auto duration = duration_cast<microseconds>(end - start);
 
                 oArray[test][i][0] = duration.count();
-                vSum += oArray[test][i][0];
-                oArray[test][i][1] = vSum;
+                lSum += oArray[test][i][0];
+                oArray[test][i][1] = lSum;
 
                 break;
             }
@@ -191,7 +193,7 @@ int main() {
                 sSum += oArray[test][i][0];
                 oArray[test][i][1] = sSum;
                 cout << " vec day times: " << oArray[test][i][0] << " vec day sum: " << j << " " << oArray[test][i][1] << " " << endl;
-
+                break;
             }
             }
         }
@@ -237,14 +239,13 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 sSum += oArray[test][i][0];
                 oArray[test][i][1] = sSum;
-                cout << " vec day times: " << oArray[test][i][0] << " vec day sum: " << j << " " << oArray[test][i][1] << " " << endl;
-
+                break;
             }
             }
         }
     }
 
-    cout << "Deleting|| " << vTime << " nanosec || " << lTime << " nanosec || " << sTime << " nano sec " << endl;
+    cout << "Deleting|| " << oArray[3][0][1] / RUNS << " nanosec || " << oArray[3][1][1] / RUNS << " nanosec || " << oArray[3][2][1] / RUNS << " nano sec " << endl;
 
     return 0;
 }
