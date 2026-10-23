@@ -64,13 +64,14 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
                 
-                add = oArray[0][i][0];
-                 
+                
+                
                 oArray[0][i][0] = duration.count();
 
                 oArray[0][i][1] = oArray[0][i][0] + add;
 
-                cout << "vec day " << j << " " << add << endl;
+                
+                cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
                 break;
             }
             case 1: {
@@ -78,7 +79,7 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<nanoseconds>(end - start);
                 //lTime = duration.count();
-                oArray[0][i][j] = duration.count();
+                oArray[0][i][0] = duration.count();
                 //cout << "list day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
@@ -87,7 +88,7 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<nanoseconds>(end - start);
                 //sTime = duration.count();
-                oArray[0][i][j] = duration.count();
+                oArray[0][i][0] = duration.count();
                 //cout << "set day " << j << " " << oArray[0][i][j] << endl;
                 break;
             }
