@@ -46,13 +46,9 @@ int main() {
     
     int oArray[TESTS][STRUCTURES][2];
     
-    int vTime = 0;
-    int lTime = 0;
-    int sTime = 0;
-    
-    cout << RUNS << " runs will be done" << endl;
-    cout << "DATA STRUCTURE RACING" << endl;
-    cout << "        VECTOR    ----    LIST  ----    SET" << endl;
+    cout << "Number of simulations: " << RUNS << endl;
+
+    cout << "OPERATION        VECTOR    ----    LIST  ----    SET" << endl;
     
     //////////////////////Reading
 
@@ -239,13 +235,14 @@ int main() {
             }
         }
     }
-    cout << "  READING|| " << oArray[0][0][1] / RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
+    
+    cout << "  READING      " << oArray[0][0][1] / RUNS << "      " << oArray[0][1][1] / RUNS << "      " << oArray[0][2][1] / RUNS << endl;
 
-    cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || " << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
+    cout << "  SORTING      " << oArray[1][0][1] / RUNS << "      " << oArray[1][1][1] / RUNS << "      " << oArray[1][2][1] << endl;
 
-    cout << "Inserting|| " << oArray[2][0][1] / RUNS << " microsec || " << oArray[2][1][1] / RUNS << " microsec || " << oArray[2][2][1] / RUNS << " microsec " << endl;
+    cout << "Inserting      " << oArray[2][0][1] / RUNS << "      " << oArray[2][1][1] / RUNS << "      " << oArray[2][2][1] / RUNS << endl;
 
-    cout << "Deleting|| " << oArray[3][0][1] / RUNS << " microsec || " << oArray[3][1][1] / RUNS << " microsec || " << oArray[3][2][1] / RUNS << " microsec " << endl;
+    cout << "Deleting      " << oArray[3][0][1] / RUNS << "      " << oArray[3][1][1] / RUNS << "      " << oArray[3][2][1] / RUNS << endl;
 
     return 0;
 }
