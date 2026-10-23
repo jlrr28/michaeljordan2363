@@ -30,7 +30,7 @@ void deleteMid(set<string>& v);
 
 
 
-const int COL = 3, TESTS = 4, RUNS = 4;
+const int COL = 3, TESTS = 4, RUNS = 8;
 const int STRUCTURES = 3;
 
 int main() {
@@ -68,10 +68,10 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[0][i][0] = duration.count();
-
-                vSum += oArray[0][i][0];
-                oArray[0][i][1] = vSum;
+                oArray[test][i][0] = duration.count();
+                vSum += oArray[test][i][0];
+                oArray[test][i][1] = vSum;
+                
                 cout << " vec day times: " << oArray[0][i][0] << " vec day sum: " << j << " " << oArray[0][i][1] << endl;
                 break;
             }
@@ -80,9 +80,9 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[0][i][0] = duration.count();
-                oArray[0][i][1] = lSum;
-                lSum += oArray[0][i][0];
+                oArray[test][i][0] = duration.count();
+                vSum += oArray[test][i][0];
+                oArray[test][i][1] = vSum;
 
                 break;
             }
@@ -91,9 +91,9 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[0][i][0] = duration.count();
-                oArray[0][i][1] = sSum;
-                sSum += oArray[0][i][0];
+                oArray[test][i][0] = duration.count();
+                sSum += oArray[test][i][0];
+                oArray[test][i][1] = sSum;
 
                 break;
             }
@@ -105,7 +105,7 @@ int main() {
     cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
 
     /////////////////////*SORTING
-    vSum = 0; lSum = 0; sSum = 0;
+    vSum = 0; lSum = 0; sSum = 0; test++;
     for (int j = 0; j < RUNS; j++) {
 
         for (int i = 0; i < STRUCTURES; i++) {
@@ -117,9 +117,9 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[1][i][0] = duration.count();
-                oArray[1][i][1] = vSum;
-                vSum += oArray[1][i][0];
+                oArray[test][i][0] = duration.count();
+                vSum += oArray[test][i][0];
+                oArray[test][i][1] = vSum;
                 //cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << j << " " << oArray[1][i][1] << " " << endl;
 
                 break;
@@ -129,15 +129,15 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[1][i][0] = duration.count();
-                oArray[1][i][1] = lSum;
-                lSum += oArray[1][i][0];
+                oArray[test][i][0] = duration.count();
+                lSum += oArray[test][i][0];
+                oArray[test][i][1] = lSum;
 
                 break;
             }
             case 2: {
 
-                oArray[1][i][1] = -1;
+                oArray[test][i][1] = -1;
                 break;
             }
             }
@@ -151,7 +151,8 @@ int main() {
 
     //////////////////////INSERTING
 
-    vSum = 0; lSum = 0; sSum = 0;
+    vSum = 0; lSum = 0; sSum = 0; test++;
+    cout << "test #" << test << " running" << endl;
     for (int j = 0; j < RUNS; j++) {
 
         for (int i = 0; i < STRUCTURES; i++) {
@@ -163,10 +164,10 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[2][i][0] = duration.count();
-                oArray[2][i][1] = vSum;
-                vSum += oArray[2][i][0];
-                cout << " vec day times: " << oArray[2][i][0] << " vec day sum: " << j << " " << oArray[2][i][1] << " " << endl;
+                oArray[test][i][0] = duration.count();
+                vSum += oArray[test][i][0];
+                oArray[test][i][1] = vSum;
+                //cout << " vec day times: " << oArray[2][i][0] << " vec day sum: " << j << " " << oArray[2][i][1] << " " << endl;
 
                 break;
             }
@@ -175,9 +176,9 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[2][i][0] = duration.count();
-                oArray[2][i][1] = lSum;
-                lSum += oArray[2][i][0];
+                oArray[test][i][0] = duration.count();
+                lSum += oArray[test][i][0];
+                oArray[test][i][1] = lSum;
 
                 break;
             }
@@ -186,10 +187,10 @@ int main() {
                 auto end = high_resolution_clock::now();
                 auto duration = duration_cast<microseconds>(end - start);
 
-                oArray[2][i][0] = duration.count();
-                oArray[2][i][1] = lSum;
-                lSum += oArray[2][i][0];
-
+                oArray[test][i][0] = duration.count();
+                sSum += oArray[test][i][0];
+                oArray[test][i][1] = sSum;
+                cout << " vec day times: " << oArray[test][i][0] << " vec day sum: " << j << " " << oArray[test][i][1] << " " << endl;
 
             }
             }
@@ -198,32 +199,48 @@ int main() {
     cout << "Inserting|| " << oArray[2][0][1] / RUNS << " nanosec || " << oArray[2][1][1] / RUNS << " nanosec || " << oArray[2][2][1] / RUNS << " nano sec " << endl;
 
     //////////////////////DELETING
+    vSum = 0; lSum = 0; sSum = 0; test++;
+    for (int j = 0; j < RUNS; j++) {
 
-    for (int i = 0; i < STRUCTURES; i++) {
-        auto start = chrono::high_resolution_clock::now();
+        for (int i = 0; i < STRUCTURES; i++) {
+            auto start = chrono::high_resolution_clock::now();
 
-        switch (i) {
-        case 0: {
-            deleteMid(vec);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            vTime = duration.count();
-            break;
-        }
-        case 1: {
-            deleteMid(list);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            lTime = duration.count();
-            break;
-        }
-        case 2: {
-            deleteMid(set);
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<nanoseconds>(end - start);
-            sTime = duration.count();
-            break;
-        }
+            switch (i) {
+            case 0: {
+                deleteMid(vec);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
+
+                oArray[test][i][0] = duration.count();
+                vSum += oArray[test][i][0];
+                oArray[test][i][1] = vSum;
+                //cout << " vec day times: " << oArray[2][i][0] << " vec day sum: " << j << " " << oArray[2][i][1] << " " << endl;
+
+                break;
+            }
+            case 1: {
+                deleteMid(list);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
+
+                oArray[test][i][0] = duration.count();
+                lSum += oArray[test][i][0];
+                oArray[test][i][1] = lSum;
+
+                break;
+            }
+            case 2: {
+                deleteMid(set);
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
+
+                oArray[test][i][0] = duration.count();
+                sSum += oArray[test][i][0];
+                oArray[test][i][1] = sSum;
+                cout << " vec day times: " << oArray[test][i][0] << " vec day sum: " << j << " " << oArray[test][i][1] << " " << endl;
+
+            }
+            }
         }
     }
 
