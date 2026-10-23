@@ -100,46 +100,52 @@ int main() {
         }
     }
 
-    cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " nanosec || " << oArray[0][2][1] / RUNS << " nano sec " << endl;
+    cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
 
     /////////////////////*SORTING
+    vSum = 0;
+    lSum = 0;
+    sSum = 0;
+    for (int j = 0; j < RUNS; j++) {
 
-    for (int i = 0; i < STRUCTURES; i++) {
-        auto start = chrono::high_resolution_clock::now();
+        for (int i = 0; i < STRUCTURES; i++) {
+            auto start = chrono::high_resolution_clock::now();
 
-        switch (i) {
-        case 0: {
-            sort(vec.begin(), vec.end());
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<microseconds>(end - start);
+            switch (i) {
+            case 0: {
+                sort(vec.begin(), vec.end());
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
 
-            oArray[1][i][0] = duration.count();
-            oArray[1][i][1] = vSum;
-            vSum += oArray[0][i][0];
-            
-            
-            break;
-        }
-        case 1: {
-            list.sort();
-            auto end = high_resolution_clock::now();
-            auto duration = duration_cast<microseconds>(end - start);
+                oArray[1][i][0] = duration.count();
+                oArray[1][i][1] = vSum;
+                vSum += oArray[0][i][0];
+                cout << " vec day times: " << oArray[1][i][0] << " vec day sum: " << vSum << " " << endl;
 
-            oArray[1][i][0] = duration.count();
-            oArray[1][i][1] = vSum;
-            vSum += oArray[0][i][0];
-            
-            break;
-        }
-        case 2: {
 
-            sTime = -1;
-            break;
-        }
+                break;
+            }
+            case 1: {
+                list.sort();
+                auto end = high_resolution_clock::now();
+                auto duration = duration_cast<microseconds>(end - start);
+
+                oArray[1][i][0] = duration.count();
+                oArray[1][i][1] = lSum;
+                lSum += oArray[0][i][0];
+
+                break;
+            }
+            case 2: {
+
+                oArray[1][i][1] = -1;
+                break;
+            }
+            }
         }
     }
 
-    cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || " << oArray[1][1][1] / RUNS << " microsec || " << sTime << " microsec " << endl;
+    cout << "  SORTING|| " << oArray[1][0][1] / RUNS << " microsec || " << oArray[1][1][1] / RUNS << " microsec || " << oArray[1][2][1] << " microsec " << endl;
 
     //////////////////////INSERTING
 
