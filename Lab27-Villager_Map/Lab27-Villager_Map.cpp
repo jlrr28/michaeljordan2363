@@ -55,7 +55,7 @@ void increaseFriendship(map<string, tuple<int, string, string> > &vD) {
 
     if (it != vD.end()) {  // the iterator points to beyond the end of the map
         // if searchKey is not found
-        cout << "\nIncrease friendship of " << searchKey;
+        cout << "\nIncreasing friendship of " << searchKey;
         auto& m = vD[searchKey];
         get<0>(m) = get<0>(m) + 1;
         cout << endl;
@@ -69,13 +69,13 @@ void decreaseFriendship(map<string, tuple<int, string, string> >& vD) {
     cin.ignore();
     string searchKey;
 
-    cout << "Enter villager to increase friendship : ";
+    cout << "Enter villager to decrease friendship : ";
     getline(cin, searchKey);
     auto it = vD.find(searchKey);
 
     if (it != vD.end()) {  // the iterator points to beyond the end of the map
         // if searchKey is not found
-        cout << "\nDecrease friendship of " << searchKey;
+        cout << "\nDecreasing friendship of " << searchKey;
         auto& m = vD[searchKey];
         get<0>(m) = get<0>(m) - 1;
         cout << endl;
@@ -101,7 +101,7 @@ int main() {
     // note how the right-hand side of the assignment are the vector elements
     villagerData["Audie"] = { 4, "Yellow", "Red" };
     villagerData["Raymond"] = { 5, "Gray", "White" };
-    villagerData.insert({ "Marshal", {2, "White", "Black"} });
+    villagerData.insert({ "Marshal", {1, "White", "Black"} });
 
     villagerData["Michael"] = {5, "dog" , "wazzup"};
     villagerData["BBB"] = { 7, "Hound" , "No playin !" };
@@ -133,7 +133,7 @@ int main() {
             increaseFriendship(villagerData);
             break;
         case 4:
-            //decreaseFriendship();
+            decreaseFriendship(villagerData);
             break;
         case 5:
             searchForVillager(villagerData);
