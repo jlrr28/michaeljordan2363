@@ -3,10 +3,45 @@
 #include <vector>
 #include <algorithm>
 #include <tuple>
+#include <string>;
 using namespace std;
 
 int mainMenu() {
+    int in = 0;
+    cout << endl;
+    cout << "1. Add Villager" << endl << "2. Delete Villager" << endl;
+    cout << "3. Increase Friendship" << endl << "4. Decrease Friendship" << endl;
+    cout << "5. Search for Villager" << endl << "6. exit" << endl;
 
+    while (in < 1 || in > 6) {
+        cout << "choice -->";
+        cin >> in;
+        if (in < 1 || in > 6)
+            cout << "Invalid input\n" << endl;
+    }
+
+    return in;
+
+}
+
+void searchForVillager(map<string, tuple<int, string, string> > vD) {
+
+    string searchKey;
+
+    cout << "Enter villager to look for :" << endl;
+    getline(cin, searchKey);
+    cout << endl;
+    auto it = vD.find(searchKey);
+
+    if (it != vD.end()) {  // the iterator points to beyond the end of the map
+        // if searchKey is not found
+        cout << "\nFound " << searchKey << "'s favorite colors: ";
+        auto& m = vD[searchKey];
+        cout << get<1>(m);
+        cout << endl;
+    }
+    else
+        cout << endl << searchKey << " not found." << endl;
 
 
 
@@ -43,22 +78,29 @@ int main() {
     }
 
     int input = 0;
-    while (input != 4) {
+    while (input != 6) {
 
-        input = main_menu();
+        input = mainMenu();
 
         switch (input) {
         case 1:
-            
+            //addVillager();
             break;
         case 2:
-
+            //deleteVillager();
             break;
         case 3:
-
+            //increaseFriendship();
             break;
         case 4:
+            //decreaseFriendship();
             break;
+        case 5:
+            searchForVillager(villagerData);
+            break;
+        case 6:
+            break;
+        
         default: break;
         }
     }
