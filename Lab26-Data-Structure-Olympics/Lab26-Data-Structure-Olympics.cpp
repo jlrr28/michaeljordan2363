@@ -40,6 +40,7 @@ int main() {
     vector<string> vec;
     list<string> list;
     set<string> set;
+    
     //[Test]: [0] = Reading, [1] = Sorting, [2] = Inserting , [3] = Deleting
     //[Structures]: [0] = Vector, [1] = List, [2] = Set 
     //[2]: [0] keeping the time from run, [1] keeping the sum of times from the runs]
@@ -127,7 +128,7 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 lSum += oArray[test][i][0];
                 oArray[test][i][1] = lSum;
-                cout << "structure [" << i << "] test index [" << test << "] time: " << oArray[test][i][0] << " times sum: " << oArray[test][i][1] << endl;
+                //cout << "structure [" << i << "] test index [" << test << "] time: " << oArray[test][i][0] << " times sum: " << oArray[test][i][1] << endl;
 
                 break;
             }
@@ -186,7 +187,6 @@ int main() {
             }
         }
     }
-    //cout << "Inserting|| " << oArray[2][0][1] / RUNS << " microsec || " << oArray[2][1][1] / RUNS << " microsec || " << oArray[2][2][1] / RUNS << " microsec " << endl;
 
     //////////////////////DELETING
     vSum = 0; lSum = 0; sSum = 0; test++; 
@@ -235,20 +235,11 @@ int main() {
     
     cout << "  READING      " << oArray[0][0][1] / RUNS << "      " << oArray[0][1][1] / RUNS << "      " << oArray[0][2][1] / RUNS << endl;
 
-    cout << "  SORTING      " << oArray[1][0][1] / RUNS << "      " << oArray[1][1][1] / RUNS << "      " << oArray[1][2][1] << endl;
+    cout << "  SORTING      " << oArray[1][0][1] / RUNS << "      " << oArray[1][1][1] / RUNS << "   " << oArray[1][2][1] << endl;
 
-    cout << "Inserting      " << oArray[2][0][1] / RUNS << "      " << oArray[2][1][1] / RUNS << "      " << oArray[2][2][1] / RUNS << endl;
+    cout << "INSERTING      " << oArray[2][0][1] / RUNS << "      " << oArray[2][1][1] / RUNS << "       " << oArray[2][2][1] / RUNS << endl;
 
-    cout << "Deleting      " << oArray[3][0][1] / RUNS << "      " << oArray[3][1][1] / RUNS << "      " << oArray[3][2][1] / RUNS << endl;
-
-    for (int i = 0, j = 0; i < TESTS; i++, j++) {
-
-
-
-    }
-
-
-
+    cout << " DELETING      " << oArray[3][0][1] / RUNS << "      " << oArray[3][1][1] / RUNS << "      " << oArray[3][2][1] / RUNS << endl;
 
     return 0;
 }
