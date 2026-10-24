@@ -100,9 +100,6 @@ int main() {
         }
     }
     
-
-    //cout << "  READING|| " << oArray[0][0][1]/RUNS << " microsec || " << oArray[0][1][1] / RUNS << " microsec || " << oArray[0][2][1] / RUNS << " microsec " << endl;
-
     /////////////////////SORTING
     vSum = 0; lSum = 0; sSum = 0; test++;
     for (int j = 0; j < RUNS; j++) {
@@ -130,6 +127,7 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 lSum += oArray[test][i][0];
                 oArray[test][i][1] = lSum;
+                cout << "structure [" << i << "] test index [" << test << "] time: " << oArray[test][i][0] << " times sum: " << oArray[test][i][1] << endl;
 
                 break;
             }
@@ -228,7 +226,6 @@ int main() {
                 oArray[test][i][0] = duration.count();
                 sSum += oArray[test][i][0];
                 oArray[test][i][1] = sSum;
-                cout << "structure [" << i << "] test index [" << test << "] time: " << oArray[test][i][0] << " times sum: " << oArray[test][i][1] << endl;
 
                 break;
             }
