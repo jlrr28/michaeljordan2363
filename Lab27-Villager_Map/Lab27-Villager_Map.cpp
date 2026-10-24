@@ -127,7 +127,7 @@ int main() {
             //addVillager();
             break;
         case 2:
-            //deleteVillager();
+            deleteVillager();
             break;
         case 3:
             increaseFriendship(villagerData);
