@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     // declarations
     map<string, vector<string>> villagerColors;
-
+    
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
     villagerColors["Audie"] = { "Orange", "Yellow", "Red" };
