@@ -97,13 +97,21 @@ void addVillager(map<string, tuple<int, string, string> >& vD) {
     cout << "Villager name: ";
     string name;
     getline(cin, name);
+    
     cout << "\nFriendship level: ";
     int fL;
     cin >> fL;
+    
     cin.ignore();
+    cout << "\nSpecies: ";
+    string species;
+    getline(cin, species);
 
+    cout << "\nCatchphrase: ";
+    string catchP;
+    getline(cin, catchP);
 
-    vD.insert({ "Duncan" , { 3, "Kangaroo", "boing" } });
+    vD.insert({ name , { fL, species, catchP } });
 
 }
 
@@ -162,7 +170,7 @@ int main() {
 
         switch (input) {
         case 1:
-            //addVillager();
+            addVillager(villagerData);
             break;
         case 2:
             deleteVillager(villagerData);
