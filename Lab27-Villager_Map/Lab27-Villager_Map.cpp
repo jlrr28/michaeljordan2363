@@ -5,6 +5,14 @@
 #include <tuple>
 using namespace std;
 
+int mainMenu() {
+
+
+
+
+}
+
+
 int main() {
     // declarations
     map<string, vector<string>> villagerColors;
@@ -13,7 +21,6 @@ int main() {
     
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = { "p", "Yellow", "Red"};
     villagerData["Audie"] = { 4, "Yellow", "Red" };
     villagerData["Raymond"] = { 5, "Gray", "White" };
     villagerData.insert({ "Marshal", {2, "White", "Black"} });
@@ -25,21 +32,37 @@ int main() {
     
 
     auto& m = villagerData["Michael"];
-    cout << "Michael " << get<0>(m) << get<1>(m) << get<2>(m) << endl;
-    //int friendRating = get<0>(villagerData);
-    //string vSpecies =  get<1>(villagerData);
-    //string vCatchphrase = get<2>(villagerData);
-    //auto [friendRating, vSpecies, vCatchphrase] = villagerData;
+    // cout << "Michael " << get<0>(m) << get<1>(m) << get<2>(m) << endl;
     
-    // access the map using a range-based for loop
-    
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
+    cout << "Current Villagers:" << endl;
     for (auto pair : villagerData) {
         cout << pair.first << ": ";
         auto& m = villagerData[pair.first];
-        cout << get<0>(m) << get<1>(m) << get<2>(m);
+        cout << get<0>(m) << ", " << get<1>(m) << ", " << get<2>(m);
         cout << endl;
     }
+
+    int input = 0;
+    while (input != 4) {
+
+        input = main_menu();
+
+        switch (input) {
+        case 1:
+            
+            break;
+        case 2:
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+            break;
+        default: break;
+        }
+    }
+
 
     // delete an element
     villagerData.erase("Raymond");
