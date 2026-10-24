@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37614.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab27-Villager_Map", "Lab27-Villager_Map.vcxproj", "{2FB88270-F404-4948-A45B-573296430DAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FB88270-F404-4948-A45B-573296430DAC}.Debug|x64.ActiveCfg = Debug|x64
+		{2FB88270-F404-4948-A45B-573296430DAC}.Debug|x64.Build.0 = Debug|x64
+		{2FB88270-F404-4948-A45B-573296430DAC}.Debug|x86.ActiveCfg = Debug|Win32
+		{2FB88270-F404-4948-A45B-573296430DAC}.Debug|x86.Build.0 = Debug|Win32
+		{2FB88270-F404-4948-A45B-573296430DAC}.Release|x64.ActiveCfg = Release|x64
+		{2FB88270-F404-4948-A45B-573296430DAC}.Release|x64.Build.0 = Release|x64
+		{2FB88270-F404-4948-A45B-573296430DAC}.Release|x86.ActiveCfg = Release|Win32
+		{2FB88270-F404-4948-A45B-573296430DAC}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C2C1069-597D-4099-8118-46712C1E5D24}
+	EndGlobalSection
+EndGlobal
