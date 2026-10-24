@@ -37,10 +37,11 @@ int main() {
 
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerColors.begin();
-        it != villagerColors.end(); ++it) {
+    //map<string, tuple<int, string, string> > villagerData;
+    for (map<string, tuple<int, string, string>>::iterator it = villagerData.begin();
+        it != villagerData.end(); ++it) {
         cout << it->first << ": ";
-        for (auto color : it->second) {
+        for (auto color : it->second<1>) {
             cout << color << " ";
         }
         cout << endl;
