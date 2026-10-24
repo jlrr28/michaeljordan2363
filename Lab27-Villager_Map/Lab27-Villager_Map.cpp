@@ -91,6 +91,44 @@ void decreaseFriendship(map<string, tuple<int, string, string> >& vD) {
 
 }
 
+void addVillager(map<string, tuple<int, string, string> >& vD) {
+    cin.ignore();
+    //string searchKey;
+    cout << "Villager name: ";
+    string name;
+    getline(cin, name);
+    cout << "\nFriendship level: ";
+    int fL;
+    cin >> fL;
+    cin.ignore();
+
+
+    vD.insert({ "Duncan" , { 3, "Kangaroo", "boing" } });
+
+}
+
+
+void deleteVillager(map<string, tuple<int, string, string> >& vD) {
+    cin.ignore();
+    string searchKey;
+
+    cout << "Enter villager to delete : ";
+    getline(cin, searchKey);
+    auto it = vD.find(searchKey);
+
+    if (it != vD.end()) {  // the iterator points to beyond the end of the map
+        cout << "Deleting villager " << searchKey << endl;
+        
+        vD.erase(searchKey);
+
+    }
+    else
+        cout << endl << searchKey << " not found." << endl;
+
+}
+
+
+
 int main() {
     // declarations
     map<string, vector<string>> villagerColors;
@@ -127,7 +165,7 @@ int main() {
             //addVillager();
             break;
         case 2:
-            deleteVillager();
+            deleteVillager(villagerData);
             break;
         case 3:
             increaseFriendship(villagerData);
