@@ -25,19 +25,21 @@ int mainMenu() {
 }
 
 void searchForVillager(map<string, tuple<int, string, string> > vD) {
-
+    cin.ignore();
     string searchKey;
 
-    cout << "Enter villager to look for :" << endl;
+    cout << "Enter villager to look for : ";
     getline(cin, searchKey);
-    cout << endl;
+    //cout << endl;
+    
     auto it = vD.find(searchKey);
 
     if (it != vD.end()) {  // the iterator points to beyond the end of the map
         // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
+        cout << "\nFound the villager " << searchKey;
         auto& m = vD[searchKey];
-        cout << get<1>(m);
+        cout << ", their friendship rating is " << get<0>(m) << " , species is " << get<1>(m);
+        cout << ", catchphrase is \" " << get<2>(m) << "\"";
         cout << endl;
     }
     else
@@ -61,7 +63,7 @@ int main() {
     villagerData.insert({ "Marshal", {2, "White", "Black"} });
 
     villagerData["Michael"] = {5, "dog" , "wazzup"};
-    villagerData["BBB"] = { 7, "Hound" , "No playing " };
+    villagerData["BBB"] = { 7, "Hound" , "No playin !" };
     villagerData.insert({ "Duncan" , { 3, "Kangaroo", "boing" } });
     
     
