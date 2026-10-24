@@ -17,7 +17,11 @@ int main() {
     villagerColors["Raymond"] = { "Black", "Gray", "White" };
     villagerColors.insert({ "Marshal", {"Blue", "White", "Black"} });
 
-    villagerData["Michael"] = {5, "dog" ,"wazzup"};
+    villagerData["Michael"] = {5, "dog" , "wazzup"};
+    villagerData["BBB"] = { 7, "Hound" , "No playing " };
+    villagerData.insert({ "Duncan" , { 3, "Kangaroo", "boing" } });
+    
+    
 
     auto& m = villagerData["Michael"];
     cout << "Michael " << get<0>(m) << get<1>(m) << get<2>(m) << endl;
@@ -37,11 +41,10 @@ int main() {
 
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    //map<string, tuple<int, string, string> > villagerData;
-    for (map<string, tuple<int, string, string>>::iterator it = villagerData.begin();
-        it != villagerData.end(); ++it) {
+    for (map<string, vector<string>>::iterator it = villagerColors.begin();
+        it != villagerColors.end(); ++it) {
         cout << it->first << ": ";
-        for (auto color : it->second<1>) {
+        for (auto color : it->second) {
             cout << color << " ";
         }
         cout << endl;
