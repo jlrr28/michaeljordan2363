@@ -30,8 +30,6 @@ void searchForVillager(map<string, tuple<int, string, string> > vD) {
 
     cout << "Enter villager to look for : ";
     getline(cin, searchKey);
-    //cout << endl;
-    
     auto it = vD.find(searchKey);
 
     if (it != vD.end()) {  // the iterator points to beyond the end of the map
@@ -45,10 +43,53 @@ void searchForVillager(map<string, tuple<int, string, string> > vD) {
     else
         cout << endl << searchKey << " not found." << endl;
 
+}
 
+void increaseFriendship(map<string, tuple<int, string, string> > &vD) {
+    cin.ignore();
+    string searchKey;
+
+    cout << "Enter villager to increase friendship : ";
+    getline(cin, searchKey);
+    auto it = vD.find(searchKey);
+
+    if (it != vD.end()) {  // the iterator points to beyond the end of the map
+        // if searchKey is not found
+        cout << "\nIncrease friendship of " << searchKey;
+        auto& m = vD[searchKey];
+        get<0>(m) = get<0>(m) + 1;
+        cout << endl;
+    }
+    else
+        cout << endl << searchKey << " not found." << endl;
 
 }
 
+void decreaseFriendship(map<string, tuple<int, string, string> >& vD) {
+    cin.ignore();
+    string searchKey;
+
+    cout << "Enter villager to increase friendship : ";
+    getline(cin, searchKey);
+    auto it = vD.find(searchKey);
+
+    if (it != vD.end()) {  // the iterator points to beyond the end of the map
+        // if searchKey is not found
+        cout << "\nDecrease friendship of " << searchKey;
+        auto& m = vD[searchKey];
+        get<0>(m) = get<0>(m) - 1;
+        cout << endl;
+        if (get<0>(m) < 0) {
+            cout << "Villager frienship at minimum" << endl;
+            get<0>(m) = get<0>(m) + 1;
+        }
+    
+    
+    }
+    else
+        cout << endl << searchKey << " not found." << endl;
+
+}
 
 int main() {
     // declarations
@@ -66,21 +107,18 @@ int main() {
     villagerData["BBB"] = { 7, "Hound" , "No playin !" };
     villagerData.insert({ "Duncan" , { 3, "Kangaroo", "boing" } });
     
-    
-
-    auto& m = villagerData["Michael"];
     // cout << "Michael " << get<0>(m) << get<1>(m) << get<2>(m) << endl;
     
-    cout << "Current Villagers:" << endl;
-    for (auto pair : villagerData) {
-        cout << pair.first << ": ";
-        auto& m = villagerData[pair.first];
-        cout << get<0>(m) << ", " << get<1>(m) << ", " << get<2>(m);
-        cout << endl;
-    }
-
     int input = 0;
     while (input != 6) {
+
+        cout << "Current Villagers:" << endl;
+        for (auto pair : villagerData) {
+            cout << pair.first << ": ";
+            auto& m = villagerData[pair.first];
+            cout << get<0>(m) << ", " << get<1>(m) << ", " << get<2>(m);
+            cout << endl;
+        }
 
         input = mainMenu();
 
@@ -92,7 +130,7 @@ int main() {
             //deleteVillager();
             break;
         case 3:
-            //increaseFriendship();
+            increaseFriendship(villagerData);
             break;
         case 4:
             //decreaseFriendship();
