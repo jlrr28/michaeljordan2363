@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <set>
+#include <string>
 #include "Goat.h"
 using namespace std;
 
@@ -21,18 +22,14 @@ int main_menu();
 void findNumOfColors(set<Goat>& trip) {
     
     int found = 0;
-    
-    string search;
-    cin >> search;
-    
-    //auto it = find(trip.begin(), trip.end(), );
-    
-    for (Goat value : trip) {
-        auto it = find(trip.begin(), trip.end(), value.get_color());
-        while (it != trip.end())
-            cout << "Found the score: " << found++;
+    string in;
+    getline(cin, in);
 
-    }
+    Goat search("xxxxxxx",0,in);
+
+    
+    auto it = find(trip.begin(), trip.end(), search);
+    
 
 
 
