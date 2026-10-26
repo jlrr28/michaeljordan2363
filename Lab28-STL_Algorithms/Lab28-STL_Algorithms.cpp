@@ -27,7 +27,7 @@ void paintAllGoatsBlack(list<Goat>& trip) {
 
 void advanceOneYear(list<Goat>& trip) {
 
-
+    transform(trip.begin(), trip.end(), trip.begin(), [](Goat& g) { g.set_age(g.get_age() + 1); });
     cout << "All goats are now 1 year older." << endl;
 }
 
@@ -107,7 +107,7 @@ int main() {
             //newfunction
             break;
         case 8:
-            //newfunction
+            advanceOneYear(gTrip);
             break;
         case 9:
             paintAllGoatsBlack(gTrip);
@@ -137,6 +137,7 @@ int main_menu() {
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
     cout << "[3] List of goats" << endl << "[4] Show age sum" << endl;
     cout << "[5] Show average age" << endl << "[6] " << endl;
+    cout << "[7] " << endl << "[8] Advance One Years" << endl;
     cout << "[9] Paint All Goats Black " << endl << "[10] Reverse list" << endl;
     cout << "[11] Clear list" << endl;
     while (in < 1 || in > 12) {
