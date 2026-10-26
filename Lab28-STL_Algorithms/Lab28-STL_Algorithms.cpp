@@ -20,33 +20,16 @@ void add_goat(set<Goat>& trip, string n[], string c[]);
 int main_menu();
 
 void findNumOfColors(set<Goat> trip) {
-    
-    int found = 0;
-    cin.ignore();
-    string searchKey;
-
-    cout << "Enter color to find instances of: ";
-    getline(cin, searchKey);
-    
-    auto it = trip.find(searchKey);
-    //cout << it->get_color();
-    while (it != trip.end()) {  // the iterator points to beyond the end of the map
-        
-        // if searchKey is not found
-        cout << "\nIncreasing friendship of " << searchKey;
-        //auto& m = trip[searchKey];
-        if(it->get_color() == searchKey)
-        found++;
-
-    }
-    //else
-    //    cout << endl << searchKey << " not found." << endl;
-
-    cout << "Found " << found << " instances of " << searchKey << endl;
+   
 
 }
 
-void averageAge(set<Goat>& trip){}
+void averageAge(set<Goat> trip){
+
+
+
+
+}
 
 int main() {
     srand(time(0));
