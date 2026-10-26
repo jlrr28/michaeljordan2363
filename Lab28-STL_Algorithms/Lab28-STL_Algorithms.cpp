@@ -20,18 +20,24 @@ int main_menu();
 
 void findNumOfColors(set<Goat>& trip) {
     
-    int found;
+    int found = 0;
     
     string search;
     cin >> search;
     
-    auto it = find(trip.begin(), trip.end(), search);
+    //auto it = find(trip.begin(), trip.end(), );
     
-    while (it != trip.end())
-        cout << "Found the score: " << found++ ;
+    for (Goat value : trip) {
+        auto it = find(trip.begin(), trip.end(), value.get_color());
+        while (it != trip.end())
+            cout << "Found the score: " << found++;
+
+    }
+
+
+
 
     cout << found;
-
 
 }
 
@@ -55,15 +61,14 @@ int main() {
 
     set<Goat> gTrip{
         {"Bum Bum", 8, "White"},
-        { "Bum Boo", 7, "White"},
+        {"Bum Boo", 7, "White"},
         {"Bum Bee", 8, "White"}
-    
     };
+
     //Goat g1("Bum Bum", 6, "White");
     //Goat g2("Bum Boo", 7, "White");
     //Goat g3("Bum Bee", 8, "White");
     //gTrip.insert(g1); gTrip.insert(g2); gTrip.insert(g3);
-
 
     int input = 0;
     while (input != 12) {
