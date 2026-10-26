@@ -52,7 +52,21 @@ void reverseList(list<Goat>& trip) {
     trip.reverse();
 }
 
-void 
+void findGoat(list<Goat>trip) {
+    cin.ignore();
+    string search;
+    
+    cout << "Enter name of goat to look for: " << endl;
+    getline(cin, search);
+    cout << endl;
+    cout << "Searching for " << search << endl;
+    auto it = find_if(trip.begin(), trip.end(), [search](const Goat& v) { return v.get_name() == search; });
+    if (it != trip.end())
+        cout << "Found goat " << search << endl;
+    else
+        cout << "Did not find goat " << search << endl;
+
+}
 
 int main() {
     srand(time(0));
@@ -103,7 +117,7 @@ int main() {
             findAverageAge(gTrip);
             break;
         case 6:
-            
+            findGoat(gTrip);
             break;
         case 7:
             //newfunction
@@ -138,7 +152,7 @@ int main_menu() {
     cout << "*** GOAT MANAGER 3001 ***" << endl;
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
     cout << "[3] List of goats" << endl << "[4] Show age sum" << endl;
-    cout << "[5] Show average age" << endl << "[6] " << endl;
+    cout << "[5] Show average age" << endl << "[6] Find goat" << endl;
     cout << "[7] " << endl << "[8] Advance One Years" << endl;
     cout << "[9] Paint All Goats Black " << endl << "[10] Reverse list" << endl;
     cout << "[11] Clear list" << endl;
