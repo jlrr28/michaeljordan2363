@@ -40,9 +40,15 @@ void findAverageAge(list<Goat> trip) {
 }
 
 void clearList(list<Goat>& trip) {
-
     trip.clear();
+}
 
+void reverseList(list<Goat>& trip) {
+    trip.reverse();
+}
+
+void shuffleList(list<Goat>& trip) {
+    shuffle(trip.begin(), trip.end(), default_random_engine());
 }
 
 int main() {
@@ -103,10 +109,10 @@ int main() {
             //newfunction
             break;
         case 9:
-            //newfunction
+            shuffleList(gTrip);
             break;
         case 10:
-            //newfunction
+            reverseList(gTrip);
             break;
         case 11:
             clearList(gTrip);
@@ -130,6 +136,7 @@ int main_menu() {
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
     cout << "[3] List of goats" << endl << "[4] Show age sum" << endl;
     cout << "[5] Show average age" << endl << "[6] " << endl;
+    cout << "[9] Shuffle list " << endl << "[10] Reverse list" << endl;
     cout << "[11] Clear list" << endl;
     while (in < 1 || in > 12) {
         cout << "choice -->";
