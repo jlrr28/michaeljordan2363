@@ -19,22 +19,30 @@ void add_goat(set<Goat>& trip, string n[], string c[]);
 
 int main_menu();
 
-void findNumOfColors(set<Goat>& trip) {
+void findNumOfColors(set<Goat> trip) {
     
     int found = 0;
-    string in;
-    getline(cin, in);
+    cin.ignore();
+    string searchKey;
 
-    Goat search("xxxxxxx",0,in);
-
+    cout << "Enter color to find instances of: ";
+    getline(cin, searchKey);
     
-    auto it = find(trip.begin(), trip.end(), search);
-    
+    auto it = trip.find(searchKey);
+    //cout << it->get_color();
+    while (it != trip.end()) {  // the iterator points to beyond the end of the map
+        
+        // if searchKey is not found
+        cout << "\nIncreasing friendship of " << searchKey;
+        //auto& m = trip[searchKey];
+        if(it->get_color() == searchKey)
+        found++;
 
+    }
+    //else
+    //    cout << endl << searchKey << " not found." << endl;
 
-
-
-    cout << found;
+    cout << "Found " << found << " instances of " << searchKey << endl;
 
 }
 
@@ -57,9 +65,9 @@ int main() {
     fin1.close();
 
     set<Goat> gTrip{
-        {"Bum Bum", 8, "White"},
-        {"Bum Boo", 7, "White"},
-        {"Bum Bee", 8, "White"}
+        {"Bum Bum", 8, "red"},
+        {"Bum Boo", 7, "red"},
+        {"Bum Bee", 8, "red"}
     };
 
     //Goat g1("Bum Bum", 6, "White");
