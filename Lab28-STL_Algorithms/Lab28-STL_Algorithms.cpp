@@ -68,10 +68,9 @@ void findGoat(list<Goat>trip) {
 
 }
 
-void removeUnderAgeFive(list<Goat>& trip) {
-
-    trip.erase(remove(trip.begin(), trip.end(), 0, [](const Goat& v) { return v.get_age() < 5; }) , trip.end());
-
+void sortList(list<Goat>& trip) {
+    trip.sort();
+    cout << "List sorted alphabetically" << endl;
 }
 
 
@@ -92,7 +91,7 @@ int main() {
     fin1.close();
 
     list<Goat> gTrip{
-        {"Bum Bum", 8, "red"},
+        {"Bum Bum", 4, "red"},
         {"Bum Boo", 7, "red"},
         {"Bum Bee", 8, "red"}
     };
@@ -127,7 +126,7 @@ int main() {
             findGoat(gTrip);
             break;
         case 7:
-            
+            sortList(gTrip);
             break;
         case 8:
             advanceOneYear(gTrip);
