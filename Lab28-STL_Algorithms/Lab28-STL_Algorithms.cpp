@@ -28,14 +28,20 @@ void findNumOfColors(list<Goat> trip) {
 
 void findAgeSum(list<Goat> trip) {
     int ageSum = accumulate(trip.begin(), trip.end(), 0, [](int a, Goat& g) { return a + g.get_age(); });
-    cout << "Sum is " << ageSum << endl;
+    cout << "Sum of ages is " << ageSum << endl;
 
 }
 
 void findAverageAge(list<Goat> trip) {
 
     int ageSum = accumulate(trip.begin(), trip.end(), 0, [](int a, Goat& g) { return a + g.get_age(); } );
-    cout << "Sum is " << ageSum << endl;
+    cout << "Average age is " << ageSum/trip.size() << endl;
+
+}
+
+void clearList(list<Goat>& trip) {
+
+    trip.clear();
 
 }
 
@@ -88,7 +94,7 @@ int main() {
             findAverageAge(gTrip);
             break;
         case 6:
-            //newfunction
+            
             break;
         case 7:
             //newfunction
@@ -103,7 +109,7 @@ int main() {
             //newfunction
             break;
         case 11:
-            //newfunction
+            clearList(gTrip);
             break;
         case 12:
             break;
@@ -122,9 +128,9 @@ int main_menu() {
     cout << endl;
     cout << "*** GOAT MANAGER 3001 ***" << endl;
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
-    cout << "[3] Set of goats" << endl << "[4] Show age sum" << endl;
+    cout << "[3] List of goats" << endl << "[4] Show age sum" << endl;
     cout << "[5] Show average age" << endl << "[6] " << endl;
-
+    cout << "[11] Clear list" << endl;
     while (in < 1 || in > 12) {
         cout << "choice -->";
         cin >> in;
