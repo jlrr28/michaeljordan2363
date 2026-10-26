@@ -21,58 +21,23 @@ void add_goat(list<Goat>& trip, string n[], string c[]);
 
 int main_menu();
 
-void paintAllGoatsBlack(list<Goat>& trip) {
-    for_each(trip.begin(), trip.end(), [](Goat& n) { n.set_color("black"); });
-}
+//New functions
 
-void advanceOneYear(list<Goat>& trip) {
+void findAgeSum(list<Goat> trip);
 
-    transform(trip.begin(), trip.end(), trip.begin(), [](Goat& g) { g.set_age(  g.get_age() + 1  ); return g; });
-    cout << "All goats are now 1 year older." << endl;
-}
+void findAverageAge(list<Goat> trip);
 
-void findAgeSum(list<Goat> trip) {
-    int ageSum = accumulate(trip.begin(), trip.end(), 0, [](int a, Goat& g) { return a + g.get_age(); });
-    cout << "Sum of ages is " << ageSum << endl;
+void findGoat(list<Goat>trip);
 
-}
+void paintAllGoatsBlack(list<Goat>& trip);
 
-void findAverageAge(list<Goat> trip) {
+void advanceOneYear(list<Goat>& trip);
 
-    int ageSum = accumulate(trip.begin(), trip.end(), 0, [](int a, Goat& g) { return a + g.get_age(); } );
-    cout << "Average age is " << ageSum/trip.size() << endl;
+void reverseList(list<Goat>& trip);
 
-}
+void sortList(list<Goat>& trip);
 
-void clearList(list<Goat>& trip) {
-    trip.clear();
-}
-
-void reverseList(list<Goat>& trip) {
-    trip.reverse();
-}
-
-void findGoat(list<Goat>trip) {
-    cin.ignore();
-    string search;
-    
-    cout << "Enter name of goat to look for: " << endl;
-    getline(cin, search);
-    cout << endl;
-    cout << "Searching for " << search << endl;
-    auto it = find_if(trip.begin(), trip.end(), [search](const Goat& v) { return v.get_name() == search; });
-    if (it != trip.end())
-        cout << "Found goat " << search << " it is " << it->get_age() << " years old and " << it->get_color() << " colored." << endl;
-    else
-        cout << "Did not find goat " << search << endl;
-
-}
-
-void sortList(list<Goat>& trip) {
-    trip.sort();
-    cout << "List sorted alphabetically" << endl;
-}
-
+void clearList(list<Goat>& trip);
 
 int main() {
     srand(time(0));
@@ -96,10 +61,6 @@ int main() {
         {"Bum Bee", 8, "red"}
     };
 
-    //Goat g1("Bum Bum", 6, "White");
-    //Goat g2("Bum Boo", 7, "White");
-    //Goat g3("Bum Bee", 8, "White");
-    //gTrip.insert(g1); gTrip.insert(g2); gTrip.insert(g3);
 
     int input = 0;
     while (input != 12) {
@@ -126,13 +87,13 @@ int main() {
             findGoat(gTrip);
             break;
         case 7:
-            sortList(gTrip);
-            break;
-        case 8:
             advanceOneYear(gTrip);
             break;
-        case 9:
+        case 8:
             paintAllGoatsBlack(gTrip);
+            break;
+        case 9:
+            sortList(gTrip);
             break;
         case 10:
             reverseList(gTrip);
@@ -159,9 +120,9 @@ int main_menu() {
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
     cout << "[3] List of goats" << endl << "[4] Show age sum" << endl;
     cout << "[5] Show average age" << endl << "[6] Find goat" << endl;
-    cout << "[7] " << endl << "[8] Advance One Years" << endl;
-    cout << "[9] Paint All Goats Black " << endl << "[10] Reverse list" << endl;
-    cout << "[11] Clear list" << endl;
+    cout << "[7] Advance One Year" << endl << "[8] Paint All Goats Black" << endl;
+    cout << "[9] Sort List" << endl << "[10] Reverse list" << endl;
+    cout << "[11] Clear list" << endl << "[12] Quit" << endl;
     while (in < 1 || in > 12) {
         cout << "choice -->";
         cin >> in;
@@ -228,4 +189,57 @@ void add_goat(list<Goat>& trip, string n[], string c[]) {
 
     trip.push_back(temp);
 
+}
+
+//New functions
+void findAgeSum(list<Goat> trip) {
+    int ageSum = accumulate(trip.begin(), trip.end(), 0, [](int a, Goat& g) { return a + g.get_age(); });
+    cout << "Sum of ages is " << ageSum << endl;
+
+}
+
+void findAverageAge(list<Goat> trip) {
+
+    int ageSum = accumulate(trip.begin(), trip.end(), 0, [](int a, Goat& g) { return a + g.get_age(); });
+    cout << "Average age is " << ageSum / trip.size() << endl;
+
+}
+
+void findGoat(list<Goat>trip) {
+    cin.ignore();
+    string search;
+
+    cout << "Enter name of goat to look for: " << endl;
+    getline(cin, search);
+    cout << endl;
+    cout << "Searching for " << search << endl;
+    auto it = find_if(trip.begin(), trip.end(), [search](const Goat& v) { return v.get_name() == search; });
+    if (it != trip.end())
+        cout << "Found goat " << search << " it is " << it->get_age() << " years old and " << it->get_color() << " colored." << endl;
+    else
+        cout << "Did not find goat " << search << endl;
+
+}
+
+void paintAllGoatsBlack(list<Goat>& trip) {
+    for_each(trip.begin(), trip.end(), [](Goat& n) { n.set_color("black"); });
+}
+
+void advanceOneYear(list<Goat>& trip) {
+
+    transform(trip.begin(), trip.end(), trip.begin(), [](Goat& g) { g.set_age(g.get_age() + 1); return g; });
+    cout << "All goats are now 1 year older." << endl;
+}
+
+void reverseList(list<Goat>& trip) {
+    trip.reverse();
+}
+
+void sortList(list<Goat>& trip) {
+    trip.sort();
+    cout << "List sorted alphabetically" << endl;
+}
+
+void clearList(list<Goat>& trip) {
+    trip.clear();
 }
