@@ -21,17 +21,14 @@ void add_goat(list<Goat>& trip, string n[], string c[]);
 
 int main_menu();
 
-void findNumOfColors(list<Goat> trip) {
-    string searchKey;
-    int found = 0;
-    getline(cin, searchKey);
+void paintAllGoatsBlack(list<Goat>& trip) {
+    for_each(trip.begin(), trip.end(), [](Goat& n) { n.set_color("black"); });
+}
 
-    for_each(trip.begin(), trip.end(), [](Goat& n) {
-        if (n.get_color() == searchKey)
-            found++;
-        
-        });
-     
+void advanceOneYear(list<Goat>& trip) {
+
+
+    cout << "All goats are now 1 year older." << endl;
 }
 
 void findAgeSum(list<Goat> trip) {
@@ -53,10 +50,6 @@ void clearList(list<Goat>& trip) {
 
 void reverseList(list<Goat>& trip) {
     trip.reverse();
-}
-
-void shuffleList(list<Goat>& trip) {
-    shuffle(trip.cbegin(), trip.cend(), default_random_engine());
 }
 
 int main() {
@@ -117,7 +110,7 @@ int main() {
             //newfunction
             break;
         case 9:
-            shuffleList(gTrip);
+            paintAllGoatsBlack(gTrip);
             break;
         case 10:
             reverseList(gTrip);
@@ -144,7 +137,7 @@ int main_menu() {
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
     cout << "[3] List of goats" << endl << "[4] Show age sum" << endl;
     cout << "[5] Show average age" << endl << "[6] " << endl;
-    cout << "[9] Shuffle list " << endl << "[10] Reverse list" << endl;
+    cout << "[9] Paint All Goats Black " << endl << "[10] Reverse list" << endl;
     cout << "[11] Clear list" << endl;
     while (in < 1 || in > 12) {
         cout << "choice -->";
