@@ -23,7 +23,7 @@ int main_menu();
 
 void findNumOfColors(list<Goat> trip) {
    
-
+     
 }
 
 void findAgeSum(list<Goat> trip) {
