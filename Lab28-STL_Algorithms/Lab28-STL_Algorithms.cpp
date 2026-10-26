@@ -22,7 +22,15 @@ void add_goat(list<Goat>& trip, string n[], string c[]);
 int main_menu();
 
 void findNumOfColors(list<Goat> trip) {
-   
+    string searchKey;
+    int found = 0;
+    getline(cin, searchKey);
+
+    for_each(trip.begin(), trip.end(), [](Goat& n) {
+        if (n.get_color() == searchKey)
+            found++;
+        
+        });
      
 }
 
@@ -48,7 +56,7 @@ void reverseList(list<Goat>& trip) {
 }
 
 void shuffleList(list<Goat>& trip) {
-    shuffle(trip.begin(), trip.end(), default_random_engine(), [](Goat& g) {});
+    shuffle(trip.cbegin(), trip.cend(), default_random_engine());
 }
 
 int main() {
