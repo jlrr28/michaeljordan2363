@@ -27,7 +27,7 @@ void paintAllGoatsBlack(list<Goat>& trip) {
 
 void advanceOneYear(list<Goat>& trip) {
 
-    transform(trip.begin(), trip.end(), trip.begin(), [](Goat& g) { g.set_age(g.get_age() + 1); });
+    transform(trip.begin(), trip.end(), trip.begin(), [](Goat& g) { g.set_age(  g.get_age() + 1  ); return g; });
     cout << "All goats are now 1 year older." << endl;
 }
 
@@ -51,6 +51,8 @@ void clearList(list<Goat>& trip) {
 void reverseList(list<Goat>& trip) {
     trip.reverse();
 }
+
+void 
 
 int main() {
     srand(time(0));
