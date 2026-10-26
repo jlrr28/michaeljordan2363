@@ -26,10 +26,11 @@ void findNumOfColors(list<Goat> trip) {
 
 }
 
-void averageAge(list<Goat> trip){
+void averageAge(list<Goat> trip) {
 
-    int ageSum = accumulate(trip.begin(), trip.end(), )
-
+    int ageSum = accumulate(trip.begin(), trip.end(), 0, [](int a, Goat& g) { return a + g.get_age(); } );
+    cout << "Sum is " << ageSum << endl;
+    cout << "Average is " << ageSum / trip.size() << endl;
 
 }
 
@@ -76,7 +77,7 @@ int main() {
             display_trip(gTrip);
             break;
         case 4:
-            findNumOfColors(gTrip);
+            averageAge(gTrip);
             break;
         case 5:
             //newfunction
