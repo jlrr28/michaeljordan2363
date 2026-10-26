@@ -2,31 +2,33 @@
 #include <fstream>
 #include <iomanip>
 #include <algorithm>
-#include <set>
+#include <list>
+#include <random>
+#include <numeric>
 #include <string>
 #include "Goat.h"
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
-int select_goat(set<Goat> trip);
+int select_goat(list<Goat> trip);
 
-void display_trip(set<Goat> trip);
+void display_trip(list<Goat> trip);
 
-void delete_goat(set<Goat>& trip);
+void delete_goat(list<Goat>& trip);
 
-void add_goat(set<Goat>& trip, string n[], string c[]);
+void add_goat(list<Goat>& trip, string n[], string c[]);
 
 int main_menu();
 
-void findNumOfColors(set<Goat> trip) {
+void findNumOfColors(list<Goat> trip) {
    
 
 }
 
-void averageAge(set<Goat> trip){
+void averageAge(list<Goat> trip){
 
-
+    int ageSum = accumulate(trip.begin(), trip.end(), )
 
 
 }
@@ -47,7 +49,7 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    set<Goat> gTrip{
+    list<Goat> gTrip{
         {"Bum Bum", 8, "red"},
         {"Bum Boo", 7, "red"},
         {"Bum Bee", 8, "red"}
@@ -126,7 +128,7 @@ int main_menu() {
     return in;
 };
 
-void display_trip(set<Goat> trip) {
+void display_trip(list<Goat> trip) {
 
     cout << endl;
 
@@ -142,7 +144,7 @@ void display_trip(set<Goat> trip) {
 
 }
 
-void delete_goat(set<Goat>& trip) {
+void delete_goat(list<Goat>& trip) {
 
     if (trip.empty())
         cout << "Set is empty, no goats to delete." << endl;
@@ -170,7 +172,7 @@ void delete_goat(set<Goat>& trip) {
 
 }
 
-void add_goat(set<Goat>& trip, string n[], string c[]) {
+void add_goat(list<Goat>& trip, string n[], string c[]) {
 
     int age = rand() % 20;
 
@@ -180,6 +182,6 @@ void add_goat(set<Goat>& trip, string n[], string c[]) {
 
     cout << "Goat: " << temp.get_name() << " added to trip set." << endl;
 
-    trip.insert(temp);
+    trip.push_back(temp);
 
 }
