@@ -48,7 +48,7 @@ void reverseList(list<Goat>& trip) {
 }
 
 void shuffleList(list<Goat>& trip) {
-    shuffle(trip.begin(), trip.end(), default_random_engine());
+    shuffle(trip.begin(), trip.end(), default_random_engine(), [](Goat& g) {});
 }
 
 int main() {
