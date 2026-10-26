@@ -68,31 +68,12 @@ void findGoat(list<Goat>trip) {
 
 }
 
-void findNumOfColors(list<Goat>trip) {
+void removeUnderAgeFive(list<Goat>& trip) {
 
-    cin.ignore();
-    string search;
-    int found;
-
-    cout << "Enter color of goats to look for: " << endl;
-    getline(cin, search);
-    cout << endl;
-    cout << "Searching for " << search << endl;
-    auto it = find_if(trip.begin(), trip.end(), [search, &found](const Goat& v) { 
-        
-        if (v.get_color() == search) { found++; }
-            //found++;
-
-        return found; 
-        
-        });
-    if (it != trip.end())
-        cout << "Found " << found << " goats the color " << search << endl;
-    else
-        cout << "Did not find any goat the color " << search << endl;
-
+    trip.erase(remove(trip.begin(), trip.end(), 0, [](const Goat& v) { return v.get_age() < 5; }) , trip.end());
 
 }
+
 
 int main() {
     srand(time(0));
@@ -146,7 +127,7 @@ int main() {
             findGoat(gTrip);
             break;
         case 7:
-            findNumOfColors(gTrip);
+            
             break;
         case 8:
             advanceOneYear(gTrip);
