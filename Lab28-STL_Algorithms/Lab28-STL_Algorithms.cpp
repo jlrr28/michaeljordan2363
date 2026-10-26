@@ -17,6 +17,17 @@ void add_goat(set<Goat>& trip, string n[], string c[]);
 
 int main_menu();
 
+void findNumOfColors(set<Goat>& trip) {
+
+
+
+
+
+
+}
+
+void averageAge(set<Goat>& trip){}
+
 int main() {
     srand(time(0));
     bool again;
@@ -33,13 +44,21 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    set<Goat> gTrip;
-
+    set<Goat> gTrip{
+        {"Bum Bum", 8, "White"},
+        { "Bum Boo", 7, "White"},
+        {"Bum Bee", 8, "White"}
+    
+    };
+    //Goat g1("Bum Bum", 6, "White");
+    //Goat g2("Bum Boo", 7, "White");
+    //Goat g3("Bum Bee", 8, "White");
+    //gTrip.insert(g1); gTrip.insert(g2); gTrip.insert(g3);
 
 
     int input = 0;
-    while (input != 4) {
-
+    while (input != 12) {
+        display_trip(gTrip);
         input = main_menu();
 
         switch (input) {
@@ -53,6 +72,30 @@ int main() {
             display_trip(gTrip);
             break;
         case 4:
+            //newfunction
+            break;
+        case 5:
+            //newfunction
+            break;
+        case 6:
+            //newfunction
+            break;
+        case 7:
+            //newfunction
+            break;
+        case 8:
+            //newfunction
+            break;
+        case 9:
+            //newfunction
+            break;
+        case 10:
+            //newfunction
+            break;
+        case 11:
+            //newfunction
+            break;
+        case 12:
             break;
         default: break;
         }
@@ -71,10 +114,10 @@ int main_menu() {
     cout << "[1] Add a goat" << endl << "[2] Delete a goat" << endl;
     cout << "[3] Set of goats" << endl << "[4] Quit" << endl;
 
-    while (in < 1 || in > 4) {
+    while (in < 1 || in > 12) {
         cout << "choice -->";
         cin >> in;
-        if (in < 1 || in > 4)
+        if (in < 1 || in > 12)
             cout << "Invalid input\n" << endl;
     }
 
