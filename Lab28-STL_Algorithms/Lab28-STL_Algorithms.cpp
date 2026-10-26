@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <algorithm>
 #include <set>
 #include "Goat.h"
 using namespace std;
@@ -18,10 +19,18 @@ void add_goat(set<Goat>& trip, string n[], string c[]);
 int main_menu();
 
 void findNumOfColors(set<Goat>& trip) {
+    
+    int found;
+    
+    string search;
+    cin >> search;
+    
+    auto it = find(trip.begin(), trip.end(), search);
+    
+    while (it != trip.end())
+        cout << "Found the score: " << found++ ;
 
-
-
-
+    cout << found;
 
 
 }
@@ -72,7 +81,7 @@ int main() {
             display_trip(gTrip);
             break;
         case 4:
-            //newfunction
+            findNumOfColors(gTrip);
             break;
         case 5:
             //newfunction
