@@ -15,15 +15,23 @@ private:
 	int population;
 	double popRate;
 public:
-	City(string n, int p, double r) {	name = n; population = p; popRate = r;}
+	City(string n, int p, double r) {name = n; population = p; popRate = r;}
 
+	void WCpositiveRate() {};
+	void WCnegativeRate() {};
 
+	void RBpositiveRate() {};
+	void RBnegativeRate() {};
+
+	void GSpositiveRate() {};
+	void GSnegativeRate() {};
 
 };
 
 class WestCoastCity : public City {
 	public:
-
+		void positiveRate() {};
+		void negativeRate() {};
 };
 
 class RustBeltCity : public City {
@@ -37,9 +45,11 @@ class GulfStateCity : public City {
 };
 
 int main(){
-	list<GulfStateCity> Cities;
-	list<GulfStateCity> Cities;
-	list<GulfStateCity> Cities;
-
+	
+	
+	list<WestCoastCity> wCities;
+	list<RustBeltCity> rCities;
+	list<GulfStateCity> gCities;
+	list sArray[3] = {wCities, };
 
 }
