@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <list>
 #include <map>
+#include <array>
 #include <random>
 #include <numeric>
 #include <string>
@@ -46,10 +47,16 @@ class GulfStateCity : public City {
 
 int main(){
 	
-	
+
+	string wFile = "westcoast.txt";
+	string rFile = "rustbelt.txt";
+	string gFile = "gulfcoast.txt";
+
 	list<WestCoastCity> wCities;
 	list<RustBeltCity> rCities;
 	list<GulfStateCity> gCities;
-	list sArray[3] = {wCities, };
+	
+
+	array<list<WestCoastCity,RustBeltCity,GulfStateCity>, 3> sArray {wCities, rCities, gCities};
 
 }
