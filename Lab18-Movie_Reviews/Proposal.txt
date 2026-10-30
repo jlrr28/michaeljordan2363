@@ -1,0 +1,14 @@
+//A population decrease and increase event can happen in the same year as in real life multiple factors can contribute to a cities population
+//West Cost: Earth Quake
+//Rust Belt: Factories Closing
+//Gulf: Hurricane
+Project Proposal:
+The project will simulate population in cities across the country from the year 2000 to today. Many things go into whether a city grows or shrinks, such a new jobs opening up, factories being closed, natrual disasters occuring.
+
+Implentation:
+I plan to use the std::map to store regions around the country. Different regions have different factors that contribute to the % of growth or decline. West Coast, Rust Belt, and Gulf States are going to have their array of 3 lists accociated with states in the region.
+The list will contain city objects with different inheritances based on the region they fall into, that store City Name, Initial Population in year 2000, and Population growth % that changes based on the random events that could happen.
+
+Simulated Events:
+Each region will have similar sets of events, with additional events based on region. The West Coast will have tech booms and earthquakes, Rust Belt will have factory openings and closures, Gulf States will have hurricanes. Their will be a 33% chances for a postive, negative, or both population rate change.
+There will be 2 set events that will affect population growth rates, the 2008 reccesion and the 2020 Covid-19 pandemic.
