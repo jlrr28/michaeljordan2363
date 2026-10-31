@@ -54,6 +54,21 @@ public:
 
 };
 
+void printMap(map < string, array <list<City>, 3>> rM) {
+	
+	for (auto& [p, array] : rM) {
+		cout << pair.first << endl;
+
+		for (auto value : rustArray[0]) {
+			cout << value.getName() << " ( " << value.getPop() <<
+				", " << value.getPopRate() << " )" << endl;
+
+		}
+
+	}
+
+}
+
 void populationPositiveNegativeBoth(City& c) {
 	int x = rng1to3();
 	if (x == 0)
@@ -142,9 +157,11 @@ int main(){
             case 1: {//Rust Belt
                 
 				for (auto pair : regionsMap) {
-					cout << pair.first << " biggest city is xxx at xxx people" << endl;
+					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
 					for (auto& value : rustArray[0]) {
+						cout << value.getName() << ": population " << value.getPop() << endl;
+						printMap(regionsMap);
 						populationPositiveNegativeBoth(value);
 						value.incrementPopulation();
 					}
