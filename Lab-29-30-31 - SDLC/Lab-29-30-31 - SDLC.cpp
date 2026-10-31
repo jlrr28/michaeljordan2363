@@ -132,6 +132,7 @@ int main(){
 	array<list<City>, STATES> gulfArray {Florida,Louisiana,Alabama};
 
 
+
 	cout << "Array of Lists of Classes:" << endl;
 
 	for (auto value : rustArray[0]) {
@@ -169,16 +170,17 @@ int main(){
                 break;
             }
             case 1: {//Rust Belt
-				
-				auto it = regionsMap.find(regionArray[i])
+
+
+
 
 				//for (auto pair : regionsMap) {
 					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
 				//	for (auto& value : rustArray[0]) {
 						//cout << value.getName() << ": population " << value.getPop() << endl;
-						populationPositiveNegativeBoth(value);
-						value.incrementPopulation();
+						//populationPositiveNegativeBoth(value);
+						//value.incrementPopulation();
 				//	}
 					 
 				//}
