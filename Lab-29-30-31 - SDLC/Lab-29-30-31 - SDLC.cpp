@@ -41,7 +41,7 @@ public:
 	void wcPositiveRate() { popRate += 0.001; } //This is where the random events will be 
 	void wcNegativeRate() {};                  //To change popRate
 
-	void rbPositiveRate() { popRate+=0.001; cout << popRate << " "; }
+	void rbPositiveRate() { popRate+=0.001; /*cout << popRate << " ";*/ }
 	void rbNegativeRate() { popRate -= 0.0005; }
 
 	void gsPositiveRate() {};
@@ -157,13 +157,22 @@ int main(){
 	for (auto pair : regionsMap) {
 		cout << pair.first << endl;
 
-		for (auto value : rustArray[0]) {
-			cout << value.getName() << " ( " << value.getPop() <<
-				", " << value.getPopRate() << " )" << endl;
+		for (auto list : regionsMap.at(pair.first)) {
+		
+			for (auto value : list) {
+				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
+				<< value.getPopRate() << endl;
+				
 
+			}
+
+		
 		}
 
 	}
+
+
+
 
     for (int j = 0; j < YEARS; j++) {
 
@@ -184,7 +193,7 @@ int main(){
 					
 					for (auto arr : regionsMap.at("Rust_Belt")) {
 						for (auto& value : arr) {
-							cout << value.getName() << ": population " << value.getPop() << endl;
+							//cout << value.getName() << ": population " << value.getPop() << endl;
 							//printMap(regionsMap);
 							populationPositiveNegativeBoth(value);
 							value.incrementPopulation();
@@ -207,16 +216,6 @@ int main(){
     }
 
 	//Output final numbers
-	for (auto pair : regionsMap) {
-		cout << pair.first << endl;
-
-		for (auto value : rustArray[0]) {
-			cout << value.getName() << " ( " << value.getPop() <<
-				", " << value.getPopRate() << " )" << endl;
-
-		}
-
-	}
 
 
 }
