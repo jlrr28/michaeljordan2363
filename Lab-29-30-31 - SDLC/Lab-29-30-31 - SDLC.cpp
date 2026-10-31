@@ -44,7 +44,7 @@ public:
 	void rbPositiveRate() {
 		int x = rng1to100();
 		if (x >= 0 && x <= 49) {
-			popRate += 0.001;
+			popRate += 0.002;
 			cout << " || A factory has opened " << name << " || ";
 		}
 		//popRate+=0.001; /*cout << popRate << " ";*/
@@ -57,7 +57,7 @@ public:
 			popRate -= 0.001;
 		//popRate+=0.001; /*cout << popRate << " ";*/
 		if (x >= 50 && x <= 99) {
-			popRate -= 0.003;
+			popRate -= 0.002;
 			cout << " || A factory has closed in " << name << " || ";
 		}
 	}
@@ -160,8 +160,17 @@ int main(){
 	//cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 	City empty;
 
+	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Columbus", 715971, 0.001 });
+	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Cleveland", 476574, 0.001 });
+	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Cincinnati", 331258, 0.001 });
 
+	regionsMap["Rust_Belt"][1].push_back(City{ "Michigan", "Detroit", 951270, -0.001 });
+	regionsMap["Rust_Belt"][1].push_back(City{ "Michigan", "Grand Rapids", 197800, 0.001 });
+	regionsMap["Rust_Belt"][1].push_back(City{ "Michigan", "Warren", 138247, 0.001 });
 
+	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Chicago", 2896016, 0.001 });
+	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Rockford", 150115, 0.001 });
+	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Aurora", 142990, 0.001 });
 
 	//States
 	list<City>Ohio = {temp,temp2,temp3};
@@ -203,7 +212,7 @@ int main(){
 
 	//cout << "Map of Arrays of Lists of Classes: " << endl;
 
-	regionsMap.insert({ "Rust_Belt", {rustArray} });
+	//regionsMap.insert({ "Rust_Belt", {rustArray} });
 	regionsMap.insert({ "West_Coast", {westArray} });
 	regionsMap.insert({ "Gulf_States", {gulfArray} });
 
@@ -232,7 +241,7 @@ int main(){
 
 				for (City& value : list) { //Gets to the city objects in list
 					//Actual operations on the city objects
-					cout << pair.first << endl;
+					//cout << pair.first << endl;
 					//populationPositiveNegativeBoth(value);
 					if (pair.first == "Rust_Belt")
 						rustbeltPositiveNegativeBoth(value);
