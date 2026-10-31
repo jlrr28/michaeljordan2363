@@ -107,8 +107,8 @@ int main(){
 	City temp("Ohio", "temptown", 100000, 0.001);
 	City temp2("Ohio", "Temptopia", 20000, -0.005);
 	City temp3("Ohio", "Temp City", 400000, 0.005);
-	cout << "class:" << endl;
-	cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
+	//cout << "class:" << endl;
+	//cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 	City empty;
 
 	//States
@@ -124,19 +124,20 @@ int main(){
 	list<City>Louisiana = {};
 	list<City>Alabama = {};
 
+	/*
 	cout << "List of Classes: " << endl;
 	for (City value : Ohio) {
 		cout << value.getName() << " ( " << value.getPop() <<
 			", " << value.getPopRate() << " )" << endl;
 
-	}
+	}*/
 	//Gets pushed into an array
 	array<list<City>, STATES> rustArray {Ohio,Illinois,Michigan};
 	array<list<City>, STATES> westArray {California,Oregon,Seattle};
 	array<list<City>, STATES> gulfArray {Florida,Louisiana,Alabama};
 
 
-
+	/*
 	cout << "Array of Lists of Classes:" << endl;
 
 	for (int i = 0; i < STATES; i++) {
@@ -146,14 +147,15 @@ int main(){
 				", " << value.getPopRate() << " )" << endl;
 
 		}
-	}
+	}*/
 
-	cout << "Map of Arrays of Lists of Classes: " << endl;
+	//cout << "Map of Arrays of Lists of Classes: " << endl;
 
 	regionsMap.insert({ "Rust_Belt", {rustArray} });
 	regionsMap.insert({ "West_Coast", {westArray} });
 	regionsMap.insert({ "Gulf_States", {gulfArray} });
 
+	cout << "INITIAL STATE" << endl;
 	for (auto pair : regionsMap) {
 		cout << pair.first << endl;
 
@@ -163,60 +165,58 @@ int main(){
 				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
 				<< value.getPopRate() << endl;
 				
-
 			}
 
-		
 		}
 
 	}
 
-
-
-
     for (int j = 0; j < YEARS; j++) {
 
-        for (int i = 0; i < REGIONS; i++) {
+		for (auto pair : regionsMap) {
+			//cout << pair.first << endl;
 
+			for (auto& list : regionsMap.at(pair.first)) {
 
-            switch (i) { //WestCoast
-            case 0: {
+				for (auto& value : list) { //Gets to the city objects in list
+					//Actual operations on the city objects
+					cout << pair.first << endl;
+					populationPositiveNegativeBoth(value);
+					value.incrementPopulation();
+				
+				
+				
 				
 
-                break;
-            }
-            case 1: {//Rust Belt
-				
-				for (auto pair : regionsMap) {
-					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
-					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
-					
-					for (auto arr : regionsMap.at("Rust_Belt")) {
-						for (auto& value : arr) {
-							//cout << value.getName() << ": population " << value.getPop() << endl;
-							//printMap(regionsMap);
-							populationPositiveNegativeBoth(value);
-							value.incrementPopulation();
-						}
-					}
-					
 
+				
+				
 				}
 
+			}
 
-				break;
-            }
-            case 2: {//Gulf States
+		}
 
-
-                break;
-            }
-            }
-        }
     }
 
 	//Output final numbers
+	cout << endl;
+	cout << "AFTER SIMULATION" << endl << endl;
+	for (auto pair : regionsMap) {
+		cout << pair.first << endl;
 
+		for (auto list : regionsMap.at(pair.first)) {
+
+			for (auto value : list) {
+				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
+					<< value.getPopRate() << endl;
+
+			
+}
+
+		}
+
+	}
 
 }
 
