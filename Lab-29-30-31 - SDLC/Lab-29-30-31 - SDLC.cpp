@@ -148,7 +148,7 @@ int main(){
 						populationPositiveNegativeBoth(value);
 						value.incrementPopulation();
 					}
-
+					 
 				}
 
 
