@@ -16,19 +16,22 @@ int rng1to100();
 
 class City {
 private:
+	string state;
 	string name;
 	int population;
 	double popRate;
 public:
-	City()							{ name = "Town with no Name"; population = 0; popRate = 0; }
+	City()							{ state = "Statless"; name = "Town with no Name"; population = 0; popRate = 0; }
 	//Constructors
-	City(string n, int p, double r) {name = n; population = p; popRate = r;}
+	City(string s, string n, int p, double r) { state = s; name = n; population = p; popRate = r; }
 
 	//Sets and Gets
+	string getState()			{ return state; }
 	string getName()			{ return name; }
 	int getPop()				{ return population; }
 	double getPopRate()			{ return popRate; }
 
+	void setState(string s)		{ state = s; }
 	void setName(string n)		{ name = n; }
 	void setPop(int p)			{ population = p; }
 	void setPopRate(double r)	{ popRate = r; }
@@ -101,17 +104,17 @@ int main(){
 	
 	//State of Ohio
 	//Data would be read in by file
-	City temp("temptown", 100000, 0.001);
-	City temp2("Temptopia", 20000, -0.005);
-	City temp3("Temp City", 400000, 0.005);
+	City temp("Ohio", "temptown", 100000, 0.001);
+	City temp2("Ohio", "Temptopia", 20000, -0.005);
+	City temp3("Ohio", "Temp City", 400000, 0.005);
 	cout << "class:" << endl;
 	cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 	City empty;
 
 	//States
 	list<City>Ohio = {temp,temp2,temp3};
-	list<City>Illinois = {};
-	list<City>Michigan = {};
+	list<City>Illinois = {empty,empty,empty};
+	list<City>Michigan = {empty,empty,empty};
 	
 	list<City>California = { empty,empty,empty };
 	list<City>Oregon = {};
@@ -136,10 +139,13 @@ int main(){
 
 	cout << "Array of Lists of Classes:" << endl;
 
-	for (auto value : rustArray[0]) {
-		cout << value.getName() << " ( " << value.getPop() <<
-			", " << value.getPopRate() << " )" << endl;
+	for (int i = 0; i < STATES; i++) {
+		cout << "State #" << i << endl;
+		for (auto value : rustArray[i]) {
+			cout << value.getName() << " ( " << value.getPop() <<
+				", " << value.getPopRate() << " )" << endl;
 
+		}
 	}
 
 	cout << "Map of Arrays of Lists of Classes: " << endl;
@@ -172,28 +178,22 @@ int main(){
             }
             case 1: {//Rust Belt
 				
-
-
 				for (auto pair : regionsMap) {
-					//cout << pair.first << endl;
-
-					if (pair.first == regionArray[i])
-					{
-						for (auto arr : regionsMap.at(regionArray[i]))
-						{
-
-							for (auto& value : arr) {
-								cout << regionArray[i] << endl;
-								populationPositiveNegativeBoth(value);
-								value.incrementPopulation();
-
-							}
-
-
+					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
+					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
+					
+					for (auto arr : regionsMap.at("Rust_Belt")) {
+						for (auto& value : arr) {
+							cout << value.getName() << ": population " << value.getPop() << endl;
+							//printMap(regionsMap);
+							populationPositiveNegativeBoth(value);
+							value.incrementPopulation();
 						}
 					}
+					
 
 				}
+
 
 				break;
             }
