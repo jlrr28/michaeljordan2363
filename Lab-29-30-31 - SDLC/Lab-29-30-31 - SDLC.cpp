@@ -182,7 +182,7 @@ int main(){
 						for (auto arr : regionsMap.at(regionArray[i]))
 						{
 
-							for (auto value : arr) {
+							for (auto& value : arr) {
 								cout << regionArray[i] << endl;
 								populationPositiveNegativeBoth(value);
 								value.incrementPopulation();
