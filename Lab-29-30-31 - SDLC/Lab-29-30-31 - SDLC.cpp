@@ -171,12 +171,26 @@ int main(){
                 break;
             }
             case 1: {//Rust Belt
-				auto key = regionsMap.find(regionArray[i]);
 				
-				for (const auto& [key, arr] : regionsMap) {
-					cout << key << ": ";
-					for (int value : arr) {
-						cout << value << " ";
+
+
+				for (auto pair : regionsMap) {
+					//cout << pair.first << endl;
+
+					if (pair.first == regionArray[i])
+					{
+						for (auto arr : regionsMap.at(regionArray[i]))
+						{
+
+							for (auto value : arr) {
+								cout << regionArray[i] << endl;
+								populationPositiveNegativeBoth(value);
+								value.incrementPopulation();
+
+							}
+
+
+						}
 					}
 
 				}
