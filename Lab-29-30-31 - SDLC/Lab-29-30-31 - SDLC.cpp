@@ -170,20 +170,14 @@ int main(){
                 break;
             }
             case 1: {//Rust Belt
-
-
-
-
-				//for (auto pair : regionsMap) {
-					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
-
-				//	for (auto& value : rustArray[0]) {
-						//cout << value.getName() << ": population " << value.getPop() << endl;
-						//populationPositiveNegativeBoth(value);
-						//value.incrementPopulation();
-				//	}
-					 
-				//}
+				cout << regionArray[i] << endl;
+				auto it = regionsMap.find(regionArray[i]);
+				if (it != regionsMap.end())
+					// Key exists, safe to use .at()
+					cout << regionArray[i] << ": " << regionArray.at(1) << endl;
+				else
+					// Key does not exist
+					cout << regionArray[i] << " not found." << endl;
 
 
 				break;
