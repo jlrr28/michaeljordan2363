@@ -95,13 +95,21 @@ int main(){
 
 	}
 
+	cout << "Map of Arrays of Lists of Classes: " << endl;
+
 	regionsMap.insert({ "Rust_Belt", {rustArray} });
 
 
-	//for (auto& [, val] : regionsMap) {
-		//cout << key << endl;
+	for (auto pair : regionsMap) {
+		cout << pair.first;
 
+		for (auto value : rustArray[0]) {
+			cout << value.getName() << " ( " << value.getPop() <<
+				", " << value.getPopRate() << " )" << endl;
 
+		}
+
+	}
 
 	
 
