@@ -33,14 +33,17 @@ public:
 
 	//Methods
 
-	void wcPositiveRate() { popRate += 0.01; } //This is where the random events will be 
+	void wcPositiveRate() { popRate += 0.001; } //This is where the random events will be 
 	void wcNegativeRate() {};                  //To change popRate
 
-	void rbPositiveRate() { popRate+=0.1; cout << popRate << " "; }
-	void rbNegativeRate() { popRate -= 0.01; }
+	void rbPositiveRate() { popRate+=0.001; cout << popRate << " "; }
+	void rbNegativeRate() { popRate -= 0.001; }
 
 	void gsPositiveRate() {};
 	void gsNegativeRate() {};
+
+	void incrementPopulation() { population = population + (population * popRate); }
+
 
 	//Overload
 	bool operator< (const City& other) const {
@@ -68,9 +71,9 @@ int main(){
 	
 	//State of Ohio
 	//Data would be read in by file
-	City temp("temptown", 100000, 0.1);
-	City temp2("Temptopia", 20000, -0.05);
-	City temp3("Temp City", 400000, 0.05);
+	City temp("temptown", 100000, 0.001);
+	City temp2("Temptopia", 20000, -0.005);
+	City temp3("Temp City", 400000, 0.005);
 	cout << "class:" << endl;
 	cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 
@@ -89,9 +92,7 @@ int main(){
 	array<list<City>, 3> rustArray {Ohio,Illinois,Michigan};
 
 	cout << "Array of Lists of Classes:" << endl;
-	rustArray[0];
-	rustArray.at(0);
-	
+
 	for (auto value : rustArray[0]) {
 		cout << value.getName() << " ( " << value.getPop() <<
 			", " << value.getPopRate() << " )" << endl;
@@ -130,7 +131,8 @@ int main(){
 					cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
 					for (auto& value : rustArray[0]) {
-						value.RBNegativeRate();
+						value.rbPositiveRate();
+						value.incrementPopulation();
 					}
 
 				}
