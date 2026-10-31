@@ -106,17 +106,18 @@ int main(){
 	City temp3("Temp City", 400000, 0.005);
 	cout << "class:" << endl;
 	cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
+	City empty;
 
 	//States
 	list<City>Ohio = {temp,temp2,temp3};
 	list<City>Illinois = {};
 	list<City>Michigan = {};
 	
-	list<City>California = { temp,temp2,temp3 };
+	list<City>California = { empty,empty,empty };
 	list<City>Oregon = {};
 	list<City>Seattle = {};
 
-	list<City>Florida = { temp,temp2,temp3 };
+	list<City>Florida = { empty,empty,empty };
 	list<City>Louisiana = {};
 	list<City>Alabama = {};
 
@@ -170,15 +171,15 @@ int main(){
                 break;
             }
             case 1: {//Rust Belt
-				cout << regionArray[i] << endl;
-				auto it = regionsMap.find(regionArray[i]);
-				if (it != regionsMap.end())
-					// Key exists, safe to use .at()
-					cout << regionArray[i] << ": " << regionArray.at(1) << endl;
-				else
-					// Key does not exist
-					cout << regionArray[i] << " not found." << endl;
+				auto key = regionsMap.find(regionArray[i]);
+				
+				for (const auto& [key, arr] : regionsMap) {
+					cout << key << ": ";
+					for (int value : arr) {
+						cout << value << " ";
+					}
 
+				}
 
 				break;
             }
@@ -223,3 +224,24 @@ int rng1to100() {
 
 	return x;
 }
+
+
+/*
+ 				cout << regionArray[i] << endl;
+				auto it = regionsMap.find(regionArray[i]);
+				if (it != regionsMap.end()) {
+
+					for (int j; j < STATES; j++) {
+
+
+
+
+
+
+					}
+
+				}
+				else
+					// Key does not exist
+					cout << regionArray[i] << " not found." << endl;
+					*/
