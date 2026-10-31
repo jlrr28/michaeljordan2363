@@ -54,16 +54,18 @@ public:
 
 };
 
-void printMap(map < string, array <list<City>, 3>> rM) {
+void printMap(const map < string, array <list<City>, REGIONS>>* rM) {
 	
-	for (auto& [p, array] : rM) {
-		cout << pair.first << endl;
+	for (const auto& [key, array] : rM) {
+		
+		cout << key.first << endl;
 
-		for (auto value : rustArray[0]) {
-			cout << value.getName() << " ( " << value.getPop() <<
-				", " << value.getPopRate() << " )" << endl;
+		for (int i = 0; i < array.size(); ++i)
+			for (auto value : array[i]) {
+				cout << value.getName() << " ( " << value.getPop() <<
+					", " << value.getPopRate() << " )" << endl;
 
-		}
+			}
 
 	}
 
@@ -87,7 +89,8 @@ const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3;
 int main(){
 	
 
-	map < string, array <list<City>, 3>> regionsMap;
+	map < string, array <list<City>, REGIONS>> regionsMap;
+	map < string, array <list<City>, REGIONS>>* mPointer;
 
 	string wFile = "westcoast.txt";
 	string rFile = "rustbelt.txt";
@@ -118,7 +121,7 @@ int main(){
 
 	}
 	//Gets pushed into an array
-	array<list<City>, 3> rustArray {Ohio,Illinois,Michigan};
+	array<list<City>, REGIONS> rustArray {Ohio,Illinois,Michigan};
 
 	cout << "Array of Lists of Classes:" << endl;
 
