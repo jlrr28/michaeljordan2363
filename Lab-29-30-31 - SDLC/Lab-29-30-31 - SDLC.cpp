@@ -54,7 +54,7 @@ public:
 
 };
 
-void printMap(const map < string, array <list<City>, REGIONS>> rM) {
+/*void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 	
 	for (auto pair : rM) {
 		cout << pair.first << endl;
@@ -67,7 +67,7 @@ void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 
 	}
 
-}
+}*/
 
 void populationPositiveNegativeBoth(City& c) {
 	int x = rng1to3();
@@ -93,7 +93,7 @@ int main(){
 	string wFile = "westcoast.txt";
 	string rFile = "rustbelt.txt";
 	string gFile = "gulfcoast.txt";
-	array<string, REGIONS> { "West_Coast", "Rust_Belt", "Gulf_Coast" };
+	array<string, REGIONS> regionArray { "West_Coast", "Rust_Belt", "Gulf_Coast" };
 
 	list<City> wStates;
 	list<City> rStates;
@@ -112,6 +112,14 @@ int main(){
 	list<City>Illinois = {};
 	list<City>Michigan = {};
 	
+	list<City>California = { temp,temp2,temp3 };
+	list<City>Oregon = {};
+	list<City>Seattle = {};
+
+	list<City>Florida = { temp,temp2,temp3 };
+	list<City>Louisiana = {};
+	list<City>Alabama = {};
+
 	cout << "List of Classes: " << endl;
 	for (City value : Ohio) {
 		cout << value.getName() << " ( " << value.getPop() <<
@@ -120,8 +128,10 @@ int main(){
 	}
 	//Gets pushed into an array
 	array<list<City>, STATES> rustArray {Ohio,Illinois,Michigan};
-	//array<list<City>, STATES> westArray {California,Oregon,Seattle};
-	 
+	array<list<City>, STATES> westArray {California,Oregon,Seattle};
+	array<list<City>, STATES> gulfArray {Florida,Louisiana,Alabama};
+
+
 	cout << "Array of Lists of Classes:" << endl;
 
 	for (auto value : rustArray[0]) {
@@ -133,6 +143,8 @@ int main(){
 	cout << "Map of Arrays of Lists of Classes: " << endl;
 
 	regionsMap.insert({ "Rust_Belt", {rustArray} });
+	regionsMap.insert({ "West_Coast", {westArray} });
+	regionsMap.insert({ "Gulf_States", {gulfArray} });
 
 	for (auto pair : regionsMap) {
 		cout << pair.first << endl;
@@ -158,18 +170,18 @@ int main(){
             }
             case 1: {//Rust Belt
 				
-				for (auto pair : regionsMap) {
+				auto it = regionsMap.find(regionArray[i])
+
+				//for (auto pair : regionsMap) {
 					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
-					for (auto& value : rustArray[0]) {
-						cout << value.getName() << ": population " << value.getPop() << endl;
-						
-						printMap(regionsMap);
+				//	for (auto& value : rustArray[0]) {
+						//cout << value.getName() << ": population " << value.getPop() << endl;
 						populationPositiveNegativeBoth(value);
 						value.incrementPopulation();
-					}
+				//	}
 					 
-				}
+				//}
 
 
 				break;
