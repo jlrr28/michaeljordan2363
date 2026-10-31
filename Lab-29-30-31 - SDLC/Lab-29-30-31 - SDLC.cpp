@@ -34,7 +34,7 @@ public:
 	void WCpositiveRate() { popRate += 0.01; } //This is where the random events will be 
 	void WCnegativeRate() {};                  //To change popRate
 
-	void RBpositiveRate() { setPopRate( getPopRate() += 1  ); }
+	void RBpositiveRate() { ; cout << "x"; }
 	void RBnegativeRate() { popRate -= 0.01; }
 
 	void GSpositiveRate() {};
