@@ -30,7 +30,7 @@ public:
 };
 
 
-const int YEARS = 26, STARTYEAR = 2000;
+const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3;
 
 int main(){
 	
@@ -43,44 +43,45 @@ int main(){
 	list<City> rStates;
 	list<City> gStates;
 	
-	//State of temporia
+	//State of Ohio
+	//Data would be read in by file
 	City temp("temptown", 100000, 0.1);
 	City temp2("Temptopia", 20000, -0.05);
 	City temp3("Temp City", 400000, 0.05);
 
 	//States
-	list<City>temporia = {temp,temp2,temp3};
+	list<City>Ohio = {temp,temp2,temp3};
 	list<City>Illinois = {};
-	list<
+	list<City>Michigan = {};
+	
 	//Gets pushed into an array
-
-
-
-	array<list<City>, 3> westArray {};
+	array<list<City>, 3> rustArray {Ohio,Illinois,Michigan};
 
 	map < string, array <list<City>,3>> regionsMap;
 	
-	regionsMap["westcoast"] = {
+	regionsMap["Rust_Belt"] = { rustArray };
 
 
-
-	}
 
     for (int j = 0; j < YEARS; j++) {
 
-        for (int i = 0; i < sArray.size(); i++) {
+        for (int i = 0; i < REGIONS; i++) {
 
 
             switch (i) { //WestCoast
             case 0: {
 				
-                break;
-            }
-            case 1: {
 
                 break;
             }
-            case 2: {
+            case 1: {//Rust Belt, factory closures and openings
+				//Go through the cities in the lists
+				//Output what random events happen
+				//Output what city is largest in region
+				//Increment the popualtion number of the cities
+                break;
+            }
+            case 2: {//Gulf States
 
 
                 break;
@@ -88,8 +89,5 @@ int main(){
             }
         }
     }
-
-
-
 
 }
