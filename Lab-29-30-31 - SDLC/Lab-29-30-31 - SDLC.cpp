@@ -41,12 +41,35 @@ public:
 	void wcPositiveRate() { popRate += 0.001; } //This is where the random events will be 
 	void wcNegativeRate() {};                  //To change popRate
 
-	void rbPositiveRate() { popRate+=0.001; /*cout << popRate << " ";*/ }
-	void rbNegativeRate() { popRate -= 0.0005; }
+	void rbPositiveRate() {
+		int x = rng1to100();
+		if (x >= 0 && x <= 49) {
+			popRate += 0.001;
+			cout << " || A factory has opened " << name << " || ";
+		}
+		//popRate+=0.001; /*cout << popRate << " ";*/
+		if (x >= 50 && x <= 99)
+			popRate += 0.0005;
+	}
+	void rbNegativeRate() {
+		int x = rng1to100();
+		if (x >= 0 && x <= 49)
+			popRate -= 0.001;
+		//popRate+=0.001; /*cout << popRate << " ";*/
+		if (x >= 50 && x <= 99) {
+			popRate -= 0.003;
+			cout << " || A factory has closed in " << name << " || ";
+		}
+	}
+
+
+
+
 
 	void gsPositiveRate() {};
 	void gsNegativeRate() {};
 
+	
 	void incrementPopulation() { population = population + (population * popRate); }
 
 
@@ -72,7 +95,7 @@ public:
 
 }*/
 
-void populationPositiveNegativeBoth(City& c) {
+void rustbeltPositiveNegativeBoth(City& c) {
 	int x = rng1to3();
 	if (x == 0)
 		c.rbPositiveRate();
@@ -81,6 +104,32 @@ void populationPositiveNegativeBoth(City& c) {
 	if (x == 2) {
 		c.rbPositiveRate();
 		c.rbNegativeRate();
+	}
+
+}
+
+void westcoastPositiveNegativeBoth(City& c) {
+	int x = rng1to3();
+	if (x == 0)
+		c.wcPositiveRate();
+	if (x == 1)
+		c.wcNegativeRate();
+	if (x == 2) {
+		c.wcPositiveRate();
+		c.wcNegativeRate();
+	}
+
+}
+
+void gulfstatePositiveNegativeBoth(City& c) {
+	int x = rng1to3();
+	if (x == 0)
+		c.gsPositiveRate();
+	if (x == 1)
+		c.gsNegativeRate();
+	if (x == 2) {
+		c.gsPositiveRate();
+		c.gsNegativeRate();
 	}
 
 }
@@ -104,12 +153,15 @@ int main(){
 	
 	//State of Ohio
 	//Data would be read in by file
-	City temp("Ohio", "temptown", 100000, 0.001);
+	City temp("Ohio", "Columbus", 10000, 0.001);
 	City temp2("Ohio", "Temptopia", 20000, -0.005);
 	City temp3("Ohio", "Temp City", 400000, 0.005);
 	//cout << "class:" << endl;
 	//cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 	City empty;
+
+
+
 
 	//States
 	list<City>Ohio = {temp,temp2,temp3};
@@ -161,7 +213,7 @@ int main(){
 
 		for (auto list : regionsMap.at(pair.first)) {
 		
-			for (auto value : list) {
+			for (City value : list) {
 				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
 				<< value.getPopRate() << endl;
 				
@@ -176,12 +228,19 @@ int main(){
 		for (auto pair : regionsMap) {
 			//cout << pair.first << endl;
 
-			for (auto& list : regionsMap.at(pair.first)) {
+			for (list<City>& list : regionsMap.at(pair.first)) {
 
-				for (auto& value : list) { //Gets to the city objects in list
+				for (City& value : list) { //Gets to the city objects in list
 					//Actual operations on the city objects
 					cout << pair.first << endl;
-					populationPositiveNegativeBoth(value);
+					//populationPositiveNegativeBoth(value);
+					if (pair.first == "Rust_Belt")
+						rustbeltPositiveNegativeBoth(value);
+					if (pair.first == "West_Coast")
+						westcoastPositiveNegativeBoth(value);
+					if (pair.first == "Gulf_State")
+						gulfstatePositiveNegativeBoth(value);
+					
 					value.incrementPopulation();
 				
 				
