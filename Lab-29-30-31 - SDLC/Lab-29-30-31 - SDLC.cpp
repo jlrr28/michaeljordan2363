@@ -18,6 +18,10 @@ private:
 public:
 	City(string n, int p, double r) {name = n; population = p; popRate = r;}
 
+	string getName() { return name; }
+	int getPop() { return population; }
+	double getPopRate() { return popRate; }
+
 	void WCpositiveRate() {};
 	void WCnegativeRate() {};
 
@@ -35,6 +39,8 @@ const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3;
 int main(){
 	
 
+	map < string, array <list<City>, 3>> regionsMap;
+
 	string wFile = "westcoast.txt";
 	string rFile = "rustbelt.txt";
 	string gFile = "gulfcoast.txt";
@@ -49,6 +55,8 @@ int main(){
 	City temp2("Temptopia", 20000, -0.05);
 	City temp3("Temp City", 400000, 0.05);
 
+	//cout << temp.
+
 	//States
 	list<City>Ohio = {temp,temp2,temp3};
 	list<City>Illinois = {};
@@ -57,10 +65,19 @@ int main(){
 	//Gets pushed into an array
 	array<list<City>, 3> rustArray {Ohio,Illinois,Michigan};
 
-	map < string, array <list<City>,3>> regionsMap;
-	
-	regionsMap["Rust_Belt"] = { rustArray };
 
+	
+
+
+	regionsMap.insert({ "Rust_Belt", {rustArray} });
+
+
+	for (auto& [, val] : regionsMap) {
+		cout << key << endl;
+
+
+
+	}
 
 
     for (int j = 0; j < YEARS; j++) {
