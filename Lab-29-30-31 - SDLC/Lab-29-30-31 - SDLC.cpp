@@ -52,11 +52,14 @@ int main(){
 	string rFile = "rustbelt.txt";
 	string gFile = "gulfcoast.txt";
 
-	list<WestCoastCity> wCities;
-	list<RustBeltCity> rCities;
-	list<GulfStateCity> gCities;
+	list<City> wCities;
+	list<City> rCities;
+	list<City> gCities;
 	
 
-	array<list<WestCoastCity,RustBeltCity,GulfStateCity>, 3> sArray {wCities, rCities, gCities};
+	array<list<City>, 3> sArray {wCities, rCities, gCities};
+
+
+
 
 }

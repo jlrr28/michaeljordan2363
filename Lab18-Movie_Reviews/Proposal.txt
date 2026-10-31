@@ -7,7 +7,7 @@ The project will simulate population in cities across the country from the year 
 
 Implentation:
 I plan to use the std::map to store regions around the country. Different regions have different factors that contribute to the % of growth or decline. West Coast, Rust Belt, and Gulf States are going to have their array of 3 lists accociated with states in the region.
-The list will contain city objects with different inheritances based on the region they fall into, that store City Name, Initial Population in year 2000, and Population growth % that changes based on the random events that could happen.
+The list will contain city objects with different inheritances based on the region they fall into, that store City Name, Initial Population in year 2000, and Population growth % that changes based on the random events that could happen. At end of year new popualtion figure is calculated.
 
 Simulated Events:
 Each region will have similar sets of events, with additional events based on region. The West Coast will have tech booms and earthquakes, Rust Belt will have factory openings and closures, Gulf States will have hurricanes. Their will be a 33% chances for a postive, negative, or both population rate change.
