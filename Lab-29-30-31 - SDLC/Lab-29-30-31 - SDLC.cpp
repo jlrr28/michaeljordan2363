@@ -29,21 +29,8 @@ public:
 
 };
 
-class WestCoastCity : public City {
-	public:
-		void positiveRate() {};
-		void negativeRate() {};
-};
 
-class RustBeltCity : public City {
-	public:
-
-};
-
-class GulfStateCity : public City {
-	public:
-
-};
+const int YEARS = 26, STARTYEAR = 2000;
 
 int main(){
 	
@@ -52,12 +39,55 @@ int main(){
 	string rFile = "rustbelt.txt";
 	string gFile = "gulfcoast.txt";
 
-	list<City> wCities;
-	list<City> rCities;
-	list<City> gCities;
+	list<City> wStates;
+	list<City> rStates;
+	list<City> gStates;
 	
+	//State of temporia
+	City temp("temptown", 100000, 0.1);
+	City temp2("Temptopia", 20000, -0.05);
+	City temp3("Temp City", 400000, 0.05);
 
-	array<list<City>, 3> sArray {wCities, rCities, gCities};
+	//States
+	list<City>temporia = {temp,temp2,temp3};
+	list<City>Illinois = {};
+	list<
+	//Gets pushed into an array
+
+
+
+	array<list<City>, 3> westArray {};
+
+	map < string, array <list<City>,3>> regionsMap;
+	
+	regionsMap["westcoast"] = {
+
+
+
+	}
+
+    for (int j = 0; j < YEARS; j++) {
+
+        for (int i = 0; i < sArray.size(); i++) {
+
+
+            switch (i) { //WestCoast
+            case 0: {
+				
+                break;
+            }
+            case 1: {
+
+                break;
+            }
+            case 2: {
+
+
+                break;
+            }
+            }
+        }
+    }
 
 
 
