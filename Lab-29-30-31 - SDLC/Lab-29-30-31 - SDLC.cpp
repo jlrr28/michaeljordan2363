@@ -16,11 +16,19 @@ private:
 	int population;
 	double popRate;
 public:
+	//Constructors
 	City(string n, int p, double r) {name = n; population = p; popRate = r;}
 
-	string getName() { return name; }
-	int getPop() { return population; }
-	double getPopRate() { return popRate; }
+	//Sets and Gets
+	string getName()			{ return name; }
+	int getPop()				{ return population; }
+	double getPopRate()			{ return popRate; }
+
+	void setName(string n)		{ name = n; }
+	void setPop(int p)			{ population = p; }
+	void setPopRate(double r)	{ popRate = r; }
+
+	//Methods
 
 	void WCpositiveRate() {};
 	void WCnegativeRate() {};
@@ -30,6 +38,11 @@ public:
 
 	void GSpositiveRate() {};
 	void GSnegativeRate() {};
+
+	//Overload
+	bool operator< (const City& other) const {
+		return population < other.population;
+	}
 
 };
 
@@ -54,14 +67,20 @@ int main(){
 	City temp("temptown", 100000, 0.1);
 	City temp2("Temptopia", 20000, -0.05);
 	City temp3("Temp City", 400000, 0.05);
-
-	//cout << temp.
+	cout << "Object:";
+	cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 
 	//States
 	list<City>Ohio = {temp,temp2,temp3};
 	list<City>Illinois = {};
 	list<City>Michigan = {};
 	
+	cout << "List: ";
+	for (City value : Ohio) {
+		cout << value.getName() << " ( " << value.getPop() <<
+			", " << value.getPopRate() << " )" << endl;
+
+	}
 	//Gets pushed into an array
 	array<list<City>, 3> rustArray {Ohio,Illinois,Michigan};
 
@@ -72,12 +91,12 @@ int main(){
 	regionsMap.insert({ "Rust_Belt", {rustArray} });
 
 
-	for (auto& [, val] : regionsMap) {
-		cout << key << endl;
+	//for (auto& [, val] : regionsMap) {
+		//cout << key << endl;
 
 
 
-	}
+	
 
 
     for (int j = 0; j < YEARS; j++) {
