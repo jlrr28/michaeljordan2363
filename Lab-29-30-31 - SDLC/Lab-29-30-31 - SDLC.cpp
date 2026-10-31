@@ -36,7 +36,7 @@ public:
 	void WCpositiveRate() { popRate += 0.01; } //This is where the random events will be 
 	void WCnegativeRate() {};                  //To change popRate
 
-	void RBpositiveRate(double r) {popRate = r + 0.1 ; cout << popRate << " "; }
+	void RBpositiveRate() { popRate+=0.1; cout << popRate << " "; }
 	void RBnegativeRate() { popRate -= 0.01; }
 
 	void GSpositiveRate() {};
@@ -129,8 +129,8 @@ int main(){
 				for (auto pair : regionsMap) {
 					cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
-					for (auto value : rustArray[0]) {
-						value.RBpositiveRate(value.getPopRate());
+					for (auto& value : rustArray[0]) {
+						value.RBpositiveRate();
 					}
 
 				}
