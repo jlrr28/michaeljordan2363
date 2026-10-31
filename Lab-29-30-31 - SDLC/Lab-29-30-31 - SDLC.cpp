@@ -31,11 +31,11 @@ public:
 
 	//Methods
 
-	void WCpositiveRate() {};
-	void WCnegativeRate() {};
+	void WCpositiveRate() { popRate += 0.01; } //This is where the random events will be 
+	void WCnegativeRate() {};                  //To change popRate
 
-	void RBpositiveRate() {};
-	void RBnegativeRate() {}; 
+	void RBpositiveRate() { setPopRate( getPopRate() += 1  ); }
+	void RBnegativeRate() { popRate -= 0.01; }
 
 	void GSpositiveRate() {};
 	void GSnegativeRate() {};
@@ -58,6 +58,7 @@ int main(){
 	string wFile = "westcoast.txt";
 	string rFile = "rustbelt.txt";
 	string gFile = "gulfcoast.txt";
+
 
 	list<City> wStates;
 	list<City> rStates;
@@ -99,9 +100,8 @@ int main(){
 
 	regionsMap.insert({ "Rust_Belt", {rustArray} });
 
-
 	for (auto pair : regionsMap) {
-		cout << pair.first;
+		cout << pair.first << endl;
 
 		for (auto value : rustArray[0]) {
 			cout << value.getName() << " ( " << value.getPop() <<
@@ -110,9 +110,6 @@ int main(){
 		}
 
 	}
-
-	
-
 
     for (int j = 0; j < YEARS; j++) {
 
@@ -125,12 +122,19 @@ int main(){
 
                 break;
             }
-            case 1: {//Rust Belt, factory closures and openings
-				//Go through the cities in the lists
-				//Output what random events happen
-				//Output what city is largest in region
-				//Increment the popualtion number of the cities
-                break;
+            case 1: {//Rust Belt
+                
+				for (auto pair : regionsMap) {
+					cout << pair.first << " biggest city is xxx at xxx people" << endl;
+
+					for (auto value : rustArray[0]) {
+						value.RBpositiveRate();
+					}
+
+				}
+
+
+				break;
             }
             case 2: {//Gulf States
 
@@ -140,5 +144,18 @@ int main(){
             }
         }
     }
+
+	//Output final numbers
+	for (auto pair : regionsMap) {
+		cout << pair.first << endl;
+
+		for (auto value : rustArray[0]) {
+			cout << value.getName() << " ( " << value.getPop() <<
+				", " << value.getPopRate() << " )" << endl;
+
+		}
+
+	}
+
 
 }
