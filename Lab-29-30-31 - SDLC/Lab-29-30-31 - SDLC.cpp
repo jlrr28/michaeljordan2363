@@ -26,7 +26,7 @@ public:
 	void WCnegativeRate() {};
 
 	void RBpositiveRate() {};
-	void RBnegativeRate() {};
+	void RBnegativeRate() {}; 
 
 	void GSpositiveRate() {};
 	void GSnegativeRate() {};
