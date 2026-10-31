@@ -120,8 +120,8 @@ int main(){
 	}
 	//Gets pushed into an array
 	array<list<City>, STATES> rustArray {Ohio,Illinois,Michigan};
-	array<list<City>, STATES> westArray {California,Illinois,Michigan };
-
+	//array<list<City>, STATES> westArray {California,Oregon,Seattle};
+	 
 	cout << "Array of Lists of Classes:" << endl;
 
 	for (auto value : rustArray[0]) {
