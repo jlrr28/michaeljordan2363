@@ -16,6 +16,7 @@ private:
 	int population;
 	double popRate;
 public:
+	City()							{ name = "Town with no Name"; population = 0; popRate = 0; }
 	//Constructors
 	City(string n, int p, double r) {name = n; population = p; popRate = r;}
 
@@ -67,7 +68,7 @@ int main(){
 	City temp("temptown", 100000, 0.1);
 	City temp2("Temptopia", 20000, -0.05);
 	City temp3("Temp City", 400000, 0.05);
-	cout << "Object:";
+	cout << "class:" << endl;
 	cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 
 	//States
@@ -75,7 +76,7 @@ int main(){
 	list<City>Illinois = {};
 	list<City>Michigan = {};
 	
-	cout << "List: ";
+	cout << "List of Classes: " << endl;
 	for (City value : Ohio) {
 		cout << value.getName() << " ( " << value.getPop() <<
 			", " << value.getPopRate() << " )" << endl;
@@ -84,9 +85,15 @@ int main(){
 	//Gets pushed into an array
 	array<list<City>, 3> rustArray {Ohio,Illinois,Michigan};
 
-
+	cout << "Array of Lists of Classes:" << endl;
+	rustArray[0];
+	rustArray.at(0);
 	
+	for (auto value : rustArray[0]) {
+		cout << value.getName() << " ( " << value.getPop() <<
+			", " << value.getPopRate() << " )" << endl;
 
+	}
 
 	regionsMap.insert({ "Rust_Belt", {rustArray} });
 
