@@ -11,6 +11,8 @@
 using namespace std;
 
 //THIS IS THE ALPHA
+int rng1to3();
+int rng1to100();
 
 class City {
 private:
@@ -37,7 +39,7 @@ public:
 	void wcNegativeRate() {};                  //To change popRate
 
 	void rbPositiveRate() { popRate+=0.001; cout << popRate << " "; }
-	void rbNegativeRate() { popRate -= 0.001; }
+	void rbNegativeRate() { popRate -= 0.0005; }
 
 	void gsPositiveRate() {};
 	void gsNegativeRate() {};
@@ -52,6 +54,18 @@ public:
 
 };
 
+void populationPositiveNegativeBoth(City& c) {
+	int x = rng1to3();
+	if (x == 0)
+		c.rbPositiveRate();
+	if (x == 1)
+		c.rbNegativeRate();
+	if (x == 2) {
+		c.rbPositiveRate();
+		c.rbNegativeRate();
+	}
+
+}
 
 const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3;
 
@@ -131,7 +145,7 @@ int main(){
 					cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
 					for (auto& value : rustArray[0]) {
-						value.rbPositiveRate();
+						populationPositiveNegativeBoth(value);
 						value.incrementPopulation();
 					}
 
@@ -162,4 +176,22 @@ int main(){
 	}
 
 
+}
+
+int rng1to3() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(0, 2);
+	double x = (randomN(gen));
+
+	return x;
+}
+
+int rng1to100() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(0, 99);
+	double x = (randomN(gen));
+
+	return x;
 }
