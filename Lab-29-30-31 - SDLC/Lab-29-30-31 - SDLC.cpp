@@ -33,14 +33,14 @@ public:
 
 	//Methods
 
-	void WCpositiveRate() { popRate += 0.01; } //This is where the random events will be 
-	void WCnegativeRate() {};                  //To change popRate
+	void wcPositiveRate() { popRate += 0.01; } //This is where the random events will be 
+	void wcNegativeRate() {};                  //To change popRate
 
-	void RBpositiveRate() { popRate+=0.1; cout << popRate << " "; }
-	void RBnegativeRate() { popRate -= 0.01; }
+	void rbPositiveRate() { popRate+=0.1; cout << popRate << " "; }
+	void rbNegativeRate() { popRate -= 0.01; }
 
-	void GSpositiveRate() {};
-	void GSnegativeRate() {};
+	void gsPositiveRate() {};
+	void gsNegativeRate() {};
 
 	//Overload
 	bool operator< (const City& other) const {
@@ -130,7 +130,7 @@ int main(){
 					cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
 					for (auto& value : rustArray[0]) {
-						value.RBpositiveRate();
+						value.RBNegativeRate();
 					}
 
 				}
