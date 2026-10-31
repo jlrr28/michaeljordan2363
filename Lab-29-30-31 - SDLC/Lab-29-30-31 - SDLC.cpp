@@ -10,6 +10,10 @@
 #include <string>
 using namespace std;
 
+//THIS IS THE ALPHA
+int rng1to3();
+int rng1to100();
+
 class City {
 private:
 	string name;
@@ -31,14 +35,17 @@ public:
 
 	//Methods
 
-	void WCpositiveRate() { popRate += 0.01; } //This is where the random events will be 
-	void WCnegativeRate() {};                  //To change popRate
+	void wcPositiveRate() { popRate += 0.001; } //This is where the random events will be 
+	void wcNegativeRate() {};                  //To change popRate
 
-	void RBpositiveRate(City& r) { r.setPopRate( r.getPopRate()  + 5.1   ); cout << "x"; }
-	void RBnegativeRate() { popRate -= 0.01; }
+	void rbPositiveRate() { popRate+=0.001; cout << popRate << " "; }
+	void rbNegativeRate() { popRate -= 0.0005; }
 
-	void GSpositiveRate() {};
-	void GSnegativeRate() {};
+	void gsPositiveRate() {};
+	void gsNegativeRate() {};
+
+	void incrementPopulation() { population = population + (population * popRate); }
+
 
 	//Overload
 	bool operator< (const City& other) const {
@@ -47,6 +54,18 @@ public:
 
 };
 
+void populationPositiveNegativeBoth(City& c) {
+	int x = rng1to3();
+	if (x == 0)
+		c.rbPositiveRate();
+	if (x == 1)
+		c.rbNegativeRate();
+	if (x == 2) {
+		c.rbPositiveRate();
+		c.rbNegativeRate();
+	}
+
+}
 
 const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3;
 
@@ -66,9 +85,9 @@ int main(){
 	
 	//State of Ohio
 	//Data would be read in by file
-	City temp("temptown", 100000, 0.1);
-	City temp2("Temptopia", 20000, -0.05);
-	City temp3("Temp City", 400000, 0.05);
+	City temp("temptown", 100000, 0.001);
+	City temp2("Temptopia", 20000, -0.005);
+	City temp3("Temp City", 400000, 0.005);
 	cout << "class:" << endl;
 	cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 
@@ -87,9 +106,7 @@ int main(){
 	array<list<City>, 3> rustArray {Ohio,Illinois,Michigan};
 
 	cout << "Array of Lists of Classes:" << endl;
-	rustArray[0];
-	rustArray.at(0);
-	
+
 	for (auto value : rustArray[0]) {
 		cout << value.getName() << " ( " << value.getPop() <<
 			", " << value.getPopRate() << " )" << endl;
@@ -127,8 +144,9 @@ int main(){
 				for (auto pair : regionsMap) {
 					cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
-					for (auto value : rustArray[0]) {
-						value.RBpositiveRate(value);
+					for (auto& value : rustArray[0]) {
+						populationPositiveNegativeBoth(value);
+						value.incrementPopulation();
 					}
 
 				}
@@ -158,4 +176,22 @@ int main(){
 	}
 
 
+}
+
+int rng1to3() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(0, 2);
+	double x = (randomN(gen));
+
+	return x;
+}
+
+int rng1to100() {
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> randomN(0, 99);
+	double x = (randomN(gen));
+
+	return x;
 }
