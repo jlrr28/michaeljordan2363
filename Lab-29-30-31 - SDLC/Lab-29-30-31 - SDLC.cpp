@@ -10,6 +10,8 @@
 #include <string>
 using namespace std;
 
+//THIS IS THE ALPHA
+
 class City {
 private:
 	string name;
