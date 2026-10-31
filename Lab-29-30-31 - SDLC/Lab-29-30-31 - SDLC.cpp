@@ -54,18 +54,16 @@ public:
 
 };
 
-void printMap(const map < string, array <list<City>, REGIONS>>* rM) {
+void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 	
-	for (const auto& [key, array] : rM) {
-		
-		cout << key.first << endl;
+	for (auto pair : rM) {
+		cout << pair.first << endl;
 
-		for (int i = 0; i < array.size(); ++i)
-			for (auto value : array[i]) {
-				cout << value.getName() << " ( " << value.getPop() <<
-					", " << value.getPopRate() << " )" << endl;
+		for (auto value : rustArray[0]) {
+			cout << value.getName() << " ( " << value.getPop() <<
+				", " << value.getPopRate() << " )" << endl;
 
-			}
+		}
 
 	}
 
@@ -84,18 +82,18 @@ void populationPositiveNegativeBoth(City& c) {
 
 }
 
-const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3;
+const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3, STATES = 3, CITIES = 3;
 
 int main(){
 	
 
 	map < string, array <list<City>, REGIONS>> regionsMap;
-	map < string, array <list<City>, REGIONS>>* mPointer;
+	//map < string, array <list<City>, REGIONS>>* mPointer;
 
 	string wFile = "westcoast.txt";
 	string rFile = "rustbelt.txt";
 	string gFile = "gulfcoast.txt";
-
+	array<string, REGIONS> { "West_Coast", "Rust_Belt", "Gulf_Coast" };
 
 	list<City> wStates;
 	list<City> rStates;
@@ -121,7 +119,8 @@ int main(){
 
 	}
 	//Gets pushed into an array
-	array<list<City>, REGIONS> rustArray {Ohio,Illinois,Michigan};
+	array<list<City>, STATES> rustArray {Ohio,Illinois,Michigan};
+	array<list<City>, STATES> westArray {California,Illinois,Michigan };
 
 	cout << "Array of Lists of Classes:" << endl;
 
@@ -158,12 +157,13 @@ int main(){
                 break;
             }
             case 1: {//Rust Belt
-                
+				
 				for (auto pair : regionsMap) {
 					//cout << pair.first << " biggest city is xxx at xxx people" << endl;
 
 					for (auto& value : rustArray[0]) {
 						cout << value.getName() << ": population " << value.getPop() << endl;
+						
 						printMap(regionsMap);
 						populationPositiveNegativeBoth(value);
 						value.incrementPopulation();
