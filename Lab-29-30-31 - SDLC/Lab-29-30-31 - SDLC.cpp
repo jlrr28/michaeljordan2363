@@ -41,7 +41,11 @@ public:
 	//Methods
 
 	void wcPositiveRate() { popRate += 0.001; } //This is where the random events will be 
-	void wcNegativeRate() {};                  //To change popRate
+	void wcNegativeRate() { 
+	
+	
+	
+	};                  //To change popRate
 
 	void rbPositiveRate() {
 		int x = rng1to100();
@@ -178,6 +182,7 @@ int main(){
 
 	inputDataInMap(regionsMap, fileArray[0],regionArray[0]);
 	inputDataInMap(regionsMap, fileArray[1], regionArray[1]);
+	inputDataInMap(regionsMap, fileArray[2], regionArray[2]);
 	//inputDataInMap(regionsMap, fileArray[i]);
 
 	//}
