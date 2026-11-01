@@ -42,9 +42,29 @@ public:
 
 	void wcPositiveRate() { popRate += 0.001; } //This is where the random events will be 
 	void wcNegativeRate() { 
-	
-	
-	
+		int x = rng1to100();
+		if (x >= 0 && x <= 97) {
+			popRate -= 0.0002;
+			cout << " || Rising costs is pushing people out of " << name << " || ";
+		}
+		if (x >= 98 && x <= 99) {
+			int y = rng1to100();
+			
+
+			if (y>= 0 && y <= 49) {
+				popRate -= 0.002;
+				cout << " || A factory has opened " << name << " || ";
+			}
+			if (y >= 50 && y <= 99) {
+
+
+
+			}
+		
+		
+		}
+
+
 	};                  //To change popRate
 
 	void rbPositiveRate() {
