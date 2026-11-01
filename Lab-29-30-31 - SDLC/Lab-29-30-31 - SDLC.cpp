@@ -135,8 +135,9 @@ void gulfstatePositiveNegativeBoth(City& c) {
 
 }
 
-void inputDataInMap(map < string, array <list<City>, REGIONS>> rM){
+void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM){
 
+	City temp;
 
 
 
