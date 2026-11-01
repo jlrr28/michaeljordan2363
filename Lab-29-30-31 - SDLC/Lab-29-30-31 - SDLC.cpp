@@ -136,14 +136,13 @@ void gulfstatePositiveNegativeBoth(City& c) {
 
 }
 
-void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f){
+void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f, string r){
 
 	ifstream fin;
 	fin.open(f);
 	if (fin.good()) {
 		for (int i = 0; i < STATES; i++) {
 			for (int j = 0; j < CITIES; j++) {
-				fin.ignore();
 				string state;
 				getline(fin, state);
 				string name;
@@ -157,7 +156,7 @@ void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f){
 
 				City temp(state, name, pop, popRate);
 
-				rM["Rust_Belt"][i].push_back(temp);
+				rM[r][i].push_back(temp);
 			}
 		}
 	}
@@ -170,22 +169,19 @@ int main(){
 	
 	map < string, array <list<City>, REGIONS>> regionsMap;
 
-	array<string, REGIONS> regionArray { "West_Coast", "Rust_Belt", "Gulf_Coast" };
-	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfcoast.txt" };
+	array<string, REGIONS> regionArray { "Rust_Belt", "West_Coast", "Gulf_States" };
+	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfstates.txt" };
 
 	City empty;
 
 	//for (int i = 0; i < REGIONS; i++)
 
-	inputDataInMap(regionsMap, fileArray[0]);
-	inputDataInMap(regionsMap, fileArray[1]);
+	inputDataInMap(regionsMap, fileArray[0],regionArray[0]);
+	inputDataInMap(regionsMap, fileArray[1], regionArray[1]);
 	//inputDataInMap(regionsMap, fileArray[i]);
 
 	//}
 
-	list<City>California = { empty,empty,empty };
-	list<City>Oregon = {};
-	list<City>Seattle = {};
 
 	list<City>Florida = { empty,empty,empty };
 	list<City>Louisiana = {};
@@ -193,11 +189,9 @@ int main(){
 
 	//Gets pushed into an array
 
-	array<list<City>, STATES> westArray {California,Oregon,Seattle};
 	array<list<City>, STATES> gulfArray {Florida,Louisiana,Alabama};
 
 	//regionsMap.insert({ "Rust_Belt", {rustArray} });
-	regionsMap.insert({ "West_Coast", {westArray} });
 	regionsMap.insert({ "Gulf_States", {gulfArray} });
 
 	cout << "INITIAL STATE" << endl;

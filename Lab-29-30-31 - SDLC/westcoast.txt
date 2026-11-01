@@ -9,6 +9,7 @@ San Jose
 California
 San Francisco
 777360
+0.001
 Oregon
 Portland
 529122
