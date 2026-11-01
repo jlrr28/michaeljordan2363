@@ -45,7 +45,7 @@ public:
 		int x = rng1to100();
 		if (x >= 0 && x <= 97) {
 			popRate -= 0.0002;
-			cout << " || Rising costs is pushing people out of " << name << " || ";
+			//cout << " || Rising costs is pushing people out of " << name << " || ";
 		}
 		if (x >= 98 && x <= 99) {
 			int y = rng1to100();
@@ -53,12 +53,12 @@ public:
 
 			if (y>= 0 && y <= 49) {
 				popRate -= 0.002;
-				cout << " || A factory has opened " << name << " || ";
+				//cout << " || A major earthquake has hit " << name << " || ";
 			}
 			if (y >= 50 && y <= 99) {
-
-
-
+				population = population - (population * 0.1);
+				popRate -= 0.01;
+				cout << " XX A DEVESTATING EARTHQUAKE HAS HIT " << name << " THOUSANDS HAVE BEEN DISPLACED XX" << endl;
 			}
 		
 		
@@ -71,7 +71,7 @@ public:
 		int x = rng1to100();
 		if (x >= 0 && x <= 49) {
 			popRate += 0.002;
-			cout << " || A factory has opened " << name << " || ";
+			//cout << " || A factory has opened " << name << " || ";
 		}
 		//popRate+=0.001; /*cout << popRate << " ";*/
 		if (x >= 50 && x <= 99)
@@ -106,20 +106,23 @@ public:
 
 };
 
-/*void printMap(const map < string, array <list<City>, REGIONS>> rM) {
+void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 	
 	for (auto pair : rM) {
 		cout << pair.first << endl;
 
-		for (auto value : rustArray[0]) {
-			cout << value.getName() << " ( " << value.getPop() <<
-				", " << value.getPopRate() << " )" << endl;
+		for (auto list : rM.at(pair.first)) {
+
+			for (City value : list) {
+				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
+				<< value.getPopRate() << endl;
+
+			}
 
 		}
-
 	}
 
-}*/
+}
 
 void rustbeltPositiveNegativeBoth(City& c) {
 	int x = rng1to3();
@@ -196,45 +199,16 @@ int main(){
 	array<string, REGIONS> regionArray { "Rust_Belt", "West_Coast", "Gulf_States" };
 	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfstates.txt" };
 
-	City empty;
-
-	//for (int i = 0; i < REGIONS; i++)
-
-	inputDataInMap(regionsMap, fileArray[0],regionArray[0]);
-	inputDataInMap(regionsMap, fileArray[1], regionArray[1]);
-	inputDataInMap(regionsMap, fileArray[2], regionArray[2]);
-	//inputDataInMap(regionsMap, fileArray[i]);
-
-	//}
-
-
-	list<City>Florida = { empty,empty,empty };
-	list<City>Louisiana = {};
-	list<City>Alabama = {};
-
-	//Gets pushed into an array
-
-	array<list<City>, STATES> gulfArray {Florida,Louisiana,Alabama};
-
-	//regionsMap.insert({ "Rust_Belt", {rustArray} });
-	regionsMap.insert({ "Gulf_States", {gulfArray} });
+	for (int i = 0; i < REGIONS; i++){
+	inputDataInMap(regionsMap, fileArray[i], regionArray[i]);
+	}
 
 	cout << "INITIAL STATE" << endl;
-	for (auto pair : regionsMap) {
-		cout << pair.first << endl;
-
-		for (auto list : regionsMap.at(pair.first)) {
-		
-			for (City value : list) {
-				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
-				<< value.getPopRate() << endl;
-				
-			}
-
-		}
-
-	}
+	printMap(regionsMap);
 	
+	map < string, array <list<City>, REGIONS>> startingMap = regionsMap;
+	//printMap(startingMap);
+
 	//SIMULATION
 	int year = 2000;
     for (int j = 0; j < YEARS; j++) {
@@ -266,14 +240,18 @@ int main(){
 	//Output final numbers
 	cout << endl;
 	cout << "AFTER SIMULATION" << endl << endl;
-	for (auto pair : regionsMap) {
+	for (auto pair : regionsMap, startingMap) {
 		cout << pair.first << endl;
 
 		for (auto list : regionsMap.at(pair.first)) {
 
 			for (auto value : list) {
+			
+				
 				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
 					<< value.getPopRate() << endl;
+
+
 
 			}
 
