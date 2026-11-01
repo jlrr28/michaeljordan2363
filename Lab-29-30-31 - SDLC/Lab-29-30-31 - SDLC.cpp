@@ -227,12 +227,12 @@ int main(){
 		}
 
 	}
-
+	int year = 2000;
     for (int j = 0; j < YEARS; j++) {
-
+		cout << " YEAR: " << year << endl;
 		for (auto pair : regionsMap) {
 			//cout << pair.first << endl;
-
+			cout << pair.first << endl;
 			for (list<City>& list : regionsMap.at(pair.first)) {
 
 				for (City& value : list) { //Gets to the city objects in list
@@ -258,9 +258,9 @@ int main(){
 				}
 
 			}
-
+			cout << endl;
 		}
-
+		year++;
     }
 
 	//Output final numbers
