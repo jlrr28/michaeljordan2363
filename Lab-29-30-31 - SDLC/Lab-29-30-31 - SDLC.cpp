@@ -143,7 +143,7 @@ void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f){
 	if (fin.good()) {
 		for (int i = 0; i < STATES; i++) {
 			for (int j = 0; j < CITIES; j++) {
-
+				fin.ignore();
 				string state;
 				getline(fin, state);
 				string name;
@@ -178,6 +178,7 @@ int main(){
 	//for (int i = 0; i < REGIONS; i++)
 
 	inputDataInMap(regionsMap, fileArray[0]);
+	inputDataInMap(regionsMap, fileArray[1]);
 	//inputDataInMap(regionsMap, fileArray[i]);
 
 	//}
