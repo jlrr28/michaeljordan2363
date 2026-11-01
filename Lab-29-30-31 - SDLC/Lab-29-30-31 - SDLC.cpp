@@ -13,6 +13,7 @@ using namespace std;
 //THIS IS THE ALPHA
 int rng1to3();
 int rng1to100();
+const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3, STATES = 3, CITIES = 3;
 
 class City {
 private:
@@ -49,7 +50,7 @@ public:
 		}
 		//popRate+=0.001; /*cout << popRate << " ";*/
 		if (x >= 50 && x <= 99)
-			popRate += 0.0005;
+			popRate += 0.001;
 	}
 	void rbNegativeRate() {
 		int x = rng1to100();
@@ -134,7 +135,13 @@ void gulfstatePositiveNegativeBoth(City& c) {
 
 }
 
-const int YEARS = 26, STARTYEAR = 2000, REGIONS = 3, STATES = 3, CITIES = 3;
+void inputDataInMap(map < string, array <list<City>, REGIONS>> rM){
+
+
+
+
+}
+
 
 int main(){
 	
@@ -197,18 +204,6 @@ int main(){
 	array<list<City>, STATES> westArray {California,Oregon,Seattle};
 	array<list<City>, STATES> gulfArray {Florida,Louisiana,Alabama};
 
-
-	/*
-	cout << "Array of Lists of Classes:" << endl;
-
-	for (int i = 0; i < STATES; i++) {
-		cout << "State #" << i << endl;
-		for (auto value : rustArray[i]) {
-			cout << value.getName() << " ( " << value.getPop() <<
-				", " << value.getPopRate() << " )" << endl;
-
-		}
-	}*/
 
 	//cout << "Map of Arrays of Lists of Classes: " << endl;
 
