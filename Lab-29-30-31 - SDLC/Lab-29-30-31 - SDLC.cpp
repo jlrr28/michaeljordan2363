@@ -135,11 +135,32 @@ void gulfstatePositiveNegativeBoth(City& c) {
 
 }
 
-void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM){
+void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f){
 
-	City temp;
+	ifstream fin;
+	fin.open(f);
+	if (fin.good()) {
+		for (int i = 0; i < STATES; i++) {
+			for (int j = 0; j < CITIES; j++) {
 
+				string state;
+				getline(fin, state);
+				string name;
+				getline(fin, name);
+				int pop;
+				fin >> pop;
+				fin.ignore();
+				double popRate;
+				fin >> popRate;
+				fin.ignore();
 
+				City temp(state, name, pop, popRate);
+
+				rM["Rust_Belt"][i].push_back(temp);
+			}
+		}
+	}
+	fin.close();
 
 }
 
@@ -154,6 +175,7 @@ int main(){
 	string rFile = "rustbelt.txt";
 	string gFile = "gulfcoast.txt";
 	array<string, REGIONS> regionArray { "West_Coast", "Rust_Belt", "Gulf_Coast" };
+	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfcoast.txt" };
 
 	list<City> wStates;
 	list<City> rStates;
@@ -168,6 +190,9 @@ int main(){
 	//cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 	City empty;
 
+	inputDataInMap(regionsMap, fileArray[0]);
+
+	/*
 	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Columbus", 715971, 0.001 });
 	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Cleveland", 476574, 0.001 });
 	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Cincinnati", 331258, 0.001 });
@@ -179,6 +204,8 @@ int main(){
 	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Chicago", 2896016, 0.001 });
 	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Rockford", 150115, 0.001 });
 	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Aurora", 142990, 0.001 });
+	*/
+
 
 	//States
 	list<City>Ohio = {temp,temp2,temp3};
