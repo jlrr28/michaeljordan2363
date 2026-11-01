@@ -1,3 +1,4 @@
+// COMSC - 210 || SDLC LAB || JOSE LUIS RAMOS
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -167,51 +168,20 @@ void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f){
 
 int main(){
 	
-
 	map < string, array <list<City>, REGIONS>> regionsMap;
-	//map < string, array <list<City>, REGIONS>>* mPointer;
 
-	string wFile = "westcoast.txt";
-	string rFile = "rustbelt.txt";
-	string gFile = "gulfcoast.txt";
 	array<string, REGIONS> regionArray { "West_Coast", "Rust_Belt", "Gulf_Coast" };
 	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfcoast.txt" };
 
-	list<City> wStates;
-	list<City> rStates;
-	list<City> gStates;
-	
-	//State of Ohio
-	//Data would be read in by file
-	City temp("Ohio", "Columbus", 10000, 0.001);
-	City temp2("Ohio", "Temptopia", 20000, -0.005);
-	City temp3("Ohio", "Temp City", 400000, 0.005);
-	//cout << "class:" << endl;
-	//cout << temp.getName() << " " << temp.getPop() << " " << temp.getPopRate() << endl;
 	City empty;
 
+	//for (int i = 0; i < REGIONS; i++)
+
 	inputDataInMap(regionsMap, fileArray[0]);
+	//inputDataInMap(regionsMap, fileArray[i]);
 
-	/*
-	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Columbus", 715971, 0.001 });
-	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Cleveland", 476574, 0.001 });
-	regionsMap["Rust_Belt"][0].push_back(City{ "Ohio", "Cincinnati", 331258, 0.001 });
+	//}
 
-	regionsMap["Rust_Belt"][1].push_back(City{ "Michigan", "Detroit", 951270, -0.001 });
-	regionsMap["Rust_Belt"][1].push_back(City{ "Michigan", "Grand Rapids", 197800, 0.001 });
-	regionsMap["Rust_Belt"][1].push_back(City{ "Michigan", "Warren", 138247, 0.001 });
-
-	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Chicago", 2896016, 0.001 });
-	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Rockford", 150115, 0.001 });
-	regionsMap["Rust_Belt"][2].push_back(City{ "Illnois", "Aurora", 142990, 0.001 });
-	*/
-
-
-	//States
-	list<City>Ohio = {temp,temp2,temp3};
-	list<City>Illinois = {empty,empty,empty};
-	list<City>Michigan = {empty,empty,empty};
-	
 	list<City>California = { empty,empty,empty };
 	list<City>Oregon = {};
 	list<City>Seattle = {};
@@ -220,20 +190,10 @@ int main(){
 	list<City>Louisiana = {};
 	list<City>Alabama = {};
 
-	/*
-	cout << "List of Classes: " << endl;
-	for (City value : Ohio) {
-		cout << value.getName() << " ( " << value.getPop() <<
-			", " << value.getPopRate() << " )" << endl;
-
-	}*/
 	//Gets pushed into an array
-	array<list<City>, STATES> rustArray {Ohio,Illinois,Michigan};
+
 	array<list<City>, STATES> westArray {California,Oregon,Seattle};
 	array<list<City>, STATES> gulfArray {Florida,Louisiana,Alabama};
-
-
-	//cout << "Map of Arrays of Lists of Classes: " << endl;
 
 	//regionsMap.insert({ "Rust_Belt", {rustArray} });
 	regionsMap.insert({ "West_Coast", {westArray} });
@@ -254,6 +214,8 @@ int main(){
 		}
 
 	}
+	
+	//SIMULATION
 	int year = 2000;
     for (int j = 0; j < YEARS; j++) {
 		cout << " YEAR: " << year << endl;
@@ -265,7 +227,6 @@ int main(){
 				for (City& value : list) { //Gets to the city objects in list
 					//Actual operations on the city objects
 					//cout << pair.first << endl;
-					//populationPositiveNegativeBoth(value);
 					if (pair.first == "Rust_Belt")
 						rustbeltPositiveNegativeBoth(value);
 					if (pair.first == "West_Coast")
@@ -274,14 +235,6 @@ int main(){
 						gulfstatePositiveNegativeBoth(value);
 					
 					value.incrementPopulation();
-				
-				
-				
-				
-
-
-				
-				
 				}
 
 			}
@@ -302,8 +255,7 @@ int main(){
 				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
 					<< value.getPopRate() << endl;
 
-			
-}
+			}
 
 		}
 
