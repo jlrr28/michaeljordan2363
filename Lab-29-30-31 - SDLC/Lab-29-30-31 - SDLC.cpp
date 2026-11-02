@@ -274,6 +274,11 @@ int main(){
 	int year = STARTYEAR;
     for (int j = 0; j < YEARS; j++) {
 		cout << " YEAR: " << year << endl;
+		if (year == 2008)
+			cout << "XX The housing market has crashed! many are losing their homes XX" << endl;
+		if (year == 2021)
+			cout << "XX The Covid-19 Pandemic has led to an economic slump! XX" << endl;
+		cout << endl;
 		for (auto pair : regionsMap) {
 			//cout << pair.first << endl;
 			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
@@ -282,14 +287,23 @@ int main(){
 
 				for (City& value : list) { //Gets to the city objects in list
 					//Actual operations on the city objects
-					//cout << pair.first << endl;
-					if (pair.first == "Rust_Belt")
-						rustbeltPositiveNegativeBoth(value);
-					if (pair.first == "West_Coast")
-						westcoastPositiveNegativeBoth(value);
-					if (pair.first == "Gulf_States")
-						gulfstatePositiveNegativeBoth(value);
 					
+					if (year != 2008 && year !=2020) {
+						if (pair.first == "Rust_Belt")
+							rustbeltPositiveNegativeBoth(value);
+						if (pair.first == "West_Coast")
+							westcoastPositiveNegativeBoth(value);
+						if (pair.first == "Gulf_States")
+							gulfstatePositiveNegativeBoth(value);
+					}
+					else {
+						if (year == 2008) 
+							value.rbNegativeRate();
+						if (year == 2021) 
+							value.rbNegativeRate();
+					
+					}
+
 					value.incrementPopulation();
 				}
 			}
