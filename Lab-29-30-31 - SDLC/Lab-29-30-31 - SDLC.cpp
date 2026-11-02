@@ -193,7 +193,6 @@ void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f, st
 
 
 int main(){
-	
 	map < string, array <list<City>, REGIONS>> regionsMap;
 
 	array<string, REGIONS> regionArray { "Rust_Belt", "West_Coast", "Gulf_States" };
@@ -247,19 +246,18 @@ int main(){
 		cout << "||||| Cities from the " << pair.first << " region. |||||" << endl;
 		cout << endl;
 			int x = 0;
-			for (auto list1 : regionsMap.at(pair.first)) {
+			for (list<City> list1 : regionsMap.at(pair.first)) {
 
 				auto array = startingMap.at(pair.first);
 				list<City> list2 = array[x];
 				auto it = list2.begin();
 
 				for (auto value : list1) {
-
+						cout << setprecision(3);
 						City value2 = *it;
-						double percentIncDec = (value.getPop() / value2.getPop()) * 100;
+						int percentIncDec = (  (static_cast<double>(value.getPop()) - static_cast<double>(value2.getPop())) / static_cast<double>(value2.getPop())) * 100 ;
 
 						cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << year << "." << endl;
-						
 
 						if ((value.getPop() - value2.getPop()) < 0) {
 							cout << "The city lost " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years. This is a ";
@@ -279,7 +277,6 @@ int main(){
 
 			}
 		
-		//}
 
 	}
 
@@ -302,24 +299,3 @@ int rng1to100() {
 
 	return x;
 }
-
-
-/*
- 				cout << regionArray[i] << endl;
-				auto it = regionsMap.find(regionArray[i]);
-				if (it != regionsMap.end()) {
-
-					for (int j; j < STATES; j++) {
-
-
-
-
-
-
-					}
-
-				}
-				else
-					// Key does not exist
-					cout << regionArray[i] << " not found." << endl;
-					*/
