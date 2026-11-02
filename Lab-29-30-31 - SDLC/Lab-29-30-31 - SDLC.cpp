@@ -40,24 +40,35 @@ public:
 
 	//Methods
 
-	void wcPositiveRate() { popRate += 0.001; } //This is where the random events will be 
+	void wcPositiveRate() { 
+		popRate += 0.002;
+		int x = rng1to100();
+		if (x >= 0 && x <= 59) 
+			popRate += 0.0005;
+	
+		if (x >= 60 && x <= 99) {
+			popRate += 0.001;
+			cout << " || Tech boom in " << name << "! ||" << endl;
+		}
+
+
+	} //This is where the random events will be 
 	void wcNegativeRate() { 
 		int x = rng1to100();
 		if (x >= 0 && x <= 97) {
-			popRate -= 0.0002;
-			//cout << " || Rising costs is pushing people out of " << name << " || ";
+			popRate -= 0.001;
+			cout << " || Rising costs is pushing people out of " << name << " || ";
 		}
 		if (x >= 98 && x <= 99) {
 			int y = rng1to100();
 			
-
 			if (y>= 0 && y <= 90) {
-				popRate -= 0.002;
+				popRate -= 0.005;
 				cout << " || A major earthquake has hit " << name << " || ";
 			}
 			if (y >= 91 && y <= 99) {
 				population = population - (population * 0.1);
-				popRate -= 0.01;
+				popRate -= 0.1;
 				cout << " XX A DEVESTATING EARTHQUAKE HAS HIT " << name << " THOUSANDS HAVE BEEN DISPLACED XX" << endl;
 			}
 		
@@ -68,7 +79,7 @@ public:
 	void rbPositiveRate() {
 		int x = rng1to100();
 		if (x >= 0 && x <= 49) {
-			popRate += 0.002;
+			popRate += 0.0025;
 			//cout << " || A factory has opened " << name << " || ";
 		}
 		//popRate+=0.001; /*cout << popRate << " ";*/
@@ -125,7 +136,40 @@ void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 void compareMap(const map < string, array <list<City>, REGIONS>> newMap, const map < string, array <list<City>, REGIONS>> initialMap, int y) {
 
 
+	for (auto pair : newMap, initialMap) {
+		cout << "||||| Cities from the " << pair.first << " region. |||||" << endl;
+		cout << endl;
+		int x = 0;
+		for (list<City> list1 : newMap.at(pair.first)) {
 
+			auto array = initialMap.at(pair.first);
+			list<City> list2 = array[x];
+			auto it = list2.begin();
+
+			for (auto value : list1) {
+				//cout << setprecision(3);
+				City value2 = *it;
+				int percentIncDec = ((static_cast<double>(value.getPop()) - static_cast<double>(value2.getPop())) / static_cast<double>(value2.getPop())) * 100;
+
+				cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << y << "." << endl;
+
+				if ((value.getPop() - value2.getPop()) < 0) {
+					cout << "The city lost " << value.getPop() - value2.getPop() << " people over " << y - STARTYEAR << " Years. This is a ";
+					cout << percentIncDec << "% decrease from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
+				}
+				else {
+					cout << "The city gained " << value.getPop() - value2.getPop() << " people over " << y - STARTYEAR << " Years. This is a ";
+					cout << percentIncDec << "% increase from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
+				}
+				cout << endl;
+				it++;
+			}
+
+			x++;
+
+		}
+
+	}
 
 }
 
@@ -198,11 +242,13 @@ void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f, st
 
 
 int main(){
+	
 	map < string, array <list<City>, REGIONS>> regionsMap;
 
 	array<string, REGIONS> regionArray { "Rust_Belt", "West_Coast", "Gulf_States" };
 	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfstates.txt" };
 
+	//Input data into the Map of Arrays of Lists of Objects
 	for (int i = 0; i < REGIONS; i++){
 	inputDataInMap(regionsMap, fileArray[i], regionArray[i]);
 	}
@@ -246,7 +292,7 @@ int main(){
 	cout << endl;
 	cout << "AFTER SIMULATION" << endl << endl;
 	// calculate growth/decline, has city shrunk or grown since starting year
-	compareMap(regionsMap,startingMap,year)
+	compareMap(regionsMap, startingMap, year);
 	
 
 }
