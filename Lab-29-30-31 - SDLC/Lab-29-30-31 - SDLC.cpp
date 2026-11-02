@@ -253,17 +253,19 @@ int main(){
 			for (auto list1 : regionsMap.at(pair.first)) {
 
 				//for (auto list2 : startingMap.at(pair.first)) {
-				auto list2 = startingMap.at(pair.first);
-
+				auto array = startingMap.at(pair.first);
+				auto list2 = array[1];
+				//auto value2 = list2;
+				auto it = list2.begin();
 					for (auto value : list1) {
-
-						for (auto value2 : list2) {
+						auto value2 = *it;
+						//City value2 = list2.begin();
 							cout << "This is population of " << value2.getName() << " in 2000 " << value2.getPop() << " and this is population of " << value.getName() << " in 2026 " << value.getPop() << " " << endl;
 
-						}
+						
 
 					}
-			
+					it++;
 				//}
 
 			}
