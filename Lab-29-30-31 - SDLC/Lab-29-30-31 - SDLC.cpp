@@ -114,10 +114,8 @@ public:
 	
 		}
 	};
-
 	
 	void incrementPopulation() { population = population + (population * popRate); }
-
 
 	//Overload
 	bool operator< (const City& other) const {
@@ -127,8 +125,94 @@ public:
 };
 
 
-void printMap(const map < string, array <list<City>, REGIONS>> rM) {
+void printMap(const map < string, array <list<City>, REGIONS>> rM);
+
+void compareMap(const map < string, array <list<City>, REGIONS>> newMap, const map < string, array <list<City>, REGIONS>> initialMap, int y);
+
+void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f, string r);
+
+
+void rustbeltPositiveNegativeBoth(City& c);
+
+void westcoastPositiveNegativeBoth(City& c);
+
+void gulfstatePositiveNegativeBoth(City& c);
+
+
+int main(){
 	
+	map < string, array <list<City>, REGIONS>> regionsMap;
+
+	array<string, REGIONS> regionArray { "Rust_Belt", "West_Coast", "Gulf_States" };
+	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfstates.txt" };
+
+	//Input data into the Map of Arrays of Lists of Objects
+	for (int i = 0; i < REGIONS; i++){
+	inputDataInMap(regionsMap, fileArray[i], regionArray[i]);
+	}
+
+	cout << "INITIAL STATE" << endl;
+	printMap(regionsMap);
+	
+	map < string, array <list<City>, REGIONS>> startingMap = regionsMap;
+	//printMap(startingMap);
+
+	//SIMULATION
+	int year = STARTYEAR;
+    
+	for (int j = 0; j < YEARS; j++) {
+		cout << " YEAR: " << year << endl;
+		if (year == 2008)
+			cout << "XX The housing market has crashed! many are losing their homes XX" << endl;
+		if (year == 2021)
+			cout << "XX The Covid-19 Pandemic has led to an economic slump! XX" << endl;
+		cout << endl;
+		for (auto pair : regionsMap) {
+			if (year != 2008 && year != 2021)
+			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
+
+			cout << endl;
+			for (list<City>& list : regionsMap.at(pair.first)) {
+
+				for (City& value : list) { //Gets to the city objects in list
+					//Actual operations on the city objects
+					
+					if (year != 2008 && year !=2021) {
+						if (pair.first == "Rust_Belt")
+							rustbeltPositiveNegativeBoth(value);
+						if (pair.first == "West_Coast")
+							westcoastPositiveNegativeBoth(value);
+						if (pair.first == "Gulf_States")
+							gulfstatePositiveNegativeBoth(value);
+					}
+					else {
+						if (year == 2008) 
+							value.setPopRate(-0.001);
+						if (year == 2021) 
+							value.setPopRate(0.0001);
+					
+					}
+
+					value.incrementPopulation();
+				}
+
+				cout << endl;
+			}
+
+		}
+		year++;
+    }
+
+	//Output final numbers
+	cout << endl;
+	cout << "AFTER SIMULATION" << endl << endl;
+	// calculate growth/decline, has city shrunk or grown since starting year
+	compareMap(regionsMap, startingMap, year);
+
+}
+
+void printMap(const map < string, array <list<City>, REGIONS>> rM) {
+
 	for (auto pair : rM) {
 		cout << pair.first << endl;
 
@@ -136,7 +220,7 @@ void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 
 			for (City value : list) {
 				cout << value.getName() << ", " << value.getState() << ": pop " << value.getPop() << ", starting pop rate "
-				<< value.getPopRate() << endl;
+					<< value.getPopRate() << endl;
 
 			}
 
@@ -250,80 +334,6 @@ void gulfstatePositiveNegativeBoth(City& c) {
 		c.gsPositiveRate();
 		c.gsNegativeRate();
 	}
-
-}
-
-
-int main(){
-	
-	map < string, array <list<City>, REGIONS>> regionsMap;
-
-	array<string, REGIONS> regionArray { "Rust_Belt", "West_Coast", "Gulf_States" };
-	array<string, REGIONS> fileArray   { "rustbelt.txt", "westcoast.txt", "gulfstates.txt" };
-
-	//Input data into the Map of Arrays of Lists of Objects
-	for (int i = 0; i < REGIONS; i++){
-	inputDataInMap(regionsMap, fileArray[i], regionArray[i]);
-	}
-
-	cout << "INITIAL STATE" << endl;
-	printMap(regionsMap);
-	
-	map < string, array <list<City>, REGIONS>> startingMap = regionsMap;
-	//printMap(startingMap);
-
-	//SIMULATION
-	int year = STARTYEAR;
-    
-	for (int j = 0; j < YEARS; j++) {
-		cout << " YEAR: " << year << endl;
-		if (year == 2008)
-			cout << "XX The housing market has crashed! many are losing their homes XX" << endl;
-		if (year == 2021)
-			cout << "XX The Covid-19 Pandemic has led to an economic slump! XX" << endl;
-		cout << endl;
-		for (auto pair : regionsMap) {
-			if (year != 2008 && year != 2021)
-			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
-
-			cout << endl;
-			for (list<City>& list : regionsMap.at(pair.first)) {
-
-				for (City& value : list) { //Gets to the city objects in list
-					//Actual operations on the city objects
-					
-					if (year != 2008 && year !=2021) {
-						if (pair.first == "Rust_Belt")
-							rustbeltPositiveNegativeBoth(value);
-						if (pair.first == "West_Coast")
-							westcoastPositiveNegativeBoth(value);
-						if (pair.first == "Gulf_States")
-							gulfstatePositiveNegativeBoth(value);
-					}
-					else {
-						if (year == 2008) 
-							value.setPopRate(-0.001);
-						if (year == 2021) 
-							value.setPopRate(0.0001);
-					
-					}
-
-					value.incrementPopulation();
-				}
-
-				cout << endl;
-			}
-
-		}
-		year++;
-    }
-
-	//Output final numbers
-	cout << endl;
-	cout << "AFTER SIMULATION" << endl << endl;
-	// calculate growth/decline, has city shrunk or grown since starting year
-	compareMap(regionsMap, startingMap, year);
-	
 
 }
 
