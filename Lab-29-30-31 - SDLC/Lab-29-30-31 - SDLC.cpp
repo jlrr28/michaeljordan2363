@@ -250,21 +250,21 @@ int main(){
 		//for (auto pair2 : startingMap) {
 			cout << "Hello from startingMap!" << endl;
 			
-			for (auto list : regionsMap.at(pair.first)) {
+			for (auto list : regionsMap.at(pair.first), startingMap.at(pair.first)) {
 
-				for (auto list2 : startingMap.at(pair.first)) {
+				//for (auto list2 : startingMap.at(pair.first)) {
 
 
 					for (auto value : list) {
 
-						for (auto value2 : list2) {
+						for (auto value2 : list) {
 							cout << "This is population of " << value2.getName() << " in 2000 " << value2.getPop() << " and this is population of " << value.getName() << " in 2026 " << value.getPop() << " " << endl;
 
 						}
 
 					}
 			
-				}
+				//}
 			
 			}
 		
