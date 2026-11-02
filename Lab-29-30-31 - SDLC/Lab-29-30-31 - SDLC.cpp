@@ -92,14 +92,13 @@ public:
 	}
 
 	void gsPositiveRate() {
-		cout << "Som"
 		int x = rng1to100();
 		if (x >= 0 && x <= 59)
 			popRate += 0.008;
 
 		if (x >= 60 && x <= 99) {
 			popRate += 0.002;
-			cout << " || New developments in " << name << " ||";
+			//cout << " || New developments in " << name << " ||";
 		}
 
 	}
@@ -109,8 +108,8 @@ public:
 			popRate -= 0.001;
 		}
 		if (x >= 98 && x <= 99) {
-				population = population - (population * 0.1);
-				popRate -= 0.1;
+				population = population - (population * 0.05);
+				popRate -= 0.08;
 				cout << " XX A CATEGORY 5 HURRICANE HAS HIT " << name << ", THOUSANDS HAVE BEEN DISPLACED XX" << endl;
 	
 		}
@@ -278,6 +277,7 @@ int main(){
 		for (auto pair : regionsMap) {
 			//cout << pair.first << endl;
 			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
+			cout << endl;
 			for (list<City>& list : regionsMap.at(pair.first)) {
 
 				for (City& value : list) { //Gets to the city objects in list
@@ -287,16 +287,13 @@ int main(){
 						rustbeltPositiveNegativeBoth(value);
 					if (pair.first == "West_Coast")
 						westcoastPositiveNegativeBoth(value);
-					if (pair.first == "Gulf_State")
+					if (pair.first == "Gulf_States")
 						gulfstatePositiveNegativeBoth(value);
 					
 					value.incrementPopulation();
 				}
-				cout << endl;
 			}
-			cout << endl;
 		}
-		cout << endl;
 		year++;
     }
 
