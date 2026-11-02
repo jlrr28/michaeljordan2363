@@ -256,18 +256,18 @@ int main(){
 				for (auto value : list1) {
 
 						City value2 = *it;
-						double percentIncDec = value2.getPop() / value.getPop();
+						double percentIncDec = (value.getPop() / value2.getPop()) * 100;
 
 						cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << year << "." << endl;
 						
 
 						if ((value.getPop() - value2.getPop()) < 0) {
 							cout << "The city lost " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years. This is a ";
-					
 							cout <<	percentIncDec << "% decrease from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
 						}
 						else {
-							cout << "The city gained " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years." << endl;
+							cout << "The city gained " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years. This is a ";
+							cout << percentIncDec << "% increase from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
 						}
 
 
