@@ -240,9 +240,11 @@ int main(){
 	//Output final numbers
 	cout << endl;
 	cout << "AFTER SIMULATION" << endl << endl;
-	
+	// calculate growth/decline, has city shrunk or grown since starting year
 	for (auto pair : regionsMap) {
+		
 		cout << pair.first << endl;
+		
 		for (auto pair2 : startingMap) {
 			cout << "Hello from startingMap!" << endl;
 			
@@ -251,10 +253,11 @@ int main(){
 
 				for (auto list2 : startingMap.at(pair.first)) {
 
+
 					for (auto value : list) {
 
-						for (auto value2 : list) {
-							cout << "This is value one " << value.getPop() << " and this is value two " << value.getPop() << " " << endl;
+						for (auto value2 : list2) {
+							cout << "This is population of " << value2.getName() << " in 2000 " << value2.getPop() << " and this is population of " << value.getName() << " in 2026 " << value.getPop() << " " << endl;
 
 						}
 
