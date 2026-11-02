@@ -240,24 +240,45 @@ int main(){
 	//Output final numbers
 	cout << endl;
 	cout << "AFTER SIMULATION" << endl << endl;
-	for (auto pair : regionsMap, startingMap) {
+	
+	for (auto pair : regionsMap) {
 		cout << pair.first << endl;
-
-		for (auto list : regionsMap.at(pair.first), startingMap.at(pair.first)) {
-
-			for (auto value: list, list) {
+		for (auto pair2 : startingMap) {
+			cout << "Hello from startingMap!" << endl;
 			
-				
-				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
-					<< value.getPopRate() << endl;
+		
+			for (auto list : regionsMap.at(pair.first)) {
+
+				for (auto list2 : startingMap.at(pair.first)) {
+
+					for (auto value : list) {
+
+						for (auto value2 : list) {
+							cout << "This is value one " << value.getPop() << " and this is value two " << value.getPop() << " " << endl;
+
+						}
 
 
-
+					}
+				}
 			}
+		
 
+
+
+
+
+
+
+		
 		}
 
+
+
+
 	}
+
+
 
 }
 
