@@ -285,7 +285,7 @@ int main(){
 		for (auto pair : regionsMap) {
 			if (year != 2008 && year != 2021)
 			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
-			
+
 			cout << endl;
 			for (list<City>& list : regionsMap.at(pair.first)) {
 
@@ -310,8 +310,10 @@ int main(){
 
 					value.incrementPopulation();
 				}
+
 				cout << endl;
 			}
+
 		}
 		year++;
     }
