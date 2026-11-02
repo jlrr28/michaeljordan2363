@@ -39,24 +39,24 @@ public:
 	void setPopRate(double r)	{ popRate = r; }
 
 	//Methods
-
+	// This is where the random events will be
 	void wcPositiveRate() { 
-		popRate += 0.002;
+		
 		int x = rng1to100();
 		if (x >= 0 && x <= 59) 
-			popRate += 0.0005;
+			popRate += 0.0008;
 	
 		if (x >= 60 && x <= 99) {
-			popRate += 0.001;
+			popRate += 0.002;
 			cout << " || Tech boom in " << name << "! ||" << endl;
 		}
 
 
-	} //This is where the random events will be 
+	} 
 	void wcNegativeRate() { 
 		int x = rng1to100();
 		if (x >= 0 && x <= 97) {
-			popRate -= 0.001;
+			popRate -= 0.0001;
 			cout << " || Rising costs is pushing people out of " << name << " || ";
 		}
 		if (x >= 98 && x <= 99) {
@@ -69,20 +69,18 @@ public:
 			if (y >= 91 && y <= 99) {
 				population = population - (population * 0.1);
 				popRate -= 0.1;
-				cout << " XX A DEVESTATING EARTHQUAKE HAS HIT " << name << " THOUSANDS HAVE BEEN DISPLACED XX" << endl;
+				cout << " XX A DEVESTATING EARTHQUAKE HAS HIT " << name << ", THOUSANDS HAVE BEEN DISPLACED XX" << endl;
 			}
 		
 		}
 
-	};                  //To change popRate
+	};
 
 	void rbPositiveRate() {
 		int x = rng1to100();
 		if (x >= 0 && x <= 49) {
 			popRate += 0.0025;
-			//cout << " || A factory has opened " << name << " || ";
 		}
-		//popRate+=0.001; /*cout << popRate << " ";*/
 		if (x >= 50 && x <= 99)
 			popRate += 0.001;
 	}
@@ -90,19 +88,35 @@ public:
 		int x = rng1to100();
 		if (x >= 0 && x <= 49)
 			popRate -= 0.001;
-		//popRate+=0.001; /*cout << popRate << " ";*/
 		if (x >= 50 && x <= 99) {
 			popRate -= 0.002;
 			cout << " || A factory has closed in " << name << " || ";
 		}
 	}
 
+	void gsPositiveRate() {
+		int x = rng1to100();
+		if (x >= 0 && x <= 59)
+			popRate += 0.008;
 
+		if (x >= 60 && x <= 99) {
+			popRate += 0.002;
+			cout << " || New developments in " << name << " ||" << endl;
+		}
 
-
-
-	void gsPositiveRate() {};
-	void gsNegativeRate() {};
+	}
+	void gsNegativeRate() {
+		int x = rng1to100();
+		if (x >= 0 && x <= 97) {
+			popRate -= 0.001;
+		}
+		if (x >= 98 && x <= 99) {
+				population = population - (population * 0.1);
+				popRate -= 0.1;
+				cout << " XX A CATEGORY 5 HURRICANE HAS HIT " << name << ", THOUSANDS HAVE BEEN DISPLACED XX" << endl;
+	
+		}
+	};
 
 	
 	void incrementPopulation() { population = population + (population * popRate); }
