@@ -241,14 +241,15 @@ int main(){
 	cout << endl;
 	cout << "AFTER SIMULATION" << endl << endl;
 	// calculate growth/decline, has city shrunk or grown since starting year
-	for (auto pair : regionsMap) {
+	auto pair2 = startingMap;
+	
+	for (auto pair : regionsMap, startingMap) {
 		
 		cout << pair.first << endl;
 		
-		for (auto pair2 : startingMap) {
+		//for (auto pair2 : startingMap) {
 			cout << "Hello from startingMap!" << endl;
 			
-		
 			for (auto list : regionsMap.at(pair.first)) {
 
 				for (auto list2 : startingMap.at(pair.first)) {
@@ -261,27 +262,15 @@ int main(){
 
 						}
 
-
 					}
+			
 				}
+			
 			}
 		
-
-
-
-
-
-
-
-		
-		}
-
-
-
+		//}
 
 	}
-
-
 
 }
 
