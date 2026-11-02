@@ -51,19 +51,17 @@ public:
 			int y = rng1to100();
 			
 
-			if (y>= 0 && y <= 49) {
+			if (y>= 0 && y <= 90) {
 				popRate -= 0.002;
-				//cout << " || A major earthquake has hit " << name << " || ";
+				cout << " || A major earthquake has hit " << name << " || ";
 			}
-			if (y >= 50 && y <= 99) {
+			if (y >= 91 && y <= 99) {
 				population = population - (population * 0.1);
 				popRate -= 0.01;
 				cout << " XX A DEVESTATING EARTHQUAKE HAS HIT " << name << " THOUSANDS HAVE BEEN DISPLACED XX" << endl;
 			}
 		
-		
 		}
-
 
 	};                  //To change popRate
 
@@ -121,6 +119,13 @@ void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 
 		}
 	}
+
+}
+
+void compareMap(const map < string, array <list<City>, REGIONS>> newMap, const map < string, array <list<City>, REGIONS>> initialMap, int y) {
+
+
+
 
 }
 
@@ -214,7 +219,7 @@ int main(){
 		cout << " YEAR: " << year << endl;
 		for (auto pair : regionsMap) {
 			//cout << pair.first << endl;
-			cout << pair.first << endl;
+			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
 			for (list<City>& list : regionsMap.at(pair.first)) {
 
 				for (City& value : list) { //Gets to the city objects in list
@@ -233,6 +238,7 @@ int main(){
 			}
 			cout << endl;
 		}
+		cout << endl;
 		year++;
     }
 
@@ -240,45 +246,8 @@ int main(){
 	cout << endl;
 	cout << "AFTER SIMULATION" << endl << endl;
 	// calculate growth/decline, has city shrunk or grown since starting year
-	auto pair2 = startingMap;
+	compareMap(regionsMap,startingMap,year)
 	
-	for (auto pair : regionsMap, startingMap) {	
-		cout << "||||| Cities from the " << pair.first << " region. |||||" << endl;
-		cout << endl;
-			int x = 0;
-			for (list<City> list1 : regionsMap.at(pair.first)) {
-
-				auto array = startingMap.at(pair.first);
-				list<City> list2 = array[x];
-				auto it = list2.begin();
-
-				for (auto value : list1) {
-						cout << setprecision(3);
-						City value2 = *it;
-						int percentIncDec = (  (static_cast<double>(value.getPop()) - static_cast<double>(value2.getPop())) / static_cast<double>(value2.getPop())) * 100 ;
-
-						cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << year << "." << endl;
-
-						if ((value.getPop() - value2.getPop()) < 0) {
-							cout << "The city lost " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years. This is a ";
-							cout <<	percentIncDec << "% decrease from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
-						}
-						else {
-							cout << "The city gained " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years. This is a ";
-							cout << percentIncDec << "% increase from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
-						}
-
-
-						cout << endl;
-						it++;
-				}
-				
-				x++;
-
-			}
-		
-
-	}
 
 }
 
