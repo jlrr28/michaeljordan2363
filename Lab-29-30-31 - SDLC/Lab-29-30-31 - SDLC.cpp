@@ -126,6 +126,7 @@ public:
 
 };
 
+
 void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 	
 	for (auto pair : rM) {
@@ -184,6 +185,35 @@ void compareMap(const map < string, array <list<City>, REGIONS>> newMap, const m
 
 }
 
+void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f, string r) {
+
+	ifstream fin;
+	fin.open(f);
+	if (fin.good()) {
+		for (int i = 0; i < STATES; i++) {
+			for (int j = 0; j < CITIES; j++) {
+				string state;
+				getline(fin, state);
+				string name;
+				getline(fin, name);
+				int pop;
+				fin >> pop;
+				fin.ignore();
+				double popRate;
+				fin >> popRate;
+				fin.ignore();
+
+				City temp(state, name, pop, popRate);
+
+				rM[r][i].push_back(temp);
+			}
+		}
+	}
+	fin.close();
+
+}
+
+
 void rustbeltPositiveNegativeBoth(City& c) {
 	int x = rng1to3();
 	if (x == 0)
@@ -223,34 +253,6 @@ void gulfstatePositiveNegativeBoth(City& c) {
 
 }
 
-void inputDataInMap(map < string, array <list<City>, REGIONS>>& rM, string f, string r){
-
-	ifstream fin;
-	fin.open(f);
-	if (fin.good()) {
-		for (int i = 0; i < STATES; i++) {
-			for (int j = 0; j < CITIES; j++) {
-				string state;
-				getline(fin, state);
-				string name;
-				getline(fin, name);
-				int pop;
-				fin >> pop;
-				fin.ignore();
-				double popRate;
-				fin >> popRate;
-				fin.ignore();
-
-				City temp(state, name, pop, popRate);
-
-				rM[r][i].push_back(temp);
-			}
-		}
-	}
-	fin.close();
-
-}
-
 
 int main(){
 	
@@ -281,7 +283,6 @@ int main(){
 			cout << "XX The Covid-19 Pandemic has led to an economic slump! XX" << endl;
 		cout << endl;
 		for (auto pair : regionsMap) {
-			//cout << pair.first << endl;
 			if (year != 2008 && year != 2021)
 			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
 			
@@ -309,6 +310,7 @@ int main(){
 
 					value.incrementPopulation();
 				}
+				cout << endl;
 			}
 		}
 		year++;
