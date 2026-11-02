@@ -134,7 +134,7 @@ void printMap(const map < string, array <list<City>, REGIONS>> rM) {
 		for (auto list : rM.at(pair.first)) {
 
 			for (City value : list) {
-				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
+				cout << value.getName() << ", " << value.getState() << ": pop " << value.getPop() << ", starting pop rate "
 				<< value.getPopRate() << endl;
 
 			}
@@ -162,17 +162,17 @@ void compareMap(const map < string, array <list<City>, REGIONS>> newMap, const m
 				City value2 = *it;
 				int percentIncDec = ((static_cast<double>(value.getPop()) - static_cast<double>(value2.getPop())) / static_cast<double>(value2.getPop())) * 100;
 
-				cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << y << "." << endl;
+				cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << y << ".\n";
 
 				if ((value.getPop() - value2.getPop()) < 0) {
 					cout << "The city lost " << value.getPop() - value2.getPop() << " people over " << y - STARTYEAR << " Years. This is a ";
-					cout << percentIncDec << "% decrease from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
+					cout << percentIncDec << "% decrease from it's original population " << value2.getPop() << " in the year " << STARTYEAR << ".\n";
 				}
 				else {
 					cout << "The city gained " << value.getPop() - value2.getPop() << " people over " << y - STARTYEAR << " Years. This is a ";
-					cout << percentIncDec << "% increase from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
+					cout << percentIncDec << "% increase from it's original population " << value2.getPop() << " in the year " << STARTYEAR << ".\n";
 				}
-				cout << endl;
+				cout << "\n";
 				it++;
 			}
 
@@ -272,7 +272,8 @@ int main(){
 
 	//SIMULATION
 	int year = STARTYEAR;
-    for (int j = 0; j < YEARS; j++) {
+    
+	for (int j = 0; j < YEARS; j++) {
 		cout << " YEAR: " << year << endl;
 		if (year == 2008)
 			cout << "XX The housing market has crashed! many are losing their homes XX" << endl;
@@ -298,9 +299,9 @@ int main(){
 					}
 					else {
 						if (year == 2008) 
-							value.rbNegativeRate();
+							value.setPopRate(-0.001);
 						if (year == 2021) 
-							value.rbNegativeRate();
+							value.setPopRate(0.0001);
 					
 					}
 
