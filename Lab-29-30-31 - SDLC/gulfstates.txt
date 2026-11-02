@@ -1,0 +1,36 @@
+Louisiana
+New Orleans
+484674
+0.001
+Louisiana
+Baton Rouge
+227818
+0.001
+Alabama
+Mobile
+198915
+-0.001
+West Florida
+Tampa
+303447
+0.001
+West Florida
+St. Petersburg
+248232
+0.001
+West Florida
+Tallahassee
+150624
+0.001
+East Florida
+Jacksonville
+735617
+0.001
+East Florida
+Miami
+362470
+0.001
+East Florida
+Fort Lauderdale
+152397
+0.001

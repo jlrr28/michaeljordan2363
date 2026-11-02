@@ -5,7 +5,7 @@ Columbus
 Ohio
 Cleveland
 476574
-0.001
+-0.001
 Ohio
 Cincinnati
 331258
@@ -13,7 +13,7 @@ Cincinnati
 Michigan
 Detroit
 951270
-0.001
+-0.001
 Michigan
 Grand Rapids
 197800

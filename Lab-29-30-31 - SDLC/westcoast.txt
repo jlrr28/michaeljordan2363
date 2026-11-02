@@ -1,0 +1,36 @@
+California
+Los Angeles
+3703921
+0.001
+California
+San Jose
+903540
+0.001
+California
+San Francisco
+777360
+0.001
+Oregon
+Portland
+529122
+0.001
+Oregon
+Eugene
+141592
+0.001
+Oregon
+Salem
+139843
+0.001
+Washington
+Seattle
+563374
+0.001
+Washington
+Spokane
+195629
+0.001
+Washington
+Tacoma
+193556
+0.001
