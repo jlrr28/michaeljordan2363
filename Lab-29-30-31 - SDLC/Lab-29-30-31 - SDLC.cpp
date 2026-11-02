@@ -41,23 +41,20 @@ public:
 	//Methods
 	// This is where the random events will be
 	void wcPositiveRate() { 
-		
 		int x = rng1to100();
 		if (x >= 0 && x <= 59) 
 			popRate += 0.0008;
 	
 		if (x >= 60 && x <= 99) {
 			popRate += 0.002;
-			cout << " || Tech boom in " << name << "! ||" << endl;
+			//cout << " || Tech boom in " << name << "! ||";
 		}
-
-
 	} 
 	void wcNegativeRate() { 
 		int x = rng1to100();
 		if (x >= 0 && x <= 97) {
 			popRate -= 0.0001;
-			cout << " || Rising costs is pushing people out of " << name << " || ";
+			//cout << " || Rising costs is pushing people out of " << name << " || ";
 		}
 		if (x >= 98 && x <= 99) {
 			int y = rng1to100();
@@ -69,7 +66,7 @@ public:
 			if (y >= 91 && y <= 99) {
 				population = population - (population * 0.1);
 				popRate -= 0.1;
-				cout << " XX A DEVESTATING EARTHQUAKE HAS HIT " << name << ", THOUSANDS HAVE BEEN DISPLACED XX" << endl;
+				cout << " XX A DEVASTATING EARTHQUAKE HAS HIT " << name << ", THOUSANDS HAVE BEEN DISPLACED XX";
 			}
 		
 		}
@@ -95,13 +92,14 @@ public:
 	}
 
 	void gsPositiveRate() {
+		cout << "Som"
 		int x = rng1to100();
 		if (x >= 0 && x <= 59)
 			popRate += 0.008;
 
 		if (x >= 60 && x <= 99) {
 			popRate += 0.002;
-			cout << " || New developments in " << name << " ||" << endl;
+			cout << " || New developments in " << name << " ||";
 		}
 
 	}
@@ -294,7 +292,7 @@ int main(){
 					
 					value.incrementPopulation();
 				}
-
+				cout << endl;
 			}
 			cout << endl;
 		}
