@@ -210,7 +210,7 @@ int main(){
 	//printMap(startingMap);
 
 	//SIMULATION
-	int year = 2000;
+	int year = STARTYEAR;
     for (int j = 0; j < YEARS; j++) {
 		cout << " YEAR: " << year << endl;
 		for (auto pair : regionsMap) {
@@ -244,8 +244,8 @@ int main(){
 	auto pair2 = startingMap;
 	
 	for (auto pair : regionsMap, startingMap) {	
-		cout << pair.first << endl;
-			
+		cout << "||||| Cities from the " << pair.first << " region. |||||" << endl;
+		cout << endl;
 			int x = 0;
 			for (auto list1 : regionsMap.at(pair.first)) {
 
@@ -256,10 +256,21 @@ int main(){
 				for (auto value : list1) {
 
 						City value2 = *it;
-						//City value2 = list2.begin();
-						//cout << "This is population of " << value2.getName() << " in 2000 " << value2.getPop() << " and this is population of " << value.getName() << " in 2026 " << value.getPop() << " " << endl;
+						double percentIncDec = value2.getPop() / value.getPop();
+
 						cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << year << "." << endl;
-						cout << "The gained " << value.getPop() - value2.getPop() << " over " << year - STARTYEAR << " Years." << endl;
+						
+
+						if ((value.getPop() - value2.getPop()) < 0) {
+							cout << "The city lost " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years. This is a ";
+					
+							cout <<	percentIncDec << "% decrease from it's original population " << value2.getPop() << " in the year " << STARTYEAR << "." << endl;
+						}
+						else {
+							cout << "The city gained " << value.getPop() - value2.getPop() << " people over " << year - STARTYEAR << " Years." << endl;
+						}
+
+
 						cout << endl;
 						it++;
 				}
