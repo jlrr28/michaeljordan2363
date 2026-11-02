@@ -1,0 +1,6 @@
+1.Things output to console sometimes stick, despite there being newline/endlines in the code, seems to be based on size of window not sure if there is something 
+I can fix in the code for it.
+2.Data accociated with "Gulf_States" weren't getting the change to popRate, an s was missing from the string I used for the simulation section of the code. Fixed by 
+using the regionArray I allocated, prevents human error.
+3."NOTABLE EVENTS IN THE West_Coast REGION" output in the simulation output not going down properly,
+4.Special year 2021 wasn't applied properly, some of the if statements had 2020 instead of 2021, fixed

@@ -282,14 +282,16 @@ int main(){
 		cout << endl;
 		for (auto pair : regionsMap) {
 			//cout << pair.first << endl;
+			if (year != 2008 && year != 2021)
 			cout << "NOTABLE EVENTS IN THE " << pair.first << " REGION" << endl;
+			
 			cout << endl;
 			for (list<City>& list : regionsMap.at(pair.first)) {
 
 				for (City& value : list) { //Gets to the city objects in list
 					//Actual operations on the city objects
 					
-					if (year != 2008 && year !=2020) {
+					if (year != 2008 && year !=2021) {
 						if (pair.first == "Rust_Belt")
 							rustbeltPositiveNegativeBoth(value);
 						if (pair.first == "West_Coast")
