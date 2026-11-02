@@ -243,9 +243,9 @@ int main(){
 	for (auto pair : regionsMap, startingMap) {
 		cout << pair.first << endl;
 
-		for (auto list : regionsMap.at(pair.first)) {
+		for (auto list : regionsMap.at(pair.first), startingMap.at(pair.first)) {
 
-			for (auto value : list) {
+			for (auto value: list, list) {
 			
 				
 				cout << value.getState() << " " << value.getName() << " " << value.getPop() << " "
