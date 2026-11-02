@@ -243,31 +243,28 @@ int main(){
 	// calculate growth/decline, has city shrunk or grown since starting year
 	auto pair2 = startingMap;
 	
-	for (auto pair : regionsMap, startingMap) {
-		
+	for (auto pair : regionsMap, startingMap) {	
 		cout << pair.first << endl;
-		
-		//for (auto pair2 : startingMap) {
-			cout << "Hello from startingMap!" << endl;
+			
 			int x = 0;
 			for (auto list1 : regionsMap.at(pair.first)) {
 
-				//for (auto list2 : startingMap.at(pair.first)) {
 				auto array = startingMap.at(pair.first);
-				auto list2 = array[x];
-				//auto value2 = list2;
+				list<City> list2 = array[x];
 				auto it = list2.begin();
-					for (auto value : list1) {
-						auto value2 = *it;
+
+				for (auto value : list1) {
+
+						City value2 = *it;
 						//City value2 = list2.begin();
-							cout << "This is population of " << value2.getName() << " in 2000 " << value2.getPop() << " and this is population of " << value.getName() << " in 2026 " << value.getPop() << " " << endl;
-
-						
-
-					}
-					it++;
-					x++;
-					//}
+						//cout << "This is population of " << value2.getName() << " in 2000 " << value2.getPop() << " and this is population of " << value.getName() << " in 2026 " << value.getPop() << " " << endl;
+						cout << value.getName() << ", " << value.getState() << ": Population is " << value.getPop() << " in the current year " << year << "." << endl;
+						cout << "The gained " << value.getPop() - value2.getPop() << " over " << year - STARTYEAR << " Years." << endl;
+						cout << endl;
+						it++;
+				}
+				
+				x++;
 
 			}
 		
