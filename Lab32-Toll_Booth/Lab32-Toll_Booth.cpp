@@ -7,6 +7,31 @@ using namespace std;
 
 int rng1to100();
 
+void printDeque(deque<Car> cD) {
+	for (int i = 0; i < cD.size(); i++)
+		cD[i].print();
+}
+
+void dequeAddOrRemove(deque<Car>& cD) {
+	
+	int y = rng1to100();
+
+	if (y >= 1 && y <= 55) {
+		Car x = cD.front();
+		x.print();
+
+
+
+	}
+	if (y >= 56 && y <= 100) {
+		Car temp;
+		cD.push_back(temp);
+
+	}
+
+
+}
+
 int main()
 {
 	Car car1;
@@ -16,14 +41,17 @@ int main()
 	carDeque.push_back(car1);
 	carDeque.push_back(car2);
 	
-	for (int i = 0; i < carDeque.size(); i++) {
-		
-		carDeque[i].print();
+	cout << "Initial queue:" << endl;
+	printDeque(carDeque);
+	while (!carDeque.empty()) {
+
 
 
 	}
 
+
 	 
+
 }
 
 int rng1to100() {
