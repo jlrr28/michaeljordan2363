@@ -12,7 +12,7 @@ int main()
 
 
 
-
+	 
 }
 
 int rng1to100() {
