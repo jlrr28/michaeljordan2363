@@ -1,0 +1,9 @@
+1.Things output to console sometimes stick, despite there being newline/endlines in the code, seems to be based on size of window not sure if there is something 
+I can fix in the code for it.
+2.Data accociated with "Gulf_States" weren't getting the change to popRate, an s was missing from the string I used for the simulation section of the code. Fixed by 
+using the regionArray I allocated, it would prevents human error. But not sure how to implent the array when it's in a constantly iterating enviroment, array[x] would always go out of bounds or get misaligned
+when I tried since everything is 1[[1[123[123]2[1[123]23]]...........]
+3."NOTABLE EVENTS IN THE West_Coast REGION" output in the simulation output not going down properly, fixed by putting an cout << endl; in the proper spot.
+4.Special year 2021 wasn't applied properly, some of the if statements had 2020 instead of 2021, fixed
+5.Way too much empty space in the simulation output, this is caused by fix for bug #3. Since this is caused by the list being iterated over 3 times in the For(), not sure how to fix in elegant way.
+Once I was able to figure out how to manipulate the data in the Map of Arrays of Lists of Objects everything went pretty smoothly, hope I don't get too many points knocked for not being able to come up with 5 more bugs.
