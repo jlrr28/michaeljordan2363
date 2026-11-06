@@ -18,17 +18,18 @@ void dequeAddOrRemove(deque<Car>& cD) {
 
 	if (y >= 1 && y <= 55) {
 		Car x = cD.front();
-		x.print();
-
-
+		cout << "Car paid: "; x.print();
+		//cout << endl;
+		cD.pop_front();
 
 	}
 	if (y >= 56 && y <= 100) {
 		Car temp;
+		cout << "Joined lane: "; temp.print();
+		//cout << endl;
 		cD.push_back(temp);
 
 	}
-
 
 }
 
@@ -43,14 +44,19 @@ int main()
 	
 	cout << "Initial queue:" << endl;
 	printDeque(carDeque);
+	cout << endl;
+	int i = 1;
 	while (!carDeque.empty()) {
 
-
+		cout << "Time " << i << " Operation: ";
+		dequeAddOrRemove(carDeque);
+		cout << "Queue:" << endl;
+		printDeque(carDeque);
+		cout << endl;
+		i++;
 
 	}
-
-
-	 
+	cout << "empty" << endl;
 
 }
 
