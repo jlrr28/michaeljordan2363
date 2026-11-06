@@ -9,8 +9,19 @@ int rng1to100();
 
 int main()
 {
+	Car car1;
+	Car car2;
+
+	deque<Car> carDeque;
+	carDeque.push_back(car1);
+	carDeque.push_back(car2);
+	
+	for (int i = 0; i < carDeque.size(); i++) {
+		
+		carDeque[i].print();
 
 
+	}
 
 	 
 }
