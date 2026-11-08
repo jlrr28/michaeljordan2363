@@ -9,7 +9,7 @@ using namespace std;
 const int INITIALDEQUE = 2, TOLLSIZE = 4, SIMULATIONS = 20;
 //Probabilities for toll operations
 const int LEAVELOWER = 1, LEAVEUPPER = 46, JOINLOWER = 47, JOINUPPER = 85,
-SWAPLOWER = 86, SWAPUPPER = 100;
+SWAPLOWER = 86, SWAPUPPER = 100, FIFTYLOWLOWER = 1, FIFTYLOWUPPER = 50, FIFTYHIGHLOW = 51, FIFTYHIGHUPPER = 100;
 
 int rng1to100();
 
@@ -20,31 +20,48 @@ void printDeque(deque<Car> cD) {
 
 
 
-void dequeAddOrRemoveorSwap(deque<Car>& cD) {
+void dequeAddOrRemoveOrSwap(deque<Car>& cD) {
 
-	int y = rng1to100();
+	//int y = rng1to100();
 
-	if (y >= LEAVELOWER && y <= LEAVEUPPER) {//Leave Deque
-		Car x = cD.front();
-		//cout << "Car paid: "; x.print();
-		//cout << endl;
-		cD.pop_front();
+	if (cD.empty()) {
+		int y = rng1to100();
+		
+		if (y >= JOINLOWER && y <= JOINUPPER) {//Join Deque
+			Car temp;
+			cout << "Joined: "; temp.print();
+			//cout << endl;
+			cD.push_back(temp);
 
-	}
-	if (y >= JOINLOWER && y <= JOINUPPER) {//Join Deque
-		Car temp;
-		//cout << "Joined lane: "; temp.print();
-		//cout << endl;
-		cD.push_back(temp);
+		}
 
-	}
-	if (y >= SWAPLOWER && y <= SWAPUPPER) {//Swap Deque
-		cout << "swap goes here" << endl;
 
 
 	}
+	else {
+		
+		int y = rng1to100();
+		if (y >= LEAVELOWER && y <= LEAVEUPPER) {//Leave Deque
+			Car x = cD.front();
+			cout << "Paid: "; x.print();
+			//cout << endl;
+			cD.pop_front();
+
+		}
+		if (y >= JOINLOWER && y <= JOINUPPER) {//Join Deque
+			Car temp;
+			cout << "Joined: "; temp.print();
+			//cout << endl;
+			cD.push_back(temp);
+
+		}
+		if (y >= SWAPLOWER && y <= SWAPUPPER) {//Swap Deque
+			cout << "swap goes here" << endl;
 
 
+		}
+
+	}
 
 }
 
@@ -80,7 +97,13 @@ int main()
 	for (int i = 0; i < SIMULATIONS; i++) {
 
 		cout << "Time " << i << " Operation: ";
-		dequeAddOrRemove(carDeque);
+		
+		for(int j = 0; j < tollArray.size(); j++)
+			dequeAddOrRemoveOrSwap(tollArray[j]);
+		
+
+		for (int j = 0; j < tollArray.size(); j++)
+			printDeque(tollArray[j]);		
 		//cout << "Queue:" << endl;
 		//printDeque(carDeque);
 
