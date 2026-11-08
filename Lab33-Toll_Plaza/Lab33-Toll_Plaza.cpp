@@ -6,6 +6,11 @@
 #include <random>
 using namespace std;
 
+const int INITIALDEQUE = 2, TOLLSIZE = 4;
+//Probabilities for toll operations
+const int LEAVELOWER = 1, LEAVEUPPER = 46, JOINLOWER = 47, JOINUPPER = 85,
+SWAPLOWER = 86, SWAPUPPER = 100;
+
 int rng1to100();
 
 void printDeque(deque<Car> cD) {
@@ -13,24 +18,35 @@ void printDeque(deque<Car> cD) {
 		cD[i].print();
 }
 
-void dequeAddOrRemove(deque<Car>& cD) {
+
+
+void dequeAddOrRemoveorSwap(deque<Car>& cD) {
 
 	int y = rng1to100();
 
-	if (y >= 1 && y <= 55) {
+	if (y >= 1 && y <= 46) {//Leave Deque
 		Car x = cD.front();
-		cout << "Car paid: "; x.print();
+		//cout << "Car paid: "; x.print();
 		//cout << endl;
 		cD.pop_front();
 
 	}
-	if (y >= 56 && y <= 100) {
+	if (y >= 47 && y <= 85) {//Join Deque
 		Car temp;
-		cout << "Joined lane: "; temp.print();
+		//cout << "Joined lane: "; temp.print();
 		//cout << endl;
 		cD.push_back(temp);
 
 	}
+	if (y >= 86 && y <= 100) {//Swap Deque
+		Car temp;
+		//cout << "Joined lane: "; temp.print();
+		//cout << endl;
+		cD.push_back(temp);
+
+	}
+
+
 
 }
 
@@ -45,30 +61,19 @@ deque<Car> generateDeque() {
 	return carD;
 }
 
-
-const int INITIALDEQUE = 2, TOLLSIZE = 4;
-
 int main()
 {
-	Car car1;
-	Car car2;
-	 
-	//deque<Car> carDeque;
-	//carDeque.push_back(car1);
-	//carDeque.push_back(car2);
 
 	array<deque<Car>,TOLLSIZE> tollArray;
 
 	for (int i = 0; i < tollArray.size(); i++) {
-
-		//printDeque(carDeque);
 		tollArray[i] = generateDeque();
-
 	}
 	cout << "tollArray[0]" << endl;
 	printDeque(tollArray[0]);
 	cout << "tollArray[3]" << endl;
 	printDeque(tollArray[3]);
+	
 	/*
 
 	cout << "Initial queue:" << endl;
