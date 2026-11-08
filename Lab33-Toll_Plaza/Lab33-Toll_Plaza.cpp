@@ -14,8 +14,10 @@ SWAPLOWER = 86, SWAPUPPER = 100, FIFTYLOWLOWER = 1, FIFTYLOWUPPER = 50, FIFTYHIG
 int rng1to100();
 
 void printDeque(deque<Car> cD) {
-	for (int i = 0; i < cD.size(); i++)
+	for (int i = 0; i < cD.size(); i++) {
+		cout << "        ";
 		cD[i].print();
+	}
 }
 
 
@@ -27,15 +29,13 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD) {
 	if (cD.empty()) {
 		int y = rng1to100();
 		
-		if (y >= JOINLOWER && y <= JOINUPPER) {//Join Deque
+		if (y >= FIFTYLOWLOWER && y <= FIFTYLOWUPPER) {//Join Deque
 			Car temp;
 			cout << "Joined: "; temp.print();
 			//cout << endl;
 			cD.push_back(temp);
 
 		}
-
-
 
 	}
 	else {
@@ -96,19 +96,25 @@ int main()
 	int i = 1;
 	for (int i = 0; i < SIMULATIONS; i++) {
 
-		cout << "Time " << i << " Operation: ";
+		cout << "Time " << i + 1 << " Operation: ";
 		
 		for(int j = 0; j < tollArray.size(); j++)
 			dequeAddOrRemoveOrSwap(tollArray[j]);
 		
 
-		for (int j = 0; j < tollArray.size(); j++)
-			printDeque(tollArray[j]);		
-		//cout << "Queue:" << endl;
+		for (int j = 0; j < tollArray.size(); j++){
+			cout << "Lane " << j + 1 << " Queue:" << endl;
+			if (!tollArray[j].empty())
+				printDeque(tollArray[j]);
+			else
+				cout << "empty lane" << endl;
+
+		}
+			
+		cout << endl;
 		//printDeque(carDeque);
 
 	}
-	cout << "empty" << endl;
 
 }
 
