@@ -34,6 +34,18 @@ void dequeAddOrRemove(deque<Car>& cD) {
 
 }
 
+deque<Car> generateDeque() {
+	deque<Car> carD;
+
+	for (int j = 0; j < INITIALDEQUE; j++)
+	{
+		Car temp;
+		carD.push_back(temp);
+	}
+	return carD;
+}
+
+
 const int INITIALDEQUE = 2, TOLLSIZE = 4;
 
 int main()
@@ -41,21 +53,23 @@ int main()
 	Car car1;
 	Car car2;
 	 
-	deque<Car> carDeque;
+	//deque<Car> carDeque;
 	//carDeque.push_back(car1);
 	//carDeque.push_back(car2);
 
 	array<deque<Car>,TOLLSIZE> tollArray;
 
 	for (int i = 0; i < tollArray.size(); i++) {
-		for (int j = 0; i < INITIALDEQUE; j++)
-		{
-			Car temp;
-			carDeque.push_back(temp);
-		}
+
+		//printDeque(carDeque);
+		tollArray[i] = generateDeque();
 
 	}
-
+	cout << "tollArray[0]" << endl;
+	printDeque(tollArray[0]);
+	cout << "tollArray[3]" << endl;
+	printDeque(tollArray[3]);
+	/*
 
 	cout << "Initial queue:" << endl;
 	printDeque(carDeque);
@@ -71,6 +85,7 @@ int main()
 		i++;
 
 	}
+	*/
 	cout << "empty" << endl;
 
 }
