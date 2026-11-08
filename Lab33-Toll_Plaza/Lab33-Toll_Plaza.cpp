@@ -1,6 +1,7 @@
 //COMSC-210 || LAB 32 || JOSE LUIS RAMOS
 #include <iostream>
 #include <deque>
+#include <array>
 #include "Car.h"
 #include <random>
 using namespace std;
@@ -33,14 +34,28 @@ void dequeAddOrRemove(deque<Car>& cD) {
 
 }
 
+const int INITIALDEQUE = 2, TOLLSIZE = 4;
+
 int main()
 {
 	Car car1;
 	Car car2;
 	 
 	deque<Car> carDeque;
-	carDeque.push_back(car1);
-	carDeque.push_back(car2);
+	//carDeque.push_back(car1);
+	//carDeque.push_back(car2);
+
+	array<deque<Car>,TOLLSIZE> tollArray;
+
+	for (int i = 0; i < tollArray.size(); i++) {
+		for (int j = 0; i < INITIALDEQUE; j++)
+		{
+			Car temp;
+			carDeque.push_back(temp);
+		}
+
+	}
+
 
 	cout << "Initial queue:" << endl;
 	printDeque(carDeque);
