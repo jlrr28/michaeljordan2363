@@ -22,7 +22,7 @@ void printDeque(deque<Car> cD) {
 
 
 
-void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE> tA, int currentPos) {
+void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE> tA, int currentLane) {
 
 	if (cD.empty()) {
 		int y = rng1to100();
@@ -54,12 +54,17 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE> tA, int 
 
 		}
 		if (y >= SWAPLOWER && y <= SWAPUPPER) {//Swap Deque
-			random_device rd;
-			mt19937 gen(rd());
-			uniform_int_distribution<> randomN(0, tA.size()-1);
 			
-			tA[currentPos]
+			int randomLane = 0;
 			
+			while (randomLane != currentLane) {
+				random_device rd;
+				mt19937 gen(rd());
+				uniform_int_distribution<> randomN(0, tA.size() - 1);
+				randomLane = randomN(gen);
+				//tA[randomN];
+			}
+			cout << "car in lane #" << currentLane << " swapping to lane # " << randomLane << endl;
 			cout << "swap goes here" << endl;
 
 
