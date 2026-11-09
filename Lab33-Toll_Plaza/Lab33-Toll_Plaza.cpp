@@ -57,14 +57,20 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE> tA, int 
 			
 			int randomLane = 0;
 			
-			while (randomLane != currentLane) {
+			while (randomLane == currentLane) {
 				random_device rd;
 				mt19937 gen(rd());
 				uniform_int_distribution<> randomN(0, tA.size() - 1);
 				randomLane = randomN(gen);
-				//tA[randomN];
 			}
+			
+
+
 			cout << "car in lane #" << currentLane << " swapping to lane # " << randomLane << endl;
+			
+
+			tA.at(currentLane);  //cD.front()
+
 			cout << "swap goes here" << endl;
 
 
