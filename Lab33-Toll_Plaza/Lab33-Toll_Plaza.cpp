@@ -22,7 +22,7 @@ void printDeque(deque<Car> cD) {
 
 
 
-void dequeAddOrRemoveOrSwap(deque<Car>& cD) {
+void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE> tA, int currentPos) {
 
 	if (cD.empty()) {
 		int y = rng1to100();
@@ -54,7 +54,11 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD) {
 
 		}
 		if (y >= SWAPLOWER && y <= SWAPUPPER) {//Swap Deque
-			//random lane other than og lane
+			random_device rd;
+			mt19937 gen(rd());
+			uniform_int_distribution<> randomN(0, tA.size()-1);
+			
+			tA[currentPos]
 			
 			cout << "swap goes here" << endl;
 
@@ -99,7 +103,7 @@ int main()
 		cout << "Time " << i + 1 << " Operation: ";
 		
 		for(int j = 0; j < tollArray.size(); j++)
-			dequeAddOrRemoveOrSwap(tollArray[j]);
+			dequeAddOrRemoveOrSwap(tollArray[j], tollArray, j);
 		
 
 		for (int j = 0; j < tollArray.size(); j++){
@@ -122,7 +126,7 @@ int rng1to100() {
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<> randomN(1, 100);
-	double x = (randomN(gen));
+	int x = (randomN(gen));
 
 	return x;
 }
