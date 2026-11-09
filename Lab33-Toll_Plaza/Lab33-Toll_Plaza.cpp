@@ -66,7 +66,7 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE>& tA, int
 						
 			deque<Car>& lane = tA.at(currentLane);  //cD.front()
 			Car swap = lane.back();
-			lane.pop_back();
+			lane.pop_back(); 
 			deque<Car>& newLane = tA.at(randomLane);
 			newLane.push_back(swap);
 
