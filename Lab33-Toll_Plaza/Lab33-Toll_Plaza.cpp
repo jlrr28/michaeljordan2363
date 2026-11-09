@@ -1,4 +1,4 @@
-//COMSC-210 || LAB 32 || JOSE LUIS RAMOS
+//COMSC-210 || LAB 33 || JOSE LUIS RAMOS
 #include <iostream>
 #include <deque>
 #include <array>
@@ -22,7 +22,7 @@ void printDeque(deque<Car> cD) {
 
 
 
-void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE> tA, int currentLane) {
+void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE>& tA, int currentLane) {
 
 	if (cD.empty()) {
 		int y = rng1to100();
@@ -63,13 +63,15 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE> tA, int 
 				uniform_int_distribution<> randomN(0, tA.size() - 1);
 				randomLane = randomN(gen);
 			}
-			
+						
+			deque<Car>& lane = tA.at(currentLane);  //cD.front()
+			Car swap = lane.back();
+			lane.pop_back();
+			deque<Car>& newLane = tA.at(randomLane);
+			newLane.push_back(swap);
 
-
-			cout << "car in lane #" << currentLane << " swapping to lane # " << randomLane << endl;
-			
-
-			tA.at(currentLane);  //cD.front()
+			swap.print(); 
+			cout << " in lane #" << currentLane + 1 << " swapping to lane # " << randomLane + 1 << endl;
 
 			cout << "swap goes here" << endl;
 
