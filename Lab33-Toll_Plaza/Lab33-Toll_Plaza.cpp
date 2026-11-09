@@ -24,8 +24,6 @@ void printDeque(deque<Car> cD) {
 
 void dequeAddOrRemoveOrSwap(deque<Car>& cD) {
 
-	//int y = rng1to100();
-
 	if (cD.empty()) {
 		int y = rng1to100();
 		
@@ -56,6 +54,8 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD) {
 
 		}
 		if (y >= SWAPLOWER && y <= SWAPUPPER) {//Swap Deque
+			//random lane other than og lane
+			
 			cout << "swap goes here" << endl;
 
 
@@ -77,7 +77,7 @@ deque<Car> generateDeque() {
 }
 
 int main()
-{
+{ 
 
 	array<deque<Car>,TOLLSIZE> tollArray;
 
