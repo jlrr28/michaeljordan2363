@@ -9,7 +9,8 @@ using namespace std;
 const int INITIALDEQUE = 2, TOLLSIZE = 4, SIMULATIONS = 20;
 //Probabilities for toll operations
 const int LEAVELOWER = 1, LEAVEUPPER = 46, JOINLOWER = 47, JOINUPPER = 85,
-SWAPLOWER = 86, SWAPUPPER = 100, FIFTYLOWLOWER = 1, FIFTYLOWUPPER = 50, FIFTYHIGHLOW = 51, FIFTYHIGHUPPER = 100;
+SWAPLOWER = 86, SWAPUPPER = 100, FIFTYLOWLOWER = 1, FIFTYLOWUPPER = 50, 
+FIFTYHIGHLOW = 51, FIFTYHIGHUPPER = 100;
 
 int rng1to100();
 
@@ -20,8 +21,6 @@ void printDeque(deque<Car> cD) {
 	}
 }
 
-
-
 void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE>& tA, int currentLane) {
 
 	if (cD.empty()) {
@@ -29,7 +28,7 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE>& tA, int
 		
 		if (y >= FIFTYLOWLOWER && y <= FIFTYLOWUPPER) {//Join Deque
 			Car temp;
-			cout << "Joined: "; temp.print();
+			cout << "Lane: " << currentLane + 1 << " Joined: "; temp.print();
 			//cout << endl;
 			cD.push_back(temp);
 
@@ -41,14 +40,14 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE>& tA, int
 		int y = rng1to100();
 		if (y >= LEAVELOWER && y <= LEAVEUPPER) {//Leave Deque
 			Car x = cD.front();
-			cout << "Paid: "; x.print();
+			cout << "Lane: " << currentLane + 1  << " Paid: "; x.print();
 			//cout << endl;
 			cD.pop_front();
 
 		}
 		if (y >= JOINLOWER && y <= JOINUPPER) {//Join Deque
 			Car temp;
-			cout << "Joined: "; temp.print();
+			cout << "Lane: " << currentLane + 1 << " Joined: "; temp.print();
 			//cout << endl;
 			cD.push_back(temp);
 
@@ -70,12 +69,8 @@ void dequeAddOrRemoveOrSwap(deque<Car>& cD, array<deque<Car>, TOLLSIZE>& tA, int
 			deque<Car>& newLane = tA.at(randomLane);
 			newLane.push_back(swap);
 
-			swap.print(); 
-			cout << " in lane #" << currentLane + 1 << " swapping to lane # " << randomLane + 1 << endl;
-
-			cout << "swap goes here" << endl;
-
-
+			cout << "Car in lane " << currentLane + 1 << " swapping to lane " << randomLane + 1 
+			<< ": [" << swap.getYear() << " " << swap.getMake() << " " << swap.getTransponder() << "]" << endl;
 		}
 
 	}
@@ -113,7 +108,7 @@ int main()
 	int i = 1;
 	for (int i = 0; i < SIMULATIONS; i++) {
 
-		cout << "Time " << i + 1 << " Operation: ";
+		cout << "Time " << i + 1 << " Operation: " << endl;
 		
 		for(int j = 0; j < tollArray.size(); j++)
 			dequeAddOrRemoveOrSwap(tollArray[j], tollArray, j);
