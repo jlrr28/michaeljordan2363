@@ -24,7 +24,7 @@ private:
 		"3: San Francisco Pier 80 Terminal",
 		"4: San Jose Silicon Valley Depot",
 		"5: Oakland International Airport (OAK) Cargo",
-		"6: Port of Oakland Maritime Terminal",
+		"6: Port of Oakland Maritime Terminal", 
 		"7: Richmond Industrial Logistics Park",
 		"8: Stockton Central Valley Freight Center"
 	};
