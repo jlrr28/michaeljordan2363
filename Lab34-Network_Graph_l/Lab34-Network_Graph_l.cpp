@@ -3,6 +3,7 @@
 #include <queue>
 #include <stack>
 #include <string>
+#include <climits> // Required for INT_MAX
 
 using namespace std;
 
@@ -24,7 +25,7 @@ private:
 		"3: San Francisco Pier 80 Terminal",
 		"4: San Jose Silicon Valley Depot",
 		"5: Oakland International Airport (OAK) Cargo",
-		"6: Port of Oakland Maritime Terminal", 
+		"6: Port of Oakland Maritime Terminal",
 		"7: Richmond Industrial Logistics Park",
 		"8: Stockton Central Valley Freight Center"
 	};
@@ -114,6 +115,85 @@ public:
 		}
 		cout << endl;
 	}
+
+	// STEP 4: Shortest Path using Dijkstra's Algorithm
+	void shortestPath(int startNode) {
+		vector<int> dist(SIZE, INT_MAX);
+		priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+
+		dist[startNode] = 0;
+		pq.push(make_pair(0, startNode));
+
+		while (!pq.empty()) {
+			int currentDist = pq.top().first;
+			int u = pq.top().second;
+			pq.pop();
+
+			if (currentDist > dist[u]) continue;
+
+			for (Pair const& edge : adjList[u]) {
+				int v = edge.first;
+				int weight = edge.second;
+
+				// Safeguard against negative edge weights in undirected Dijkstra
+				if (weight < 0) continue;
+
+				if (dist[u] + weight < dist[v]) {
+					dist[v] = dist[u] + weight;
+					pq.push(make_pair(dist[v], v));
+				}
+			}
+		}
+
+		cout << "Shortest path from node " << startNode << ":" << endl;
+		for (int i = 0; i < SIZE; i++) {
+			cout << startNode << " -> " << i << " : " << dist[i] << endl;
+		}
+		cout << endl;
+	}
+
+	// STEP 5: Minimum Spanning Tree using Prim's Algorithm
+	void minimumSpanningTree(int startNode = 0) {
+		vector<int> key(SIZE, INT_MAX);
+		vector<int> parent(SIZE, -1);
+		vector<bool> inMST(SIZE, false);
+
+		priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+
+		key[startNode] = 0;
+		pq.push(make_pair(0, startNode));
+
+		while (!pq.empty()) {
+			int u = pq.top().second;
+			pq.pop();
+
+			if (inMST[u]) continue;
+			inMST[u] = true;
+
+			for (Pair const& edge : adjList[u]) {
+				int v = edge.first;
+				int weight = edge.second;
+
+				// Ignore self-loops and negative weights for standard MST
+				if (u == v || weight < 0) continue;
+
+				if (!inMST[v] && weight < key[v]) {
+					key[v] = weight;
+					parent[v] = u;
+					pq.push(make_pair(key[v], v));
+				}
+			}
+		}
+
+		cout << "Minimum Spanning Tree edges:" << endl;
+		for (int i = 0; i < SIZE; i++) {
+			if (parent[i] != -1) {
+				cout << "Edge from " << i << " to " << parent[i]
+					<< " with capacity: " << key[i] << " units" << endl;
+			}
+		}
+		cout << endl;
+	}
 };
 
 int main() {
@@ -133,6 +213,12 @@ int main() {
 
 	// 3. Dispatch regional deliveries tier-by-tier from Tracy Hub (BFS)
 	network.regionalWaveDeliveryBFS(0);
+
+	// 4. Step 4: Shortest path from node 0
+	network.shortestPath(0);
+
+	// 5. Step 5: Minimum Spanning Tree
+	network.minimumSpanningTree(0);
 
 	return 0;
 }
