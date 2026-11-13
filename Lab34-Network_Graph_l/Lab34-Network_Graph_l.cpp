@@ -4,6 +4,7 @@
 #include <stack>
 #include <string>
 #include <climits> // Required for INT_MAX
+#include <limits>  // Required for numeric_limits (input validation)
 
 using namespace std;
 
@@ -47,9 +48,18 @@ public:
 		}
 	}
 
+	// Display a quick legend of all nodes (0-8)
+	void printLocationLegend() {
+		cout << "\n--- AVAILABLE HUBS (NODES 0 - 8) ---" << endl;
+		for (const string& loc : locations) {
+			cout << "  " << loc << endl;
+		}
+		cout << "------------------------------------" << endl;
+	}
+
 	// Print the delivery network routes and transit costs/times
 	void printNetwork() {
-		cout << "=== BAY AREA FREIGHT NETWORK ROUTE MAP ===" << endl;
+		cout << "\n=== BAY AREA FREIGHT NETWORK ROUTE MAP ===" << endl;
 		for (int i = 0; i < adjList.size(); i++) {
 			cout << locations[i] << " connects to:" << endl;
 			for (Pair const& v : adjList[i]) {
@@ -67,7 +77,7 @@ public:
 
 		s.push(startHub);
 
-		cout << "=== SINGLE TRUCK CORRIDOR ROUTE (DFS) ===" << endl;
+		cout << "\n=== SINGLE TRUCK CORRIDOR ROUTE (DFS) ===" << endl;
 		cout << "Starting dispatch from " << locations[startHub] << ":" << endl;
 
 		while (!s.empty()) {
@@ -97,7 +107,7 @@ public:
 		visited[startHub] = true;
 		q.push(startHub);
 
-		cout << "=== REGIONAL WAVE DISPATCH (BFS - Fewest Hops First) ===" << endl;
+		cout << "\n=== REGIONAL WAVE DISPATCH (BFS - Fewest Hops First) ===" << endl;
 		cout << "Starting wave dispatch from " << locations[startHub] << ":" << endl;
 
 		while (!q.empty()) {
@@ -145,7 +155,7 @@ public:
 			}
 		}
 
-		cout << "Shortest path from node " << startNode << ":" << endl;
+		cout << "\nShortest path from node " << startNode << " (" << locations[startNode] << "):" << endl;
 		for (int i = 0; i < SIZE; i++) {
 			cout << startNode << " -> " << i << " : " << dist[i] << endl;
 		}
@@ -185,7 +195,7 @@ public:
 			}
 		}
 
-		cout << "Minimum Spanning Tree edges:" << endl;
+		cout << "\nMinimum Spanning Tree edges (rooted at node " << startNode << "):" << endl;
 		for (int i = 0; i < SIZE; i++) {
 			if (parent[i] != -1) {
 				cout << "Edge from " << i << " to " << parent[i]
@@ -196,6 +206,20 @@ public:
 	}
 };
 
+// Helper function to safely get a valid starting node (0 to SIZE-1) from the user
+int getValidStartNode() {
+	int node;
+	while (true) {
+		cout << "Enter starting hub/node (0 - " << SIZE - 1 << "): ";
+		if (cin >> node && node >= 0 && node < SIZE) {
+			return node;
+		}
+		cout << "Invalid input. Please enter a number between 0 and " << SIZE - 1 << "." << endl;
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
+}
+
 int main() {
 	// Exact edges and weights from your graph
 	vector<Edge> routes = {
@@ -204,21 +228,75 @@ int main() {
 	};
 
 	BayAreaDeliveryNetwork network(routes);
+	int choice = 0;
 
-	// 1. Display the network map
-	network.printNetwork();
+	while (true) {
+		cout << "================================================" << endl;
+		cout << "   BAY AREA LOGISTICS & DELIVERY ROUTING MENU   " << endl;
+		cout << "================================================" << endl;
+		cout << "1. View Full Delivery Network Map (Adjacency List)" << endl;
+		cout << "2. Run Single-Truck Corridor Route (DFS)" << endl;
+		cout << "3. Run Regional Wave Dispatch (BFS)" << endl;
+		cout << "4. Find Shortest Path from a Hub (Dijkstra)" << endl;
+		cout << "5. Generate Minimum Spanning Tree (Prim's MST)" << endl;
+		cout << "6. Run ALL Algorithms from a Chosen Starting Hub" << endl;
+		cout << "0. Exit" << endl;
+		cout << "------------------------------------------------" << endl;
+		cout << "Enter your choice: ";
 
-	// 2. Dispatch a single truck down a continuous corridor (DFS)
-	network.dispatchSingleTruckDFS(0);
+		if (!(cin >> choice)) {
+			cout << "Invalid menu option. Please enter a number (0-6).\n" << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			continue;
+		}
 
-	// 3. Dispatch regional deliveries tier-by-tier from Tracy Hub (BFS)
-	network.regionalWaveDeliveryBFS(0);
+		if (choice == 0) {
+			cout << "Exiting Bay Area Logistics System. Goodbye!" << endl;
+			break;
+		}
 
-	// 4. Step 4: Shortest path from node 0
-	network.shortestPath(0);
-
-	// 5. Step 5: Minimum Spanning Tree
-	network.minimumSpanningTree(0);
+		switch (choice) {
+		case 1:
+			network.printNetwork();
+			break;
+		case 2: {
+			network.printLocationLegend();
+			int start = getValidStartNode();
+			network.dispatchSingleTruckDFS(start);
+			break;
+		}
+		case 3: {
+			network.printLocationLegend();
+			int start = getValidStartNode();
+			network.regionalWaveDeliveryBFS(start);
+			break;
+		}
+		case 4: {
+			network.printLocationLegend();
+			int start = getValidStartNode();
+			network.shortestPath(start);
+			break;
+		}
+		case 5: {
+			network.printLocationLegend();
+			int start = getValidStartNode();
+			network.minimumSpanningTree(start);
+			break;
+		}
+		case 6: {
+			network.printLocationLegend();
+			int start = getValidStartNode();
+			network.dispatchSingleTruckDFS(start);
+			network.regionalWaveDeliveryBFS(start);
+			network.shortestPath(start);
+			network.minimumSpanningTree(start);
+			break;
+		}
+		default:
+			cout << "Invalid choice. Please select an option between 0 and 6.\n" << endl;
+		}
+	}
 
 	return 0;
 }
