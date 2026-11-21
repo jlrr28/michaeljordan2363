@@ -241,6 +241,8 @@ int main() {
 
     cout << " DELETING      " << oArray[3][0][1] / RUNS << "      " << oArray[3][1][1] / RUNS << "      " << oArray[3][2][1] / RUNS << endl;
 
+    cout << " dat stuct size " << vec.size() << endl;
+
     return 0;
 }
 
