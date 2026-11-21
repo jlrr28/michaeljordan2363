@@ -1,8 +1,10 @@
+
 // Specification file for the IntBinaryTree class
 #ifndef INTBINARYTREE_H
 #define INTBINARYTREE_H
 
-//#include <string>
+using namespace std;
+
 // The IntBinaryTree class manages a binary tree of integers.
 class IntBinaryTree {
 private:
@@ -90,7 +92,7 @@ void IntBinaryTree::destroySubTree(TreeNode *nodePtr) {
 // searchNode determines if a value is present in  
 // the tree. If so, the function returns true.     
 // Otherwise, it returns false.                    
-/*
+
 bool IntBinaryTree::searchNode(string num) {
    TreeNode *nodePtr = root;
 
@@ -103,7 +105,7 @@ bool IntBinaryTree::searchNode(string num) {
          nodePtr = nodePtr->right;
    }
    return false;
-}*/
+}
 
 // remove calls deleteNode to delete the      
 // node whose value member is the same as num.
