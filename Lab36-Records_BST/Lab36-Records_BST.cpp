@@ -7,9 +7,9 @@ int main() {
 	
 	IntBinaryTree tree;
 
-	tree.insertNode(5);
-	tree.insertNode(10);
-	tree.insertNode(6);
+	tree.insertNode("abc");
+	tree.insertNode("efg");
+	tree.insertNode("hij");
 	
 	tree.displayInOrder();
 	
