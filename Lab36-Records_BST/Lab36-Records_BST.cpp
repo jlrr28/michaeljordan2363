@@ -70,8 +70,12 @@ int main() {
             break;
 
         }
-        case 4://modify node
-            
+        case 4: {//modify node
+
+
+
+
+        }
         case 5://display tree
             tree.displayInOrder();
             break;

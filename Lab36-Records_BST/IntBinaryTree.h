@@ -17,14 +17,14 @@ private:
 
    // root points to the topmost node of the tree.
    TreeNode *root;      
-
+   
    // Private member functions for internal operations.
    void insert(TreeNode *&, TreeNode *&);
    void destroySubTree(TreeNode *);
    void deleteNode(string, TreeNode *&);
    void makeDeletion(TreeNode *&);
    
-   void modifyNode(string);
+   void modifyNode(string, TreeNode *&);
    
    void displayInOrder(TreeNode *) const;
    void displayPreOrder(TreeNode *) const;
@@ -40,8 +40,11 @@ public:
    // Public interface for inserting, searching, and removing nodes.
    void insertNode(string);
    bool searchNode(string);
+   
    void remove(string);
-   void modifyNode(string);
+   void modify(string);
+
+   //void modifyNode(string);
 
    // Public wrappers for tree traversal functions.
    void displayInOrder() const     {  displayInOrder(root); }
@@ -165,8 +168,23 @@ void IntBinaryTree::makeDeletion(TreeNode *&nodePtr) {
 }
 
 //Make modification
-void IntBinaryTree::modifyNode(TreeNode*& nodePtr) {
+void IntBinaryTree::modifyNode(TreeNode *&nodePtr) {
+    TreeNode* nodePtr = root;
 
+    while (nodePtr) {
+        if (nodePtr->value == num)
+        {
+            cout << "Found " << num << endl;
+
+
+        }
+            //return true;
+        else if (num < nodePtr->value)
+            nodePtr = nodePtr->left;
+        else
+            nodePtr = nodePtr->right;
+    }
+    //return false;
 
 
 
