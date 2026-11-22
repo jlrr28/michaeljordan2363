@@ -160,6 +160,17 @@ void IntBinaryTree::makeDeletion(TreeNode *&nodePtr) {
    }
 }
 
+//Make modification
+
+
+
+
+
+
+
+
+
+
 // The displayInOrder member function displays the values       
 // in the subtree pointed to by nodePtr, via inorder traversal. 
 void IntBinaryTree::displayInOrder(TreeNode *nodePtr) const {
