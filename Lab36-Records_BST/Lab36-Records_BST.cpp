@@ -66,12 +66,12 @@ int main() {
             string deleteString;
             getline(cin, deleteString);
 
-            tree.remove(deleteString);
-
-            if (tree.searchNode(deleteString))
-                cout << deleteString << " not deleted, why?" << endl;
-            else
+            if (tree.searchNode(deleteString)) {
+                tree.remove(deleteString);
                 cout << deleteString << " deleted" << endl;
+            }
+            else
+                cout << deleteString << " not found, can't delete" << endl;
 
             break;
 
