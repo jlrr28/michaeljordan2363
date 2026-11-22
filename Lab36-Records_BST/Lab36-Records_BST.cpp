@@ -71,9 +71,19 @@ int main() {
 
         }
         case 4: {//modify node
+            cout << "Enter node to modify:" << endl;
+            cin.ignore();
+            string modifyString;
+            getline(cin, modifyString);
 
+            tree.modify(modifyString);
 
+            if (tree.searchNode(modifyString))
+                cout << modifyString << " not modified, why?" << endl;
+            else
+                cout << modifyString << " modified to " << endl;
 
+            break;
 
         }
         case 5://display tree

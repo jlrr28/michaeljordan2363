@@ -120,6 +120,10 @@ void IntBinaryTree::remove(string num) {
    deleteNode(num, root);
 }
 
+void IntBinaryTree::modify(string num) {
+    modifyNode(num, root);
+}
+
 // deleteNode deletes the node whose value 
 // member is the same as num.              
 void IntBinaryTree::deleteNode(string num, TreeNode *&nodePtr) {
@@ -168,25 +172,14 @@ void IntBinaryTree::makeDeletion(TreeNode *&nodePtr) {
 }
 
 //Make modification
-void IntBinaryTree::modifyNode(TreeNode *&nodePtr) {
-    TreeNode* nodePtr = root;
-
-    while (nodePtr) {
-        if (nodePtr->value == num)
-        {
-            cout << "Found " << num << endl;
-
-
-        }
-            //return true;
-        else if (num < nodePtr->value)
-            nodePtr = nodePtr->left;
-        else
-            nodePtr = nodePtr->right;
-    }
-    //return false;
-
-
+void IntBinaryTree::modifyNode(string num, TreeNode *&nodePtr) {
+    cout << "!!!" << endl;
+    if (num < nodePtr->value)
+        nodePtr->value = num;
+    else if (num > nodePtr->value)
+        nodePtr->value = num;
+    else
+        nodePtr->value = num;
 
 }
 
