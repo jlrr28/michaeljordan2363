@@ -7,6 +7,7 @@
 using namespace std;
 
 int main_menu();
+void displayTreeMenu(IntBinaryTree BST);
 
 int main() {
 	
@@ -80,18 +81,18 @@ int main() {
             string newString;
             getline(cin, newString);
             
-            tree.modify(modifyString, newString);
-
-            if (tree.searchNode(modifyString))
+            if (tree.searchNode(modifyString)) {
+                tree.modify(modifyString, newString);
                 cout << modifyString << " modified to " << newString << endl;
+            }
             else
-                cout << modifyString << " not modified, why?" << endl;
+                cout << modifyString << " not found, can't modify" << endl;
 
             break;
 
         }
         case 5://display tree
-            tree.displayInOrder();
+            displayTreeMenu(tree);
             break;
 
         default: break;
@@ -120,3 +121,29 @@ int main_menu() {
 
     return in;
 };
+
+void displayTreeMenu(IntBinaryTree BST) {
+    int in = 0;
+    cout << endl;
+    cout << "Records BST" << endl;
+    cout << "[1] Display In Order" << endl << "[2] Display Post Order" << endl;
+    cout << "[3] Display " << endl;
+    
+    while (in < 1 || in > 3) {
+        cout << "choice -->";
+        cin >> in;
+        switch (in) {
+        case 1:
+            BST.displayInOrder()
+                break;
+        case 2
+            BST.
+            break;
+
+
+        }
+        if (in < 1 || in > 3)
+            cout << "Invalid input\n" << endl;
+    }
+
+}

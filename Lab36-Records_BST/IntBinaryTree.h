@@ -95,7 +95,6 @@ void IntBinaryTree::destroySubTree(TreeNode *nodePtr) {
    }
 }
    
-
 // searchNode determines if a value is present in  
 // the tree. If so, the function returns true.     
 // Otherwise, it returns false.                    
