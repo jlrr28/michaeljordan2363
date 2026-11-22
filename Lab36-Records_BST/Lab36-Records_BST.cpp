@@ -32,20 +32,49 @@ int main() {
         switch (input) {
         case 1: {
             cout << "Enter string to insert" << endl;
-            
+            cin.ignore();
             string insertString;
             getline(cin, insertString);
+            
             cout << "Inserting " << insertString << endl;
             tree.insertNode(insertString);
         }
             break;
-        case 2:
-            tree.displayInOrder();
+        case 2: {
+            cout << "Enter node to search for" << endl;
+            cin.ignore();
+            string searchString;
+            getline(cin, searchString);
+            cout << "Searching " << searchString << endl;
+
+            if (tree.searchNode(searchString))
+                cout << searchString << " found" << endl;
+            else
+                cout << searchString << " not found" << endl;
+            
             break;
-        case 3:
+        }
+        case 3: {//delete node
+            cout << "Enter node to search for:" << endl;
+            cin.ignore();
+            string deleteString;
+            getline(cin, deleteString);
+            cout << "Searching " << deleteString << endl;
+
+            if (tree.searchNode(deleteString))
+                cout << deleteString << " found" << endl;
+            else
+                cout << deleteString << " not found" << endl;
 
             break;
-        case 4:
+
+
+
+        }
+        case 4://modify node
+            
+        case 5://display tree
+
 
         default: break;
         }
@@ -60,13 +89,13 @@ int main_menu() {
     int in = 0;
     cout << endl;
     cout << "Records BST" << endl;
-    cout << "[1] Insert node" << endl << "[2] remove node" << endl;
+    cout << "[1] Insert node" << endl << "[2] search node" << endl;
     cout << "[3] Display Tree" << endl << "[4] Modify records" << endl;
 
-    while (in < 1 || in > 4) {
+    while (in < 1 || in > 5) {
         cout << "choice -->";
         cin >> in;
-        if (in < 1 || in > 4)
+        if (in < 1 || in > 5)
             cout << "Invalid input\n" << endl;
     }
 
