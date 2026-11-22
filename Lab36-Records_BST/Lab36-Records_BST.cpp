@@ -25,7 +25,7 @@ int main() {
 	//tree.displayPreOrder();
 
     int input = 0;
-    while (input != 4) {
+    while (input != 6) {
 
         input = main_menu();
 
@@ -75,13 +75,17 @@ int main() {
             cin.ignore();
             string modifyString;
             getline(cin, modifyString);
-
-            tree.modify(modifyString);
+            cout << "Enter new data:" << endl;
+            //cin.ignore();
+            string newString;
+            getline(cin, newString);
+            
+            tree.modify(modifyString, newString);
 
             if (tree.searchNode(modifyString))
-                cout << modifyString << " not modified, why?" << endl;
+                cout << modifyString << " modified to " << newString << endl;
             else
-                cout << modifyString << " modified to " << endl;
+                cout << modifyString << " not modified, why?" << endl;
 
             break;
 

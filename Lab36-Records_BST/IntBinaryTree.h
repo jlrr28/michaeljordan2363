@@ -24,7 +24,7 @@ private:
    void deleteNode(string, TreeNode *&);
    void makeDeletion(TreeNode *&);
    
-   void modifyNode(string, TreeNode *&);
+   void modifyNode(string, string, TreeNode *&);
    
    void displayInOrder(TreeNode *) const;
    void displayPreOrder(TreeNode *) const;
@@ -42,7 +42,7 @@ public:
    bool searchNode(string);
    
    void remove(string);
-   void modify(string);
+   void modify(string, string);
 
    //void modifyNode(string);
 
@@ -120,8 +120,10 @@ void IntBinaryTree::remove(string num) {
    deleteNode(num, root);
 }
 
-void IntBinaryTree::modify(string num) {
-    modifyNode(num, root);
+void IntBinaryTree::modify(string oldSt, string newSt) {
+    deleteNode(oldSt, root);
+    insertNode(newSt);
+
 }
 
 // deleteNode deletes the node whose value 
@@ -170,26 +172,6 @@ void IntBinaryTree::makeDeletion(TreeNode *&nodePtr) {
       delete tempNodePtr;
    }
 }
-
-//Make modification
-void IntBinaryTree::modifyNode(string num, TreeNode *&nodePtr) {
-    cout << "!!!" << endl;
-    if (num < nodePtr->value)
-        nodePtr->value = num;
-    else if (num > nodePtr->value)
-        nodePtr->value = num;
-    else
-        nodePtr->value = num;
-
-}
-
-
-
-
-
-
-
-
 
 // The displayInOrder member function displays the values       
 // in the subtree pointed to by nodePtr, via inorder traversal. 
