@@ -14,14 +14,19 @@ int main() {
 	string file = "alphabet.txt";
 	IntBinaryTree tree;
 
+    int size = 0;
+
 	ifstream fin(file);
 	string in;
-	while (fin >> in)
-		tree.insertNode(in);
-    fin.close();
+    while (fin >> in) {
+        tree.insertNode(in);
+        size++;
+    }
+     fin.close();
 
+     cout << size << " RECORDS HAVE BEEN INPUT TO BST" << endl;
 
-	tree.displayInOrder();
+	//tree.displayInOrder();
 	//tree.displayPostOrder();
 	//tree.displayPreOrder();
 
@@ -76,12 +81,12 @@ int main() {
             cin.ignore();
             string modifyString;
             getline(cin, modifyString);
-            cout << "Enter new data:" << endl;
-            //cin.ignore();
-            string newString;
-            getline(cin, newString);
-            
+
             if (tree.searchNode(modifyString)) {
+                cout << "Enter new data:" << endl;
+                //cin.ignore();
+                string newString;
+                getline(cin, newString);
                 tree.modify(modifyString, newString);
                 cout << modifyString << " modified to " << newString << endl;
             }
@@ -108,14 +113,14 @@ int main_menu() {
     int in = 0;
     cout << endl;
     cout << "Records BST" << endl;
-    cout << "[1] Insert node" << endl << "[2] search node" << endl;
-    cout << "[3] Display Tree" << endl << "[4] Modify records" << endl;
-    cout << "[5] display tree" << endl;
+    cout << "[1] Insert Node" << endl << "[2] Search Node" << endl;
+    cout << "[3] Delete Node" << endl << "[4] Modify Records" << endl;
+    cout << "[5 Display Tree" << endl << "[6] Quit" << endl;
 
-    while (in < 1 || in > 5) {
+    while (in < 1 || in > 6) {
         cout << "choice -->";
         cin >> in;
-        if (in < 1 || in > 5)
+        if (in < 1 || in > 6)
             cout << "Invalid input\n" << endl;
     }
 
@@ -125,25 +130,27 @@ int main_menu() {
 void displayTreeMenu(IntBinaryTree BST) {
     int in = 0;
     cout << endl;
-    cout << "Records BST" << endl;
-    cout << "[1] Display In Order" << endl << "[2] Display Post Order" << endl;
-    cout << "[3] Display " << endl;
+    cout << "Choose Records BST display" << endl;
+    cout << "[1] Display In Order" << endl << "[2] Display Pre Order" << endl;
+    cout << "[3] Display Post Order" << endl;
     
     while (in < 1 || in > 3) {
         cout << "choice -->";
         cin >> in;
-        switch (in) {
-        case 1:
-            BST.displayInOrder()
-                break;
-        case 2
-            BST.
-            break;
-
-
-        }
         if (in < 1 || in > 3)
             cout << "Invalid input\n" << endl;
     }
+        switch (in) {
+        case 1:
+            BST.displayInOrder();
+            break;
+        case 2:
+            BST.displayPreOrder();
+            break;
+        case 3:
+            BST.displayPostOrder();
+            break;
+        }
+
 
 }
