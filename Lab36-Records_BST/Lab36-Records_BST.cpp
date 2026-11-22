@@ -17,10 +17,12 @@ int main() {
 	string in;
 	while (fin >> in)
 		tree.insertNode(in);
-	
+    fin.close();
+
+
 	tree.displayInOrder();
-	tree.displayPostOrder();
-	tree.displayPreOrder();
+	//tree.displayPostOrder();
+	//tree.displayPreOrder();
 
     int input = 0;
     while (input != 4) {
@@ -29,13 +31,16 @@ int main() {
 
         switch (input) {
         case 1: {
+            cout << "Enter string to insert" << endl;
+            
             string insertString;
             getline(cin, insertString);
+            cout << "Inserting " << insertString << endl;
             tree.insertNode(insertString);
         }
             break;
         case 2:
-
+            tree.displayInOrder();
             break;
         case 3:
 
@@ -55,7 +60,7 @@ int main_menu() {
     int in = 0;
     cout << endl;
     cout << "Records BST" << endl;
-    cout << "[1] Add node" << endl << "[2] remove node" << endl;
+    cout << "[1] Insert node" << endl << "[2] remove node" << endl;
     cout << "[3] Display Tree" << endl << "[4] Modify records" << endl;
 
     while (in < 1 || in > 4) {
