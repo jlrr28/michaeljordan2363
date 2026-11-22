@@ -23,6 +23,9 @@ private:
    void destroySubTree(TreeNode *);
    void deleteNode(string, TreeNode *&);
    void makeDeletion(TreeNode *&);
+   
+   void modifyNode(string);
+   
    void displayInOrder(TreeNode *) const;
    void displayPreOrder(TreeNode *) const;
    void displayPostOrder(TreeNode *) const;
@@ -38,6 +41,7 @@ public:
    void insertNode(string);
    bool searchNode(string);
    void remove(string);
+   void modifyNode(string);
 
    // Public wrappers for tree traversal functions.
    void displayInOrder() const     {  displayInOrder(root); }
@@ -161,7 +165,12 @@ void IntBinaryTree::makeDeletion(TreeNode *&nodePtr) {
 }
 
 //Make modification
+void IntBinaryTree::modifyNode(TreeNode*& nodePtr) {
 
+
+
+
+}
 
 
 

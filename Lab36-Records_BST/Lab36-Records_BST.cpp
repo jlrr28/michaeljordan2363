@@ -55,26 +55,26 @@ int main() {
             break;
         }
         case 3: {//delete node
-            cout << "Enter node to search for:" << endl;
+            cout << "Enter node to delete:" << endl;
             cin.ignore();
             string deleteString;
             getline(cin, deleteString);
-            cout << "Searching " << deleteString << endl;
+
+            tree.remove(deleteString);
 
             if (tree.searchNode(deleteString))
-                cout << deleteString << " found" << endl;
+                cout << deleteString << " not deleted, why?" << endl;
             else
-                cout << deleteString << " not found" << endl;
+                cout << deleteString << " deleted" << endl;
 
             break;
-
-
 
         }
         case 4://modify node
             
         case 5://display tree
-
+            tree.displayInOrder();
+            break;
 
         default: break;
         }
@@ -91,6 +91,7 @@ int main_menu() {
     cout << "Records BST" << endl;
     cout << "[1] Insert node" << endl << "[2] search node" << endl;
     cout << "[3] Display Tree" << endl << "[4] Modify records" << endl;
+    cout << "[5] display tree" << endl;
 
     while (in < 1 || in > 5) {
         cout << "choice -->";
