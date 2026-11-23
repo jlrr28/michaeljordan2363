@@ -11,7 +11,7 @@ void displayTreeMenu(IntBinaryTree BST);
 
 int main() {
 	
-	string file = "alphabet.txt";
+	string file = "even.txt";
 	IntBinaryTree tree;
 
     int size = 0;
